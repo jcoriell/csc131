@@ -1,0 +1,415 @@
+---
+title: "Program: SaleItem... Reloaded"
+---
+
+## Overview
+
+Your task in this assignment is to extend your submission for the `SaleItem` class to include some inheritance as shown in the diagram below.
+
+---
+title: "Class Diagram Example"
+format: html
+---
+
+## Class Diagram
+
+<div style="text-align: center;">
+
+```{mermaid}
+classDiagram
+    class SaleItem {
+        + name: str
+        + cost: float
+        + price: float
+        + profit(): str
+        + apply_sale(value: float): None
+        + __str__(): str
+    }
+
+    class Clothing {
+        + brand: str
+        + size: str
+        + __str__(): str
+    }
+
+
+    class Food {
+        + shelf_life: int
+        + __str__(): str
+    }
+
+    class Shoe {
+
+    }
+
+    class Chip {
+
+    }
+
+    SaleItem <|-- Clothing
+    SaleItem <|-- Food
+    Clothing <|-- Shoe
+    Food <|-- Chip
+```
+
+</div>
+
+## Class Descriptions
+
+A description of each class follows.
+
+### SaleItem Recap
+
+1. The `SaleItem` class has a `name`, `cost`, and `price`.
+
+2. All three instance variables are provided as arguments to the constructor.
+
+3. The class should have accessors and mutators for all instance variables which use the decorator method discussed in class. Additionally, the `cost` and `price` mutators should not allow for those variables to be set to negative values. If that is attempted, they are set to 0 instead.
+
+4. The class should have a `profit` function that returns the amount of money that selling the item would provide (i.e. the difference between the `price` and the `cost`).
+
+5. The class should have an `apply_sale` function that applies a percentage sale to the price of the item. It receives the percentage value as an argument and adjusts the price appropriately.
+
+6. An **extra** function `__str__()` is included which returns `f"{self.name}\t{self.cost:.2f}\t{self.price:.2f}`.
+
+
+### The Clothing Class
+
+1. The `Clothing` class inherits from the `SaleItem` class. This class refers to a clothing item in the store.
+
+2. It has a `brand` instance variable to denote the brand of the item (i.e. Nike, Adidas, etc.).
+
+3. It has a `size` instance variable to denote the size of the item being sold.
+
+4. It has a constructor that receives the `name`, `brand`, `cost`, `price`, and `size` as arguments (in that order).
+
+5. It contains appropriate accessors and mutators for the `brand` and `size` variables. The mutator for `size` ensures that it is set to the python `None` type if a value outside of `"Small"` `"Medium"` or `"Large"` is attempted. 
+
+6. It contains a `__str__` function that prints out the string representation of a `SaleItem` followed by the `brand` and `size`. An example of a complete returned value is 
+
+    ```
+    Shirt   29.99   49.99   Gymshark        Medium
+    ``` 
+    
+    where the spacing is determined exclusively by a single tab between each instance variable.
+
+
+### The Food Class
+
+1. The `Food` class inherits from the `SaleItem` class. This class refers to a `Food` item in the store.
+
+2. It has a constructor that receives the `name`, `cost`, and `price` as arguments (in that order).
+
+3. It has a `shelf_life` instance variable that represents the shelf life of a product in days. It is set to `7` by default.
+
+4. The `shelf_life` instance variable should have an accessor and mutator. The mutator should prevent the `shelf_life` from being set to a negative value. In the case of a negative value being attempted, it should set the value to 0.
+
+4. It has a `__str__` function that returns the string representation of a `SaleItem` followed by the shelf life. An example of a complete returned value is 
+
+    ```
+    Soup    0.50    1.50    7
+    ``` 
+
+    where the spacing is determined by a single tab character between each item.
+
+### The Shoe Class
+
+1. The `Shoe` class inherits from the `Clothing` class. This class refers specifically to shoes that the store sells.
+
+2. It has a constructor that receives `cost`, `price`, and `size` as arguments (in that order) and sets all `Shoe` items to have name of `"Crocs"` and a brand of `"Nike"`.
+
+### The Chip Class
+
+1. The `Chip` class inherits from the `Food` class. This class refers to the potato chips that the store sells.
+
+2. It has a constructor that does not receive any arguments. The constructor sets the `name` of all `Chip` instances to `"Original"`, the brand to `"Lays"`, the `cost` to `2`, the `price` to `3.50`, and the `shelf_life` to `21`.
+
+
+## Tests
+
+### The SaleItem Class
+
+The SaleItem class will be subject to the following tests. Some examples are provided for you to test your code locally.
+
+1. The ability to instantiate a SaleItem object. That is, your constructor accepts the appropriate arguments and runs without error. Additionally, the instance variables that should exist will exist after instantiation.
+
+    ```Python
+    orange = SaleItem("Orange", 0.50, 1.50) # runs successfully
+
+    # running the following three lines will not cause errors.
+    orange.name
+    orange.cost
+    orange.price
+    ```
+
+2. The existence of accessors/getters and mutators/setters for each instance variable of `SaleItem`.
+
+    ```Python
+    # Run the following lines in your main portion of the code.
+    # If any of them throw errors, then you don't have an accessor/getter for the corresponding instance variable
+    SaleItem.name.fget
+    SaleItem.cost.fget
+    SaleItem.price.fget
+
+    # If any of these following lines throw errors, then you don't have a mutator/setter for the corresponding instance variable.
+    SaleItem.name.fset
+    SaleItem.cost.fset
+    SaleItem.price.fset
+    ```
+
+
+2. The **accuracy** of instance variables assigned in the `SaleItem` constructor.
+
+    ```Python
+    orange = SaleItem("Orange", 0.50, 1.50) 
+
+    print(orange.name)      # outputs "Orange"
+    print(orange.cost)      # outputs 0.5
+    print(orange.price)     # outputs 1.5
+    ```
+
+
+
+3. The accuracy of the `cost` and `price` instance variables along with whether or not the setters throw errors. That is, they cannot be set to a invalid values but can be set to valid values.
+
+    ```Python
+    # test for outside of constructor
+    orange = SaleItem("Orange", 0.50, 1.50) 
+    orange.cost = -10
+    orange.price = -100
+    print(orange.cost)      # outputs 0
+    print(orange.price)     # outputs 0
+
+    # test for within constructor
+    apple = SaleItem("Apple", -0.50, -1.50)
+    print(apple.cost)      # outputs 0
+    print(apple.price)     # outputs 0
+    ```
+
+4. The `profit` function returns the correct value.
+
+    ```Python
+    orange = SaleItem("Orange", 0.5, 1.5)
+    print(orange.profit())      # outputs 1.0
+    ```
+
+5. The `apply_sale` function returns the correct value.
+
+    ```Python
+    orange = SaleItem("Orange", 0.5, 100.00)
+    orange.apply_sale(10)   # a 10 percent discount is applied to the price
+    print(orange.price)     # outputs 90, not 100
+    ```
+
+
+6. The `__str__` function returns the correctly formatted string.
+
+    ```Python
+    orange = SaleItem("Orange", 0.5555555555, 1.777777777)
+    print(orange)   # outputs the following line without the # symbol. The spacing is determined by tabs.
+    #Orange  0.56    1.78
+    ```
+
+### The Clothing Class
+
+1. The `Clothing` class is a subclass of the `SaleItem` class.
+
+    ```Python    
+    print(issubclass(Clothing, SaleItem))  # outputs True
+    ```
+
+2. The constructor runs and does not cause any errors, the constructor calls on the constructor of the super class, and the constructor properly sets up instance variables for brand and size. Note that name, cost, and price are handled by the constructor of the super class.
+
+    ```Python
+    # no errors when running the following line
+    shirt = Clothing("Shirt", "Gymshark", 29.99, 49.99, "Medium")
+
+    # none of the following should cause errors.
+    print(shirt.name)       # outputs "Shirt"
+    print(shirt.brand)      # outputs "Gymshark"
+    print(shirt.cost)       # outputs 29.99
+    print(shirt.price)      # outputs 49.99
+    print(shirt.size)       # outputs "Medium"
+    ```
+
+
+
+3. The existence of getters and setters for each instance variable (using the property decorator discussed in class).
+
+    ```Python
+    # Call each of the following. If one of them throws an error, then you don't have a getter for that one.
+    Clothing.brand.fget
+    Clothing.size.fget
+
+    # Call each of the following. If one of them throws an error, then you don't have a setter for that one.
+    Clothing.brand.fset
+    Clothing.size.fset
+    ```
+
+4. The `size` instance variable only allows the values `Small`, `Medium`, and `Large`. In the case the size is not one of those, it should set the value to `None`.
+
+    ```Python
+    # no errors when running the following line
+    shirt = Clothing("Shirt", "Gymshark", 29.99, 49.99, "Medium")
+
+    shirt.size = "Large"
+    print(shirt.size)   # outputs "Large"
+    
+    shirt.size = "Small"
+    print(shirt.size)   # outputs "Small"
+
+    shirt.size = "Krusty Krab"
+    print(shirt.size)   # outputs None  (not a string, but the python None type)
+    ```
+
+5. The `__str__` method of the `Clothing` class calls the `__str__` method of its super class. Additionally, the string method should return the proper string.
+
+    ```Python
+    # this isn't ideal, but to check we will just be checking the contents of the source code
+    # this will be done using the inspect module
+    import inspect
+
+    # get the contents of the __str__ method
+    src = inspect.getsource(Clothing.__str__)
+
+    # one of the following two prints should print True
+    print("super().__str__" in src)
+    print("SaleItem.__str__" in src)
+
+    # This isn't ideal since you can simply include either of those strings anywhere 
+    # in the source code of your function and it would pass this test. Our hope is you put one of them
+    # in the appropriate place.
+
+    # instantiate a shirt to test the output
+    shirt = Clothing("Shirt", "Gymshark", 29.99, 49.99, "Medium")
+    print(shirt) # outputs the following line without the # symbol. The spacing is determined by tabs.
+    #Shirt   29.99   49.99   Gymshark        Medium
+
+    ```
+
+
+
+### The Food Class
+
+1. The `Food` class is a subclass of the `SaleItem` class.
+
+    ```Python    
+    print(issubclass(Food, SaleItem))  # outputs True
+    ```
+
+2. The constructor runs and does not cause any errors, the constructor calls on the constructor of the super class, and the constructor properly sets the instance variable for shelf_life. Note that name, cost, and price are handled by the constructor of the super class and should also be properly setup. Additionally, shelf_life should be 7 at this point.
+
+    ```Python
+    # no errors occur when the following line is executed.
+    soup = Food("Soup", 0.5, 1.50)
+
+    # none of the following should cause errors.
+    print(soup.name)            # outputs "Soup"
+    print(soup.cost)            # outputs 29.99
+    print(soup.price)           # outputs 49.99
+    print(soup.shelf_life)      # outputs 7
+
+    print(soup.shelf_life == 7) # outputs True
+    ```
+
+
+3. The 'shelf_life' instance variable has getters and setters.
+
+    ```Python
+    # Call each of the following. 
+    Food.shelf_life.fset    # if this line throws an error, you don't have a setter
+    Food.shelf_life.fget    # if this line throws an error, you don't have a getter
+    ```
+
+
+4. The `shelf_life` mutator/setter prevents negative values by setting the variable to 0.
+
+    ```Python
+    soup = Food("Soup", 0.5, 1.50)
+    soup.shelf_life = -10
+    print(soup.shelf_life)  # outputs 0
+    ```
+
+5. The `__str__` function calls the super class's `__str__` function and the `__str__` method returns the correct string. Note that all spacing is determined by single tabs. Don't count the spacing, just use `\t`.
+
+    ```Python
+    # again, this isn't ideal, but to check we will just be checking the contents of the source code
+    # this will be done using the inspect module
+    import inspect
+
+    # get the contents of the __str__ method
+    src = inspect.getsource(Food.__str__)
+
+    # one of the following two calls to the print() function should print True
+    print("super().__str__" in src)
+    print("SaleItem.__str__" in src)
+
+    # This isn't ideal since you can simply include either of those strings anywhere 
+    # in the source code of your function and it would pass this test. Our hope is you put one of them
+    # in the appropriate place.
+
+
+    # checking if it returns the correct string
+    soup = Food("Soup", 0.5, 1.50)
+    print(soup)   # outputs the following line without the # symbol. The spacing is determined by tabs.
+    #Soup    0.50    1.50    7
+    ```
+
+
+
+
+### The Shoe Class
+
+1. The `Shoe` class is a subclass of the `Clothing` class.
+
+    ```Python    
+    print(issubclass(Shoe, Clothing))  # outputs True
+    ```
+
+2. The constructor runs and does not cause any errors. 
+
+    ```Python
+    # no errors occur when the following line is executed.
+    croc = Shoe(29.99, 229.99, "Medium")
+
+    # the following lines don't cause errors
+    print(croc.name)    # outputs "Crocs"
+    print(croc.brand)   # outputs "Nike"
+    ```
+
+
+### The Chip Class
+
+1. The `Chip` class is a subclass of the `Food` class.
+
+    ```Python    
+    print(issubclass(Shoe, Food))  # outputs True
+    ```
+
+2. The constructor runs and does not cause any errors. Additionally, the values of the instance variables should be correct after running the constructor.
+
+    ```Python
+    # no errors occur when the following line is executed.
+    potato = Chip()
+
+    # no errors occur on the following
+    print(potato.name)          # outputs "Original"
+    print(potato.cost)          # outputs 2
+    print(potato.price)         # outputs 3.5
+    print(potato.shelf_life)    # outputs 21
+    ```
+
+
+
+
+## Additional Files
+
+You are provided with a template that you should use. Note that the template contains a main section for you to use with the the examples above to test the various parts of your solution before submitting to the auto-grader. 
+
+<a href="./files/template.py" download>template.py</a>
+
+## Submission
+
+You must submit your code to the course website as a single .py file.
+
+

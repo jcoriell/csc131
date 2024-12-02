@@ -1,0 +1,151 @@
+---
+title: "Program: Squad Names"
+---
+
+## Overview 
+Your task in this assignment is to write a program that calculates the frequency of names (or substrings) in a provided squad list file. You are provided with a text file that contains the names of all the squad players in the 2022 Fifa World Cup tournament. Each name is on a different line in this file. 
+
+Your code will load in a file and then print out some statistics that include how many names contain that substring. 
+
+Note that the values highlighted in red may be different depending on which values are chosen for the tests. The values will be chosen somewhat randomly.
+
+## Sample Outputs
+
+### Sample 1
+
+<pre class="styled-pre">
+Loading the file named <span style="color: red;">input.txt</span>
+
+Searching for the substring <span style="color: red;">ad</span>.
+
+--------------------------------------------------
+<span style="color: red;">2</span> names start with this string
+<span style="color: red;">3</span> names end with this string
+<span style="color: red;">39</span> names contain this string
+--------------------------------------------------
+</pre>
+
+### Sample 2
+
+<pre style="background-color: #eeeeee; padding: 1em">
+
+Loading the file named <span style="color: red;">input.txt</span> 
+
+Searching for the substring <span style="color: red;">sh</span>.
+
+--------------------------------------------------
+<span style="color: red;">2</span> names start with this string
+<span style="color: red;">3</span> names end with this string
+<span style="color: red;">39</span> names contain this string
+--------------------------------------------------
+
+</pre>
+
+### Sample 3
+
+<pre style="background-color: #eeeeee; padding: 1em">
+Loading the file named <span style="color: red;">this_file_does_not_exist.txt</span> 
+
+Sorry, the file did not exist. No substring searches were performed.
+</pre>
+
+
+## Expected Functions
+
+In order to accomplish this, you will write functions that will read the file and then search for that string. The functions you should write are as follows:
+
+### Load File
+
+The purpose of this function is to load a file and returning each line of that file as a separate value in a list. 
+
+This function should be named `load_file`.
+
+It should have 1 parameter that represents the name of the file as a string.
+
+It should return a list where each value in the list is a line from the file that was loaded. 
+
+### Starts With
+
+The purpose of this function is to determine how many of the names **start** with the provided substring.
+
+This function should be named `starts_with`.
+
+It should have 2 parameters: the first should represent the substring that will be searched for, the second should represent a list that it will search through.
+
+It should return an integer that represents the number of names that **start** with the provided substring.
+
+
+### Ends With
+
+The purpose of this function is to determine how many of the names **end** with the provided substring.
+
+This function should be named `ends_with`.
+
+It should have 2 parameters: the first should represent the substring that will be searched for, the second should represent a list that it will search through.
+
+It should return an integer that represents the number of names that **end** with the provided substring.
+
+### Contains
+
+The purpose of this function is to determine how many of the names **contain** the provided substring.
+
+This function should be named `contains`.
+
+It should have 2 parameters: the first should represent the substring that will be searched for, the second should represent a list that it will search through.
+
+It should return an integer that represents the number of names that **contain** the provided substring.
+
+### Main
+
+This function will be responsible for calling on each of the functions above so that the program produces the desired output. Note that this function will need to check if the file is loaded correctly. If the file does exist, then this function should produce the output that is shown in samples 1 and 2. If the file does not load properly, then it should produce the output shown in sample 3. Note that the red values in the outputs may be different depending on which values are chosen during testing. 
+
+This function should be called `main`.
+
+It should have no parameters.
+
+It should not have any return values (it only outputs to the terminal using print).
+
+## Helper Files
+
+<a href="./input.txt" download>input.txt</a>
+
+<a href="./template.py" download>template.py</a>
+
+
+## Additional Info
+
+1. You are provided with an input file called `input.txt` that contains the names you will be
+parsing. Note that your code should be able to parse any filename that the user provides and not
+just files named `input.txt`
+
+2. Your program will require at least the functions mentioned above. Feel free to add any extra
+functions you think are necessary.
+
+3. Feel free to include in a section of your file the conditional as follows so that you can test your file locally and not need to modify anything when you upload it to the autograder.
+
+    ```Python
+    if __name__ == "__main__":
+        # code you want to test
+    ```
+
+    Recall that this conditional will allow code to run when you directly run a file, however, when a file is imported into another file, the code inside the conditional will not run. The autograder works by importing your file into another file, so the code inside this conditional will not run on the autograder.
+
+4. A lot of the functionality that is required in this assignment can easily be implemented by taking
+advantage of some of python’s inbuilt string functions. You are encouraged to look up python
+string functions to get an understanding of what functionality you have available to you when
+dealing with strings.
+
+5. Your output should be exactly like the sample runs shown above (of course, actual results will
+vary depending on the provided input text file and substrings/names);
+
+6. You must include a meaningful header, use good coding style, use meaningful variable names,
+and comment your source code where appropriate;
+
+
+7. You must use the provided source code template (it contains helpful comments that can help you
+structure your code); and
+
+8. You must submit your source code as a single .py file. The name of the file does not matter.
+
+
+

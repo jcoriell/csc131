@@ -1,0 +1,216 @@
+---
+title: "Searching and Sorting"
+---
+
+## Revisiting searching and sorting in Python   
+
+In previous lessons, we designed several searching algorithms (sequential/linear search and binary    
+search) and sorting algorithms (bubble sort, selection sort, and insertion sort).  We first specified them in   
+pseudocode, and for some we showed how they could be implemented in Python (sequential search,    
+binary search, and selection sort).  To help get a better understanding of Python, let's briefly revisit some   
+of these.   
+First, here's the  sequential search  for the smallest value in a list (from an earlier lesson).  Note that a    
+Python list is first populated with 20 random integers (from 1 to 99, also from an earlier lesson):   
+ 1:   
+from   random   import  randint   
+ 2:   
+numbers  =  []   
+ 3:   
+while  ( len (numbers)  <   20 ):   
+ 4:   
+    numbers . append(randint( 1 ,  99 ))   
+ 5:   
+print (numbers)   
+9   
+
+
+ 6:   
+minIndex  =   0   
+ 7:   
+for  index  in   range ( 1 ,  len (numbers)):   
+ 8:   
+     if  (numbers[index]  <  numbers[minIndex]):   
+ 9:   
+        minIndex  =  index   
+10:   
+print ( "The smallest value is at index: {}" . format(minIndex))   
+11:   
+print ( "The smallest value is: {}" . format(numbers[minIndex]))   
+This version of the sequential search technically returns the  index  of the smallest value (which is    
+typically what programmers are interested in).  Since the value can be easily accessed through the index,   
+returning the index is much more meaningful.  To generalize the sequential search so that it can return    
+the index of a  **specified ** value (as opposed to the smallest value), it can be modified by replacing lines 6    
+through 11 as follows:   
+    num  =  int( input ( "What integer would you like to search for? " ))   
+     for  index  in   range ( len (numbers)):   
+         if  (numbers[index]  ==  num):   
+             print ( "The value {} was found at index {}!" . format(num, index))   
+What happens if the specified value is duplicated several times in the list?  Clearly, each index would be    
+displayed.  Here's example (with user input highlighted in  red ):   
+[20, 47, 80, 52, 98, 80, 1, 14, 31, 48, 70, 31, 97, 30, 31, 43, 59, 2, 38, 50]   
+What integer would you like to search for?  31   
+The value 31 was found at index 8!   
+The value 31 was found at index 11!   
+The value 31 was found at index 14!   
+But what if it's only necessary to find the  **first ** occurrence of a specified value (and then abort)?  Python    
+provides a way to  exit a repetition construct early  (a.k.a. an “early exit”)   through the  break     
+keyword!  Formally, the break keyword exits the  **nearest enclosing ** repetition construct.  More on this in    
+a bit.  To illustrate the use of the break keyword, the sequential search code above can be modified to    
+return only the first instance of a specified value:   
+     for  index  in   range ( len (numbers)):   
+         if  (numbers[index]  ==  num):   
+             print ( "The value {} was found at index {}!" . format(num, index))   
+       break   
+Here's an example:   
+[87, 44, 37, 69, 92, 74, 49, 97, 65, 69, 27, 61, 22, 77, 3, 3, 25, 86, 53, 45]   
+What integer would you like to search for?  3   
+The value 3 was found at index 14!   
+Note that the value 3 occurs twice in the list (at index 14 and index 15); however, only the first instance    
+is reported to the user before the search terminates.  The break statement exits the enclosing repetition    
+construct: in this case, the for loop.   
+What if the break keyword is located in a repetition construct that is also located inside of another    
+repetition construct?  In this case, it will exit the inner repetition construct only.  Here's an example:   
+
+
+for  i  in   range ( 2 ):   
+     print ( "i={}" . format(i)),   
+     for  j  in   range ( 5 ):   
+         print ( "j={}" . format(j)),   
+         if  (j  >   1 ):   
+             break   
+     print()   
+Here's the output:   
+i=0 j=0 j=1 j=2   
+i=1 j=0 j=1 j=2   
+The outer for loops iterates  **i ** from 0 through 1.  The inner for loop iterates  **j ** from 0 through 4.     
+Moreover, the inner for loop exits early if  **j ** is greater than 1.  Technically, the print statement in the    
+inner for loop will display values of  **j ** that are less than or equal to 1.  So why is a value of 2 for  **j **   
+displayed?  When  **j ** is 2, the value is displayed, after which the if statement is executed (which breaks    
+out of the inner for loop).  The outer for loop continues (the lone print() statement is there to add a line    
+break in between increasing values of  **i** ), and  **i ** becomes 1.  This occurs again until the outer for loop    
+terminates (when  **i ** is 2).   
+Let's now take a look at the binary search that was also covered in an earlier lesson.  Recall that it is a    
+very efficient search that requires a list to be sorted.  Here's the Python code that was developed in an    
+earlier lesson:   
+num  =  int( input ( "What integer would you like to search for? " ))   
+found  =   False   
+first  =   0   
+last  =   len (numbers)  -   1   
+while  (first  <=  last  and  found  !=   True ):   
+    mid  =  (first  +  last)  //   2   
+     if  (num  ==  numbers[mid]):   
+        found  =   True   
+     elif  (num  >  numbers[mid]):   
+        first  =  mid  +   1   
+     else :   
+        last  =  mid  -   1   
+if  (found):   
+     print ( "{} was found at index {}!" . format(num, mid))   
+else :   
+     print ( "{} was not found." . format(num))   
+This version of the binary search keeps tracks of two boundaries ( **first ** and  **last** ) that identify the    
+beginning and end indexes of the current portion of the list.  Initially,  **first ** is 0 and  **last ** is  **n** -1 (i.e., the    
+entire list).  If the middle value of the current portion of the list does not match the specified value, the    
+appropriate half of the list is “discarded” by modifying either  **first ** (to discard the left half) or  **last ** (to    
+discard the right half).    
+
+
+Recall that the binary search required a list to be sorted, thereby taking advantage of the algorithm's    
+efficiency improvement over the sequential search.  Here's the  selection sort  that was developed in an    
+earlier lesson:   
+n  =   len (numbers)   
+for  i  in   range ( 0 , n  - 1 ):   
+    minPosition  =  i   
+     for  j  in   range (i  + 1 , n):   
+         if  (numbers[j]  <  numbers[minPosition]):   
+            minPosition  =  j   
+    temp  =  numbers[i]   
+    numbers[i]  =  numbers[minPosition]   
+    numbers[minPosition]  =  temp   
+Recall how the selection sort works: (1) the list is sorted from left to right; (2) at each pass (controlled    
+by the outer for loop), the smallest value is swapped with the first item in the unsorted portion of the list;   
+and (3) the inner for loop performs the comparison of every remaining item in the unsorted portion of    
+the list to find the smallest value.  For a review, see the lesson on  **Searching and Sorting** .   
+There were two other sorting algorithms that were covered in earlier lessons: bubble sort and insertion    
+sort.  We never developed Python code for them.  Let's do this now.  First, the bubble sort.  Here is a    
+version in pseudocode:   
+for  i ← 1..list length-1   
+     for  j ← 1..list length-i   
+         if  item j of list < item j-1 of list   
+         then   
+            temp ← item j of list   
+            item j of list ← item j-1 of list   
+            item j-1 of list ← temp   
+         end   
+     next   
+next   
+You may not have seen a for loop described in pseudocode before; however, this is a common way to    
+accomplish this repetition construct in pseudocode.  So what's happening here?  The basic idea is that a    
+value in the list will be compared to the one before it.  If they are out of order, then they are swapped.     
+This continues, one index over (to the right), until the end of the list is reached.  After the first pass, the    
+largest value is guaranteed to be in its final position (i.e., at the end of the list).  The next pass starts    
+again at the beginning of the list; however, this time comparisons and swaps only take place until the    
+second-to-last value in the list (because the last value has already been placed there during the last pass).   
+Each time, the sorted list grows from right-to-left until the entire list is sorted.   
+The outer for loop controls the number of passes, while also providing a way to reduce the size of the    
+unsorted portion of the list after each pass.  It iterates from 1 through  **n** -1.  The inner loop controls the    
+comparisons and swaps.  Initially, the inner loop begins at 1 (the index of the second value in the list),    
+and compares this value to the one before it (the first value in the list).  If they are out of order, they are    
+swapped.  The swap works by using a variable ( **temp** ) that temporarily takes on one of the values in the    
+list.  This continues with the next index (i.e., 2), and so on.  The last index compared is  **n** - **i** .  If the    
+algorithms is in the first pass (i.e.,  **i ** is 1) and the length of the list is 10, the last valid index in the list is    
+10 – 1 = 9.   
+12   
+
+
+Let's take a look at what a Python version of the bubble sort looks like:   
+n  =   len ( list )   
+for  i  in   range ( 1 , n):   
+     for  j  in   range ( 1 , n  - i   + 1 ):   
+         if  ( list [j]  <   list [j  - 1 ]):   
+            temp  =   list [j]   
+             list [j]  =   list [j  - 1 ]   
+             list [j  - 1 ]  =  temp   
+Recall that Python's range function uses the first parameter as a lower bound and the second parameter    
+as one above the upper bound.  That is, it operates on the interval [ **a** ,  **b** ), where  **a ** is the (closed) lower    
+bound and  **b ** is the (open) upper bound.  Therefore, the upper bound of the outer loop is  **n** : it iterates    
+from 1 through (and including)  **n** -1 as intended.  Similarly, the upper bound of the inner loop is  **n** - **i** +1: it    
+iterates from 1 through (and including)  **n** - **i ** as intended.  In the inner loop, if any value at an index is less    
+than the value of the one before it, they are swapped.   
+Next, let's take a look at the Python code for the insertion sort.  Recall that the insertion sort works    
+somewhat as you would arrange a hand of cards being dealt to you: a new card is inserted in its    
+appropriate position in the hand of cards dealt so far.   
+ 1:   
+i  =   1   
+ 2:   
+while  (i  <  n):   
+ 3:   
+     if  ( list [i  - 1 ]  >   list [i]):   
+ 4:   
+        temp  =   list [i]   
+ 5:   
+        j  =  i –  1   
+ 6:   
+         while  (j  >=   0   and   list [j]  >  temp):   
+ 7:   
+             list [j  + 1 ]  =   list [j]   
+ 8:   
+            j  -=   1   
+ 9:   
+         list [j  + 1 ]  =  temp   
+10:   
+    i  +=   1   
+Here's an explanation of the code.  Line 2 controls the number of passes through the list ( **n** -1 total    
+passes).  The variable  **i ** is initialized to 1 (the second index in the list) and iterates through (but not    
+including)  **n** ; therefore, through the last index in the list.  So, starting with the second value in the list, it    
+looks to the left (of this current value).  Line 3 checks if that value is greater, and if so, then it must    
+move it to the right.  Line 4 temporarily stores the current item, and lines 5 and 6 then begin the process    
+of iterating from the previous element, continuing to the left.  At any point, if a value to the left is    
+greater than the current item, it is shifted one index to the right.  This continues either until (1) the    
+beginning of the list is reached; or (2) a value that is not greater is found.  Ultimately, the current item is    
+placed into its proper position in the list.  The outer loop then continues with the next value in the list    
+(through the last value in the list).   
+Note that there are many other ways that the searches and sorts shown could have been implemented in    
+Python.  For example, the use of for loops in the selection sort could have been replaced with while    
+loops (or vice versa in the insertion sort).
+

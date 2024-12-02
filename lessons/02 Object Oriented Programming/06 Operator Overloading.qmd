@@ -1,0 +1,129 @@
+## Operator overloading
+In the last example above, we defined a function in the fraction class that adds two fractions and returns
+the sum. We used this function similar to the following snippet of Python code:
+```python
+f1 = Fraction(1, 2)
+f2 = Fraction(3, 4)
+print(f1.add(f2))
+```
+As expected, the output of these statements is: `5/4 (1.25)`
+
+The way in which we call the addition function seems a bit tedious. Why can't we just use the addition
+operator? For example, why can't we just add two fractions, `f1` and `f2`, by merely using the expression
+`f1 + f2`? This would mean that the following modification of the example above would work as
+expected:
+```python
+f1 = Fraction(1, 2)
+f2 = Fraction(3, 4)
+print(f1 + f2)
+```
+
+It turns out that such a thing is possible through a concept called operator overloading.
+
+::: {.callout-tip title="Definition"}
+**Operator overloading** is the act of redefining the behavior of operators (such as addition
+and subtraction) using their known symbols (+ for addition, – for subtraction, and so on) in order to
+support these operations on user-defined data types.
+:::
+
+For example, redefining the addition operator for the fraction class could mean implementing the
+common denominator method described earlier
+
+Python has various internal magic functions that support the redefinition of common operators. The
+main idea is to encapsulate the new, redefined behavior in a function that is automatically called (using
+syntactic sugar) when two objects of the class are used as operands with the specified operator. For the
+purpose of the fraction class, we will only consider the four arithmetic operators.
+
+The addition operator (`+`) can be redefined in a function called `__add__` as follows:
+```python
+def __add__(self, other):
+    num = (self.num * other.den) + (other.num * self.den)
+    den = self.den * other.den
+    sum = Fraction(num, den)
+    sum.reduce()
+    return sum
+```
+
+Note that the source code in the new overloaded `__add__` function is exactly the same as it was in the
+original `add` function shown earlier.
+
+The subtraction operator (`–`) can be redefined in a function called `__sub__` as follows:
+```python
+def __sub__(self, other):
+    ...
+```
+
+Note that for this and the remaining operators, the source code is not provided. Instead, appropriate
+code is replaced with an ellipsis (…).
+
+The multiplication operator (`*`) can be redefined in a function called `__mul__` as follows:
+```python
+def __mul__(self, other):
+    ...
+```
+
+Lastly, The division operator (`/`) can be redefined in a function called `__truediv__` as follows:
+```python
+def __truediv__(self, other):
+    ...
+```
+
+The fraction class has now grown! Take a look:
+```python
+# defines a fraction
+class Fraction:
+    # by default, a fraction is 0/1
+    def __init__(self, num=0, den=1):
+        self.num = num
+        # make sure not to set the denominator to 0 if specified
+        if (den == 0):
+        den = 1
+        self.den = den
+        self.reduce()
+    ...
+    # calculates and returns the sum of two fractions
+    def __add__(self, other):
+        num = (self.num * other.den) + (other.num * self.den)
+        den = self.den * other.den
+        sum = Fraction(num, den)
+        sum.reduce()
+        return sum
+    # calculates and returns the difference of two fractions
+    def __sub__(self, other):
+        # replace this with the function's actual implementation
+        return None
+    # calculates and returns the product of two fractions
+    def __mul__(self, other):
+        # replace this with the function's actual implementation
+        return None
+    # calculates and returns the division of two fractions
+    def __truediv__(self, other):
+        # replace this with the function's actual implementation
+        return None
+ ...
+```
+
+In fact, we can now perform all of the implemented arithmetic operations on fractions. Here's a snippet
+of Python code that tests the fraction class and assumes that the operator overload functions have been
+fully implemented:
+```python
+# main program
+f1 = Fraction(1, 2)
+f2 = Fraction(1, 4)
+print(f1)
+print(f2)
+print(f1 + f2)
+print(f1 - f2)
+print(f1 * f2)
+print(f1 / f2)
+```
+
+And here is the output:
+```python
+1/2 (0.5)
+1/4 (0.25)
+3/4 (0.75)
+1/4 (0.25)
+1/8 (0.125)
+2/1 (2.0)
+```

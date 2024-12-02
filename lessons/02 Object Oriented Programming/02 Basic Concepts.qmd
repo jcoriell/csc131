@@ -1,0 +1,110 @@
+---
+title: "Basic Concepts"
+---
+
+## State and Behavior
+We live in a world in which objects exist all around us. In fact, we interact with objects all the time. For
+example, the author of this document interacted with a keyboard and mouse while writing this sentence!
+The author's brain (an object) somehow sent a message to hands and fingers (all objects) to make contact
+with keyboard keys (again, all objects). The keyboard (an object) somehow sent a message to the
+computer (an object made up of many other objects) to interpret key presses as characters to be placed in
+this document (an object) and displayed on the screen (yet another object).
+
+Fundamentally, an object is a thing. In object-oriented programming, the objects model things in our
+problem domain. Objects have properties (or attributes) that, in a sense, define them. They capture the
+properties or characteristics of an object. For example, a *person* object has many attributes, some of
+which include sex, name, age, height, hair color, eye color, and so on. These are the things that a person
+can *be*.
+
+::: {.callout-tip title="Definition"}
+The collection of attributes that make up an object are called its **state**.
+:::
+
+Objects can also *do* things. That is, they can have behaviors. In object-oriented programming, these
+behaviors are implemented by program modules (e.g., methods, procedures, functions, etc) that contain
+the instructions required to model the behavior in computer software. For example, a *person* object can
+eat, sleep, talk, walk, and so on.
+
+::: {.callout-tip title="Definition"}
+ The collection of actions that an object can do are called its **behavior**.
+:::
+
+Collectively, **state** and **behavior** define an object. When you begin to adopt this way of thinking, you
+can begin to see many things in our world as objects with attributes and behaviors interacting with other
+objects.
+
+## Objects, classes, and instances
+
+::: {.callout-tip title="Definition"}
+ An **object** represents a specific thing from the real world with defined attributes
+:::
+
+For example, “the white truck down there parked by the road” is an object. It is a truck that could
+ostensibly be observed on the road. In fact, it could be a white 2016 4x4 Dodge Ram 1500 with 450
+miles on it.
+
+Clearly, there exist other trucks in the world. In fact, there may even be other trucks parked by the road
+next to the one just described. One could say, then, that the generic term *truck* could represent all kinds
+of truck objects. Trucks are all basically different versions of the same thing. That is, they all behave
+the same and have the same set of attributes; however, the values of those attributes is what sets them
+apart. For example, one truck could be red and another white; one truck could be a Dodge and another a
+Toyota.
+
+::: {.callout-tip title="Definition"}
+A **class** represents a blueprint or template for those real world things with defined attributes
+(i.e., for all of the objects that can be derived).
+:::
+
+For example, a truck class could be used to create many truck objects. Another way of saying this is that
+a class is a collection of objects that share the same attributes and behaviors. The differences between
+individual objects are abstracted away and ignored. So the class can be thought of as the perfect idea of
+something. This occurs in the real world in, for example, the way a child learns to abstract away the
+differences between Aunt Jamie's schnauzer, a best friend's bulldog, and dad's boxer – and learns to
+classify them all as dogs.
+
+This is not a new idea. Plato, quoting Socrates in *The Republic*, discusses the *Theory of Forms or Ideas*.
+For example, no one has ever seen a perfect circle; however, we have an idea of what a perfect circle
+should be. We have drawn many circles, but none of them were absolutely perfect. The perfect idea of
+a circle would be considered a class, and each of the circles we draw would be considered objects.
+Formally, a class defines the state and behavior of a *class* of objects. The fact that a truck has a color,
+year, make, model, mileage, and so on, is defined in the class. The fact that a truck can haul, drive, turn,
+honk, and so on, is also defined in the class. In fact, how a truck hauls, drives, turns, and honks is
+specified in the truck class as well. From the truck class, many truck **instances** can be created, each
+with potentially different attribute values making up each truck's unique state. We say that, from this
+class, we can **instantiate** many objects.
+
+::: {.callout-tip title="Definition"}
+**Instantiation** is the process of creating a new instance (a.k.a. an object) of a class.
+:::
+
+Usually, we use the term object and instance interchangeably. That is, a truck object, for example, is just
+an instance of the truck class.
+
+::: {.callout-important title="Activity" collapse=false}
+In this activity, you will play a game using an animal class. This class, formally called **Animal**, will
+define what animals can be and do. Some of the students in the class will become objects of the class
+**Animal**. The animal class defines several attributes that an animal has:
+    `type`: a string that represents the animal's type (e.g., dog)
+    
+    `appetite`: an integer that represents how much daily food units the animal requires to live
+
+    `stomach`: an integer that represents how much food units are currently in the animal's stomach
+    
+    `alive`: a Boolean that represents whether or not the animal is alive
+    
+    `sound`: a sound that represents the sound the animal makes
+
+The class also defines several behaviors that an animal can do (and that students will perform when
+called upon):
+    `talk()`: make the sound the animal makes
+    
+    `burn()`: use the animal's daily food units by subtracting `appetite` from `stomach`
+    
+    `eat(amount)`: increase the animal's `stomach` food units by the provided `amount`
+    
+    `getType()`: tell the requester what the animal's type is (i.e., the value of `type`)
+    
+    `isAlive()`: tell the requester if the animal is alive or not (i.e., the value of `alive`)
+
+Note that if `stomach` is less than 0, then `alive` becomes false – and the animal dies...
+:::

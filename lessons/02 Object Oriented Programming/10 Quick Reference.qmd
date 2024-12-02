@@ -1,0 +1,36 @@
+## OO quick reference
+We have covered a lot of new terms in this lesson. This final section merely aggregates them all, along
+with their definition, so that you can easily and quickly refer to the terms should you need to.
+
+| Term | Definition |
+|--|:--------|
+|accessor|A special method in a class that wraps an instance variable for the purpose of providing read access.|
+|behavior|All of the things that an object can *do*; implemented using functions in the class.|
+|class|A blueprint for a thing; the definition of state and behavior for an entire class of things.|
+|class diagram|A diagram that models the classes of a system or application, their relationships, and their members.|
+|class variable|A variable that is defined at the class level; its value is shared among all instances of the class.|
+|constructor|A special method in a class that is automatically invoked when a new instance of the class is instantiated; usually performs initialization tasks (e.g., assigning default or specified values to the instance variables).|
+|decorator|A wrapper; in Python, accessors and mutators are wrapped using a decorator|
+|dot operator|When used on an object reference, accessed the specified member of the class.|
+|has-a|A relationship among classes that implies one class making use of another; also means the ability of an object to create other objects.|
+|inheritance|A relationship among classes that permits a class to inherit the state and behavior of another class; see **is-a**.|
+|input validation|The process of validating a provided input to ensure that it conforms to some expected range or type.|
+|instance|An object that represents the instantiation of a class.|
+|instance variable|A variable defined in a method of a class (usually the constructor) that allows individual instances of the class to uniquely set values to.|
+|instantiate|The process of constructing a new instance of a class|
+|is-a|A relationship among classes that permits a class to inherit the state and behavior of another class; see inheritance|
+|magic function|A special function in Python whose name begins and ends with two underscores (e.g., `__init__`, `__str__`, `__add__`).|
+|member|How we collectively reference the state and behavior of a class|
+|method|How behavior is implemented in a class; they are functions that describe what an object can do|
+|multiple inheritance|The ability of a class to inherit the state and behavior of multiple classes simultaneously|
+|mutator|A special method in a class that wraps an instance variable for the purpose of providing write access; usually implements input validation.|
+|object|An instance of a class, with specific values assigned to instance variables.|
+|object class|The base class for all user-defined objects; the top-most superclass.|
+|object reference|A variable name that refers to an object.|
+|operator overloading|The redefining of an operator (e.g., the addition operator) on user-defined objects.|
+|single inheritance|The ability of a class to inherit the state and behavior of a single class.|
+|state|All of the things that an object can be; implemented using instance variables in the class.|
+|subclass|A class that inherits state and behavior from another class.|
+|superclass|A class that another class inherits state and behavior from.|
+|typecast|The process of converting a value from one type to another (e.g., converting an integer to a floating point number).|
+

@@ -1,0 +1,52 @@
+---
+title: "The Object-Oriented Paradigm"
+---
+
+## Introduction
+
+As discussed in lessons early in the curriculum, three paradigms of programming languages have
+emerged over the years: 
+
+- the imperative paradigm
+- the functional paradigm
+- the logical paradigm. 
+
+A language is classified as belonging to a particular paradigm based on the programming features it
+supports. In addition, during the past decade or so these paradigms have been extended to include
+object-oriented features. Some computer scientists view object-oriented programming as a fourth
+paradigm. Others prefer to view it as an extension to the imperative, functional, and logical paradigms,
+in that object-oriented constructs and behaviors are often viewed as higher-level organizational attributes
+that can be incorporated into each of the three basic paradigms, rather than as a separate programming
+paradigm unto itself.
+
+Object-oriented concepts have revolutionized programming languages. The vast majority of widely
+used programming languages are now object-oriented. In fact, they are, by far, the most popular type of
+programming languages. Python, Java, and C++ are object-oriented, imperative languages.
+Specifically, Python is an imperative, interpreted language that can *optionally* be object-oriented. That
+is, non-object-oriented programs can be written in Python if desired. In a sense, this makes Python quite
+powerful (like a Swiss army knife of programming).
+
+The **object-oriented paradigm** is an elegant and clean way to conceptually think about computer
+programming. When used properly, it can produce programs that are more robust, less likely to have
+errors, and are easy for others to understand and modify. Specifically, the object-oriented approach adds
+the concepts of objects and messages to the paradigms listed above. We don't think of programs as
+procedures or lists of instructions to be executed in order from beginning to end; rather, we think of
+them as modeling a collection of objects interacting with each other.
+
+Essentially, programs and the data on which they act are viewed as objects. In order to perform a task,
+an object must receive a message indicating that work needs to be done. Object-oriented languages are
+extremely useful for writing complex programs; for example, programs that support mouse-based,
+graphical user interfaces. Object-oriented programming helps in the construction of software systems by
+enabling large, complex systems to be subdivided into isolated functional units with well-defined
+external interfaces to other system components. There are many other distinguishing characteristics of
+object-oriented programs, including inheritance, polymorphism, and data encapsulation. Some of these
+will be discussed in this lesson, while others will be covered in later lessons
+
+
+
+
+
+
+
+
+

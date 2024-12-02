@@ -1,0 +1,55 @@
+---
+title: "String Methods"
+---
+
+## String methods   
+
+Strings are often necessary when writing programs.  As such, Python provides a variety of methods that    
+work on strings.  You have already seen one such method,  format() , that formats a string as specified    
+(we did this earlier in one variant of the  print  statement).  The following table lists some of the more    
+useful string methods:   
+Python String Methods/Functions   
+str.capitalize()   
+capitalizes the first character of a string   
+str.find()   
+returns the first index of a string within another string   
+str.format()   
+formats a string according to a specification   
+str.isdigit()   
+determines if a string consists only of numeric characters   
+str.lower()   
+converts a string to lowercase   
+str.replace()   
+replaces all occurrences of a string (within a string) with another string   
+str.split()   
+returns a list of the words in a string   
+str.upper()   
+converts a string to uppercase   
+These string methods are explained in greater detail in a variety of online sources.  We suggest that you    
+Google them and try them out.  However, here are a few examples in IDLE:   
+>>>  s  =   "So, when is this going to get difficult?"   
+>>>  s   
+'So, when is this going to get difficult?'   
+>>>  s . capitalize()   
+'So, when is this going to get difficult?'   
+>>>  s . find( "going" )   
+17   
+>>>  s . isdigit()   
+False   
+>>>  s . lower()   
+'so, when is this going to get difficult?'   
+>>>  s . upper()   
+'SO, WHEN IS THIS GOING TO GET DIFFICULT?'   
+>>>  s . replace( "difficult" ,  "easy" )   
+'So, when is this going to get easy?'   
+>>>  s . split()   
+['So,', 'when', 'is', 'this', 'going', 'to', 'get', 'difficult?']   
+16   
+
+
+>>>  s . split( "i" )   
+['So, when ', 's th', 's go', 'ng to get d', 'ff', 'cult?']   
+Note the execution of the string method  str.find()  above:  s.find("going") .  This string method    
+returns the first index of the string, “going”, within the string,  **s** .  Why is the result 17?  At first glance, it   
+seems that the first character of the string, “going”, is at position 18.  However, strings are sequences    
+(just like lists); therefore, the characters of a string in Python begin at index 0.   

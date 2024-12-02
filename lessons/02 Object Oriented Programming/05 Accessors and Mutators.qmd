@@ -1,0 +1,638 @@
+## Accessors and mutators
+Consider the following simple dog class:
+
+```python
+class Dog:
+    kind = "canine"
+    
+    def __init__(self, name):
+        self.name = name
+        self.age = 0
+    
+d1 = Dog("Maya")
+print("I have a dog named {} that is {} year(s) \
+old.".format(d1.name, d1.age))
+d1.age = -5
+print("I have a dog named {} that is {} year(s) \
+old.".format(d1.name, d1.age))
+```
+
+Everything seems to work fine; however, note that no dog can actually be -5 years old. This value is not
+possible for a dog's age (at least not in the world that we live in). This illustrates an important point:
+sometimes, we may want to check that the values supplied to function parameters are sensible. For
+numeric types, we typically call this **range checking**. That is, we may need to ensure that a supplied
+value falls within a valid range. For example, a valid range for a dog's age could be 0 to 29.
+
+::: {.callout-tip title="Definition"}
+Range checking is a subset of a more general concept called **input validation**, which
+attempts to validate input (whether it be from a user during program execution, from actual parameters
+passed in to a function's formal parameters, etc).
+:::
+
+To ensure proper execution of a program that processes inputs, the inputs must first be validated. In the
+example above, the input to a dog's age must first be validated before the instance variable is assigned
+the value of the input.
+
+To accomplish this, we can define a mutator (also known as a *setter*) that provides write access to an
+instance variable defined in a class.
+
+::: {.callout-tip title="Definition"}
+A *mutator* is a method that wraps an instance variable for the purpose of input validation
+(and often access control in some object-oriented programming languages).
+:::
+
+The instance variable still exists; however, to change it, the mutator must be called instead. Once the
+supplied input is validated, the instance variable is then changed with the provided value.
+Here is a modified dog class with a mutator for the instance variable `age`:
+
+```python
+class Dog:
+    kind = "canine"
+    def __init__(self, name):
+        self.name = name
+        self.age = 0
+    
+    def setAge(self, age):
+        if (age >= 0 and age <= 29):
+            self.age = age
+
+d1 = Dog("Maya")
+print("I have a dog named {} that is {} year(s) \
+old.".format(d1.name, d1.age))
+d1.setAge(-5)
+print("I have a dog named {} that is {} year(s) \
+old.".format(d1.name, d1.age)) 
+```
+
+Note that the mutator is called `setAge`. Typically, we specifically set the name of a mutator to the
+word “set” followed by the name of the instance variable (initially capitalized). Since the mutator's
+purpose is to change the value of an instance variable, then that value must be passed in as a function
+parameter. The mutator then performs range checking. In the case of the dog class above, a value from
+0 through 29 is valid (and would subsequently be assigned to the instance variable `age`). To change the
+value of a dog's age, the mutator must be called.
+
+Based on the output, note that the attempt to change `d1`'s age to -5 was not successful.
+
+Using the function `setAge` as the mutator that enables modification of the instance variable `age` seems
+a bit tedious. In a perfect world, changing `d1`'s age (with input validation) would perhaps be done as
+follows:
+```python
+d1.age = 11
+```
+
+However, doing it this way would effectively bypass the mutator, `setAge`, and ignore input validation
+(as seen in the earlier example). Python does provide a neat way to accomplish this, however. We often
+call this kind of *neat* behavior syntactic sugar.
+
+::: {.callout-tip title="Definition"}
+**Syntactic sugar** just means that a programming language provides a sensible (and often
+shorthand) way to accomplish a task that may, under the hood, be a bit more convoluted.
+:::
+
+Python provides direct support for wrapping instance variables with mutators that perform input
+validation through a concept called a **decorator**. For now, a decorator is just a wrapper. It is something
+that wraps something else. In this case, it is a mutator in the form of a function that wraps an instance
+variable.
+
+However, to properly explain how Python supports this, we must first discuss the concept of an accessor.
+
+::: {.callout-tip title="Definition"}
+An **accessor** (also known as a getter) is a method that wraps an instance variable for the
+purpose of providing read access (i.e., to allow us to read the value of an instance variable).
+:::
+
+In Python, the meaning behind this is lost because all of a class' instance variables are directly
+accessible. However, in other object-oriented programming languages (such as Java, for example), we
+can enforce the privacy of instance variables. That is, we can restrict them such that they can only be
+accessed through accessors and mutators. Nevertheless, the only way that Python supports decorators as
+mutators is to additionally provide decorators as accessors. It may be best to first show the source code
+that demonstrates this:
+```python
+class Dog:
+    kind = "canine"
+    def __init__(self, name):
+        self.name = name
+        self.age = 0
+
+    # accessor
+    @property
+    def age(self):
+        
+
+    # mutator
+    @age.setter
+    def age(self, age):
+        if (age >= 0 and age <= 29):
+        self._age = age
+
+d1 = Dog("Maya")
+print("I have a dog named {} that is {} year(s) \
+old.".format(d1.name, d1.age))
+
+d1.age = -5
+print("I have a dog named {} that is {} year(s) \
+old.".format(d1.name, d1.age))
+```
+
+Note that there are seemingly erroneous statements beginning with that “@” symbol (e.g., `@property`
+and `@age.setter`). In Python, these *tags* formally define decorators. The tag `@property` defines a
+decorator (or wrapper) that serves as an accessor, and the tag `@age.setter` defines a decorator (or
+wrapper) that serves as a mutator for a member called `age`.
+
+Both the accessor and mutator are functions with the same name. In the case above, both are functions
+called `age`. Semantically, they refer to a dog's age. Since the identifier `age` is now used to refer to the
+accessor and mutator, the instance variable that these methods wrap must be renamed. In Python, it is
+typical to begin instance variables with an underscore. For example, the instance variable that stores a
+dog's age would be called `_age`.
+
+Let's explain the accessor and mutator, one at a time. First, the accessor:
+```python
+@property
+def age(self):
+    return self._age
+```
+
+Here, the tag `@property` defines a decorator that will serve as an accessor for the instance variable
+that represents a dog's age. The next statement defines the accessor itself. The function is called `age`
+(and only takes a single parameter, the object). Since the sole purpose of an accessor is to provide read
+access to an instance variable, then all that is required is to return its value (via the `return` keyword).
+Since the identifier `age` is used as the function's name, then the instance variable has been renamed to
+`_age` as noted earlier.
+
+Now, the mutator:
+```python
+@age.setter
+def age(self, age):
+    if (age >= 0 and age <= 29):
+        self._age = age
+```
+
+Here, the tag `@age.setter` defines a decorator that will serve as a mutator for the instance variable
+that represents a dog's age. The next statement defines the mutator itself. The function is also called
+`age` (and takes two parameters: the object and the value to change the instance variable to). Since the
+purpose of a mutator is to provide write access to an instance variable with input validation, it
+appropriately ensures that the provided value is within an acceptable range. If so, the instance variable
+`_age` is changed to reflect the provided input value.
+
+You may have noticed that the decorator for the mutator, `@age.setter`, contains the name of the
+function, `age`. This must be adhered to when defining a decorator as a mutator. If, for instance, we
+wished to provide a mutator for a dog's name, we could use the decorator tag `@name.setter`, call the
+mutator function `name`, and use the instance variable `_name`.
+
+Note the following statement in the constructor:
+```python
+self.age = 0
+```
+
+Be careful! Here, `self.age` does not refer to an instance variable. It actually refers to the mutator.
+This assignment statement effectively calls the mutator, passing in the value on the right-hand side (0) as
+the second parameter of the mutator (`age`). That is, the value 0 is passed in to the mutator, which is
+then validated in the mutator. Since it is within the acceptable range (0 through 29), then the instance
+variable `_age` is set to 0.
+
+It is important to note that the accessor must be defined **before** the mutator. Using the `@property` tag
+defines the property by name (e.g., `age`) so that it can be used to subsequently define the mutator
+(`@age.setter`).
+
+To illustrate accessors and mutators a bit more, consider the following class that defines a 2D point (with
+an x- and y-coordinate):
+
+```python
+# points must fall within the range (-10,-10) and (10,10)
+class Point:
+    def __init__(self, x=0, y=0):
+        self.x = x
+        self.y = y
+
+    # getter for x
+    @property
+    def x(self):
+        return self._x
+
+    # setter for x
+    @x.setter
+    def x(self, value):
+        if (value < -10):
+            self._x = -10
+        elif (value > 10):
+            self._x = 10
+        else:
+            self._x = value
+
+    # getter for y
+    @property
+    def y(self):
+        return self._y
+
+    # setter for y
+    @y.setter
+    def y(self, value):
+        if (value < -10):
+            self._y = -10
+        elif (value > 10):
+            self._y = 10
+        else:
+            self._y = value
+
+p1 = Point()
+p2 = Point(5, 5)
+p3 = Point(-50, 50)
+print("p1=({},{})".format(p1.x, p1.y))
+print("p2=({},{})".format(p2.x, p2.y))
+print("p3=({},{})".format(p3.x, p3.y))
+```
+
+Although the class for a 2D point is a bit more involved, it only contains two instance variables. The
+first, `_x`, represents the position of the point in the x-direction. The second, `_y`, represents the position
+of the point in the y-direction. Accessors and mutators for each are provided (via the methods called `x`
+for the instance variable `_x`, and the methods called `y` for the instance variable `_y`). In addition, range
+checking is performed for both the x- and y-components. Each component may not be less than -10 or
+greater than 10. 
+
+Did you notice something odd in the constructor? Here it is for reference:
+```python
+def __init__(self, x=0, y=0):
+    self.x = x
+    self.y = y
+```
+
+Take a look at the constructor's parameters: `(self, x=0, y=0)`. You probably expected something
+more like this: (self, x, y). In Python, we can provide **default** values for function parameters.
+This works for any function (not just the constructor). This means that, should parameter values be
+unspecified when the function is called, the default values will be used. In this example, a point's
+default x- and y-values are 0 and 0 respectively. Therefore, a point at the origin could be instantiated as
+follows:
+```python
+p = Point()
+```
+
+Of course, such a point could also be instantiated as follows:
+```python
+p = Point(0, 0)
+```
+
+The default values are only used if parameter values are not specified when the function is called. It is
+important to note that a function can have a mix of both standard and default parameters. In fact, the
+constructor is just like this (`self` is a standard parameter without a default value, while `x` and `y` have
+default values). In Python, all parameters with default values must be specified after standard
+parameters. This way, it is clear if values for default parameters are specified in a function call. For
+example:
+```python
+def foo(a, b, c, d=5, e=7, f=8):
+    pass
+
+...
+foo(1, 2, 3, 4)
+```
+
+In this case, the actual parameters 1, 2, 3, and 4 are mapped to the formal parameters `a`, `b`, `c`, and `d`.
+The default values for the formal parameters `e` and `f` are used.
+
+To wrap up this section, let's add line numbers to the point class above and trace the program's
+execution:
+```python
+1: # points must fall within the range (-10,-10) and (10,10)
+2: class Point:
+3:      def __init__(self, x=0, y=0):
+4:          self.x = x
+5:          self.y = y
+
+6:      # getter for x
+7:      @property
+8:      def x(self):
+9:          self._x
+
+10:     # setter for x
+11:     @x.setter
+12:     def x(self, value):
+13:         if (value < -10):
+14:             self._x = -10
+15:         elif (value > 10):
+16:             self._x = 10
+17:         else:
+18:             self._x = value
+
+19:         # getter for y
+20:         @property
+21:         def y(self):
+22:             return self._y
+
+23:         # setter for y
+24:         @y.setter
+25:         def y(self, value):
+26:             if (value < -10):
+27:                 self._y = -10
+28:             elif (value > 10):
+29:                 self._y = 10
+30:             else:
+31:                 self._y = value
+
+32: p1 = Point()
+33: p2 = Point(5, 5)
+34: p3 = Point(-50, 50)
+35: print("p1=({},{})".format(p1.x, p1.y))
+36: print("p2=({},{})".format(p2.x, p2.y))
+37: print("p3=({},{})".format(p3.x, p3.y))
+```
+
+::: {.callout-note title="Did you know" .column-margin}
+Although some object-oriented languages actually prevent accessing instance variables that are
+protected (or wrapped) with accessors and mutators, Python does not enforce this. For example, it is
+possible to change the x-component or access the y-component of a point via statements such as:
+```python
+p1._x = -22
+print(p1._y)
+```
+
+Many Python programmers prefer to change the way they implement classes so that any value that
+requires protection is not stored in instance variables. There are other mechanisms that will, in fact,
+protect these values. However, this discussion is beyond the scope of this lesson.
+:::
+
+::: {.callout-important title="Activity" collapse=false}
+**Activity 2: Fractions**
+
+In this activity, we will create a class that represents a fraction. The first step is to determine what
+makes up a fraction (i.e., what it can *be* – its state). This task is pretty simple! Fractions have a
+numerator and a denominator. We can create instance variables for these and also provide accessors and
+mutators for each.
+
+We may also want to provide the numeric representation of a fraction. For example, the fraction 1/2 has
+the numeric representation 0.5. In Python, simply dividing the numerator by the denominator (i.e., 1/2)
+won't produce the anticipated result because it will perform integer division. That is, the expression 1/2
+will result in 0 (since 2 goes into 1 exactly 0 times). To produce a floating point result, we must convert
+one of the two operands to a floating point value. In Python, we can do this as follows:
+
+```python
+float(1)/2
+```
+
+The expression `float(1)` converts the integer value 1 into the floating point value 1.0. Generally, the
+expression `float(x)` converts the operand *x* into a floating point value. Formally, this conversion is
+called a **typecast**, in that the operand's *type* is *cast* to a different type.
+
+The expression `float(1) / 2` produces the expected result (0.5). In fact, typecasting either operand
+works – as shown in the example below:
+
+```python
+1//2
+```
+
+```python
+float(1) / 2
+```
+
+```python
+1 / float(2)
+```
+
+There are other typecast operators that perform various type conversions. Here are a few of them:
+`int`(*x*) – converts *x* to an integer
+`long`(*x*) – converts *x* to a long integer
+`complex`(*x*, *y*) – creates a complex number; *x* is the real part, *y* is the imaginary part
+`str`(*x*) – converts *x* to a string
+
+Lastly, we must not allow the denominator of a fraction to ever be 0 (since division by 0 is
+mathematically illegal). Therefore, we will need to provide range checking (via if-statements, for
+example), to ensure that such an assignment is prevented.
+
+Here's the beginning of the fraction class, along with a brief main program to test the class:
+
+```python
+# defines a fraction
+class Fraction:
+    # by default, a fraction is 0/1
+    def __init__(self, num=0, den=1):
+        self.num = num
+        # make sure not to set the denominator to 0 if specified
+        if (den == 0):
+            den = 1
+        self.den = den
+    
+    # getter for the numerator
+    @property
+    def num(self):
+        return self._num
+    
+    # setter for the numerator
+    @num.setter
+    def num(self, value):
+        self._num = value
+    
+    # getter for the denominator
+    @property
+    def den(self):
+        return self._den
+    
+    # setter for the denominator
+    @den.setter
+    def den(self, value):
+    # ignore if the specified denominator is 0
+        if (value != 0):
+            self._den = value
+    
+    # returns a fraction's numeric representation
+    def getReal(self):
+        return float(self.num) / self.den
+
+# main program
+f1 = Fraction()
+f2 = Fraction(1, 2)
+f3 = Fraction(0, 0)
+
+print("{}/{} ({})".format(f1.num, f1.den, f1.getReal()))
+print("{}/{} ({})".format(f2.num, f2.den, f2.getReal()))
+print("{}/{} ({})".format(f3.num, f3.den, f3.getReal()))
+```
+Note how the class prevents the third fraction from being initialized as 0/0 and instead changes it to 0/1.
+:::
+
+::: {.callout-note title="Did you know" .column-margin}
+There is a better way of displaying a fraction than what is shown in the example above. Note how we
+earlier structured a print statement that built the string representation of a fraction:
+```python
+print("{}/{} ({})".format(f1.num, f1.den, f1.getReal()))
+```
+
+In Python, we can define a built-in **magic function** that is automatically called when we wish to display
+an object. In fact, this built-in function is user-definable and is named using a similar format as the
+constructor (i.e., the function begins and ends with two underscores). The function is called `__str__`
+and must return a string representation of the class. So for a fraction, such a function could be
+implemented as follows:
+```python
+def __str__(self):
+return "{}/{} ({})".format(self.num, self.den, self.getReal())
+```
+
+Displaying a fraction would then be possible via the following much simpler statement (via syntactic
+sugar):
+```python
+print(f1)
+```
+
+Adding this function to the fraction class is simple. Here's a snippet of the addition:
+```python
+# defines a fraction
+    class Fraction:
+    ...
+    # returns a fraction's string representation
+    def __str__(self):
+        return "{}/{} ({})".format(self.num, self.den,\
+            self.getReal())
+...
+# main program
+f1 = Fraction(1, 2)
+f2 = Fraction(1, 4)
+f3 = f1.add(f2)
+print(f1)
+print(f2)
+print(f3)
+```
+
+Of course, the output is the same as before!
+:::
+
+::: {.callout-important title="Activity" collapse=false}
+**Activity 3: Reducing fractions**
+You may have noticed that instantiating the fraction 6/8 would work just fine. The problem is that this
+fraction is not expressed in lowest terms. That is, it can be reduced (to 3/4). Our fraction class would
+greatly benefit from a function that can reduce a fraction. Such a function could be called in the
+constructor after setting the numerator and denominator in case it is not in lowest terms.
+
+Although there are many ways to reduce a fraction, here's a simple algorithm that calculates the greatest
+common divisor (GCD) among the numerator and denominator. First, initially assume that the GCD is
+1. From there, iterate, starting with 2 through the smaller of the numerator or denominator. Each time,
+the objective is to try to find a value that evenly divides both the numerator and denominator. As such a
+value is found, the GCD is updated. The final step is to divide the numerator and denominator by the
+GCD (which reduces the fraction). As a cleanup operation, if the numerator is 0 (i.e., the fraction's
+numeric value is 0.0), the denominator is set to 1 (i.e., 0/1).
+
+This is shown in the snippet of code below (which can be placed anywhere in the fraction class):
+
+```python
+# reduces a fraction
+def reduce(self):
+    # we initially assume that the GCD is 1
+    # from there, we iterate starting at 2 through the smaller
+    # of the numerator or denominator
+    # since the numerator and denominator could be negative,
+    # we use their absolute values
+    # each time, we try to find a value that evenly divides
+    # both the numerator and denominator
+    # as we find such a value, we update the GCD
+    # the final step is two divide the numerator and
+    # denominator by the GCD to reduce the fraction
+    # as cleanup, if the numerator is 0 (i.e., the fraction is
+    # 0) then set the denominator to 1
+    gcd = 1
+    minimum = min(abs(self.num), abs(self.den))
+
+    # find common divisors
+    for i in range(2, int(minimum + 1)):
+        # when we find one, update the GCD
+        if (self.num % i == 0 and self.den % i == 0):
+            gcd = i
+    
+    # divide the numerator and denominator by the GCD
+    self.num /= gcd
+    self.den /= gcd
+    # if the numerator is 0, set the denominator to 1
+    if (self.num == 0):
+    self.den = 1
+```
+
+The Python *math* library has many useful functions. The **min** function returns the minimum value of a
+number of values passed in as parameters. This makes it quite easy to determine which of the
+numerator or denominator is smaller. Since a function's numerator or denominator could be negative,
+we use their absolute value to determine which is smaller. The **abs** function returns the absolute value
+of a specified value.
+
+So where (and when) do we call the `reduce` function? For the fraction class shown earlier, we could
+do so in the constructor as follows:
+
+```python
+# defines a fraction
+class Fraction:
+    # by default, a fraction is 0/1
+    def __init__(self, num=0, den=1):
+        self.num = num
+        # make sure not to set the denominator to 0 if specified
+        if (den == 0):
+            den = 1
+        self.den = den
+        self.reduce()
+```
+
+This works; however, the mutators for the numerator and denominator may cause a fraction to no longer
+be reduced. We could, therefore, call the `reduce` function at the end of the mutators. There is a
+problem with this, however. Since the constructor uses the mutator for the numerator (in `self.num
+= num`) before the denominator is even set, a call to the function `reduce` in the mutator for the
+numerator would attempt to access the denominator (which doesn't exist). This would result in an error.
+
+We could try to place a call to the `reduce` function in the mutator for the denominator. But this is also
+problematic, because the `reduce` function uses the mutator for the denominator to change the
+denominator (i.e., when dividing it by the *gcd*). Placing it here would cause the `reduce` function to be
+recursively called infinitely!
+
+Perhaps the best place to put the call to the `reduce` function is in the `__str__` function (i.e., when
+displaying a fraction).
+:::
+
+::: {.callout-important title="Activity" collapse=false}
+**Activity 4: Adding fractions... and more***
+Let's now implement the functionality to add two fractions and produce the sum of these as a new
+fraction. We must first discuss how two fractions can be added. Typically, the least common
+denominator is found. A simpler version, however, is to multiply each fraction by the other's
+denominator to obtain a common denominator (that is not necessarily the least common denominator).
+
+Here's an illustration:
+$$
+\frac{a}{b}+\frac{c}{d} = \frac{a*b}{b*d}+\frac{b*c}{b*d}
+$$
+
+As an example, take the following:
+$$
+\frac{1}{2}+\frac{1}{4} = \frac{1*4}{2*4}+\frac{2*1}{2*4} = \frac{4}{8}+\frac{2}{8} = \frac{6}{8} = \frac{3}{4}
+$$
+
+So now, how do we implement a method in the fraction class that does this? One way is as follows:
+```python
+# calculates and returns the sum of two fractions
+def add(self, other):
+    num = (self.num * other.den) + (other.num * self.den)
+    den = self.den * other.den
+    sum = Fraction(num, den)
+    sum.reduce()
+        return sum
+```
+
+This function is called as follows (specifically in the third statement below):
+```python
+f1 = Fraction(1, 2)
+f2 = Fraction(1, 4)
+f3 = f1.add(f2)
+```
+
+Note that both fractions are effectively passed in to the `add` function. The first, `f1`, represents the
+current instance and is mapped to the first parameter, `self`. The second, `f2`, is mapped to the second
+parameter, `other`.
+
+The function implements the common denominator method shown above and generates a fraction
+representing the sum of `self` and `other`. The new fraction is then reduced and returned. Note that
+calling the `reduce` function here is not necessary if it is called in the `__str__` function.
+
+The function could be optimized (perhaps at the expense of not being quite as readable) by returning a
+new fraction directly instead of creating one and returning it. For example:
+```python
+return Fraction(num, den)
+```
+In fact, the function could be optimized even more as follows:
+```python
+return Fraction(self.num * other.den + other.num * self.den,\
+self.den * other.den)
+```
+Of course, we could implement functions to subtract, multiply, and divide fractions! In fact, we could
+implement a subtract method by using the already defined add method. How? Recall that subtracting is
+just adding the negative. Since this will be assigned as a program later, it is left as an individual
+exercise for now.
+:::

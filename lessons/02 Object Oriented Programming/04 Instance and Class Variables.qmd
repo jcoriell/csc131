@@ -1,0 +1,184 @@
+## Instance variables vs. class variables
+
+Suppose that an expert in the field decided to change the scientific name for dogs from canine to
+something like “caten”. You know, to account for inflation. Changing class variables separately for
+each instance of the dog class doesn't make sense. The purpose of a class variable is that its value is shared simultaneously among all of the instances of the class. The proper method of changing a class
+variable so that it appropriately affects all of the instances is to use the class name as follows:
+```python
+Dog.kind = "caten"
+```
+
+This statement simultaneously changes the class variable `kind` (to caten) for all instances of the dog
+class. To illustrate this, here is some source code for a dog class that illustrates the behavior and
+differences of class and instance variables, and its output:
+
+```python
+class Dog:
+    kind = "canine"
+    def __init__(self, dog_name):
+        self.name = dog_name
+
+d1 = Dog("Maya")
+d2 = Dog("Biff")
+
+print("I have a dog named {} that is a {} and another named {} \
+that is also a {}.".format(d1.name, d1.kind, d2.name,d2.kind))
+
+d1.name = "Bosco"
+
+print("I have a dog named {} that is a {} and another named {} \
+that is also a {}.".format(d1.name, d1.kind, d2.name,\
+d2.kind))
+
+Dog.kind = "caten"
+
+print("I have a dog named {} that is a {} and another named {} \
+that is also a {}.".format(d1.name, d1.kind, d2.name,\
+d2.kind))
+
+d1.breed = "German Shepherd"
+d2.breed = "mutt"
+
+print("I have a dog named {} that is a {} and another named {} \
+that is a {}.".format(d1.name, d1.breed, d2.name,\
+d2.breed))
+```
+
+::: {.callout-note title="Did you know" .column-margin}
+You may have noticed above that some statements seem to be spread across multiple lines. Each of the
+lines that make up these statements end with a backslash (\), except for the last line of the statement.
+Python allows the use of a backslash to note that the remainder of a statement is provided on the next
+line. For example, take a look at the following statement:
+```python
+a = 1 – 1 + 1 – 1 + 1 – 1 + 1 – 1 + 1 – 1 + 1 – 1 + 1 – 1 + 1 –
+1 + 1 – 1 + 1 – 1 + 1 – 1 + 1 – 1 + 1 – 1 + 1 – 1 + 1
+```
+This statement can be spread across multiple lines as follows:
+```python
+a = 1 – 1 + 1 – 1 + 1 – 1 + 1 – 1 + 1 – 1 + 1 – 1 + 1 – 1 + 1\
+ – 1 + 1 – 1 + 1 – 1 + 1 – 1 + 1 – 1 + 1 – 1 + 1 – 1 + 1
+```
+:::
+
+Note a few things: (1) the class variable `kind` is applied to both instances, `d1` and `d2`; and (2) the
+instance variable `breed` is dynamically created and applied (separately) to each instance.
+
+::: {.callout-note title="Did you know" .column-margin}
+For readability, Python source code is presented as it is formatted in IDLE throughout this lesson. the
+main reason for this is that presenting source code this way provides syntax highlighting. **Syntax
+highlighting** is the feature of highlighting (or coloring) certain portions of source code so that it helps
+to categorize constructs, keywords, variables, and so on. It essentially helps to make the source code
+more readable. For example, Python keywords are colored orange and strings are colored green.
+:::
+
+It is important to understand the difference between instance variables and class variables. Although
+they seem similar, they are actually quite different. Perhaps this is best illustrated with an example.
+Consider the following modified dog class and output:
+
+```python
+class Dog:
+    kind = "canine"
+    tricks = []
+
+    def __init__(self, dog_name):
+        self.name = dog_name
+    
+    def add_trick(self, trick):
+        self.tricks.append(trick)
+
+d1 = Dog("Maya")
+d2 = Dog("Biff")
+
+d1.add_trick("roll over")
+d2.add_trick("play dead")
+
+print("I have a dog named {} that can {}.".format(d1.name,\
+ d1.tricks))
+print("I have a dog named {} that can {}.".format(d2.name,\
+ d2.tricks))
+```
+
+The only difference in the class is the addition of the list `tricks` and the function `add_trick`. After
+all, a dog can do tricks! Adding a trick to an instance of the dog class can be done by accessing the `add_trick` function (using the dot operator) on an object reference of a dog instance and providing
+the trick to add (as a string). As shown before, the dog instance is automatically passed in and mapped
+to the formal parameter `self` in the function. The string that represents the trick to add is passed in and
+mapped to the formal parameter `trick`. The function appends a new trick to the end of the list.
+
+The expected behavior of the source code above may be that each instance of the dog class (i.e., `d1` and
+`d2`) can define their own set (or list) of tricks. In fact, we expect that Maya can “roll over” and that Biff
+can “play dead”, but review the output.
+
+The fact that both dog objects can do the same tricks can be explained by noting that the list `tricks` is
+defined at the class level and is therefore considered a class variable. As such, all instances of the dog
+class share the list. A change to it (even through the function `add_trick`) affects all instances of the
+dog class! To fix this and make the list of tricks an instance variable, we can define it in the `__init__`
+method as follows:
+
+```python
+class Dog:
+    kind = "canine"
+
+    def __init__(self, dog_name):
+        self.name = dog_name
+        self.tricks = []
+    
+    def add_trick(self, trick):
+        self.tricks.append(trick)
+
+d1 = Dog("Maya")
+d2 = Dog("Biff")
+
+d1.add_trick("roll over")
+d2.add_trick("play dead")
+
+print("I have a dog named {} that can {}.".format(d1.name,\
+ d1.tricks))
+print("I have a dog named {} that can {}.".format(d2.name,\
+ d2.tricks))
+```
+
+Since it is no longer at the class level, it is considered an instance variable and thus allows unique values
+to be stored for each instance of the dog class. 
+
+Now, take a look at this more complete dog class:
+
+```python
+class Dog:
+    kind = "canine"
+
+    def __init__(self, name, breed):
+        self.name = name
+        self.breed = breed
+        self.tricks = []
+        self.friends = []
+    
+    def add_trick(self, trick):
+        self.tricks.append(trick)
+
+d1 = Dog("Maya", "mutt")
+d2 = Dog("Biff", "Black Lab")
+d1.add_trick("roll over")
+d2.add_trick("play dead")
+
+print("I have a dog named {} that can {}.".format(d1.name,\
+ d1.tricks))
+print("I have a dog named {} that can {}.".format(d2.name,\
+ d2.tricks))
+
+d1.friends = [ "Finca", "Shane" ]
+d2.friends = [ "Sadie", "Bosco" ]
+print("{}'s friends are {}.".format(d1.name, d1.friends))
+print("{}'s friends are {}.".format(d2.name, d2.friends))
+```
+
+Note the addition of several new instance variables: `breed` and `friends`. This class defines all dogs
+to have a name, a breed, a list of tricks, and a list of friends.
+
+At this point, it may be worthwhile to summarize the difference between class variables, instance
+variables, and function parameters. Class variables are relevant to an entire class. The values of class
+variables are shared among all of the instances of a class. Think of a class variable as being stored in a
+single memory location that all the instances of a class can refer to. Instance variables are also relevant
+to an entire class. However, the values of instance variables are unique for each instance of a class.
+That is, an instance variable is stored in a different memory location for each instance of a class.
+Function parameters are relevant to a function and are only accessible inside the function. They are
+short-lived and last until the function has finished its execution.

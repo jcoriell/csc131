@@ -1,0 +1,24 @@
+---
+title: "01 More Python"
+---
+
+## Overview  
+
+In this lesson, we will cover a variety of topics concerning Object Oriented Programming and implement object oriented programs in Python.  
+
+
+## Contents
+
+- [Introduction](./01 Introduction.qmd)
+
+- [Binary](./02 Binary.qmd)
+
+- [Hexadecimal](./03 Hexadecimal.qmd)
+
+- [Conversions](./04 Conversions.qmd)
+
+- [Binary Arithmetic](./05 Binary Arithmetic.qmd)
+
+- [Binary Adder](./06 Binary Adder.qmd)
+
+- [Bitwise Operators](./07 Bitwise Operators.qmd)

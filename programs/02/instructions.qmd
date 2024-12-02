@@ -1,0 +1,147 @@
+---
+title: "Program 2: Population"
+---
+
+## Overview
+Your task in this assignment is to write a program that calculates the frequency of population ranges in the given city population file. You are provided with a text file that contains the documented populations of all the cities in the world (i.e. over 42,000 cities). Your code should prompt the user for the file name, the minimum, maximum and step sizes to use in the population table, and then create a table that contains how many cities have populations in those ranges. 
+
+## Sample Outputs
+
+### Sample 1
+Below is a successful sample run where generated inputs when tested are highlighted in red
+
+<pre class="styled-pre">
+The file being search is <span style="color: red;">popn.txt</span>.
+
+This file has 42175 cities in it.
+
+The minimum population chosen is <span style="color: red;">0</span>.
+
+The maximum population chosen is <span style="color: red;">1000000</span>.
+
+The interval is <span style="color: red;">100000</span>.
+
+----------------------------------------
+Population          Frequency           
+----------------------------------------
+0-100000            37230
+100000-200000       2195
+200000-300000       785
+300000-400000       415
+400000-500000       259
+500000-600000       203
+600000-700000       152
+700000-800000       94
+800000-900000       74
+900000-1000000      68
+----------------------------------------
+</pre>
+
+### Sample 2
+
+Similar to a previous assignment, your code should recognize when the file name provided does not exist and output the message provided. Below is a sample run with that functionality demonstrated.
+
+<pre class="styled-pre">
+The file being searched is <span style="color: red;">this_one_does_not_exist.txt</span>.
+
+The file name specified does not exist.
+</pre>
+
+
+## Required Functions
+
+### Load File
+
+A function that reads the contents of the file. This function receives a single argument that
+represents the filename. It then returns a list containing all the numbers in the given filename.
+
+### Population Ranges
+
+A function that is in charge of generating the strings found in the `Population` column. This functions should take in a min, max, and interval value and then create a list that contains the appropriate ranges of populations. 
+
+As an example, if this function receives `0, 100, 5` as arguments, then the list it generates would be:
+
+```Python
+["0 - 19", "20 - 39", "40 - 59", "60 - 79", "80 - 99"]
+```
+
+### Count Cities
+A function that is in charge of counting the number of cities in the given population ranges. It receives four pieces of information: three populations (minimum, maximum, and interval values) and the list containing all population values from the input file (in that order).
+
+
+This function should return a list that contains the number of times a population appears for each corresponding range. 
+
+For example, assume our population ranges are as follows:
+
+```Python
+population_ranges = ["0 - 19", "20 - 39", "40 - 59", "60 - 79", "80 - 99"]
+```
+
+Also assume there are 5 cities with a population of between 0 and 19, 12 cities with a population of between 40 and 59, and 3 cities with a population of between 60 and 79. Then this function would create the following list: 
+
+```Python
+frequencies = [5, 0, 12, 3, 0]
+```
+
+It then returns this list to the calling statement.
+
+### Generate Table
+
+This function will generate the table and return it as a string to the calling statement. This function will take in two arguments, the first represents the population ranges and the second represents the frequencies. Note that this function is not responsible for printing anything, it simply returns a string to the calling statement.
+
+### Main
+This function is in charge of calling on the functions mentioned above and creating the outputs as shown in the sample runs. Be sure to account for the possibility of the filename not actually existing when writing this function. If the file name does not exist, output the statement `The file name specified does not exist.` This is a perfect opportunity to use a try except construct which you might have seen in previous lessons and assignments.
+
+If the filename did exist, then the output should be similar to the first sample run example.
+
+
+## Additional Files
+
+<a href="./files/popn.txt" download>popn.txt</a>
+
+<a href="./files/template.py" download>template.py</a>
+
+
+## Additional Information
+
+To help clarify, here are some specifics and/or constraints:
+
+(1) You are provided with an input file called `popn.txt` that contains the populations of over
+42,000 cities that you will be parsing. Note that your code should be able to parse any filename
+that the user provides and not just files named `popn.txt`.
+
+(3) You might consider including the following conditional in your code when running it locally so that when you upload it to the autograder the autograder ignores the main portion of your code (not the function called main).
+
+    ```Python
+    if __name__ == "__main__":
+    ```
+
+    Note that the autograder would ignore this since the autograder will import your code into another file. Any code inside of that conditional is ignored when a file is imported. 
+
+
+(4) Your output should be exactly like the sample runs shown above (of course, actual results will
+vary depending on the min, max, and interval values chosen by the autograder);
+
+(5) You must include a meaningful header, use good coding style, use meaningful variable names,
+and comment your source code where appropriate;
+
+(6) You must use the provided source code template (it contains helpful comments that can help you
+structure your code); and
+
+(7) You must submit your source code as a single `.py` file. 
+
+
+## Table Formatting 
+
+Here is some additional information concerning the formatting of the table, since yours should match exactly.
+
+- The table is 40 characters in width.
+
+- There are 40 hyphens running across the table.
+
+- Each column uses 20 characters.
+
+- The contents within each column are left aligned.
+
+
+

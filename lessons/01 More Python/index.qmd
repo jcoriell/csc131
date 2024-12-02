@@ -1,0 +1,24 @@
+---
+title: "01 More Python"
+---
+
+## Overview  
+
+In this lesson, we will build on what you have already learned about the Python programming language. To be sure that we are all on the same page, let's briefly review the things about Python that you should already be familiar with.  For more detail, review the lesson on  **Introduction to Computer Programming** .  
+
+
+## Contents
+
+- [Review](./01 Review.qmd)
+
+- [Formal vs Actual Parameters](./02 Formal vs Actual Parameters.qmd)
+
+- [Variable Scope](./03 Variable Scope.qmd)
+
+- [Python Lists](./04 Python Lists.qmd)
+
+- [Searching and Sorting](./05 Searching and Sorting.qmd)
+
+- [Operators](./06 Operators.qmd)
+
+- [String Methods](./07 String Methods.qmd)

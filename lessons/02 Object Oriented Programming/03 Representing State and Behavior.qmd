@@ -1,0 +1,170 @@
+---
+title: Representing State and Behavior
+---
+
+
+Objects store their state in **instance variables**.
+
+::: {.callout-tip title="Definition"}
+An **instance variable** is a variable defined within a class. Each object can have a different
+value for their copy of the instance variable.
+:::
+
+For example, a truck class could define the variable `year` to represent the year a truck was
+manufactured. A specific truck object (or instance) would set this variable to the year of its
+manufacture. In Python, this would be done with a simple assignment statement. If, for example, the
+truck object were manufactured in 2016, then the statement `year = 2016` would appropriately set the
+truck's year of manufacture. Another truck object could have a different year of manufacture.
+Ultimately, the class defines instance variables; however, each object stores its own unique set of values.
+There are certain attributes that all instances of a class may want to share. Consider a class that defines
+a *person*. Although each instance/object of the person class can be different and thus have unique values
+stored in its instance variables (e.g., different sex, name, age, etc), all persons are Homo sapiens. All
+persons share this *scientific name*. In fact, if an expert in the field were to rename (or perhaps refine) the
+term Homo sapiens to something else, this would change for all persons, effectively at the same time.
+This kind of behavior can also be replicated in the object-oriented paradigm.
+
+::: {.callout-tip title="Definition"}
+A **class variable** defines a value that is shared among all the instances of a class.
+:::
+
+Unlike instance variables that, when changed, only affect a single object, a change in a class variable
+affects all instances of a class simultaneously. Essentially, a class variable is stored in memory that is
+shared among all the instances of a class.
+
+The behavior of objects is defined in **methods** (or functions) that can be invoked. For example, the *turn*
+behavior of a truck could be defined in a function called `turn`. If necessary, this function could take
+parameters as input and return some sort of output.
+
+Ultimately, a class has source code that specifies its state (through instance variables) and behavior
+(through methods).
+
+::: {.callout-tip title="Definition"}
+Collectively, state and behavior are referred to as the **members** of a class.
+:::
+
+Let's take a look at a simple example of a dog class in Python. For this example, a dog only has a name,
+and all dogs are canines.
+
+```python
+1:  class Dog:
+2:      kind = "canine"
+3:      def __init__(self, dog_name):
+4:          self.name = dog_name
+```
+
+Line 1 represents the class header, which includes the Python keyword `class` and the name of the class
+(in this case, *Dog*). Class headers are terminated with a colon, much like function headers. It is typical
+to capitalize the names of classes. Moreover, class names should always be singular nouns since they
+define the blueprint for a single thing
+
+Line 2 defines a class variable named `kind` that is initialized with the string “canine”. This value is
+shared among all dogs. The reason that we consider `kind` to be a class variable is that it is defined
+inside the class but outside any methods that are in the class. That is, class variables are defined at the
+class level.
+
+Lines 3 and 4 represent a function called `__init__`. In Python, functions that begin and end with two
+underscores have special meaning. In fact, they are called **magic functions**.
+
+::: {.callout-note title="Did you know" .column-margin}
+Some people refer to these are “dunder” methods due to the double underscores used to denote them
+:::
+
+::: {.callout-tip title="Definition"}
+**Magic functions** are functions in Python that have special meaning. They are normally
+called automatically by Python in the right situations (sometimes we call them explicitly). They have
+two underscores before and two underscores after the name of the function. There are several magic
+functions in Python that we can use and declare.
+
+:::
+
+The `__init__` function provides an initialization procedure for each instance of the class. That is, the
+source code contained within this method effectively defines what it means to initialize a new instance
+of the class. When we want new instances of the dog class, this function is automatically invoked (since
+it is a magic function). Formally, this type of function is called a **constructor**.
+
+::: {.callout-tip title="Definition"}
+A **constructor** contains the source code required to construct a new instance of a class. A
+constructor is automatically invoked each time we create an instance of a class. Its purpose is to
+initialize the object, which typically means to set default values for one or more of the instance variables
+(e.g. we don’t have to initialize them all). These initial values may come from parameters of the
+constructor or we can give the instance variable a value ourselves (such as initializing a variable to 0
+or 1).
+:::
+
+In the dog class above, the constructor takes two parameters: `self` and `dog_name`. The first
+parameter represents the instance that is about to be instantiated. **This parameter is always required!**
+The second parameter represents the name of this new dog (e.g., Bosco). The function header indicates
+that, to create a new instance of the dog class, a dog name must be provided. Line 4 then sets the
+instance variable `name` for the object to be created. Note that `self.name` (on the left side of the
+assignment statement) represents the instance variable (called `name`) for the dog class, and specifically
+targets this dog instance's name (via `self.name`). The *dot* in between self and name is called the
+dot operator and will be covered shortly. The variable `dog_name` (on the right side of the assignment
+statement) is passed in to the function when a new instance of a dog is desired.
+
+Instances of the dog class can be created as we need them. This typically occurs outside of the dog class
+(for example, in a program that requires dog objects to interact with each other). Objects that are
+instances of the dog class can be easily instantiated as follows:
+```python
+5:  d1 = Dog("Maya")
+6:  d2 = Dog("Biff")
+```
+
+Line 5 declares a variable, `d1`, that represents an instance of the dog class. Specifically, `d1` is a dog
+whose name is “Maya”. Line 6 defines a variable, `d2`, that represents another instance of the dog class.
+Specifically, `d2` is a dog whose name is “Biff”
+
+When line 5 is executed, the variable `d1` is mapped to the variable `self` in the `__init__` function
+(constructor) of the dog class. The variable `self` is a formal parameter. The variable d1 is the actual
+parameter that is mapped to the formal parameter. Similarly, the string “Maya” (actual parameter) is
+mapped to the variable `dog_name` (formal parameter). The statement `self.name = dog_name`
+ultimately sets the instance variable `name` for this instance of the dog class to whatever was passed in as
+the variable `dog_name` (i.e., Maya in this case).
+
+Formally, the variable `d1` is called an **object reference**. That is, it refers to an object (or instance) of the
+dog class. The variable `d2` is also an object reference of the dog class. We can access the members of a
+class by using the **dot operator**. For example, we could change the name of `d1` to Bosco as follows:
+```python
+d1.name = "Bosco"
+```
+
+The above example shows how to modify an instance variable. Note that it only changes the name of
+`d1` and not `d2` because the specified object reference is `d1`. Simply accessing (without changing) a
+member of a class is just as easy; for example:
+```python
+print(d2.name)
+```
+
+This statement would produce the output Biff (because `d2`'s name is Biff). In fact, let's list the state of
+each instance of the class dog, `d1` and `d2` (note that this is not Python source code; rather, it is an
+enumeration of the instance variables and their associated values for the objects `d1` and `d2`):
+```python
+d1.name → Bosco
+d2.name → Biff
+d1.kind → canine
+d2.kind → canine
+```
+
+You have actually seen (and used) the dot operator before. Consider the following statements:
+```python
+name = "Joe"
+welcome_string = "Hello, {}"
+print(welcome_string.format(name))
+```
+
+From these statements, we can infer that strings (specifically the string `welcome_string` in the
+example above) are objects! In addition, the function `format` must be a member of the string class
+since it can be accessed using the dot operator! In fact, the function `format` is part of the behavior of
+the string class. This function takes one or more parameters that replace the empty braces in the string.
+
+::: {.callout-note title="Did you know" .column-margin}
+In Python, instance variables don't need to be formally declared in the class. That is, they can be
+defined as needed, dynamically. For example, although the dog class doesn't yet specify an instance
+variable that defines a dog's breed, the following statement in the main part of the program effectively
+adds the instance variable breed. It only adds it to the specific instance, though, as other instances will
+not have breed added to them. Specifically, it sets d1's breed to German Shepherd:
+```python
+d1.breed = "German Shepherd"
+```
+It is standard practice, however, to formally define all instance variables in the class. This will be
+further discussed later.
+:::

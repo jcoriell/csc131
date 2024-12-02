@@ -1,0 +1,223 @@
+## The `object` class
+The inheritance relationship is easily implemented in Python classes in the class header. In python 2.x,
+in order to define accessors and mutators, the class definition must **explicitly** include what you now
+know to be an inheritance relationship with a class called **object**. The inheritance from class **object** is
+**implicit** in Python 3.x. The class header for the dog class could have been written:
+```python
+class Dog(object):
+    ...
+```
+
+Formally, the class **object** is defined to be the ultimate superclass for all built-in (i.e., user-defined)
+types. As shown, it is possible to have multiple levels of inheritance (e.g., the class **Car** is a subclass of
+the class **LandVehicle** which is a subclass of the class **Vehicle**). At the top of this inheritance hierarchy
+lies the object class. 
+
+![](./images/Lesson12-05.png){fig-align="center"}
+
+From this class diagram, we can quickly begin laying out the source code for the classes. In fact, the
+class headers can be directly inferred from the class diagram:
+```python
+class Vehicle: #implicitly inherits from class object
+    ...
+class DodgeRam(Vehicle):
+    ...
+class Engine: #implicitly inherits from class object
+    ...
+```
+
+Since the class diagram includes the state of each class, declaring instance variables in the constructors
+of each class and providing appropriate accessors and mutators is also relatively straightforward. In
+fact, here's the entire **Vehicle** class:
+```python
+class Vehicle: #implicitly inherits from class object
+    def __init__(self, year, make, model):
+        self.year = year
+        self.make = make
+        self.model = model
+        self.engine = None
+
+    @property
+    def year(self):
+        return self._year
+
+    @year.setter
+        def year(self, value):
+        self._year = None
+        if (value > 1800 and value < 2018):
+            self._year = value
+    
+    @property
+    def make(self):
+        return self._make
+    
+    @make.setter
+    def make(self, value):
+        self._make = value
+    
+    @property
+    def model(self):
+        return self._model
+    
+    @model.setter
+    def model(self, value):
+        self._model = value
+    
+    @property
+    def engine(self):
+        return self._engine
+    
+    @engine.setter
+    def engine(self, value):
+        self._engine = value
+    
+    def __str__(self):
+        return "Year: {}\nMake: {}\nModel: {}\nEngine:\
+            {}".format(self.year, self.make, self.model,\
+            self.engine)
+```
+
+The constructor includes parameters for a vehicle's year, make, and model. By default, a vehicle's
+engine is undefined (i.e., `None`). The class contains getters and setters for each of the instance
+variables. Finally, the `__str__` function defines how to represent a vehicle as a string, which is in the
+following format (with an example for clarity):
+```python
+Year: 2016
+Make: Dodge
+Model: Ram
+Engine: V6
+```
+
+Here is the entire **Engine** class:
+```python
+class Engine: #implicitly inherits from class object
+    def __init__(self, kind=None):
+        self.kind = kind
+    
+    @property
+    def kind(self):
+        return self._kind
+    
+    @kind.setter
+    def kind(self, value):
+        self._kind = value
+    
+    def __str__(self):
+        return str(self.kind)
+```
+
+The **Engine** class has a single instance variable (its kind). Its constructor includes one parameter for the
+kind of engine (`None` by default). A getter and setter is provided for the instance variable. The string
+representation of an engine is just its kind.
+
+Lastly, here is the DodgeRam class:
+```python
+class DodgeRam(Vehicle):
+    make = "Dodge"
+    model = "Ram"
+
+    def __init__(self, name=None, year=None):
+        super().__init__(year, DodgeRam.make, DodgeRam.model)
+        self.name = name
+    
+    @property
+    def name(self):
+    
+        return self._name
+    @name.setter
+    def name(self, value):
+        self._name = value
+    
+    def __str__(self):
+        return "Name: {}\n{}".format(self.name,\
+            super().__str__())
+```
+
+The **DodgeRam** class has a single instance variable (its name). Its constructor takes two parameters (for
+a DodgeRam's name and year). Note that the class contains two class variables that are shared among
+all instances of the class: make and model. This makes sense, because all instances of the class
+**DodgeRam** are Dodge Rams! That is, their make is Dodge, and their model is Ram.
+
+There are two more interesting (and new) things in the class **DodgeRam**. Take a look at the first
+statement in the constructor:
+```python
+super().__init__(year, DodgeRam.make, DodgeRam.model)
+```
+
+When implementing inheritance relationships, it often becomes useful and sometimes necessary to
+invoke or call functions in a subclass' superclass. Formally, state and behavior that are defined in the
+superclass are inherited in a subclass. They can be redefined in the subclass; however, they don't
+necessarily need to be. In fact, a subclass may inherit a function and need to implement the inherited
+behavior first. This is accomplished by calling the function in the superclass. Since the current object
+(self) is not an instance of the superclass, then invoking a function in the superclass is done by using the
+super() function. So the first part of the statement, `super().__init__`, means to call the
+constructor in the **Vehicle** class (the superclass of the **DodgeRam** class).
+
+In this case, the year, make, and model are passed as parameters to the constructor in the **Vehicle** class.
+This effectively sets up the appropriate instance variables in the **Vehicle** class (which are inherited in the
+**DodgeRam** class). Subsequently, the constructor in the **DodgeRam** class then initializes its only
+instance variable, `name`.
+
+Another new thing in the class is the statement in the `__str__` function:
+```python
+return "Name: {}\n{}".format(self.name, super().__str__())
+```
+
+The string representation of a **DodgeRam** is its name, followed by the string representation of a **Vehicle**
+(which was illustrated earlier). The latter part of the statement calls the `__str__` function in the
+Vehicle class:
+```python
+super().__str__()
+```
+
+Again, this illustrates a call to a function in the superclass. This call returns the string representation of a
+vehicle – which is displayed below the name of the **DodgeRam**; for example:
+```python
+Name: Boss Hog
+Year: 2016
+Make: Dodge
+Model: Ram
+Engine: V6
+```
+
+So the string representation of a **DodgeRam** is simply its name, followed by the inherited string
+representation of a **Vehicle**.
+
+### Why inheritance?
+There are clear benefits of using inheritance in our programs. In a sense, it makes the reasoning of an
+application more possible since it attempts to mimic the world that we live in. But it also reduces code
+duplication, because similarities between objects can be encapsulated in superclasses. This has the
+downstream effect of promoting the reuse of code, and intrinsically makes code maintenance much
+easier. In fact, we often say that if software is not maintained, it dies! So we maintain software often. It
+behooves us to make this process easier.
+
+Lastly, inheritance makes applications easier to extend. Think of adding a different type of vehicle (say,
+a **HondaCivic**). Without inheritance, we would have to include instance variables for year, make,
+model, and so on. However, these are already defined in the **Vehicle** class! We simply need to define
+the class **HondaCivic** as a subclass of the class **Vehicle** in order to inherit its state and behavior:
+```python
+class HondaCivic(Vehicle):
+    ...
+```
+
+### Single inheritance vs. multiple inheritance
+The inheritance relationship that has been discussed thus far is known as **single inheritance**. That is, a
+subclass inherits state and behavior from a single superclass. Most object-oriented programming
+languages support single inheritance. Often, however, there is a need to support **multiple inheritance**,
+where a subclass can inherit from more than one superclass.
+
+To illustrate this, consider a grocery store's items. A banana, for example, is a fruit. Therefore, it may
+inherit traits from a fruit superclass such as type, country of origin, etc. However, in the context of a
+grocery store, a banana is also an item for sale. Such a sale item has a price, an inventory, a shelf
+location, etc. Inheriting from both a **Fruit** superclass and a **SaleItem** superclass, for example, would be
+useful in implementing the point-of-sale system for a grocery store.
+
+Most object-oriented programming languages do not support multiple inheritance. Some do, but only in
+a limited form. Java, for example, supports it in a limited form by utilizing something known as an
+interface. The technical details of this are beyond the scope of this lesson. Python, however, directly
+supports multiple inheritance. One must merely list all of a subclass' superclasses in the class header;
+for example:
+```python
+class Banana(Fruit, SaleItem):
+    ...
+```

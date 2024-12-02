@@ -1,0 +1,57 @@
+---
+title: "Formal vs Actual Parameters"
+---
+ 
+
+You have seen that a function can have parameters.  These parameters are formally stated when the    
+function is defined; for example:   
+
+```Python
+def average(a, b):   
+     return (a + b) / 2.0   
+```
+
+Here, the variables `a`  and `b`  are formally defined as parameters that must be passed in to the function average  when it is called.  In this context, the variables `a`  and `b` are called formal parameters. It is where they are defined (in a formal manner). 
+
+:::{.callout-note}
+## Definition
+**Formal parameters** are formally defined as part of the function header.
+:::
+
+Now consider a point in the source code where this function is called; for example: 
+
+```Python
+avg = average(11, 67)
+```
+
+Here, the result of a call to the function `average` with the supplied values (or parameters) `11` and `67` is    
+stored in the variable  `avg` .  These values, `11` and `67`, are considered actual parameters in this context.     
+That is, they are the  **actual** values that will be passed in as parameters to the function average.  
+
+:::{.callout-note}
+## Definition
+**Actual parameters** (or arguments) are the actual values that are passed into a function.
+:::
+
+In fact, they are mapped to the formally defined parameters (i.e., formal parameters)  `a`  and  `b`  in the    
+function average. That function will use these values to make calculations and return the average of    
+the two. The value returned replaces the function call. Think of this replacement as follows:   
+
+<pre>
+avg = <s>average(11, 67)</s> 
+            39.0   
+</pre>
+
+Therefore, the variable  `avg` is assigned the value `39.0` after the call to the function  average  is    
+complete.  Consider this call to the same function:  
+
+```Python
+x = 11   
+y = 67   
+avg = average(x, y)   
+```
+
+Here, the result is still the same.  The average of the two variables, `x`  and `y`  (with the values 11 and 67    
+respectively), is stored in the variable `avg` .  Here, `x`  and `y`  are also actual parameters (even if they are    
+variables themselves) because they represent the actual values supplied to the function average.   
+

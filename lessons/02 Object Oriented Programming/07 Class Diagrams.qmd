@@ -1,0 +1,55 @@
+## Class diagrams
+In computer science courses, you are often asked to design simple programs. The ability to understand
+and hold everything in one's head when solving a simple problem is relatively straightforward and, well,
+usually pretty simple. However, when solving complicated problems and developing solutions to these
+problems as large and tedious applications, it becomes quite difficult to manage all of the parts and
+pieces. Often, we require the use of tools and techniques that incorporate visual aids and diagrams to
+assist us in managing the structure and components of these applications.
+
+::: {.callout-tip title="Definition"}
+A **class diagram** is a type of diagram that describes the structure of a program by
+visualizing its classes, their state and behavior, and their relationships.
+:::
+
+The most simple class diagram only shows the classes of a program, which are represented as rectangles.
+
+To illustrate how a class diagram could be used to model an application's structure, let's consider one
+that models vehicle traffic in a large city for the purpose of analyzing how it manages traffic during rush
+hour. This kind of application would be useful in learning about traffic patterns, congestion, and so on.
+In fact, it could help to redesign roads, entrances to and exits from highways and interstates, the
+placement and timing of traffic signals, etc. Such an application may include classes for cars, pickup
+trucks, buses, tractor trailers, motorcycles, and so on, since all of these things contribute to the traffic in
+a city. In fact, the application could be modeled with a class diagram as follows:
+
+![](./images/Lesson12-01.png){fig-align="center"}
+
+The classes of an application are always singular nouns. Since a class is a blueprint for objects, then a
+class is essentially like a rubber stamp. For example, we can define a class that describes the blueprint
+for a car. This class would be considered the car class and be formally called **Car**. As mentioned
+earlier, the names of classes are typically capitalized. Since they are identifiers, they also must not
+contain spaces and abide by all of the rules for naming identifiers in the programming language. To
+summarize the rules of naming a class:
+
+1. Always use singular nouns
+
+2. Names of classes start with an initial capital letter (and usually follow CamelCasingLikeThis)
+
+3. Names must not contain spaces or other invalid characters as per the naming identifier rules
+
+In Python, the car class could be defined as follows:
+```python 
+class Car:
+    ...
+```
+
+Instances of the car class would collectively be called cars (and there could be many of them).
+Similarly, the class for a pickup truck could be called **PickupTruck**, and would be defined in Python as
+follows:
+```python
+class PickupTruck:
+    ...
+```
+
+The beauty of a class diagram is that it allows us to very easily see the components of a system or
+application. In the class diagram above, there is no indication of the state and behavior of classes, nor is
+there any indication of any relationships between classes. We will get to this later.

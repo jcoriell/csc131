@@ -1,0 +1,213 @@
+---
+title: "Review"
+---
+
+
+## Data Types, Constants, and Variables 
+
+You should know that the kinds of values that can be expressed in a programming language are known as its **data types**. The **primitive types** of a programming language are those data types that are built-in (or standard) to the language and typically considered as basic building blocks (i.e., more complex types can be created from these primitive types). Python's standard types can be grouped into several classes: numeric types, sequences, sets, and mappings. You should be familiar with numeric types and sequences (e.g., lists).   
+
+You should know that a **constant** is defined as a value of a particular type that does not change over    
+time. In Python both numbers and text may be expressed as constants. **Numeric constants** are composed of the digits 0 through 9 and, optionally, a negative sign (for negative numbers), and a decimal point (for floating point numbers). **Text constants** consists of a sequence of characters (also known as a string of characters – or just a **string**). 
+
+You should know that a **variable** is defined to be a named object that can store a value of a particular    
+type. Before a variable can be used, its name must be declared. 
+
+## Input and Output   
+
+You should be familiar with obtaining input (via the `input` function) and generating output (via the    
+`print` statement) in Python. Here's a simple example:  
+
+```Python
+name = input ("What is your name? ")   
+print(f"Hello, {name}!")   
+```
+
+## Operators 
+
+You should be familiar with a variety of operators in Python.  Specifically, arithmetic operators, relational (comparison) operators, and assignment operators. **Arithmetic operators** include addition,subtraction, etc, and perform arithmetic operations on operands. **Relational operators** include comparison of equality, inequality, less-than, and so on, and perform comparisons on operands and return `True` or `False`. **Assignment operators** include operators such as `+=`, `-=`, and so on, and combine assignment with arithmetic.
+
+
+## Primary control constructs   
+You should be very familiar with the three primary control constructs: sequence, selection, and repetition. **Sequence** implies one statement after another. **Selection** allows blocks of optional statements to be executed.  **Repetition** provides a mechanism for repeating blocks of statements. There are two main forms of repetition that we have covered: *iteration* and *recursion*. Iteration involves repeating a task some fixed number of times, until a condition is reached, or over some structure (such as the items in a list). Although recursion was only briefly covered, you should know that it involves breaking a problem down repeatedly into smaller versions of itself until a base or trivial case is reached.  We will cover recursion in much more detail later in the curriculum. 
+
+
+## Subprograms   
+
+You should be quite familiar with subprograms and how they can encapsulate behavior in programs. They are organized, reusable, and related statements that perform some action. Specifically, some subprograms perform tasks and terminate; others return a value. You should understand how control flow is transferred to a subprogram when a subprogram is called, and how it is returned when the subprogram terminates. 
+
+## A review of program flow   
+
+Although you should be familiar with this already, it is so important that we should probably go over it in detail again. It is very important to be able to identify the flow of control in any program, particularly to understand what is going on. In fact, this significantly helps to debug problems in programs. Recall that, in Python, function definitions aren't executed in the order that they are written in the source code. Functions are only executed when they are called. This is perhaps best illustrated with an example that you have seen before:   
+
+```Python
+ 1: def min (a, b):   
+ 2:     if  (a  <  b):   
+ 3:         return  a   
+ 4:     else:   
+ 5:         return  b   
+
+ 6: def max(a, b):   
+ 7:     if (a  >  b):   
+ 8:         return  a   
+ 9:     else:   
+10:         return  b 
+
+11: num1  =  int(input( "Enter a number: "))   
+12: num2  =  int(input("Enter another number: "))   
+
+13: print(f"The smaller is {min (num1, num2)}.")   
+14: print(f"The larger is {max (num1, num2)}.")   
+```
+
+Each Python statement is numbered for reference. 
+
+- Lines 1 through 5 represent the definition of the function min. This function returns the  **minimum**  of two values provided as parameters. 
+
+- Lines 6 through 10 represent the definition of the function max. This function returns the  **maximum** of two    
+values provided as parameters. 
+
+- Lines 11 through 14 represent the main part of the program. Although the Python interpreter does  **see**  lines 1 through 10, those lines are not actually  **executed**  until the functions  min  and  max  are actually called.  The first line of the program to actually be executed is line 11.  
+
+Here is the order of the statements executed in this program if  `num1 = 34` and  `num2 = 55`:   
+
+```
+11, 12, 13, 1, 2, 3, 14, 6, 7, 9, 10   
+```
+
+Let's explain:
+
+- Line 11 asks the user to provide some value for the first number (which is stored in the    
+variable  `num1` ).
+
+- Line 12 asks the user to provide some value for the second number (which is stored in    
+the variable  `num2` ).
+
+- Line 13 displays some text; however, part of the text must be obtained by first calling the function  min .  This transfers control to line 1 (where  min  is defined). 
+
+- On line 1 the two actual 2 parameters,  `num1` and  `num2` , are passed in and mapped to the formal parameters defined in  min , `a` and  `b` . 
+
+- Then, line 2 is executed and performs a comparison of the two numbers.  Since  `a = 34` and  `b = 55`, then the condition in the if-statement is true.
+
+- Therefore, line 3 is executed before control is transferred back to the main program with the value of the smaller number returned (and then controlcontinues on to line 14). Note that lines 4 and 5 are never executed in this case!   
+
+
+- Line 14 is then executed and displays some text. Again, part of the text must be obtained by first calling   
+the function max. 
+
+- Control is transferred to line 6 (where  max  is defined).  The variables `a` and `b` take on the values `34` and `55` respectively. 
+
+- Line 7 is then executed, and the result of the comparison is false. Therefore, line 8 is not executed.  
+
+- Control then goes to line 9.
+
+- The control goes to line 10 which returns the larger value, and the program then ends.   
+
+
+What is the order of execution if  `num1 = 55` and  `num2 = 34`?   
+
+<!-- <details>
+  <summary>Click to reveal the answer</summary>
+  
+  Your spoiler text goes here.
+</details> -->
+
+What if  `num1 = 100` and  `num2 = 100`?
+
+<!-- <details>
+  <summary>Click to reveal the answer</summary>
+  
+  Your spoiler text goes here.
+</details> -->
+
+
+Here's another example with a simple for loop:   
+
+```Python
+1:  for a in range (1, 4):   
+2:      for b in range (1, 5 ):   
+3:          print(f"{a} * {b} = {a*b}")   
+```
+
+This snippet of code displays a portion of a multiplication table.  In fact, here's the output:  
+
+```
+1 * 1 = 1   
+1 * 2 = 2   
+1 * 3 = 3   
+1 * 4 = 4   
+2 * 1 = 2   
+2 * 2 = 4   
+2 * 3 = 6   
+2 * 4 = 8   
+3 * 1 = 3   
+3 * 2 = 6   
+3 * 3 = 9   
+3 * 4 = 12   
+```
+
+Here's the order of the statements executed.  To make things a bit more clear, it is grouped and highlighted:  
+
+<pre>
+    <span style="color: red">1, 2, 3, 2, 3, 2, 3, 2, 3,</span>  # 1 * n
+    <span style="color: green">1, 2, 3, 2, 3, 2, 3, 2, 3,</span>  # 2 * n 
+    <span style="color: blue">1, 2, 3, 2, 3, 2, 3, 2, 3</span>   # 3 * n
+</pre>
+
+
+The first portion (highlighted in red and labeled 1 * n) represents a single iteration of the  outer  for loop    
+and a  **full ** iteration of the  inner  for loop.  It generates the following output:   
+
+```
+1 * 1 = 1   
+1 * 2 = 2   
+1 * 3 = 3   
+1 * 4 = 4   
+```
+
+Let's explain.  
+
+- Line 1 of the outer for loop generates the list `[ 1, 2, 3 ]`. It then iterates over the values in the list with the variable  `a` taking on each value, one at a time.  Initially, `a = 1`.  
+
+- Line 2 represents the inner for loop and generates the list `[ 1, 2, 3, 4 ]`, and iterates over its values with the variable  `b`  taking on each value, one at a time.  Initially, `b  = 1`. 
+
+- Line 3 then displays the first line of output: `1 * 1 = 1`. This makes sense because `a` and  `b` are both 1.   
+
+- So far, the order of statements executed is `1, 2, 3`.  Note that the inner for loop iterates its complete cycle (i.e., through the entire generated list) for each iteration of the outer for loop.  Therefore, the inner for loop iterates through the list `[ 1, 2, 3, 4 ]` for each value in the outer for loop's list `[ 1, 2, 3 ]`. 
+
+- After line 3 (when `a` and `b` are both 1), the inner for loop then iterates to the next value in the list.  
+
+- Therefore, line 2 is executed again so that `b = 2`.  
+
+- Similarly, line 3 executes again, generating the output: `1 * 2 = 2`.  
+
+- At this point, the order of statements executed is `1, 2, 3, 2, 3`. 
+
+- The inner for loop continues iterating two more times (lines 2 and 3), setting `b` to 3 and then to 4.  
+
+- After the first full iteration of the outer for loop, the order of statements executed is `1, 2, 3, 2, 3, 2, 3, 2, 3`.  
+
+- So when `a = 1`, `b` goes through the values 1, 2, 3, and 4.  The output generated at this point is then:   
+
+```
+1 * 1 = 1   
+1 * 2 = 2   
+1 * 3 = 3   
+1 * 4 = 4   
+```
+
+- Since the inner for loop has finished a full iteration, control goes back to line 1, thereby allowing the outer for loop to iterate to the next value in the list so that  `a = 2`.  
+
+- Line 2 is executed again, generating a new list `[ 1, 2, 3, 4 ]` and setting  `b to 1`.  
+
+- Similarly, line 3 is executed again, generating the output: `2 * 1 = 2`.  
+
+- Lines 2 and 3 are executed as before, for each value in the inner loop's list `[ 1, 2, 3, 4 ]`. Of course, this generates exactly the same order of statements as before: `1, 2, 3, 2, 3, 2, 3, 2, 3`.  However, this represents the second iteration of the outer loop. 
+
+- Since the inner for loop has finished another full iteration, control goes back to line 1, thereby allowing the outer for loop to iterate to the next value in the list so that  `a = 3`.  
+
+- Again, lines 2 and 3 are executed as before, for each value in the inner loop's list `[ 1, 2, 3, 4 ]`.  Clearly, this generates exactly the same order of statements as before: `1, 2, 3, 2, 3, 2, 3, 2, 3`.  This time, it represents the third (and final) iteration of the outer loop.  Why?  Because the outer for loop has iterated through the entire list `[ 1, 2, 3 ]`.  
+
+- After this final iteration, the variable  `a` has taken on all of these values. Therefore, the outer for loop is exited, and the program terminates. Again, knowing the order in which statements are executed is crucial to debugging programs and ultimately to creating programs that work. 
+
+This concludes a review of what you should already know in Python.  From here, we'll introduce new content.

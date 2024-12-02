@@ -1,0 +1,58 @@
+---
+title: "Python Lists"
+---
+
+## A review of the Python list   
+
+Although you should be familiar with Python lists, they are quite important and used often; therefore, we   
+will go over it again.  Generally, a Python  sequence  is composed of (typically related) elements.  Each    
+element in a sequence is assigned an index (or position).  A sequence with  **n**  elements has indexes 0 to    
+**n** –1.  Python has many built-in types of sequences; however, the most popular is called the list.   
+The  list  in Python is quite versatile.  Recall that a list is declared using square brackets; for example:   
+grades  =  [  94 ,  78 ,  100 ,  86  ]   
+The statement above declares the list  grades  with four integers: 94, 78, 100, and 86.  The list can be    
+displayed in its entirety (e.g., with the statement  print(grades) ); however, we can access each    
+element individually by its index (specified within brackets).  Accessing can mean to read a value in the    
+list, or it can mean to change a value in the list; for example:   
+print( grades[ 0 ])   
+grades[ 3 ]  =   87   
+8   
+
+
+grades[ 1 ]  +=   2   
+Recall that more than one value in a list can be accessed at a time.  We can specify a range (or interval)    
+of indexes in the format  [lower:upper+1]  which means the interval [lower, upper) (i.e., closed at    
+lower and open at upper).  That is, the lower index in the range is inclusive but the upper is not.  For    
+example: 
+
+```Python
+stuff[3:4]  # accesses index 3 (the same as stuff[3])   
+stuff[0:5]  # accesses indexes 0 through 4   
+stuff[-3]   # accesses the third index  from the right   
+```
+Also recall that list elements can be deleted with the  del  keyword as follows:   
+del   stuff[ 2 ]   
+Finally, recall that Python provides several built-in operations that can be performed on lists.  Here are    
+many of them:   
+len(list)   
+Returns the length of a list   
+max(list)   
+Returns the item in the list with the maximum value   
+min(list)   
+Returns the item in the list with the minimum value   
+list.append(item)   
+Inserts item at the end of the list   
+list.count(item)   
+Returns the number of times an item appears in the list   
+list.index(item)   
+Returns the index of the first occurrence of item   
+list.insert(index, item)  Inserts an item at the specified index in the list   
+list.remove(item)   
+Removes the first occurrence of item from the list   
+list.reverse()   
+Reverses the items in the list   
+list.sort()   
+Sorts a list   
+
+
+

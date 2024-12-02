@@ -1,0 +1,81 @@
+
+
+## Bitwise operators in Python
+
+Up to this point, we've left out one final class of operators in Python: the **bitwise operators**. The reason
+is that they really only make sense once we understand how numbers are represented in computers. 
+Moreover, how binary arithmetic works is fundamental to understanding them.
+
+The **bitwise operators** work on bits and perform bit-by-bit operations. Think back to the primitive logic
+gates (*and*, *or*, and *not*) and some derivatives (e.g., *xor*). Each of these concepts operated on bits and 
+produced bits. In the following table, assume that a = 60 (or 00111100 in binary) and b = 13 (or 
+00001101 in binary):
+
+| Operator | Logical Operation | Definition |
+|--|:--------|----|----|----|
+| & | bitwise *and* | a & b = 00001100 (or 12 in decimal) |
+| \| | bitwise *or* | a \| b = 001111101 (or 61 in decimal) |
+| ^ | bitwise *xor* | a ^ b = 00110001 (or 49 in decimal) |
+| ~ | bitwise *not* | ~a = 11000011 (or -61 in decimal; we will explain this one later) |
+| << | left shift | a << 2 = 11110000 (or 240 in decimal) |
+| \>\> | right shift | a \>\> 2 = 1111 (or 15 in decimal) |
+
+The bitwise not has the effect of inverting the bits. Why 11000011 in binary is equal to -61 in decimal 
+will be explained in a later lesson. Here is output of the examples in the previous table in IDLE:
+
+```
+>>> a = 60
+>>> b = 13
+>>> bin(a)
+'0b111100'
+>>> bin(b)
+'0b1101'
+>>> a & b
+12
+>>> bin(a & b)
+'0b1100'
+>>> a | b
+>>> bin(a | b)
+'0b111101'
+>>> a ^ b
+49
+>>> bin(a ^ b)
+'0b110001'
+>>> ~a
+-61
+
+>>> a = 60
+>>> b = 13
+>>> a << 2
+240
+>>> bin(a << 2)
+'0b11110000'
+>>> a >> 2
+15
+>>> bin(a >> 2)
+'0b1111'
+```
+
+Note the use of the **bin** function. It returns the binary representation of a value. If a = 60, the statement 
+`bin(a)` returns 0b111100 (which is 60 in binary). The prefix 0b implies binary. In fact, you can 
+assign values to variables in binary form using this prefix:
+```
+>>> a = 0b00111100
+>>> a
+60
+```
+
+This can be done in other bases as well. For example, in hexadecimal (with the prefix 0x) or in octal 
+(with the prefix 0o):
+```
+>>> a = 0b00111100
+>>> a
+60
+>>> b = 0xff
+>>> b
+255
+>>> c = 0o15
+>>> c
+13
+```
+

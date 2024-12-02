@@ -1,0 +1,185 @@
+---
+title: "Program: Sale Item"
+---
+
+## Overview
+
+Your task in this assignment is to write python code that would implement a simple SaleItem class
+that could potentially be used as a small part of a much larger application. To allow for its use with other
+systems, the specifications for the `SaleItem` class are defined below. 
+
+
+## The SaleItem Class Specifications
+
+1. The `SaleItem` class has a `name`, `cost` and `price` as instance variables. 
+
+2. All three instance variables are provided as arguments to the constructor.
+
+3. The class should have accessors and mutators for all instance variables which use the decorator
+method discussed in class. Additionally, the `cost` and `price` mutators should not allow for those variables to be set to negative values. If that is attempted, they are set to `0` instead.
+
+4. The class should have a `profit` function that returns the amount of money (as a float) that selling the item
+would provide i.e. the difference between the `price` and the `cost`.
+
+5. The class should have an `apply_sale` function that applies a percentage sale to the price of
+the item. It receives the percentage value as an argument and adjusts the price appropriately. Note that this function does not return anything.
+
+
+## Tests
+
+The SaleItem class will be subject to the following tests. Some examples are provided for you to test your code locally.
+
+1. The ability to instantiate an object. That is, your constructor accepts the appropriate arguments and runs without error. 
+
+    ```Python
+    # instantiating a banana would not result in any errors
+    banana = SaleItem("banana", 1, 2)
+    ```
+
+2. The **existence** of the `name` instance variable after instantiation.
+
+    ```Python
+    # instantiation of the banana
+    banana = SaleItem("banana", 1, 2)
+
+    print(banana.name)      # no error is thrown
+    ```
+
+2. The **existence** of the `price` instance variable after instantiation.
+
+    ```Python
+    # instantiation of the banana
+    banana = SaleItem("banana", 1, 2)
+
+    print(banana.price)     # no error is thrown
+    ```
+
+2. The **existence** of the `cost` instance variable after instantiation.
+
+    ```Python
+    # instantiation of the banana
+    banana = SaleItem("banana", 1, 2)
+
+    print(banana.cost)      # no error is thrown
+    ```
+
+
+3. The `name` instance variable holds the correct value after instantiation.
+
+    ```Python
+    # instantiation of the banana
+    banana = SaleItem("banana", 1, 2)
+
+    print(banana.name == "banana")      # outputs true
+    ```
+
+3. The `price` instance variable holds the correct value after instantiation.
+
+    ```Python
+    # instantiation of the banana
+    banana = SaleItem("banana", 1, 2)
+
+    print(banana.price == 1)            # outputs true
+    ```
+
+3. The `cost` instance variable holds the correct value after instantiation.
+
+    ```Python
+    # instantiation of the banana
+    banana = SaleItem("banana", 1, 2)
+
+    print(banana.cost == 2)             # outputs true
+    ```
+
+3. Three tests for the **existence** of the accessors/getters and mutators/setters for each instance variable.
+
+    ```Python
+    # Run the following lines in your __main__ portion of the code.
+    # If any of them throw errors, then you don't have an accessor/getter for the corresponding instance variable
+    SaleItem.name.fget
+    SaleItem.cost.fget
+    SaleItem.price.fget
+
+    # If any of these following lines throw errors, then you don't have a mutator/setter for the corresponding instance variable.
+    SaleItem.name.fset
+    SaleItem.cost.fset
+    SaleItem.price.fset
+    ```
+
+
+4. Three tests, one for each instance variable, to check if they can be set to valid values at some point after instantiation using the dot operator notation. As an example concerning a [Bluth Banana](https://youtu.be/Nl_Qyk9DSUw?si=EueiJCv4nq0NZeI-){target="_blank"}.
+
+    ```Python
+    # instantiation of the banana
+    banana = SaleItem("banana", 1, 2)
+
+    # can set name, price, and cost to valid values without error
+    banana.name = "Bluth Banana"
+    banana.price = 0.50  # set price to 0.5
+    banana.cost = 10.00  # set cost to 10.00
+
+    # testing to see the values
+    print(banana.name)      # outputs "Bluth Banana" instead of "banana"
+    print(banana.price)     # outputs 0.5, not 1 or 0
+    print(banana.cost)      # outputs 10, not 2 or 0
+    ```
+
+5. The instance variables can NOT be set to invalid values at some point after instantiation using the dot operator notation.
+
+    ```Python
+    # instantiation of the banana
+    banana = SaleItem("banana", 10, 20)
+
+    # attempting to set price and cost to invalid values
+    banana.price = -50.00   
+    banana.cost = -40000    
+
+    # testing to see the values
+    print(banana.price)     # outputs 0, not -50
+    print(banana.cost)      # outputs 0, not -40000
+    ```
+
+6. The `profit` function does not throw any errors when run.
+
+7. The `profit` function returns the correct type of data.
+
+8. The `profit` function returns the correct value. An example of using the profit function follows:
+
+    ```Python
+    # instantiation of the banana
+    banana = SaleItem("banana", 1, 100)
+
+    # applying the sale
+    print(banana.profit())  # outputs 99.
+    ```
+
+6. The `apply_sale` function does not throw any errors when run.
+
+7. The `apply_sale` function returns nothing (you do not need to specify the return statement, it will return None by default).
+
+8. The `apply_sale` function had an effect on the price. An example of using the `apply_sale` function follows.
+
+
+    ```Python
+    # instantiation of the banana
+    banana = SaleItem("banana", 1, 100)
+
+    # applying the sale
+    banana.apply_sale(10)   # a 10 percent discount is applied to the price
+
+    # checking the value of the price
+    print(banana.price)     # outputs 90, not 100
+    ```
+
+
+## Additional Files
+
+You are provided with a template that you should use. Note that the template contains a main section with some code already inside of it. Use the main portion of the code and the examples above to test your solution before submitting to the auto-grader. 
+
+<a href="./files/template.py" download>template.py</a>
+
+## Submission
+
+You must submit your code to the course website as a single .py file.
+
+

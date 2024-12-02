@@ -1,0 +1,116 @@
+---
+title: The Python Tkinter Library
+---
+
+## Introduction
+
+By default, Python does not support GUIs. That is, Python is text-based. In fact, the majority of
+programming languages are text-based. The print statement, for example, displays text to the console
+(the terminal on the RPi, for example). It does not, for example, display text to a graphical window or
+on a label positioned somewhere on the user's desktop. The integration and support of GUIs in
+programming languages is typically done through internal or external libraries that provide the objects
+and tools necessary to create GUIs and to allow users to interact with GUIs.
+
+Although there are many GUI libraries that work with Python, this lesson will focus on one of the more
+common and popular ones that is included with Python by default and is cross-platform (i.e., it can be
+used to create GUIs on a variety of computing machines and operating systems). This GUI library is
+called **Tkinter** (For more information: https://wiki.python.org/moin/TkInter).
+
+The Tkinter library is complex, yet it is powerful enough to create just about any GUI that a programmer
+would need. It would not be possible to cover the entire library in a single lesson. Therefore, we will
+take the approach of introducing the most frequently used components that Tkinter supports.
+Subsequently, we will show how to create a few simple GUIs that demonstrate a few of the different
+types that can be created.
+
+## A Tkinter primer
+
+Tkinter stands for “Tk interface.” Tk is a GUI toolkit that has been around for a while and was
+originally developed by the same folks that created the Java programming language. Tkinter is an
+object-oriented *layer* that provides a Python interface to the Tk GUI toolkit.
+
+The first thing we must do to use the Tkinter library in a Python program is to import it via:
+```python
+from tkinter import *
+```
+
+Although there are various ways to import the library, the above is the most common method of doing
+so that reduces the amount of source code required.
+
+The typical manner in which GUIs are created using the Tkinter library is to create a window on which
+other components are placed. Let's look at a simple program that creates a window and places a label on
+it:
+```python
+1: from tkinter import *
+2: window = Tk()
+3: text = Label(window, text="GUIs in Python are pretty easy!")
+4: text.pack()
+5: window.mainloop()
+```
+
+Here's the output of this short program:
+
+![](images/lesson14-01.png){fig-align="center"}
+
+Let's explain the program, line-by-line. You already know the statement on line 1 that imports the
+Tkinter library. The statement on line 2 creates a graphical window (that is stored in the variable `window`). This must always be done in order to create a GUI using the Tkinter library. Line 3 creates a
+Tkinter Label, which is a component that is used to display text, an icon, or an image on a GUI. The
+label, which has the text “GUIs in Python are pretty easy!”, is stored in the variable `text` and is *bound*
+(or attached) to the window as its *child*. These explain the parameters passed in to the constructor of the
+**Label** class defined in the Tkinter library. The `pack` function called on line 4 is used on all Tkinter
+widgets. In this case, it instructs the label to size itself to fit the specified text and to make itself visible
+on the window. However, the GUI is not actually shown on the desktop until the statement on line 5.
+This statement instructs the window to appear on the desktop and wait for the user to interact with it. It
+will remain on the desktop until the user closes the window (in this case, by clicking on the X at the topright of the window).
+
+Let's try a more standard way of creating GUIs using the Tkinter library. This method uses the objectoriented paradigm to encapsulate the GUI in a class that inherits from a Tkinter Frame. Here's the
+program:
+
+```python
+ 1: from tkinter import *
+
+ 2: class App(Frame):
+ 3:     def __init__(self, master):
+ 4:         Frame.__init__(self, master)
+ 5:         self.button1 = Button(master, text="BYE!",\
+ 6:         fg="red", command=self.quit)
+ 7:         self.button1.pack(side=LEFT)
+ 8:         self.button2 = Button(master, text=\
+ 9:         "Say something!", command=self.say)
+10:         self.button2.pack(side=LEFT)
+
+11:     def say(self):
+12:         print("Froot Loops!")
+
+13: window = Tk()
+14: app = App(window)
+15: window.mainloop()
+```
+
+Here's the resulting GUI:
+
+![](images/lesson14-02.png){fig-align="center"}
+
+Clicking on the BYE! button closes the application. Clicking on the Say something! button displays the
+string “Froot Loops!” to the console each time it is clicked.
+
+Let's explain the statements of the program as we did before, in the order that they are executed.
+Clearly, line 1 imports the Tkinter library. Lines 2 through 12 define the **App** class and are not yet
+executed. Line 13 creates the main window of the GUI. Line 14 creates a new instance of the **App**
+class, passing the main window as a parameter (it becomes the parent of any GUI components created in
+the **App** class). This launches the constructor of the **App** class which begins on line 3. Since the **App** class is a subclass of the Tkinter **Frame** class, the constructor of the **Frame** class is first called on line 4.
+This initializes a Tkinter **Frame**, which serves as a holder for other GUI components. A Tkinter **Button**
+(called `button1`) is then instantiated as an instance variable on lines 5 and 6. It is set as a child of the
+window (called `master` in the **App** class), given the text “BYE!” colored in red, and instructed to
+execute the function `quit` when clicked. The function `quit` is defined in the Tkinter library. For a
+frame, it simply closes it.
+
+Line 7 makes the button visible. Note the parameter: `side=LEFT`. This places the button as far left as
+possible in the frame. The default is `TOP`, which places a component as far to the top as possible. A
+second button, `button2`, is instantiated in lines 8 and 9. This button is instructed to execute the
+function `say` when clicked, which is defined in the **App** class (on lines 11 and 12). The button is also
+positioned as far left as possible (next to `button1`). The function `say` simply displays the text “Froot
+Loops!” to the console.
+
+Finally, line 15 displays the GUI and allows the user to interact with it.
+
+

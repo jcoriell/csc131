@@ -1,0 +1,120 @@
+---
+title: "Variable Scope"
+---
+
+
+## Variable scope   
+Consider the following Python program snippet:   
+a  =   10   
+def   f (x):   
+    a  =   11   
+    b  =   21   
+    x  *=   2   
+5   
+
+
+     print ( "in f(): a={}, b={}, x={}" . format(a, b, x))   
+b  =   20   
+f(b)   
+print ( "in main: a={}, b={}" . format(a, b))   
+def   g ():   
+     global  a   
+    a  *=   1.5   
+     print ( "in g(): a={}, b={}" . format(a, b))   
+g()   
+print ( "in main: a={}, b={}" . format(a, b))   
+The variables  **a**  and  **b**  (highlighted above) are considered  global variables .   
+Definition :  **Global variables** ** are accessible throughout the entire program because they are defined **   
+**outside of any block context (e.g., a loop construct, a function, etc).  Global variables can be accessed **   
+**anywhere.  Their ** **scope** ** is global (i.e., throughout the entire program).**   
+Definition : ** A variable’s ** **scope** ** is the region of code that variable is accessible in.**   
+Take a look at the output of the program above:   
+in f(): a=11, b=21, x=40   
+in main: a=10, b=20   
+in g(): a=15.0, b=20   
+in main: a=15.0, b=20   
+Let's explain the output.  Initially, the variable  **a**  is assigned the value 10.  The next segment of code    
+defines the function  f .  This is only a definition (i.e., the statements are not actually interpreted or    
+executed at this point).  Then, the variable  **b**  is assigned the value 20.  What follows is a call to the    
+function  f , passing the variable  **b**  as an  actual parameter .  Control is then transferred to the function  f ,    
+whose statements are now executed.  Note that, to the function  f , the variable  **x**  is the formal parameter    
+that takes on the value passed in (from the variable  **b** ).  So the variable  **x**  is now equal to the value of the    
+variable  **b**  (i.e., 20) that was passed in at the point of the call to  f .  Note that the variable  **x**  is local to the    
+function  f ; therefore, it is considered a  local variable .  That is, it is defined in  f  and only accessible in    
+f  – its  scope  is valid only in the function  f .   
+Definition :  **A ** **local variable** ** is a variable defined in (and therefore only accessible in) a local **   
+**region/context.  For example, a variable defined inside a function is ** **local** ** to that function and therefore **   
+**only accessible within that function.**   
+Also note that, although  **a ** and  **b ** are global, there are  local  versions declared in  f .  It is important to note   
+that these are different variables than the global versions – even if they have the same name!   
+6   
+
+
+Definition :  **Shadowing** ** is the process of introducing a local variable that shares the same name as a **   
+**global variable.  This local variable “shadows” (or hides) access to the global variable of the same **   
+**name.  We will see this concept appear again later in the course, but with a different context.**   
+So what happens in  f ?  The local variable  **a ** is initialized with the value 11, the local variable  **b ** is    
+initialized with the value 21, and the local variable  **x ** (which is passed in as an argument with the value    
+20) is doubled to 40.  The output of the function  f  is then clear:   
+in f(): a=11, b=21, x=40   
+Once  f  completes and control is transferred back to the point at which function  f  was called, the    
+variable  **x**  is no longer accessible!  In fact, let's alter the print statement immediately after the call to  f     
+from:   
+print ( "in main: a={}, b={}" . format(a, b))   
+And change it to:   
+print ( "in main: a={}, b={}, x={}" . format(a, b, x))   
+Here's the output of the program now:   
+in f(): a=11, b=21, x=40   
+Traceback (most recent call last):   
+  File "scope.py", line 11, in <module>   
+    print("in main: a={}, b={}, x={}".format(a, b, x))   
+NameError: name 'x' is not defined   
+Notice the error indicating that the variable  **x ** is not defined.  That's because it was defined in  f ;    
+however, the current context is outside of  f .  The variable  **x ** is no longer available once  f  finishes and    
+control is transferred back to the main part of the program.   
+Let's replace the print statement to remove the error and explain the rest of the output from the original    
+execution of the program:   
+in main: a=10, b=20   
+in g(): a=15.0, b=20   
+in main: a=15.0, b=20   
+Once control is transferred back to the main part of the program, the local variables a and b (in f) no    
+longer exist.  However, the global variables a and b do!  They were initialized to 10 and 20 respectively.    
+Therefore, the next line of output makes sense:   
+in main: a=10, b=20   
+The next part of the program defines another function,  g , that is then called.  Note the  global  keyword in   
+the function  g .  This instructs Python to reference a globally defined version of the variable that follows    
+the global keyword.  That is, a local version is not defined and/or initialized.  Instead, the global version    
+is directly referenced.  Moreover (and quite importantly), it permits the global version to be  changed .     
+Although there are no arguments to the function  g , the global variable  **a ** is directly  modifiable  through    
+the global keyword.  When the statement  a *= 1.5  is executed, the value of the global variable  **a ** is    
+10.  This statement changes its value to 15.0, directly updating the variable's value – globally!   
+7   
+
+
+Note the print statement in  g .  It refers both to the variables  **a ** and  **b** .  A reference to the variable  **a ** makes   
+sense; however, the variable  **b ** is also accessible.  In fact, the variable  **b ** is referencing the global version    
+of  **b** , similar to the variable  **a ** (i.e., it is directly  readable ).  The difference in using the global keyword is   
+that it permits a change to the variable; without it, it can only be utilized in a read-only manner.  Since    
+the global variable  **b ** is initialized with the value 20, the output in  g  is clear:   
+in g(): a=15.0, b=20   
+When control is transferred back to the main part of the program, changes to global variable  **a ** persist    
+(even if they were changed in a function!):   
+in main: a=15.0, b=20   
+To illustrate this even more, let's slightly change the function  g  as follows:   
+def   g ():   
+     global  a   
+    a  *=   1.5   
+    b  =   40   
+     print ( "in g(): a={}, b={}" . format(a, b))   
+Note the slight difference:  **b ** is declared and initialized with the value 40.  Which  **b ** is this?  Is it a local    
+version (i.e., local to  g )?  Or is it referring to the global version declared in the main part of the    
+program?  Recall that, without the global keyword, a global variable can not be modified.  Therefore, an    
+assignment statement in a function to a variable that has the same name as a global variable indicates    
+that the variable is a new instance, defined  locally  in the function.  This is a different variable  **b** !  The    
+output in  g  is clear:   
+in g(): a=15.0, b=40   
+When control is transferred back to the main part of the program, the local version of  **b ** disappears.  All    
+that's left is the global version (that remains unchanged at 20).  Therefore, the output in the main part of    
+the program is also clear:   
+in main: a=15.0, b=20   
+

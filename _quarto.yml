@@ -1,0 +1,107 @@
+project:
+  type: website
+  output-dir: docs
+
+
+website:
+  title: "CSC 131"
+  sidebar:
+    collapsible: true
+    search: true
+    contents:      
+      - text: Home
+        href: "index.qmd"
+
+      - section: "Lessons"
+        contents:
+          - section: "01 More Python"
+            href: "lessons/01 More Python/index.qmd"
+            contents: 
+              - text: Review
+                href: "lessons/01 More Python/01 Review.qmd"
+              - text: Formal vs Actual Parameters
+                href: "lessons/01 More Python/02 Formal vs Actual Parameters.qmd"
+              - text: Variable Scope
+                href: "lessons/01 More Python/03 Variable Scope.qmd"
+              - text: Python Lists
+                href: "lessons/01 More Python/04 Python Lists.qmd"
+              - text: Searching and Sorting
+                href: "lessons/01 More Python/05 Searching and Sorting.qmd"
+              - text: Operators
+                href: "lessons/01 More Python/06 Operators.qmd"
+              - text: String Methods
+                href: "lessons/01 More Python/07 String Methods.qmd"
+
+          - section: "02 Object Oriented Programming"
+            href: "lessons/02 Object Oriented Programming/index.qmd"
+            contents: 
+              - text: Introduction
+                href: "lessons/02 Object Oriented Programming/01 Introduction.qmd"
+              - text: Basic Concepts
+                href: "lessons/02 Object Oriented Programming/02 Basic Concepts.qmd"
+              - text: Representing State and Behavior
+                href: "lessons/02 Object Oriented Programming/03 Representing State and Behavior.qmd"
+              - text: Instance and Class Variables
+                href: "lessons/02 Object Oriented Programming/04 Instance and Class Variables.qmd"
+              - text: Access and Mutators
+                href: "lessons/02 Object Oriented Programming/05 Accessors and Mutators.qmd"
+              - text: Operator Overloading
+                href: "lessons/02 Object Oriented Programming/06 Operator Overloading.qmd"
+              - text: Class Diagrams
+                href: "lessons/02 Object Oriented Programming/07 Class Diagrams.qmd"
+              - text: Inheritance
+                href: "lessons/02 Object Oriented Programming/08 Inheritance.qmd"
+              - text: The Object Class
+                href: "lessons/02 Object Oriented Programming/09 The Object Class.qmd"
+              - text: Quick Reference
+                href: "lessons/02 Object Oriented Programming/10 Quick Reference.qmd"
+
+          - section: "03 Number Systems and Binary Arithmetic"
+            href: "lessons/03 Number Systems and Binary Arithmetic/index.qmd"
+            contents: 
+              - text: Introduction
+                href: "lessons/03 Number Systems and Binary Arithmetic/01 Introduction.qmd"
+              - text: Binary
+                href: "lessons/03 Number Systems and Binary Arithmetic/02 Binary.qmd"
+              - text: Hexadecimal
+                href: "lessons/03 Number Systems and Binary Arithmetic/03 Hexadecimal.qmd"
+              - text: Conversions
+                href: "lessons/03 Number Systems and Binary Arithmetic/04 Conversions.qmd"
+              - text: Binary Arithmetic
+                href: "lessons/03 Number Systems and Binary Arithmetic/05 Binary Arithmetic.qmd"
+              - text: Binary Adder
+                href: "lessons/03 Number Systems and Binary Arithmetic/06 Binary Adder.qmd"
+              - text: Bitwise Operators
+                href: "lessons/03 Number Systems and Binary Arithmetic/07 Bitwise Operators.qmd"
+
+
+      - section: "Programs"
+        contents:
+          - text: Program 1
+            href: "programs/01/instructions.qmd"
+          - text: Program 2
+            href: "programs/02/instructions.qmd"
+          - text: Program 3
+            href: "programs/03/instructions.qmd"
+          - text: Program 4
+            href: "programs/04/instructions.qmd"
+          - text: Program 5
+            href: "programs/05/instructions.qmd"
+          - text: Program 6
+            href: "programs/06/instructions.qmd"
+          - text: Program 7
+            href: "programs/07/instructions.qmd"
+
+
+
+format:
+  html:
+    theme: 
+      light: cosmo
+      dark: darkly
+    css: styles.css
+    toc: true
+
+
+
+
