@@ -103,6 +103,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="../../styles.css">
 </head>
@@ -224,7 +253,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#a-review-of-the-python-list" id="toc-a-review-of-the-python-list" class="nav-link active" data-scroll-target="#a-review-of-the-python-list">A review of the Python list</a></li>
+  <li><a href="#list-basics" id="toc-list-basics" class="nav-link active" data-scroll-target="#list-basics">List Basics</a></li>
+  <li><a href="#slicing" id="toc-slicing" class="nav-link" data-scroll-target="#slicing">Slicing</a></li>
+  <li><a href="#other-usages" id="toc-other-usages" class="nav-link" data-scroll-target="#other-usages">Other Usages</a></li>
+  <li><a href="#list-methods" id="toc-list-methods" class="nav-link" data-scroll-target="#list-methods">List Methods</a></li>
   </ul>
 </nav>
     </div>
@@ -250,52 +282,51 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="a-review-of-the-python-list" class="level2">
-<h2 class="anchored" data-anchor-id="a-review-of-the-python-list">A review of the Python list</h2>
-<p>Although you should be familiar with Python lists, they are quite important and used often; therefore, we<br>
-will go over it again. Generally, a Python sequence is composed of (typically related) elements. Each<br>
-element in a sequence is assigned an index (or position). A sequence with <strong>n</strong> elements has indexes 0 to<br>
-<strong>n</strong> –1. Python has many built-in types of sequences; however, the most popular is called the list.<br>
-The list in Python is quite versatile. Recall that a list is declared using square brackets; for example:<br>
-grades = [ 94 , 78 , 100 , 86 ]<br>
-The statement above declares the list grades with four integers: 94, 78, 100, and 86. The list can be<br>
-displayed in its entirety (e.g., with the statement print(grades) ); however, we can access each<br>
-element individually by its index (specified within brackets). Accessing can mean to read a value in the<br>
-list, or it can mean to change a value in the list; for example:<br>
-print( grades[ 0 ])<br>
-grades[ 3 ] = 87<br>
-8</p>
-<p>grades[ 1 ] += 2<br>
-Recall that more than one value in a list can be accessed at a time. We can specify a range (or interval)<br>
-of indexes in the format [lower:upper+1] which means the interval [lower, upper) (i.e., closed at<br>
-lower and open at upper). That is, the lower index in the range is inclusive but the upper is not. For<br>
+<section id="list-basics" class="level2">
+<h2 class="anchored" data-anchor-id="list-basics">List Basics</h2>
+<p>Although you should be familiar with Python lists, they are quite important and used often; therefore, we will go over it again. Generally, a Python <strong>sequence</strong> is composed of elements (typically related elements). Each element in a sequence is assigned an index (or position). A sequence with <code>n</code> elements has indexes <code>0</code> to <code>n–1</code>. Python has many built-in types of sequences; however, the most popular is called the <strong>list</strong>.</p>
+<p>The list in Python is quite versatile. Recall that a list is declared using square brackets; for example:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>grades <span class="op">=</span> [<span class="dv">94</span>, <span class="dv">78</span>, <span class="dv">100</span>, <span class="dv">86</span>]   </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The statement above declares the list <code>grades</code> with four integers: 94, 78, 100, and 86. The list can be displayed in its entirety (e.g., with the statement <code>print(grades)</code> ); however, we can access each element individually by its index (specified within brackets). Accessing can mean to read a value in the list, or it can mean to change a value in the list; for example:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(grades[<span class="dv">0</span>])   <span class="co"># reading the value  at index 0 </span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>grades[<span class="dv">3</span>] <span class="op">=</span> <span class="dv">87</span>     <span class="co"># setting the value at index 3   </span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>grades[<span class="dv">1</span>] <span class="op">+=</span> <span class="dv">2</span>     <span class="co"># adding 2 to the value at index 1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="slicing" class="level2">
+<h2 class="anchored" data-anchor-id="slicing">Slicing</h2>
+<p>Recall that more than one value in a list can be accessed at a time. We can specify a range (or interval) of indexes in the format <code>[lower:upper+1]</code> which means the interval <span class="math inline">\([lower, upper)\)</span> (i.e., closed atlower and open at upper). That is, the lower index in the range is inclusive but the upper is not. For<br>
 example:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>stuff[<span class="dv">3</span>:<span class="dv">4</span>]  <span class="co"># accesses index 3 (the same as stuff[3])   </span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>stuff[<span class="dv">0</span>:<span class="dv">5</span>]  <span class="co"># accesses indexes 0 through 4   </span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>stuff[<span class="op">-</span><span class="dv">3</span>]   <span class="co"># accesses the third index  from the right   </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Also recall that list elements can be deleted with the del keyword as follows:<br>
-del stuff[ 2 ]<br>
-Finally, recall that Python provides several built-in operations that can be performed on lists. Here are<br>
-many of them:<br>
-len(list)<br>
-Returns the length of a list<br>
-max(list)<br>
-Returns the item in the list with the maximum value<br>
-min(list)<br>
-Returns the item in the list with the minimum value<br>
-list.append(item)<br>
-Inserts item at the end of the list<br>
-list.count(item)<br>
-Returns the number of times an item appears in the list<br>
-list.index(item)<br>
-Returns the index of the first occurrence of item<br>
-list.insert(index, item) Inserts an item at the specified index in the list<br>
-list.remove(item)<br>
-Removes the first occurrence of item from the list<br>
-list.reverse()<br>
-Reverses the items in the list<br>
-list.sort()<br>
-Sorts a list</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>stuff[<span class="dv">3</span>:<span class="dv">4</span>]  <span class="co"># accesses index 3 (the same as stuff[3])   </span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>stuff[<span class="dv">0</span>:<span class="dv">5</span>]  <span class="co"># accesses indexes 0 through 4   </span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>stuff[<span class="op">-</span><span class="dv">3</span>]   <span class="co"># accesses the third index  from the right   </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="other-usages" class="level2">
+<h2 class="anchored" data-anchor-id="other-usages">Other Usages</h2>
+<p>Recall that various keywords and functions exist for us to modify or find information about a list. Here is a list of a few.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">del</span> grades[<span class="dv">2</span>]   <span class="co"># delete the item at index 2</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="bu">len</span>(grades)   <span class="co"># Returns the length of a list   </span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="bu">max</span>(grades)   <span class="co"># Returns the item in the list with the maximum value   </span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="bu">min</span>(grades)   <span class="co"># Returns the item in the list with the minimum value  </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="list-methods" class="level2">
+<h2 class="anchored" data-anchor-id="list-methods">List Methods</h2>
+<p>Lastly, recall that lists have various methods that can be used to operate on the list. Here are a few of them.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>grades.append(item)           <span class="co"># Inserts item at the end of the list   </span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>grades.count(item)            <span class="co"># Returns the number of times an item appears in the list   </span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>grades.index(item)            <span class="co"># Returns the index of the first occurrence of item   </span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>grades.insert(index, item)    <span class="co"># Inserts an item at the specified index in the list   </span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>grades.remove(item)           <span class="co"># Removes the first occurrence of item from the list   </span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>grades.reverse()              <span class="co"># Reverses the items in the list   </span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>grades.sort()                 <span class="co"># Sorts a list   </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 
 </section>

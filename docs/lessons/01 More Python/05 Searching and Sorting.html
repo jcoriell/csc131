@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -190,7 +224,12 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#revisiting-searching-and-sorting-in-python" id="toc-revisiting-searching-and-sorting-in-python" class="nav-link active" data-scroll-target="#revisiting-searching-and-sorting-in-python">Revisiting searching and sorting in Python</a></li>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#sequential-search" id="toc-sequential-search" class="nav-link" data-scroll-target="#sequential-search">Sequential Search</a></li>
+  <li><a href="#binary-search" id="toc-binary-search" class="nav-link" data-scroll-target="#binary-search">Binary Search</a></li>
+  <li><a href="#selection-sort" id="toc-selection-sort" class="nav-link" data-scroll-target="#selection-sort">Selection Sort</a></li>
+  <li><a href="#bubble-sort" id="toc-bubble-sort" class="nav-link" data-scroll-target="#bubble-sort">Bubble Sort</a></li>
+  <li><a href="#insertion-sort" id="toc-insertion-sort" class="nav-link" data-scroll-target="#insertion-sort">Insertion Sort</a></li>
   </ul>
 </nav>
     </div>
@@ -216,209 +255,151 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="revisiting-searching-and-sorting-in-python" class="level2">
-<h2 class="anchored" data-anchor-id="revisiting-searching-and-sorting-in-python">Revisiting searching and sorting in Python</h2>
-<p>In previous lessons, we designed several searching algorithms (sequential/linear search and binary<br>
-search) and sorting algorithms (bubble sort, selection sort, and insertion sort). We first specified them in<br>
-pseudocode, and for some we showed how they could be implemented in Python (sequential search,<br>
-binary search, and selection sort). To help get a better understanding of Python, let’s briefly revisit some<br>
-of these.<br>
-First, here’s the sequential search for the smallest value in a list (from an earlier lesson). Note that a<br>
-Python list is first populated with 20 random integers (from 1 to 99, also from an earlier lesson):<br>
-1:<br>
-from random import randint<br>
-2:<br>
-numbers = []<br>
-3:<br>
-while ( len (numbers) &lt; 20 ):<br>
-4:<br>
-numbers . append(randint( 1 , 99 ))<br>
-5:<br>
-print (numbers)<br>
-9</p>
-<p>6:<br>
-minIndex = 0<br>
-7:<br>
-for index in range ( 1 , len (numbers)):<br>
-8:<br>
-if (numbers[index] &lt; numbers[minIndex]):<br>
-9:<br>
-minIndex = index<br>
-10:<br>
-print ( “The smallest value is at index: {}” . format(minIndex))<br>
-11:<br>
-print ( “The smallest value is: {}” . format(numbers[minIndex]))<br>
-This version of the sequential search technically returns the index of the smallest value (which is<br>
-typically what programmers are interested in). Since the value can be easily accessed through the index,<br>
-returning the index is much more meaningful. To generalize the sequential search so that it can return<br>
-the index of a <strong>specified </strong> value (as opposed to the smallest value), it can be modified by replacing lines 6<br>
-through 11 as follows:<br>
-num = int( input ( “What integer would you like to search for?” ))<br>
-for index in range ( len (numbers)):<br>
-if (numbers[index] == num):<br>
-print ( “The value {} was found at index {}!” . format(num, index))<br>
-What happens if the specified value is duplicated several times in the list? Clearly, each index would be<br>
-displayed. Here’s example (with user input highlighted in red ):<br>
-[20, 47, 80, 52, 98, 80, 1, 14, 31, 48, 70, 31, 97, 30, 31, 43, 59, 2, 38, 50]<br>
-What integer would you like to search for? 31<br>
-The value 31 was found at index 8!<br>
-The value 31 was found at index 11!<br>
-The value 31 was found at index 14!<br>
-But what if it’s only necessary to find the <strong>first </strong> occurrence of a specified value (and then abort)? Python<br>
-provides a way to exit a repetition construct early (a.k.a. an “early exit”) through the break<br>
-keyword! Formally, the break keyword exits the <strong>nearest enclosing </strong> repetition construct. More on this in<br>
-a bit. To illustrate the use of the break keyword, the sequential search code above can be modified to<br>
-return only the first instance of a specified value:<br>
-for index in range ( len (numbers)):<br>
-if (numbers[index] == num):<br>
-print ( “The value {} was found at index {}!” . format(num, index))<br>
-break<br>
-Here’s an example:<br>
-[87, 44, 37, 69, 92, 74, 49, 97, 65, 69, 27, 61, 22, 77, 3, 3, 25, 86, 53, 45]<br>
-What integer would you like to search for? 3<br>
-The value 3 was found at index 14!<br>
-Note that the value 3 occurs twice in the list (at index 14 and index 15); however, only the first instance<br>
-is reported to the user before the search terminates. The break statement exits the enclosing repetition<br>
-construct: in this case, the for loop.<br>
-What if the break keyword is located in a repetition construct that is also located inside of another<br>
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<p>In previous lessons, we designed several searching algorithms (sequential/linear search and binary search) and sorting algorithms (bubble sort, selection sort, and insertion sort). We first specified them in pseudocode, and for some we showed how they could be implemented in Python (sequential search, binary search, and selection sort). To help get a better understanding of Python, let’s briefly revisit some of these.</p>
+</section>
+<section id="sequential-search" class="level2">
+<h2 class="anchored" data-anchor-id="sequential-search">Sequential Search</h2>
+<p>First, here’s the sequential search for the smallest value in a list (from an earlier lesson). Note that a<br>
+Python list is first populated with 20 random integers (from 1 to 99, also from an earlier lesson):</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a> <span class="dv">1</span>: <span class="im">from</span> random <span class="im">import</span> randint   </span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a> <span class="dv">2</span>: numbers <span class="op">=</span> []   </span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a> <span class="dv">3</span>: <span class="cf">while</span> (<span class="bu">len</span>(numbers) <span class="op">&lt;</span> <span class="dv">20</span>):   </span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a> <span class="dv">4</span>:     numbers.append(randint(<span class="dv">1</span>, <span class="dv">99</span>))   </span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a> <span class="dv">5</span>: <span class="bu">print</span>(numbers)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a> <span class="dv">6</span>: minIndex <span class="op">=</span> <span class="dv">0</span>   </span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a> <span class="dv">7</span>: <span class="cf">for</span> index <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="bu">len</span>(numbers)):   </span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a> <span class="dv">8</span>:     <span class="cf">if</span>(numbers[index] <span class="op">&lt;</span> numbers[minIndex]):   </span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a> <span class="dv">9</span>:         minIndex  <span class="op">=</span>  index  </span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="dv">10</span>: <span class="bu">print</span>(<span class="st">"The smallest value is at index: </span><span class="sc">{}</span><span class="st">"</span>.<span class="bu">format</span>(minIndex))   </span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="dv">11</span>: <span class="bu">print</span>(<span class="st">"The smallest value is: </span><span class="sc">{}</span><span class="st">"</span> . <span class="bu">format</span>(numbers[minIndex]))  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This version of the sequential search technically outputs the index of the smallest value (which is typically what programmers are interested in). Since the value can be easily accessed through the index, returning the index is much more meaningful. To generalize the sequential search so that it can return the index of a <strong>specified</strong> value (as opposed to the smallest value), it can be modified by replacing lines 6 through 11 as follows:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>num <span class="op">=</span> <span class="bu">int</span>(<span class="bu">input</span>(<span class="st">"What integer would you like to search for? "</span>))   </span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> index <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(numbers)):   </span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span>(numbers[index] <span class="op">==</span> num):   </span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span> ( <span class="st">"The value </span><span class="sc">{}</span><span class="st"> was found at index </span><span class="sc">{}</span><span class="st">!"</span>.<span class="bu">format</span>(num, index))   </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>What happens if the specified value is duplicated several times in the list? Clearly, each index would be<br>
+displayed. Here’s example (with user input highlighted in red):</p>
+<pre>[20, 47, 80, 52, 98, 80, 1, 14, 31, 48, 70, 31, 97, 30, 31, 43, 59, 2, 38, 50]   
+What integer would you like to search for? <span style="color: red;">31</span>   
+The value 31 was found at index 8!   
+The value 31 was found at index 11!   
+The value 31 was found at index 14!   
+</pre>
+<p>But what if it’s only necessary to find the <strong>first</strong> occurrence of a specified value (and then abort)? Python provides a way to exit a repetition construct early (a.k.a. an “early exit”) through the <code>break</code> keyword! Formally, the break keyword exits the <strong>nearest enclosing</strong> repetition construct. More on this in a bit. To illustrate the use of the break keyword, the sequential search code above can be modified to output only the first instance of a specified value:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> index <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(numbers)):   </span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (numbers[index] <span class="op">==</span> num):   </span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"The value </span><span class="sc">{}</span><span class="st"> was found at index </span><span class="sc">{}</span><span class="st">!"</span>.<span class="bu">format</span>(num, index))   </span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">break</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Here’s an example:</p>
+<pre>[87, 44, 37, 69, 92, 74, 49, 97, 65, 69, 27, 61, 22, 77, 3, 3, 25, 86, 53, 45]   
+What integer would you like to search for?  <span style="color: red;">3</span>   
+The value 3 was found at index 14!   
+</pre>
+<p>Note that the value 3 occurs twice in the list (at index 14 and index 15); however, only the first instance is reported to the user before the search terminates. The break statement exits the enclosing repetition construct: in this case, the for loop.</p>
+<p>What if the break keyword is located in a repetition construct that is also located inside of another<br>
 repetition construct? In this case, it will exit the inner repetition construct only. Here’s an example:</p>
-<p>for i in range ( 2 ):<br>
-print ( “i={}” . format(i)),<br>
-for j in range ( 5 ):<br>
-print ( “j={}” . format(j)),<br>
-if (j &gt; 1 ):<br>
-break<br>
-print()<br>
-Here’s the output:<br>
-i=0 j=0 j=1 j=2<br>
-i=1 j=0 j=1 j=2<br>
-The outer for loops iterates <strong>i </strong> from 0 through 1. The inner for loop iterates <strong>j </strong> from 0 through 4.<br>
-Moreover, the inner for loop exits early if <strong>j </strong> is greater than 1. Technically, the print statement in the<br>
-inner for loop will display values of <strong>j </strong> that are less than or equal to 1. So why is a value of 2 for <strong>j </strong><br>
-displayed? When <strong>j </strong> is 2, the value is displayed, after which the if statement is executed (which breaks<br>
-out of the inner for loop). The outer for loop continues (the lone print() statement is there to add a line<br>
-break in between increasing values of <strong>i</strong> ), and <strong>i </strong> becomes 1. This occurs again until the outer for loop<br>
-terminates (when <strong>i </strong> is 2).<br>
-Let’s now take a look at the binary search that was also covered in an earlier lesson. Recall that it is a<br>
-very efficient search that requires a list to be sorted. Here’s the Python code that was developed in an<br>
-earlier lesson:<br>
-num = int( input ( “What integer would you like to search for?” ))<br>
-found = False<br>
-first = 0<br>
-last = len (numbers) - 1<br>
-while (first &lt;= last and found != True ):<br>
-mid = (first + last) // 2<br>
-if (num == numbers[mid]):<br>
-found = True<br>
-elif (num &gt; numbers[mid]):<br>
-first = mid + 1<br>
-else :<br>
-last = mid - 1<br>
-if (found):<br>
-print ( “{} was found at index {}!” . format(num, mid))<br>
-else :<br>
-print ( “{} was not found.” . format(num))<br>
-This version of the binary search keeps tracks of two boundaries ( <strong>first </strong> and <strong>last</strong> ) that identify the<br>
-beginning and end indexes of the current portion of the list. Initially, <strong>first </strong> is 0 and <strong>last </strong> is <strong>n</strong> -1 (i.e., the<br>
-entire list). If the middle value of the current portion of the list does not match the specified value, the<br>
-appropriate half of the list is “discarded” by modifying either <strong>first </strong> (to discard the left half) or <strong>last </strong> (to<br>
-discard the right half).</p>
-<p>Recall that the binary search required a list to be sorted, thereby taking advantage of the algorithm’s<br>
-efficiency improvement over the sequential search. Here’s the selection sort that was developed in an<br>
-earlier lesson:<br>
-n = len (numbers)<br>
-for i in range ( 0 , n - 1 ):<br>
-minPosition = i<br>
-for j in range (i + 1 , n):<br>
-if (numbers[j] &lt; numbers[minPosition]):<br>
-minPosition = j<br>
-temp = numbers[i]<br>
-numbers[i] = numbers[minPosition]<br>
-numbers[minPosition] = temp<br>
-Recall how the selection sort works: (1) the list is sorted from left to right; (2) at each pass (controlled<br>
-by the outer for loop), the smallest value is swapped with the first item in the unsorted portion of the list;<br>
-and (3) the inner for loop performs the comparison of every remaining item in the unsorted portion of<br>
-the list to find the smallest value. For a review, see the lesson on <strong>Searching and Sorting</strong> .<br>
-There were two other sorting algorithms that were covered in earlier lessons: bubble sort and insertion<br>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span>  <span class="bu">range</span>(<span class="dv">2</span>):   </span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"i=</span><span class="sc">{}</span><span class="st">"</span>.<span class="bu">format</span>(i)),   </span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5</span>):   </span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span> ( <span class="st">"j=</span><span class="sc">{}</span><span class="st">"</span> . <span class="bu">format</span>(j)),   </span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> (j <span class="op">&gt;</span> <span class="dv">1</span>):   </span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>            <span class="cf">break</span>   </span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Here’s the output:</p>
+<pre><code>i=0 j=0 j=1 j=2   
+i=1 j=0 j=1 j=2  </code></pre>
+<p>The outer for loops iterates <strong>i</strong> from 0 through 1. The inner for loop iterates <strong>j</strong> from 0 through 4. Moreover, the inner for loop exits early if <strong>j</strong> is greater than 1. Technically, the print statement in the inner for loop will display values of <strong>j</strong> that are less than or equal to 1. So why is a value of 2 for <strong>j</strong> displayed? When <strong>j</strong> is 2, the value is displayed, after which the if statement is executed (which breaks out of the inner for loop). The outer for loop continues (the lone print() statement is there to add a line break in between increasing values of <strong>i</strong> ), and <strong>i </strong> becomes 1. This occurs again until the outer for loop terminates (when <strong>i </strong> is 2).</p>
+</section>
+<section id="binary-search" class="level2">
+<h2 class="anchored" data-anchor-id="binary-search">Binary Search</h2>
+<p>Let’s now take a look at the binary search that was also covered in an earlier lesson. Recall that it is a very efficient search that requires a list to be sorted. Here’s the Python code that was developed in an earlier lesson:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>num <span class="op">=</span> <span class="bu">int</span>(<span class="bu">input</span>(<span class="st">"What integer would you like to search for? "</span>))</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>found <span class="op">=</span> <span class="va">False</span>   </span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>first <span class="op">=</span> <span class="dv">0</span>   </span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>last <span class="op">=</span> <span class="bu">len</span>(numbers) <span class="op">-</span> <span class="dv">1</span>   </span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> (first <span class="op">&lt;=</span> last <span class="kw">and</span> found <span class="op">!=</span> <span class="va">True</span>):   </span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    mid <span class="op">=</span> (first <span class="op">+</span> last) <span class="op">//</span> <span class="dv">2</span>   </span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (num <span class="op">==</span> numbers[mid]):   </span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>        found <span class="op">=</span> <span class="va">True</span>   </span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> (num <span class="op">&gt;</span> numbers[mid]):   </span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>        first <span class="op">=</span> mid <span class="op">+</span> <span class="dv">1</span>   </span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:   </span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>        last <span class="op">=</span> mid <span class="op">-</span> <span class="dv">1</span> </span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (found):   </span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"</span><span class="sc">{}</span><span class="st"> was found at index </span><span class="sc">{}</span><span class="st">!"</span>.<span class="bu">format</span>(num, mid))   </span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span> :   </span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"</span><span class="sc">{}</span><span class="st"> was not found."</span>.<span class="bu">format</span>(num))   </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This version of the binary search keeps tracks of two boundaries ( <strong>first</strong> and <strong>last</strong> ) that identify the beginning and end indexes of the current portion of the list. Initially, <strong>first</strong> is 0 and <strong>last</strong> is <strong>n-1</strong> (i.e., the entire list). If the middle value of the current portion of the list does not match the specified value, the appropriate half of the list is “discarded” by modifying either <strong>first</strong> (to discard the left half) or <strong>last</strong> (to discard the right half).</p>
+</section>
+<section id="selection-sort" class="level2">
+<h2 class="anchored" data-anchor-id="selection-sort">Selection Sort</h2>
+<p>Recall that the binary search required a list to be sorted, thereby taking advantage of the algorithm’s efficiency improvement over the sequential search. Here’s the selection sort that was developed in an<br>
+earlier lesson:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>n <span class="op">=</span> <span class="bu">len</span>(numbers)   </span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">0</span>, n <span class="op">-</span> <span class="dv">1</span>):   </span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    minPosition  <span class="op">=</span>  i   </span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span> (i <span class="op">+</span> <span class="dv">1</span>, n):   </span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> (numbers[j] <span class="op">&lt;</span> numbers[minPosition]):   </span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>            minPosition <span class="op">=</span> j  </span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    temp <span class="op">=</span> numbers[i]   </span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>    numbers[i] <span class="op">=</span> numbers[minPosition]   </span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>    numbers[minPosition] <span class="op">=</span> temp   </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Recall how the selection sort works:</p>
+<ol type="1">
+<li><p>the list is sorted from left to right;</p></li>
+<li><p>at each pass (controlled by the outer for loop), the smallest value is swapped with the first item in the unsorted portion of the list;</p></li>
+<li><p>the inner for loop performs the comparison of every remaining item in the unsorted portion of<br>
+the list to find the smallest value.</p></li>
+</ol>
+<p>For a review, see the lesson on <strong>Searching and Sorting</strong> from CSC 130.</p>
+</section>
+<section id="bubble-sort" class="level2">
+<h2 class="anchored" data-anchor-id="bubble-sort">Bubble Sort</h2>
+<p>There were two other sorting algorithms that were covered in earlier lessons: bubble sort and insertion<br>
 sort. We never developed Python code for them. Let’s do this now. First, the bubble sort. Here is a<br>
-version in pseudocode:<br>
-for i ← 1..list length-1<br>
-for j ← 1..list length-i<br>
-if item j of list &lt; item j-1 of list<br>
-then<br>
-temp ← item j of list<br>
-item j of list ← item j-1 of list<br>
-item j-1 of list ← temp<br>
-end<br>
-next<br>
-next<br>
-You may not have seen a for loop described in pseudocode before; however, this is a common way to<br>
-accomplish this repetition construct in pseudocode. So what’s happening here? The basic idea is that a<br>
-value in the list will be compared to the one before it. If they are out of order, then they are swapped.<br>
-This continues, one index over (to the right), until the end of the list is reached. After the first pass, the<br>
-largest value is guaranteed to be in its final position (i.e., at the end of the list). The next pass starts<br>
-again at the beginning of the list; however, this time comparisons and swaps only take place until the<br>
-second-to-last value in the list (because the last value has already been placed there during the last pass).<br>
-Each time, the sorted list grows from right-to-left until the entire list is sorted.<br>
-The outer for loop controls the number of passes, while also providing a way to reduce the size of the<br>
-unsorted portion of the list after each pass. It iterates from 1 through <strong>n</strong> -1. The inner loop controls the<br>
-comparisons and swaps. Initially, the inner loop begins at 1 (the index of the second value in the list),<br>
-and compares this value to the one before it (the first value in the list). If they are out of order, they are<br>
-swapped. The swap works by using a variable ( <strong>temp</strong> ) that temporarily takes on one of the values in the<br>
-list. This continues with the next index (i.e., 2), and so on. The last index compared is <strong>n</strong> - <strong>i</strong> . If the<br>
-algorithms is in the first pass (i.e., <strong>i </strong> is 1) and the length of the list is 10, the last valid index in the list is<br>
-10 – 1 = 9.<br>
-12</p>
-<p>Let’s take a look at what a Python version of the bubble sort looks like:<br>
-n = len ( list )<br>
-for i in range ( 1 , n):<br>
-for j in range ( 1 , n - i + 1 ):<br>
-if ( list [j] &lt; list [j - 1 ]):<br>
-temp = list [j]<br>
-list [j] = list [j - 1 ]<br>
-list [j - 1 ] = temp<br>
-Recall that Python’s range function uses the first parameter as a lower bound and the second parameter<br>
-as one above the upper bound. That is, it operates on the interval [ <strong>a</strong> , <strong>b</strong> ), where <strong>a </strong> is the (closed) lower<br>
-bound and <strong>b </strong> is the (open) upper bound. Therefore, the upper bound of the outer loop is <strong>n</strong> : it iterates<br>
-from 1 through (and including) <strong>n</strong> -1 as intended. Similarly, the upper bound of the inner loop is <strong>n</strong> - <strong>i</strong> +1: it<br>
-iterates from 1 through (and including) <strong>n</strong> - <strong>i </strong> as intended. In the inner loop, if any value at an index is less<br>
-than the value of the one before it, they are swapped.<br>
-Next, let’s take a look at the Python code for the insertion sort. Recall that the insertion sort works<br>
-somewhat as you would arrange a hand of cards being dealt to you: a new card is inserted in its<br>
-appropriate position in the hand of cards dealt so far.<br>
-1:<br>
-i = 1<br>
-2:<br>
-while (i &lt; n):<br>
-3:<br>
-if ( list [i - 1 ] &gt; list [i]):<br>
-4:<br>
-temp = list [i]<br>
-5:<br>
-j = i – 1<br>
-6:<br>
-while (j &gt;= 0 and list [j] &gt; temp):<br>
-7:<br>
-list [j + 1 ] = list [j]<br>
-8:<br>
-j -= 1<br>
-9:<br>
-list [j + 1 ] = temp<br>
-10:<br>
-i += 1<br>
-Here’s an explanation of the code. Line 2 controls the number of passes through the list ( <strong>n</strong> -1 total<br>
-passes). The variable <strong>i </strong> is initialized to 1 (the second index in the list) and iterates through (but not<br>
-including) <strong>n</strong> ; therefore, through the last index in the list. So, starting with the second value in the list, it<br>
-looks to the left (of this current value). Line 3 checks if that value is greater, and if so, then it must<br>
-move it to the right. Line 4 temporarily stores the current item, and lines 5 and 6 then begin the process<br>
-of iterating from the previous element, continuing to the left. At any point, if a value to the left is<br>
-greater than the current item, it is shifted one index to the right. This continues either until (1) the<br>
-beginning of the list is reached; or (2) a value that is not greater is found. Ultimately, the current item is<br>
-placed into its proper position in the list. The outer loop then continues with the next value in the list<br>
-(through the last value in the list).<br>
-Note that there are many other ways that the searches and sorts shown could have been implemented in<br>
-Python. For example, the use of for loops in the selection sort could have been replaced with while<br>
-loops (or vice versa in the insertion sort).</p>
+version in pseudocode:</p>
+<pre><code>for  i ← 1..list length-1   
+     for  j ← 1..list length-i   
+         if  item j of list &lt; item j-1 of list   
+         then   
+            temp ← item j of list   
+            item j of list ← item j-1 of list   
+            item j-1 of list ← temp   
+         end   
+     next   
+next   </code></pre>
+<p>You may not have seen a for loop described in pseudocode before; however, this is a common way to accomplish this repetition construct in pseudocode. So what’s happening here? The basic idea is that a value in the list will be compared to the one before it. If they are out of order, then they are swapped. This continues, one index over (to the right), until the end of the list is reached. After the first pass, the largest value is guaranteed to be in its final position (i.e., at the end of the list). The next pass starts again at the beginning of the list; however, this time comparisons and swaps only take place until the second-to-last value in the list (because the last value has already been placed there during the last pass). Each time, the sorted list grows from right-to-left until the entire list is sorted. The outer for loop controls the number of passes, while also providing a way to reduce the size of the unsorted portion of the list after each pass. It iterates from 1 through <strong>n-1</strong>. The inner loop controls the comparisons and swaps. Initially, the inner loop begins at 1 (the index of the second value in the list), and compares this value to the one before it (the first value in the list). If they are out of order, they are swapped. The swap works by using a variable ( <strong>temp</strong> ) that temporarily takes on one of the values in the list. This continues with the next index (i.e., 2), and so on. The last index compared is <strong>n - i</strong> . If the algorithms is in the first pass (i.e., <strong>i</strong> is 1) and the length of the list is 10, the last valid index in the list is 10 – 1 = 9.</p>
+<p>Let’s take a look at what a Python version of the bubble sort looks like:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>n <span class="op">=</span> <span class="bu">len</span> (<span class="bu">list</span>)   </span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span>  <span class="bu">range</span>(<span class="dv">1</span>, n):   </span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, n <span class="op">-</span> i <span class="op">+</span> <span class="dv">1</span>):   </span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> (<span class="bu">list</span> [j] <span class="op">&lt;</span> <span class="bu">list</span> [j<span class="op">-</span><span class="dv">1</span>]):   </span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>            temp <span class="op">=</span> <span class="bu">list</span> [j]   </span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>            <span class="bu">list</span>[j] <span class="op">=</span> <span class="bu">list</span> [j<span class="op">-</span><span class="dv">1</span>]   </span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>            <span class="bu">list</span>[j <span class="op">-</span> <span class="dv">1</span>] <span class="op">=</span> temp   </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Recall that Python’s range function uses the first parameter as a lower bound and the second parameter as one above the upper bound. That is, it operates on the interval [ <strong>a</strong> , <strong>b</strong> ), where <strong>a</strong> is the (closed) lower bound and <strong>b</strong> is the (open) upper bound. Therefore, the upper bound of the outer loop is <strong>n</strong> : it iterates from 1 through (and including) <strong>n-1</strong> as intended. Similarly, the upper bound of the inner loop is <strong>n - i + 1</strong>: it iterates from 1 through (and including) <strong>n - i</strong> as intended. In the inner loop, if any value at an index is less than the value of the one before it, they are swapped.</p>
+</section>
+<section id="insertion-sort" class="level2">
+<h2 class="anchored" data-anchor-id="insertion-sort">Insertion Sort</h2>
+<p>Next, let’s take a look at the Python code for the insertion sort. Recall that the insertion sort works somewhat as you would arrange a hand of cards being dealt to you: a new card is inserted in its appropriate position in the hand of cards dealt so far.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a> <span class="dv">1</span>: i <span class="op">=</span> <span class="dv">1</span>   </span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a> <span class="dv">2</span>: <span class="cf">while</span>  (i  <span class="op">&lt;</span>  n):   </span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a> <span class="dv">3</span>:     <span class="cf">if</span> (<span class="bu">list</span>[i <span class="op">-</span> <span class="dv">1</span>] <span class="op">&gt;</span> <span class="bu">list</span>[i]):   </span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a> <span class="dv">4</span>:         temp <span class="op">=</span> <span class="bu">list</span> [i]   </span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a> <span class="dv">5</span>:         j <span class="op">=</span> i – <span class="dv">1</span>   </span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a> <span class="dv">6</span>:         <span class="cf">while</span> (j <span class="op">&gt;=</span> <span class="dv">0</span> <span class="kw">and</span> <span class="bu">list</span>[j] <span class="op">&gt;</span> temp):   </span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a> <span class="dv">7</span>:             <span class="bu">list</span>[j <span class="op">+</span> <span class="dv">1</span>] <span class="op">=</span> <span class="bu">list</span> [j]   </span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a> <span class="dv">8</span>:             j <span class="op">-=</span> <span class="dv">1</span>   </span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a> <span class="dv">9</span>:             <span class="bu">list</span>[j <span class="op">+</span> <span class="dv">1</span>] <span class="op">=</span> temp   </span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a><span class="dv">10</span>:     i <span class="op">+=</span>  <span class="dv">1</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Here’s an explanation of the code. Line 2 controls the number of passes through the list ( <strong>n-1</strong> total passes). The variable <strong>i</strong> is initialized to 1 (the second index in the list) and iterates through (but not including) <strong>n</strong> ; therefore, through the last index in the list. So, starting with the second value in the list, it looks to the left (of this current value). Line 3 checks if that value is greater, and if so, then it must move it to the right. Line 4 temporarily stores the current item, and lines 5 and 6 then begin the process of iterating from the previous element, continuing to the left. At any point, if a value to the left is greater than the current item, it is shifted one index to the right. This continues either until (1) the beginning of the list is reached; or (2) a value that is not greater is found. Ultimately, the current item is placed into its proper position in the list. The outer loop then continues with the next value in the list (through the last value in the list). Note that there are many other ways that the searches and sorts shown could have been implemented in Python. For example, the use of for loops in the selection sort could have been replaced with while loops (or vice versa in the insertion sort).</p>
 
 
 </section>
