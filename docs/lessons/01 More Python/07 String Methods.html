@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -176,6 +210,83 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text">String Methods</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lessons/01 More Python/08 External Libraries.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">External Libraries</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../lessons/02 Object Oriented Programming/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">02 Object Oriented Programming</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lessons/02 Object Oriented Programming/01 Introduction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lessons/02 Object Oriented Programming/02 Basic Concepts.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Basic Concepts</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lessons/02 Object Oriented Programming/03 Representing State and Behavior.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Representing State and Behavior</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lessons/02 Object Oriented Programming/04 Instance and Class Variables.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Instance and Class Variables</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lessons/02 Object Oriented Programming/05 Accessors and Mutators.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Accessors and Mutators</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lessons/02 Object Oriented Programming/06 Operator Overloading.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Operator Overloading</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lessons/02 Object Oriented Programming/07 Class Diagrams.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Class Diagrams</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lessons/02 Object Oriented Programming/08 Inheritance.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Inheritance</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lessons/02 Object Oriented Programming/09 The Object Class.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">The Object Class</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lessons/02 Object Oriented Programming/10 Quick Reference.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Quick Reference</span></a>
+  </div>
+</li>
       </ul>
   </li>
       </ul>
@@ -185,14 +296,8 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#string-methods" id="toc-string-methods" class="nav-link active" data-scroll-target="#string-methods">String methods</a></li>
-  </ul>
-</nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -216,64 +321,39 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="string-methods" class="level2">
-<h2 class="anchored" data-anchor-id="string-methods">String methods</h2>
-<p>Strings are often necessary when writing programs. As such, Python provides a variety of methods that<br>
-work on strings. You have already seen one such method, format() , that formats a string as specified<br>
-(we did this earlier in one variant of the print statement). The following table lists some of the more<br>
-useful string methods:<br>
-Python String Methods/Functions<br>
-str.capitalize()<br>
-capitalizes the first character of a string<br>
-str.find()<br>
-returns the first index of a string within another string<br>
-str.format()<br>
-formats a string according to a specification<br>
-str.isdigit()<br>
-determines if a string consists only of numeric characters<br>
-str.lower()<br>
-converts a string to lowercase<br>
-str.replace()<br>
-replaces all occurrences of a string (within a string) with another string<br>
-str.split()<br>
-returns a list of the words in a string<br>
-str.upper()<br>
-converts a string to uppercase<br>
-These string methods are explained in greater detail in a variety of online sources. We suggest that you<br>
-Google them and try them out. However, here are a few examples in IDLE:<br>
-&gt;&gt;&gt; s = “So, when is this going to get difficult?”<br>
-&gt;&gt;&gt; s<br>
-‘So, when is this going to get difficult?’<br>
-&gt;&gt;&gt; s . capitalize()<br>
-‘So, when is this going to get difficult?’<br>
-&gt;&gt;&gt; s . find( “going” )<br>
-17<br>
-&gt;&gt;&gt; s . isdigit()<br>
-False<br>
-&gt;&gt;&gt; s . lower()<br>
-‘so, when is this going to get difficult?’<br>
-&gt;&gt;&gt; s . upper()<br>
-‘SO, WHEN IS THIS GOING TO GET DIFFICULT?’<br>
-&gt;&gt;&gt; s . replace( “difficult” , “easy” )<br>
-‘So, when is this going to get easy?’<br>
-&gt;&gt;&gt; s . split()<br>
-[‘So,’, ‘when’, ‘is’, ‘this’, ‘going’, ‘to’, ‘get’, ‘difficult?’]<br>
-16</p>
-<blockquote class="blockquote">
-<blockquote class="blockquote">
-<blockquote class="blockquote">
-<p>s . split( “i” )<br>
-[‘So, when’, ‘s th’, ‘s go’, ‘ng to get d’, ‘ff’, ‘cult?’]<br>
-Note the execution of the string method str.find() above: s.find(“going”) . This string method<br>
-returns the first index of the string, “going”, within the string, <strong>s</strong> . Why is the result 17? At first glance, it<br>
-seems that the first character of the string, “going”, is at position 18. However, strings are sequences<br>
-(just like lists); therefore, the characters of a string in Python begin at index 0.</p>
-</blockquote>
-</blockquote>
-</blockquote>
+<p>Strings are often necessary when writing programs. As such, Python provides a variety of methods that work on strings. You have already seen one such method, format() , that formats a string as specified (we did this earlier in one variant of the <code>print</code> statement). The following code block lists some of the more useful string methods:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="bu">str</span>.capitalize()    <span class="co"># capitalizes the first character of a string   </span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="bu">str</span>.find()          <span class="co"># returns the first index of a string within another string   </span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="bu">str</span>.<span class="bu">format</span>()        <span class="co"># formats a string according to a specification   </span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="bu">str</span>.isdigit()       <span class="co"># determines if a string consists only of numeric characters   </span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="bu">str</span>.lower()         <span class="co"># converts a string to lowercase   </span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="bu">str</span>.replace()       <span class="co"># replaces all occurrences of a string (within a string) with another string   </span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="bu">str</span>.split()         <span class="co"># returns a list of the words in a string   </span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="bu">str</span>.upper()         <span class="co"># converts a string to uppercase </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>These string methods are explained in greater detail in a variety of online sources. We suggest that you<br>
+Google them and try them out. However, here are a few examples in IDLE:</p>
+<pre><code>&gt;&gt;&gt;  s = "So, when is this going to get difficult?"   
+&gt;&gt;&gt;  s   
+'So, when is this going to get difficult?'   
+&gt;&gt;&gt;  s.capitalize()   
+'So, when is this going to get difficult?'   
+&gt;&gt;&gt;  s.find("going")   
+17   
+&gt;&gt;&gt;  s.isdigit()   
+False   
+&gt;&gt;&gt;  s.lower()   
+'so, when is this going to get difficult?'   
+&gt;&gt;&gt;  s.upper()   
+'SO, WHEN IS THIS GOING TO GET DIFFICULT?'   
+&gt;&gt;&gt;  s.replace( "difficult" ,  "easy" )   
+'So, when is this going to get easy?'   
+&gt;&gt;&gt;  s.split()   
+['So,', 'when', 'is', 'this', 'going', 'to', 'get', 'difficult?'] 
+&gt;&gt;&gt;  s . split( "i" )   
+['So, when ', 's th', 's go', 'ng to get d', 'ff', 'cult?']   </code></pre>
+<p>Note the execution of the string method <code>str.find()</code> above: <code>s.find("going")</code> . This string method returns the first index of the string, “going”, within the string, <strong>s</strong> . Why is the result 17? At first glance, it seems that the first character of the string, “going”, is at position 18. However, strings are sequences (just like lists); therefore, the characters of a string in Python begin at index 0.</p>
 
 
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

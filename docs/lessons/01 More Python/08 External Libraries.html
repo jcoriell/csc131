@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>external-libraries – CSC 131</title>
+<title>Importing External Libraries – CSC 131</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,6 +19,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -82,9 +116,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">
-      CSC 131
-      </li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../lessons/01 More Python/index.html">Lessons</a></li><li class="breadcrumb-item"><a href="../../lessons/01 More Python/index.html">01 More Python</a></li><li class="breadcrumb-item"><a href="../../lessons/01 More Python/08 External Libraries.html">External Libraries</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -131,11 +163,11 @@ ul.task-list li input[type="checkbox"] {
       <div class="sidebar-item-container"> 
             <a href="../../lessons/01 More Python/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">01 More Python</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 ">  
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../lessons/01 More Python/01 Review.html" class="sidebar-item-text sidebar-link">
@@ -178,6 +210,83 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text">String Methods</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lessons/01 More Python/08 External Libraries.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">External Libraries</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../lessons/02 Object Oriented Programming/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">02 Object Oriented Programming</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lessons/02 Object Oriented Programming/01 Introduction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lessons/02 Object Oriented Programming/02 Basic Concepts.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Basic Concepts</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lessons/02 Object Oriented Programming/03 Representing State and Behavior.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Representing State and Behavior</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lessons/02 Object Oriented Programming/04 Instance and Class Variables.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Instance and Class Variables</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lessons/02 Object Oriented Programming/05 Accessors and Mutators.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Accessors and Mutators</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lessons/02 Object Oriented Programming/06 Operator Overloading.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Operator Overloading</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lessons/02 Object Oriented Programming/07 Class Diagrams.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Class Diagrams</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lessons/02 Object Oriented Programming/08 Inheritance.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Inheritance</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lessons/02 Object Oriented Programming/09 The Object Class.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">The Object Class</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lessons/02 Object Oriented Programming/10 Quick Reference.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Quick Reference</span></a>
+  </div>
+</li>
       </ul>
   </li>
       </ul>
@@ -187,107 +296,88 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#importing-external-libraries" id="toc-importing-external-libraries" class="nav-link active" data-scroll-target="#importing-external-libraries">Importing external libraries</a></li>
-  </ul>
-</nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../lessons/01 More Python/index.html">Lessons</a></li><li class="breadcrumb-item"><a href="../../lessons/01 More Python/index.html">01 More Python</a></li><li class="breadcrumb-item"><a href="../../lessons/01 More Python/08 External Libraries.html">External Libraries</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">Importing External Libraries</h1>
+</div>
 
 
 
-<section id="importing-external-libraries" class="level2">
-<h2 class="anchored" data-anchor-id="importing-external-libraries">Importing external libraries</h2>
-<p>It is often useful (and necessary) to import external functionality into our programs. In fact, you’ve seen<br>
-(and used) this before (in the lesson <strong>Introduction to Data Structures</strong> ), although it may not have been<br>
-explained in detail. Often, others have designed functions and other bits of code that may prove useful.<br>
-We don’t always want to recreate things that already exist. Python supports the importing of such things<br>
-via the import reserved word. For example, many of the programs we create require the use of<br>
-mathematical functions beyond simple arithmetic (e.g., sin, cos, tan) or mathematical constants (e.g., pi,<br>
-e). The structure of an import statement is as follows:<br>
-import library<br>
-Pretty simple. Here’s an example of the importing and use of the math library:<br>
-&gt;&gt;&gt; pi<br>
-Traceback (most recent call last):<br>
-File “&lt;pyshell#0&gt;”, line 1, in <module><br>
-pi<br>
-NameError: name ‘pi’ is not defined<br>
-&gt;&gt;&gt; import math<br>
-&gt;&gt;&gt; math . pi<br>
-3.141592653589793<br>
-&gt;&gt;&gt; math . e<br>
-2.718281828459045<br>
-&gt;&gt;&gt; math . sin(math . pi)<br>
-1.2246467991473532e-16<br>
-&gt;&gt;&gt; math . cos(math . pi)<br>
--1.0<br>
-&gt;&gt;&gt; math . log( 1000 )<br>
-6.907755278982137<br>
-&gt;&gt;&gt; math . log(math . e)<br>
-1.0<br>
-Note in the example, the invalid use of <strong>pi </strong> before importing that math library. In addition, any value or<br>
-function used in a library must be fully qualified with the name of the library (e.g., we need to specify<br>
-<strong>math.pi </strong> and not just <strong>pi</strong> ). Alternatively, we can itemize what we wish to import from a library. This<br>
-allows us to use values and functions directly without having to specify the library name. The structure<br>
-of such an import statement is as follows:<br>
-from library import function (or constant)<br>
-For example, the constant PI and the sin() function can be formally imported as follows:<br>
-17</module></p>
-<p>from math import pi, sin<br>
-Moreover, these can be directly used as follows:<br>
-print( pi)<br>
-print( sin(pi))<br>
-Here’s the output:<br>
-3.141592653589793<br>
-1.2246467991473532e-16<br>
-Formally, Python calls its libraries modules . And we can even write our own modules! They are just<br>
-Python programs that typically provide definitions of constants and functions that other Python<br>
-programs import and make use of. Python modules just need to be saved as a .py file and located in the<br>
-same folder/directory as a Python program that needs to make use of it. For example, we could include<br>
-several useful functions in a file called MyGoodies.py. Suppose that it contained the following:<br>
-from time import time<br>
-# starts a timer<br>
-def start_time ():<br>
-global start<br>
-start = time()<br>
-# stops the timer and returns the time elapsed<br>
-def stop_time ():<br>
-stop = time()<br>
-elapsed = stop - start<br>
-return elapsed<br>
-The purpose of this example module is to use it to time how long algorithms take to execute. It’s quite<br>
-simple. The function <strong>start_time </strong> effectively starts a timer (through the time library’s <strong>time </strong> function) by<br>
-capturing the current “time” – which is essentially the number of seconds elapsed since an epoch defined<br>
-in your operating system. For Unix and Unix-like operating systems (e.g., the “flavor” of Linux used on<br>
-the Raspberry Pi), the epoch is 1970-01-01 00:00:00. The function <strong>stop_time </strong> captures the current time<br>
-again (this time, after the algorithm has finished), and calculates and returns the difference between the<br>
-two.<br>
-We can make use of this module as follows:<br>
-from MyGoodies import start_time, stop_time<br>
-# start a timer<br>
-start_time()<br>
-# do something that takes a little time<br>
-for i in range ( 100000000 ):<br>
-pass<br>
-# stop the timer<br>
-18</p>
-<p>duration = stop_time()<br>
-# display how long it took<br>
-print ( “Algorithm took {} seconds.” . format(duration))<br>
-Note that the “algorithm” in the test code above really does nothing. It’s just there to take up some<br>
-noticeable amount of time so that the module can be tested. Here’s a sample run:<br>
-jgourd@pi:~$ python MyGoodiesTest.py<br>
-Algorithm took 5.71634602547 seconds.<br>
-19</p>
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
 
 
-</section>
+</header>
+
+
+<p>It is often useful (and necessary) to import external functionality into our programs. In fact, you’ve seen (and used) this before (in the lesson <strong>Introduction to Data Structures</strong>), although it may not have been explained in detail. Often, others have designed functions and other bits of code that may prove useful. We don’t always want to recreate things that already exist. Python supports the importing of such things via the import reserved word. For example, many of the programs we create require the use of mathematical functions beyond simple arithmetic (e.g., sin, cos, tan) or mathematical constants (e.g., pi, e). The structure of an import statement is as follows:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> library</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Pretty simple. Here’s an example of the importing and use of the math library:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> math   </span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(math.pi)             <span class="co"># outputs 3.141592653589793   </span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(math.e)              <span class="co"># outputs 2.718281828459045   </span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(math.sin(math.pi))   <span class="co"># outputs 1.2246467991473532e-16   (virtually 0)</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(math.cos(math.pi))   <span class="co"># outputs -1.0   </span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(math.log(<span class="dv">1000</span>))      <span class="co"># outputs 6.907755278982137   </span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(math.log(math.e))    <span class="co"># outputs 1.0 </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Any value or function used in a library must be fully qualified with the name of the library (e.g., we need to specify <code>math.pi</code> and not just <code>pi</code> ). Alternatively, we can itemize what we wish to import from a library. This allows us to use values and functions directly without having to specify the library name. The structure of such an import statement is as follows:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> library <span class="im">import</span> function1, function2, constant1, constant2  <span class="co"># and so on</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>For example, the previous code block could have been written as follows:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> math <span class="im">import</span> pi, e, sin, cos, log</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(math.pi)             <span class="co"># outputs 3.141592653589793   </span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(math.e)              <span class="co"># outputs 2.718281828459045   </span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(math.sin(math.pi))   <span class="co"># outputs 1.2246467991473532e-16   (virtually 0)</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(math.cos(math.pi))   <span class="co"># outputs -1.0   </span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(math.log(<span class="dv">1000</span>))      <span class="co"># outputs 6.907755278982137   </span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(math.log(math.e))    <span class="co"># outputs 1.0    </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Formally, Python calls its libraries <strong>modules</strong>. And we can even write our own modules! They are just Python programs that typically provide definitions of constants and functions that other Python programs import and make use of. Python modules just need to be saved as a <code>.py</code> file and located in the same folder/directory as a Python program that needs to make use of it. For example, we could include several useful functions in a file called <code>my_goodies.py</code>. Suppose that it contained the following:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># my_goodies.py</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> time <span class="im">import</span> time   </span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co"># starts a timer   </span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> start_time():   </span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">global</span> start   </span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    start <span class="op">=</span> time()   </span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="co"># stops the timer and returns the time elapsed   </span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> stop_time():   </span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>    stop <span class="op">=</span> time()   </span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>    elapsed <span class="op">=</span> stop <span class="op">-</span> start   </span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span>  elapsed   </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The purpose of this example module is to use it to time how long algorithms take to execute. It’s quite simple. The function <strong>start_time</strong> effectively starts a timer (through the time library’s <strong>time</strong> function) by capturing the current “time” – which is essentially the number of seconds elapsed since an epoch defined in your operating system. For Unix and Unix-like operating systems (e.g., the “flavor” of Linux used on the Raspberry Pi), the epoch is 1970-01-01 00:00:00. The function <strong>stop_time</strong> captures the current time again (this time, after the algorithm has finished), and calculates and returns the difference between the two. We can make use of this module as follows:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># my_goodies_test.py</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> my_goodies <span class="im">import</span> start_time, stop_time   </span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="co"># start a timer   </span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>start_time()   </span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="co"># do something that takes a little time   </span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">100000000</span>):   </span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">pass</span>   </span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="co"># stop the timer   </span></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>duration <span class="op">=</span> stop_time()  </span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a><span class="co"># display how long it took   </span></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Algorithm took </span><span class="sc">{}</span><span class="st"> seconds."</span>.<span class="bu">format</span>(duration))   </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Note that the “algorithm” in the test code above really does nothing. It’s just there to take up some noticeable amount of time so that the module can be tested. Here’s a sample run:</p>
+<pre><code>~$ python my_goodies_test.py    
+Algorithm took 5.71634602547 seconds.   </code></pre>
+
+
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

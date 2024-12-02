@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -176,6 +210,83 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text">String Methods</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lessons/01 More Python/08 External Libraries.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">External Libraries</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../lessons/02 Object Oriented Programming/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">02 Object Oriented Programming</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lessons/02 Object Oriented Programming/01 Introduction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lessons/02 Object Oriented Programming/02 Basic Concepts.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Basic Concepts</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lessons/02 Object Oriented Programming/03 Representing State and Behavior.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Representing State and Behavior</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lessons/02 Object Oriented Programming/04 Instance and Class Variables.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Instance and Class Variables</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lessons/02 Object Oriented Programming/05 Accessors and Mutators.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Accessors and Mutators</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lessons/02 Object Oriented Programming/06 Operator Overloading.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Operator Overloading</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lessons/02 Object Oriented Programming/07 Class Diagrams.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Class Diagrams</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lessons/02 Object Oriented Programming/08 Inheritance.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Inheritance</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lessons/02 Object Oriented Programming/09 The Object Class.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">The Object Class</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../lessons/02 Object Oriented Programming/10 Quick Reference.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Quick Reference</span></a>
+  </div>
+</li>
       </ul>
   </li>
       </ul>
@@ -191,6 +302,8 @@ ul.task-list li input[type="checkbox"] {
    
   <ul>
   <li><a href="#other-operators" id="toc-other-operators" class="nav-link active" data-scroll-target="#other-operators">Other operators</a></li>
+  <li><a href="#python-logical-operators" id="toc-python-logical-operators" class="nav-link" data-scroll-target="#python-logical-operators">Python Logical Operators</a></li>
+  <li><a href="#membership-operators" id="toc-membership-operators" class="nav-link" data-scroll-target="#membership-operators">Membership Operators</a></li>
   </ul>
 </nav>
     </div>
@@ -218,127 +331,184 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="other-operators" class="level2">
 <h2 class="anchored" data-anchor-id="other-operators">Other operators</h2>
-<p>Python provides several more classes of operators than you are already familiar with. Recall that, so far,<br>
-you have been exposed to (and should be quite familiar with) arithmetic operators, relational<br>
-13 (comparison) operators, and assignment operators. In this lesson, we will cover several other classes of<br>
-operators: logical operators and membership operators .<br>
-Definition : <strong>The </strong> <strong>logical operators </strong> <strong>evaluate two operands and return the logical result (i.e., True or </strong><br>
-<strong>False).</strong><br>
-Think back to the primitive logic gates ( <strong>and</strong> , <strong>or</strong> , and <strong>not</strong> ). It turns out that they can be effectively<br>
-mapped to conditions in if-statements. Logical operators operate on conditions (that use relational<br>
-operators) and provide the overall logical result. In the following table, assume that <strong>a </strong> = True and <strong>b </strong> =<br>
-False:<br>
-Python Logical Operators and Examples<br>
-and logical <strong>and</strong><br>
-a and b is False<br>
-or<br>
-logical <strong>or</strong><br>
-a or b is True<br>
-not logical <strong>not</strong><br>
-not a is False; not b is True<br>
-Note that this is equivalent to the primitive logic gates, where 0 is substituted for False and 1 for True.<br>
-Here is the truth table for the and gate shown in this manner:<br>
-A<br>
-B<br>
-A and B<br>
-False<br>
-False<br>
-False<br>
-False<br>
-True<br>
-False<br>
-True<br>
-False<br>
-False<br>
-True<br>
-True<br>
-True<br>
-The logical operators sometimes make more sense when they are used in the context of a condition (e.g.,<br>
-in an if statement). Suppose that <strong>a </strong> = 5 and <strong>b </strong> = 10. The following condition would evaluate to False:<br>
-if (a == 5 and b &lt; 10 ):<br>
-…<br>
-Why? Clearly because, although <strong>a </strong> is equal to 5, <strong>b </strong> is not less than 10 (it’s equal to 10). Therefore, the<br>
-<strong>and </strong> logical operator will return False if and only if both sides of the operator evaluate to True. In this<br>
-case, the left side does while the right side does not. However, the following condition would evaluate<br>
-to True:<br>
-if (a == 5 or b &lt; 10 ):<br>
-…<br>
-The <strong>or </strong> logical operator will return True if either (or both) sides of the operator evaluate to True. Since <strong>a</strong><br>
-is equal to 5, then the left side is True. In this case, the right side doesn’t need to be evaluated (and, in<br>
-fact, it isn’t – more on that below).<br>
-The logical operators do work when the inputs (i.e., <strong>a </strong> and <strong>b </strong> in the previous examples) aren’t necessarily<br>
-equal to True and False. That is, they also work when they are numeric values. Take, for example, the<br>
-following statements:<br>
-1:<br>
-a = 23<br>
-2:<br>
-b = 13<br>
-14</p>
-<p>3:<br>
-print( a and b)<br>
-4:<br>
-print( a or b)<br>
-5:<br>
-print ( not a)<br>
-6:<br>
-print ( not b)<br>
-7:<br>
-a = 0<br>
-8:<br>
-print ( not a)<br>
-Here’s the output (with lines numbers matching those of the print statements above):<br>
-3:<br>
-13<br>
-4:<br>
-23<br>
-5:<br>
-False<br>
-6:<br>
-False<br>
-8:<br>
-True<br>
-The output of lines 3 and 4 can be a bit confusing. Why, for example, is <strong>a </strong> and <strong>b </strong> 13? Or why is <strong>a </strong> or <strong>b </strong><br>
+<p>Python provides several more classes of operators than you are already familiar with. Recall that, so far, you have been exposed to (and should be quite familiar with) arithmetic operators, relational (comparison) operators, and assignment operators. In this lesson, we will cover several other classes of operators: logical operators and membership operators.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Definition
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Definition: The <strong>logical operators</strong> evaluate two operands and return the logical result (i.e., True or False).</p>
+</div>
+</div>
+<p>Think back to the primitive logic gates ( <strong>and</strong> , <strong>or</strong> , and <strong>not</strong> ). It turns out that they can be effectively mapped to conditions in if-statements. Logical operators operate on conditions (that use relational operators) and provide the overall logical result. In the following table, assume that <code>a = True</code> and <code>b = False</code>:</p>
+</section>
+<section id="python-logical-operators" class="level2">
+<h2 class="anchored" data-anchor-id="python-logical-operators">Python Logical Operators</h2>
+<p>In the following code block, assume that <code>a = True</code> and <code>b = False</code>:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">and</span> <span class="co"># logical and; a and b is False </span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="kw">or</span>  <span class="co"># logical or; a or b is True   </span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="kw">not</span> <span class="co"># logical not; not a is False; not b is True  </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Note that this is equivalent to the primitive logic gates, where 0 is substituted for <code>False</code> and 1 for <code>True</code>.<br>
+Here is the truth table for the and gate shown in this manner:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>A</th>
+<th>B</th>
+<th>A AND B</th>
+<th>A OR B</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+</tr>
+<tr class="even">
+<td>False</td>
+<td>True</td>
+<td>False</td>
+<td>True</td>
+</tr>
+<tr class="odd">
+<td>True</td>
+<td>False</td>
+<td>False</td>
+<td>True</td>
+</tr>
+<tr class="even">
+<td>True</td>
+<td>True</td>
+<td>True</td>
+<td>True</td>
+</tr>
+</tbody>
+</table>
+<p>The logical operators sometimes make more sense when they are used in the context of a condition (e.g., in an if statement). Suppose that <code>a = 5</code> and <code>b = 10</code>. The following condition would evaluate to False:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (a <span class="op">==</span> <span class="dv">5</span> <span class="kw">and</span> b <span class="op">&lt;</span> <span class="dv">10</span>):   </span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    ...   </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Why? Clearly because, although <strong>a</strong> is equal to 5, <strong>b</strong> is not less than 10 (it’s equal to 10). Therefore, the <strong>and</strong> logical operator will return False if and only if both sides of the operator evaluate to True. In this case, the left side does while the right side does not. However, the following condition would evaluate to True:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (a <span class="op">==</span> <span class="dv">5</span> <span class="kw">or</span> b <span class="op">&lt;</span> <span class="dv">10</span> ):   </span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    ...</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The <strong>or</strong> logical operator will return True if either (or both) sides of the operator evaluate to True. Since <strong>a</strong> is equal to 5, then the left side is True. In this case, the right side doesn’t need to be evaluated (and, in fact, it isn’t – more on that below). The logical operators do work when the inputs (i.e., <strong>a</strong> and <strong>b</strong> in the previous examples) aren’t necessarily<br>
+equal to True and False. That is, they also work when they are numeric values. Take, for example, the following statements:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span>: a <span class="op">=</span> <span class="dv">23</span>   </span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span>: b <span class="op">=</span> <span class="dv">13</span>  </span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="dv">3</span>: <span class="bu">print</span>(a <span class="kw">and</span> b)   </span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="dv">4</span>: <span class="bu">print</span>(a <span class="kw">or</span> b)   </span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="dv">5</span>: <span class="bu">print</span>(<span class="kw">not</span> a)   </span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="dv">6</span>: <span class="bu">print</span>(<span class="kw">not</span> b)   </span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="dv">7</span>: a <span class="op">=</span> <span class="dv">0</span>   </span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="dv">8</span>: <span class="bu">print</span>(<span class="kw">not</span> a)   </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Here’s the output (with lines numbers matching those of the print statements above):</p>
+<pre><code>3: 13   
+4: 23   
+5: False   
+6: False   
+8: True   </code></pre>
+<p>The output of lines 3 and 4 can be a bit confusing. Why, for example, is <strong>a</strong> and <strong>b</strong> 13? Or why is <strong>a</strong> or <strong>b</strong><br>
 23? This can be explained by the following table, where the variables <strong>a</strong> and <strong>b</strong> have numeric values (as<br>
-in the examples above):<br>
-Python Logical Operators and Examples<br>
-and logical <strong>and</strong><br>
-returns a if a is False, b otherwise<br>
-or<br>
-logical <strong>or</strong><br>
-returns b if a is False, a otherwise<br>
-not logical <strong>not</strong><br>
-returns False if a is True, True otherwise<br>
-The output of lines 5, 6, and 8 makes sense when we realize that, in Python, 0 is False and any non-zero<br>
-value is True! When <strong>a </strong> is 23 and <strong>b </strong> is 13, <strong>a </strong> evaluates to True (since it is non-zero); therefore, not <strong>a </strong><br>
-evaluates to False. This is the same with <strong>b</strong> . However, when <strong>a </strong> is 0, then it evaluates to False; therefore,<br>
-not <strong>a </strong> evaluates to True. Formally, in the context of Boolean expressions, the following values are<br>
-interpreted as false: False, None, numeric zero of all types, and empty strings and containers. All other<br>
-values are interpreted as true.<br>
-Did you know?<br>
-The <strong>and</strong> and <strong>or</strong> logical operators are short circuit operators. That is, to evaluate a True or False result,<br>
-the minimum number of inputs required to produce such an output is evaluated. For example, suppose<br>
-that <strong>a </strong> = False and <strong>b </strong> = True. The expression <strong>a </strong> and <strong>b </strong> is only True if both <strong>a </strong> and <strong>b </strong> are True. Since <strong>a </strong> is<br>
-False, then there is no need to evaluate (or test) the value of <strong>b</strong> . This would be useless and waste CPU<br>
-cycles. Similarly, if <strong>a </strong> = True and <strong>b </strong> = True, the evaluation of the expression <strong>a </strong> or <strong>b </strong> only requires<br>
-checking that <strong>a </strong> is True for the entire expression to evaluate to True (i.e., there is no need to<br>
-evaluate/test the value of <strong>b</strong> ).<br>
-Definition: <strong>Membership operators </strong> <strong>test for some value’s membership in a sequence (e.g., to test if an </strong><br>
-<strong>element exists in a list, or if a character exists in a string).</strong><br>
-In the following table, suppose that the Python list <strong>numbers </strong> = [ 1, 3, 5, 7, 9 ], <strong>x </strong> = 2, and <strong>y </strong> = 3.<br>
-Python Membership Operators and Examples<br>
-15</p>
-<p>in<br>
-Returns True if a specified value is in a<br>
-specified sequence or False otherwise<br>
-x in numbers is False; y<br>
-in numbers is True<br>
-not in Returns True if a specified value is not in a<br>
-specified sequence or False otherwise<br>
-x not in numbers is<br>
-True; y not in numbers<br>
-is False<br>
-You have seen this in previous for loop examples (e.g., for <strong>i</strong> in <strong>list</strong> ). This for loop<br>
-configuration has the variable <strong>i </strong> take on each of the values in <strong>list</strong> , one at a time.</p>
+in the examples above):</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 23%">
+<col style="width: 26%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Operator</th>
+<th>Meaning</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>and</td>
+<td>logical <strong>and</strong></td>
+<td>returns a if a is False, b otherwise</td>
+</tr>
+<tr class="even">
+<td>or</td>
+<td>logical <strong>or</strong></td>
+<td>returns b if a is False, a otherwise</td>
+</tr>
+<tr class="odd">
+<td>not</td>
+<td>logical <strong>not</strong></td>
+<td>returns False if a is True, True otherwise</td>
+</tr>
+</tbody>
+</table>
+<p>The output of lines 5, 6, and 8 makes sense when we realize that, in Python, 0 is False and any non-zero value is True! When <strong>a</strong> is 23 and <strong>b</strong> is 13, <strong>a</strong> evaluates to True (since it is non-zero); therefore, <code>not a</code> evaluates to False. This is the same with <strong>b</strong> . However, when <strong>a</strong> is 0, then it evaluates to False; therefore, <code>not a</code> evaluates to True. Formally, in the context of Boolean expressions, the following values are interpreted as false: False, None, numeric zero of all types, and empty strings and containers. All other values are interpreted as true.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Did you know?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The <strong>and</strong> and <strong>or</strong> logical operators are <strong>short circuit</strong> operators. That is, to evaluate a True or False result,the minimum number of inputs required to produce such an output is evaluated. For example, suppose that <code>a = False</code> and <code>b = True</code>. The expression <code>a and b</code> is only True if both <code>a</code> and <code>b</code> are True. Since <code>a</code> is False, then there is no need to evaluate (or test) the value of <code>b</code>. This would be useless and waste CPU cycles.</p>
+<p>Similarly, if <code>a = True</code> and <code>b = True</code>, the evaluation of the expression <code>a or b</code> only requires checking that <code>a</code> is True for the entire expression to evaluate to True (i.e., there is no need to evaluate/test the value of <strong>b</strong> ).</p>
+</div>
+</div>
+</section>
+<section id="membership-operators" class="level2">
+<h2 class="anchored" data-anchor-id="membership-operators">Membership Operators</h2>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Definition
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Membership operators</strong> test for some value’s membership in a sequence (e.g., to test if an element exists in a list, or if a character exists in a string).</p>
+</div>
+</div>
+<p>In the following table, suppose that the Python list <code>numbers** = [ 1, 3, 5, 7, 9 ]</code>, <code>x = 2</code>, and <code>y = 3</code>.</p>
+<p>Python Membership Operators and Examples</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 21%">
+<col style="width: 30%">
+<col style="width: 48%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Operator</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>in</td>
+<td>Returns True if a specified value is in a specified sequence or False otherwise</td>
+<td>x in numbers is False; y in numbers is True</td>
+</tr>
+<tr class="even">
+<td>not in</td>
+<td>Returns True if a specified value is not in a specified sequence or False otherwise</td>
+<td>x not in numbers is True; y not in numbers is False</td>
+</tr>
+</tbody>
+</table>
+<p>You have seen this in previous for loop examples (e.g., <code>for i in a_list</code> ). This for loop configuration has the variable <code>i</code> take on each of the values in <code>a_list</code>, one at a time.</p>
 
 
 </section>

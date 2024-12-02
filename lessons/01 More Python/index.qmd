@@ -4,7 +4,7 @@ title: "01 More Python"
 
 ## Overview  
 
-In this lesson, we will build on what you have already learned about the Python programming language. To be sure that we are all on the same page, let's briefly review the things about Python that you should already be familiar with.  For more detail, review the lesson on  **Introduction to Computer Programming** .  
+In this lesson, we will build on what you have already learned about the Python programming language. To be sure that we are all on the same page, let's briefly review the things about Python that you should already be familiar with.  For more detail, review the lesson on  **Introduction to Computer Programming** .   
 
 
 ## Contents
@@ -22,3 +22,5 @@ In this lesson, we will build on what you have already learned about the Python 
 - [Operators](./06 Operators.qmd)
 
 - [String Methods](./07 String Methods.qmd)
+
+- [External Libraries](./08 External Libraries.qmd)

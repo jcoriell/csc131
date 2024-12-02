@@ -1,90 +1,87 @@
+---
+title: Importing External Libraries
+---
 
 
+It is often useful (and necessary) to import external functionality into our programs.  In fact, you've seen (and used) this before (in the lesson  **Introduction to Data Structures**), although it may not have been explained in detail.  Often, others have designed functions and other bits of code that may prove useful. We don't always want to recreate things that already exist.  Python supports the importing of such things via the  import  reserved word.  For example, many of the programs we create require the use of mathematical functions beyond simple arithmetic (e.g., sin, cos, tan) or mathematical constants (e.g., pi, e).  The structure of an import statement is as follows:   
 
-## Importing external libraries   
+```Python
+import library
+```
 
-It is often useful (and necessary) to import external functionality into our programs.  In fact, you've seen    
-(and used) this before (in the lesson  **Introduction to Data Structures** ), although it may not have been    
-explained in detail.  Often, others have designed functions and other bits of code that may prove useful.     
-We don't always want to recreate things that already exist.  Python supports the importing of such things   
-via the  import  reserved word.  For example, many of the programs we create require the use of    
-mathematical functions beyond simple arithmetic (e.g., sin, cos, tan) or mathematical constants (e.g., pi,    
-e).  The structure of an import statement is as follows:   
-import   library   
 Pretty simple.  Here's an example of the importing and use of the math library:   
->>>  pi   
-Traceback (most recent call last):   
-  File "<pyshell#0>", line 1, in <module>   
-    pi   
-NameError: name 'pi' is not defined   
->>>   import   math   
->>>  math . pi   
-3.141592653589793   
->>>  math . e   
-2.718281828459045   
->>>  math . sin(math . pi)   
-1.2246467991473532e-16   
->>>  math . cos(math . pi)   
--1.0   
->>>  math . log( 1000 )   
-6.907755278982137   
->>>  math . log(math . e)   
-1.0   
-Note in the example, the invalid use of  **pi ** before importing that math library.  In addition, any value or    
-function used in a library must be fully qualified with the name of the library (e.g., we need to specify    
-**math.pi ** and not just  **pi** ).  Alternatively, we can itemize what we wish to import from a library.  This    
-allows us to use values and functions directly without having to specify the library name.  The structure    
-of such an import statement is as follows:   
-from   library   import  function (or constant)   
-For example, the constant PI and the sin() function can be formally imported as follows:   
-17   
 
+```Python
+import math   
+print(math.pi)             # outputs 3.141592653589793   
+print(math.e)              # outputs 2.718281828459045   
+print(math.sin(math.pi))   # outputs 1.2246467991473532e-16   (virtually 0)
+print(math.cos(math.pi))   # outputs -1.0   
+print(math.log(1000))      # outputs 6.907755278982137   
+print(math.log(math.e))    # outputs 1.0 
+```
 
-from   math   import  pi, sin   
-Moreover, these can be directly used as follows:   
-print( pi)   
-print( sin(pi))   
-Here's the output:   
-3.141592653589793   
-1.2246467991473532e-16   
-Formally, Python calls its libraries  modules .  And we can even write our own modules!  They are just    
-Python programs that typically provide definitions of constants and functions that other Python    
-programs import and make use of.  Python modules just need to be saved as a .py file and located in the    
-same folder/directory as a Python program that needs to make use of it.  For example, we could include    
-several useful functions in a file called MyGoodies.py.  Suppose that it contained the following:   
-from   time   import  time   
+Any value or function used in a library must be fully qualified with the name of the library (e.g., we need to specify `math.pi` and not just  `pi` ).  Alternatively, we can itemize what we wish to import from a library. This allows us to use values and functions directly without having to specify the library name. The structure of such an import statement is as follows:   
+
+```Python
+from library import function1, function2, constant1, constant2  # and so on
+```
+
+For example, the previous code block could have been written as follows:
+
+```Python
+from math import pi, e, sin, cos, log
+print(math.pi)             # outputs 3.141592653589793   
+print(math.e)              # outputs 2.718281828459045   
+print(math.sin(math.pi))   # outputs 1.2246467991473532e-16   (virtually 0)
+print(math.cos(math.pi))   # outputs -1.0   
+print(math.log(1000))      # outputs 6.907755278982137   
+print(math.log(math.e))    # outputs 1.0    
+```
+  
+Formally, Python calls its libraries **modules**. And we can even write our own modules! They are just Python programs that typically provide definitions of constants and functions that other Python programs import and make use of.  Python modules just need to be saved as a `.py` file and located in the same folder/directory as a Python program that needs to make use of it.  For example, we could include several useful functions in a file called `my_goodies.py`. Suppose that it contained the following:   
+
+```Python
+# my_goodies.py
+
+from time import time   
+
 # starts a timer   
-def   start_time ():   
-     global  start   
-    start  =  time()   
+def start_time():   
+    global start   
+    start = time()   
+
 # stops the timer and returns the time elapsed   
-def   stop_time ():   
-    stop  =  time()   
-    elapsed  =  stop  -  start   
-     return  elapsed   
-The purpose of this example module is to use it to time how long algorithms take to execute.  It's quite    
-simple.  The function  **start_time ** effectively starts a timer (through the time library's  **time ** function) by    
-capturing the current “time” – which is essentially the number of seconds elapsed since an epoch defined   
-in your operating system.  For Unix and Unix-like operating systems (e.g., the “flavor” of Linux used on   
-the Raspberry Pi), the epoch is 1970-01-01 00:00:00.  The function  **stop_time ** captures the current time    
-again (this time, after the algorithm has finished), and calculates and returns the difference between the    
-two.   
-We can make use of this module as follows:   
-from   MyGoodies   import  start_time, stop_time   
+def stop_time():   
+    stop = time()   
+    elapsed = stop - start   
+    return  elapsed   
+```
+
+
+The purpose of this example module is to use it to time how long algorithms take to execute. It's quite simple.  The function  **start_time** effectively starts a timer (through the time library's **time** function) by capturing the current “time” – which is essentially the number of seconds elapsed since an epoch defined in your operating system.  For Unix and Unix-like operating systems (e.g., the “flavor” of Linux used on the Raspberry Pi), the epoch is 1970-01-01 00:00:00. The function **stop_time** captures the current time again (this time, after the algorithm has finished), and calculates and returns the difference between the two. We can make use of this module as follows: 
+
+```Python
+# my_goodies_test.py
+
+from my_goodies import start_time, stop_time   
+
 # start a timer   
 start_time()   
+
 # do something that takes a little time   
-for  i  in   range ( 100000000 ):   
-     pass   
+for i in range(100000000):   
+    pass   
+
 # stop the timer   
-18   
+duration = stop_time()  
 
-
-duration  =  stop_time()   
 # display how long it took   
-print ( "Algorithm took {} seconds." . format(duration))   
-Note that the “algorithm” in the test code above really does nothing.  It's just there to take up some    
-noticeable amount of time so that the module can be tested.  Here's a sample run:   
-jgourd@pi:~$  python MyGoodiesTest.py    
+print("Algorithm took {} seconds.".format(duration))   
+```
+Note that the “algorithm” in the test code above really does nothing.  It's just there to take up some noticeable amount of time so that the module can be tested.  Here's a sample run:   
+
+```
+~$ python my_goodies_test.py    
 Algorithm took 5.71634602547 seconds.   
-19   
+```

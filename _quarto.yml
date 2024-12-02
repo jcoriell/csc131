@@ -31,30 +31,32 @@ website:
                 href: "lessons/01 More Python/06 Operators.qmd"
               - text: String Methods
                 href: "lessons/01 More Python/07 String Methods.qmd"
+              - text: External Libraries
+                href: "lessons/01 More Python/08 External Libraries.qmd"
 
-          # - section: "02 Object Oriented Programming"
-          #   href: "lessons/02 Object Oriented Programming/index.qmd"
-          #   contents: 
-          #     - text: Introduction
-          #       href: "lessons/02 Object Oriented Programming/01 Introduction.qmd"
-          #     - text: Basic Concepts
-          #       href: "lessons/02 Object Oriented Programming/02 Basic Concepts.qmd"
-          #     - text: Representing State and Behavior
-          #       href: "lessons/02 Object Oriented Programming/03 Representing State and Behavior.qmd"
-          #     - text: Instance and Class Variables
-          #       href: "lessons/02 Object Oriented Programming/04 Instance and Class Variables.qmd"
-          #     - text: Access and Mutators
-          #       href: "lessons/02 Object Oriented Programming/05 Accessors and Mutators.qmd"
-          #     - text: Operator Overloading
-          #       href: "lessons/02 Object Oriented Programming/06 Operator Overloading.qmd"
-          #     - text: Class Diagrams
-          #       href: "lessons/02 Object Oriented Programming/07 Class Diagrams.qmd"
-          #     - text: Inheritance
-          #       href: "lessons/02 Object Oriented Programming/08 Inheritance.qmd"
-          #     - text: The Object Class
-          #       href: "lessons/02 Object Oriented Programming/09 The Object Class.qmd"
-          #     - text: Quick Reference
-          #       href: "lessons/02 Object Oriented Programming/10 Quick Reference.qmd"
+          - section: "02 Object Oriented Programming"
+            href: "lessons/02 Object Oriented Programming/index.qmd"
+            contents: 
+              - text: Introduction
+                href: "lessons/02 Object Oriented Programming/01 Introduction.qmd"
+              - text: Basic Concepts
+                href: "lessons/02 Object Oriented Programming/02 Basic Concepts.qmd"
+              - text: Representing State and Behavior
+                href: "lessons/02 Object Oriented Programming/03 Representing State and Behavior.qmd"
+              - text: Instance and Class Variables
+                href: "lessons/02 Object Oriented Programming/04 Instance and Class Variables.qmd"
+              - text: Accessors and Mutators
+                href: "lessons/02 Object Oriented Programming/05 Accessors and Mutators.qmd"
+              - text: Operator Overloading
+                href: "lessons/02 Object Oriented Programming/06 Operator Overloading.qmd"
+              - text: Class Diagrams
+                href: "lessons/02 Object Oriented Programming/07 Class Diagrams.qmd"
+              - text: Inheritance
+                href: "lessons/02 Object Oriented Programming/08 Inheritance.qmd"
+              - text: The Object Class
+                href: "lessons/02 Object Oriented Programming/09 The Object Class.qmd"
+              - text: Quick Reference
+                href: "lessons/02 Object Oriented Programming/10 Quick Reference.qmd"
 
           # - section: "03 Number Systems and Binary Arithmetic"
           #   href: "lessons/03 Number Systems and Binary Arithmetic/index.qmd"

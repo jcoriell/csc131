@@ -4,128 +4,110 @@ title: "Operators"
 
 ## Other operators   
 
-Python provides several more classes of operators than you are already familiar with.  Recall that, so far,   
-you have been exposed to (and should be quite familiar with) arithmetic operators, relational    
-13  (comparison) operators, and assignment operators.  In this lesson, we will cover several other classes of    
-operators:  logical operators  and  membership operators .   
-Definition :  **The ** **logical operators ** **evaluate two operands and return the logical result (i.e., True or **   
-**False).**   
-Think back to the primitive logic gates ( **and** ,  **or** , and  **not** ).  It turns out that they can be effectively    
-mapped to conditions in if-statements.  Logical operators operate on conditions (that use relational    
-operators) and provide the overall logical result.  In the following table, assume that  **a ** = True and  **b ** =    
-False:   
-Python Logical Operators and Examples   
-and logical  **and**   
-a and b is False   
-or   
-logical  **or**   
-a or b is True   
-not logical  **not**   
-not a is False; not b is True   
-Note that this is equivalent to the primitive logic gates, where 0 is substituted for False and 1 for True.     
-Here is the truth table for the and gate shown in this manner:   
-A   
-B   
-A and B   
-False   
-False   
-False   
-False   
-True   
-False   
-True   
-False   
-False   
-True   
-True   
-True   
-The logical operators sometimes make more sense when they are used in the context of a condition (e.g.,   
-in an if statement).  Suppose that  **a ** = 5 and  **b ** = 10.  The following condition would evaluate to False:   
-if  (a  ==   5   and  b  <   10 ):   
-...   
-Why?  Clearly because, although  **a ** is equal to 5,  **b ** is not less than 10 (it's equal to 10).  Therefore, the    
-**and ** logical operator will return False if and only if both sides of the operator evaluate to True.  In this    
-case, the left side does while the right side does not.  However, the following condition would evaluate    
-to True:   
-if  (a  ==   5   or  b  <   10 ):   
-...   
-The  **or ** logical operator will return True if either (or both) sides of the operator evaluate to True.  Since  **a**   
-is equal to 5, then the left side is True.  In this case, the right side doesn't need to be evaluated (and, in    
-fact, it isn't – more on that below).   
-The logical operators do work when the inputs (i.e.,  **a ** and  **b ** in the previous examples) aren't necessarily    
-equal to True and False.  That is, they also work when they are numeric values.  Take, for example, the    
-following statements:   
-1:   
-a  =   23   
-2:   
-b  =   13   
-14   
+Python provides several more classes of operators than you are already familiar with.  Recall that, so far, you have been exposed to (and should be quite familiar with) arithmetic operators, relational (comparison) operators, and assignment operators. In this lesson, we will cover several other classes of operators:  logical operators  and  membership operators.  
 
+:::{.callout-note}
+## Definition 
+Definition: The **logical operators** evaluate two operands and return the logical result (i.e., True or False).
+:::
 
-3:   
-print( a  and  b)   
-4:   
-print( a  or  b)   
-5:   
-print ( not  a)   
-6:   
-print ( not  b)   
-7:   
-a  =   0   
-8:   
-print ( not  a)   
+Think back to the primitive logic gates ( **and** ,  **or** , and  **not** ).  It turns out that they can be effectively mapped to conditions in if-statements.  Logical operators operate on conditions (that use relational operators) and provide the overall logical result. In the following table, assume that  `a = True` and  `b = False`:   
+
+## Python Logical Operators 
+
+In the following code block, assume that  `a = True` and  `b = False`:
+
+```Python
+and # logical and; a and b is False 
+
+or  # logical or; a or b is True   
+
+not # logical not; not a is False; not b is True  
+```
+
+Note that this is equivalent to the primitive logic gates, where 0 is substituted for `False` and 1 for `True`.     
+Here is the truth table for the and gate shown in this manner: 
+
+| A     | B     | A AND B | A OR B |
+|-------|-------|---------|--------|
+| False | False | False   | False  |
+| False | True  | False   | True   |
+| True  | False | False   | True   |
+| True  | True  | True    | True   |
+
+  
+The logical operators sometimes make more sense when they are used in the context of a condition (e.g., in an if statement).  Suppose that `a = 5` and  `b = 10`.  The following condition would evaluate to False:  
+
+```Python
+if (a == 5 and b < 10):   
+    ...   
+```
+
+Why?  Clearly because, although  **a** is equal to 5,  **b** is not less than 10 (it's equal to 10). Therefore, the **and** logical operator will return False if and only if both sides of the operator evaluate to True.  In this case, the left side does while the right side does not. However, the following condition would evaluate to True:   
+
+```Python
+if (a == 5 or b < 10 ):   
+    ...
+```
+
+The  **or** logical operator will return True if either (or both) sides of the operator evaluate to True.  Since  **a** is equal to 5, then the left side is True.  In this case, the right side doesn't need to be evaluated (and, in fact, it isn't – more on that below). The logical operators do work when the inputs (i.e.,  **a** and  **b** in the previous examples) aren't necessarily    
+equal to True and False. That is, they also work when they are numeric values. Take, for example, the following statements:  
+
+```Python
+1: a = 23   
+2: b = 13  
+3: print(a and b)   
+4: print(a or b)   
+5: print(not a)   
+6: print(not b)   
+7: a = 0   
+8: print(not a)   
+```
+
 Here's the output (with lines numbers matching those of the print statements above):   
-3:   
-13   
-4:   
-23   
-5:   
-False   
-6:   
-False   
-8:   
-True   
-The output of lines 3 and 4 can be a bit confusing.  Why, for example, is  **a ** and  **b ** 13?  Or why is  **a ** or  **b **   
+
+```
+3: 13   
+4: 23   
+5: False   
+6: False   
+8: True   
+```
+
+The output of lines 3 and 4 can be a bit confusing.  Why, for example, is  **a** and  **b** 13?  Or why is  **a** or  **b**   
 23?  This can be explained by the following table, where the variables  **a**  and  **b**  have numeric values (as    
 in the examples above):   
-Python Logical Operators and Examples   
-and logical  **and**   
-returns a if a is False, b otherwise   
-or   
-logical  **or**   
-returns b if a is False, a otherwise   
-not logical  **not**   
-returns False if a is True, True otherwise   
-The output of lines 5, 6, and 8 makes sense when we realize that, in Python, 0 is False and any non-zero    
-value is True!  When  **a ** is 23 and  **b ** is 13,  **a ** evaluates to True (since it is non-zero); therefore,  not  **a **   
-evaluates to False.  This is the same with  **b** .  However, when  **a ** is 0, then it evaluates to False; therefore,    
-not  **a ** evaluates to True.  Formally, in the context of Boolean expressions, the following values are    
-interpreted as false: False, None, numeric zero of all types, and empty strings and containers.  All other    
-values are interpreted as true.   
-Did you know?    
-The  **and**  and  **or**  logical operators are  short circuit  operators.  That is, to evaluate a True or False result,    
-the minimum number of inputs required to produce such an output is evaluated.  For example, suppose    
-that  **a ** = False and  **b ** = True.  The expression  **a ** and  **b ** is only True if both  **a ** and  **b ** are True.  Since  **a ** is    
-False, then there is no need to evaluate (or test) the value of  **b** .  This would be useless and waste CPU    
-cycles.  Similarly, if  **a ** = True and  **b ** = True, the evaluation of the expression  **a ** or  **b ** only requires    
-checking that  **a ** is True for the entire expression to evaluate to True (i.e., there is no need to    
-evaluate/test the value of  **b** ).   
-Definition:  **Membership operators ** **test for some value's membership in a sequence (e.g., to test if an **   
-**element exists in a list, or if a character exists in a string).**   
-In the following table, suppose that the Python list  **numbers ** = [ 1, 3, 5, 7, 9 ],  **x ** = 2, and  **y ** = 3.   
-Python Membership Operators and Examples   
-15   
+
+| Operator | Meaning | Description |
+|----------------|------------------|-----------------------------------|
+|and | logical  **and** | returns a if a is False, b otherwise          |
+|or  | logical  **or**  | returns b if a is False, a otherwise          | 
+|not | logical  **not** | returns False if a is True, True otherwise    |
+
+The output of lines 5, 6, and 8 makes sense when we realize that, in Python, 0 is False and any non-zero value is True!  When  **a** is 23 and  **b** is 13,  **a** evaluates to True (since it is non-zero); therefore, `not a` evaluates to False.  This is the same with  **b** .  However, when  **a** is 0, then it evaluates to False; therefore, `not a` evaluates to True.  Formally, in the context of Boolean expressions, the following values are interpreted as false: False, None, numeric zero of all types, and empty strings and containers.  All other values are interpreted as true.  
 
 
-in   
-Returns True if a specified value is in a    
-specified sequence or False otherwise   
-x in numbers is False; y   
-in numbers is True   
-not in Returns True if a specified value is not in a    
-specified sequence or False otherwise   
-x not in numbers is    
-True; y not in numbers    
-is False   
-You have seen this in previous for loop examples (e.g.,  for   **i**   in   **list** ).  This for loop    
-configuration has the variable  **i ** take on each of the values in  **list** , one at a time.  
+:::{.callout-note}
+## Did you know?    
+The  **and**  and  **or**  logical operators are **short circuit** operators.  That is, to evaluate a True or False result,the minimum number of inputs required to produce such an output is evaluated.  For example, suppose that  `a = False` and  `b = True`.  The expression  `a and b` is only True if both  `a` and  `b` are True.  Since  `a` is False, then there is no need to evaluate (or test) the value of  `b`. This would be useless and waste CPU cycles.  
+
+Similarly, if  `a = True` and  `b = True`, the evaluation of the expression  `a or b` only requires checking that  `a` is True for the entire expression to evaluate to True (i.e., there is no need to evaluate/test the value of  **b** ).  
+:::
+
+## Membership Operators
+
+:::{.callout-note}
+## Definition
+**Membership operators** test for some value's membership in a sequence (e.g., to test if an element exists in a list, or if a character exists in a string).
+:::
+
+In the following table, suppose that the Python list `numbers** = [ 1, 3, 5, 7, 9 ]`,  `x = 2`, and  `y = 3`.   
+
+Python Membership Operators and Examples
+
+| Operator | Description | Example |
+|-------|----------|----------------|
+in | Returns True if a specified value is in a specified sequence or False otherwise | x in numbers is False; y in numbers is True |  
+not in | Returns True if a specified value is not in a specified sequence or False otherwise | x not in numbers is True; y not in numbers is False  | 
+
+You have seen this in previous for loop examples (e.g., `for i in a_list` ).  This for loop configuration has the variable `i` take on each of the values in  `a_list`, one at a time.  

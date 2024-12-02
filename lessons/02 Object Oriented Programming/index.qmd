@@ -4,21 +4,28 @@ title: "01 More Python"
 
 ## Overview  
 
-In this lesson, we will cover a variety of topics concerning Object Oriented Programming and implement object oriented programs in Python.  
+In this lesson, we will cover a variety of topics concerning Object Oriented Programming and implement object oriented programs in Python. 
 
 
 ## Contents
 
-- [Review](./01 Review.qmd)
+- [Introduction](./01 Introduction.qmd)
 
-- [Formal vs Actual Parameters](./02 Formal vs Actual Parameters.qmd)
+- [Basic Concepts](./02 Basic Concepts.qmd)
 
-- [Variable Scope](./03 Variable Scope.qmd)
+- [Representing State and Behavior](./03 Representing State and Behavior.qmd)
 
-- [Python Lists](./04 Python Lists.qmd)
+- [Instance and Class Variables](./04 Instance and Class Variables.qmd)
 
-- [Searching and Sorting](./05 Searching and Sorting.qmd)
+- [Accessors and Mutators](./05 Accessors and Mutators.qmd)
 
-- [Operators](./06 Operators.qmd)
+- [Operator Overloading](./06 Operator Overloading.qmd)
 
-- [String Methods](./07 String Methods.qmd)
+- [Class Diagrams](./07 Class Diagrams.qmd)
+
+- [Inheritance](./08 Inheritance.qmd)
+
+- [The Object Class](./09 The Object Class.qmd)
+
+- [Quick Reference](./10 Quick Reference.qmd)
+
