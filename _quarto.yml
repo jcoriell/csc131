@@ -77,10 +77,10 @@ website:
           #       href: "lessons/03 Number Systems and Binary Arithmetic/07 Bitwise Operators.qmd"
 
 
-      # - section: "Programs"
-      #   contents:
-      #     - text: Program 1
-      #       href: "programs/01/instructions.qmd"
+      - section: "Programs"
+        contents:
+          - text: Program 1
+            href: "programs/01/instructions.qmd"
       #     - text: Program 2
       #       href: "programs/02/instructions.qmd"
       #     - text: Program 3

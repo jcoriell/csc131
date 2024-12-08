@@ -3,107 +3,82 @@ title: "Program: Squad Names"
 ---
 
 ## Overview 
-Your task in this assignment is to write a program that calculates the frequency of names (or substrings) in a provided squad list file. You are provided with a text file that contains the names of all the squad players in the 2022 Fifa World Cup tournament. Each name is on a different line in this file. 
-
-Your code will load in a file and then print out some statistics that include how many names contain that substring. 
-
-Note that the values highlighted in red may be different depending on which values are chosen for the tests. The values will be chosen somewhat randomly.
-
-## Sample Outputs
-
-### Sample 1
+Your task in this assignment is to write a program that calculates the frequency of names (or substrings) in a provided squad list file. You are provided with a text file that contains the names of all the squad players in the 2022 Fifa World Cup tournament for you to be able to test your code. Each name is on a different line in this file. Your code should prompt the user for a name (or substring), and then print out some statistics that include how many names contain that substring. Below is a sample run with user input in red.
 
 <pre class="styled-pre">
-Loading the file named <span style="color: red;">input.txt</span>
-
-Searching for the substring <span style="color: red;">ad</span>.
-
+What file do you want to open? <span style="color: red;">input.txt</span>
+the file has 892 names in it
+What name (or substring) are you interested in searching for? <span style="color: red;">ad</span>.
 --------------------------------------------------
-<span style="color: red;">2</span> names start with this string
-<span style="color: red;">3</span> names end with this string
-<span style="color: red;">39</span> names contain this string
+2 names start with this string
+3 names end with this string
+39 names contain this string
 --------------------------------------------------
 </pre>
 
-### Sample 2
+It is worth mentioning that your code should recognize when the file name provided does not exist and provide the user with an opportunity to type in the correct file name. Below is a sample run with that functionality demonstrated.
 
-<pre style="background-color: #eeeeee; padding: 1em">
-
-Loading the file named <span style="color: red;">input.txt</span> 
-
-Searching for the substring <span style="color: red;">sh</span>.
-
+<pre class="styled-pre">
+What file do you want to open? <span style="color: red;">intput.txt</span>
+The file name you specified does not exist.
+Enter file name again: <span style="color: red;">tinput.text</span>
+The file name you specified does not exist.
+Enter file name again: <span style="color: red;">someotherfile.text</span>
+The file name you specified does not exist.
+Enter file name again: <span style="color: red;">input.text</span>
+the file has 892 names in it
+What name (or substring) are you interested in searching for? <span style="color: red;">pulisic</span>.
 --------------------------------------------------
-<span style="color: red;">2</span> names start with this string
-<span style="color: red;">3</span> names end with this string
-<span style="color: red;">39</span> names contain this string
+0 names start with this string
+1 names end with this string
+1 names contain this string
 --------------------------------------------------
-
 </pre>
-
-### Sample 3
-
-<pre style="background-color: #eeeeee; padding: 1em">
-Loading the file named <span style="color: red;">this_file_does_not_exist.txt</span> 
-
-Sorry, the file did not exist. No substring searches were performed.
-</pre>
-
 
 ## Expected Functions
 
 In order to accomplish this, you will write functions that will read the file and then search for that string. The functions you should write are as follows:
 
-### Load File
+### Read File
 
 The purpose of this function is to load a file and returning each line of that file as a separate value in a list. 
 
-This function should be named `load_file`.
+This function should be named `readFile`.
 
 It should have 1 parameter that represents the name of the file as a string.
 
 It should return a list where each value in the list is a line from the file that was loaded. 
 
-### Starts With
+### Begins With
 
-The purpose of this function is to determine how many of the names **start** with the provided substring.
-
-This function should be named `starts_with`.
-
-It should have 2 parameters: the first should represent the substring that will be searched for, the second should represent a list that it will search through.
-
-It should return an integer that represents the number of names that **start** with the provided substring.
+This function receives two string arguments and returns a boolean that represents whether the first string begins with the second string.
+This function should be named `beginswith`.
 
 
 ### Ends With
 
-The purpose of this function is to determine how many of the names **end** with the provided substring.
+The `endswith` function receives two string arguments and returns a boolean that represents whether the first string ends with the second string.
 
-This function should be named `ends_with`.
-
-It should have 2 parameters: the first should represent the substring that will be searched for, the second should represent a list that it will search through.
-
-It should return an integer that represents the number of names that **end** with the provided substring.
+Be sure the function is named `endswith`.
 
 ### Contains
 
-The purpose of this function is to determine how many of the names **contain** the provided substring.
+The `contains` receives two string arguments and returns a boolean that represents whether the first string contains the second string.
 
-This function should be named `contains`.
+Be sure the function is named `contains`.
 
-It should have 2 parameters: the first should represent the substring that will be searched for, the second should represent a list that it will search through.
+### Get Stats
 
-It should return an integer that represents the number of names that **contain** the provided substring.
+The `getStats` function receives two arguments: a list of names, and a substring (in that order). It then creates a short 3 element list that contains the number of times that the substring appears in the list. The first element is the number of names in which the substring appears at the beginning. The second element in the number of names in which the substring appears at the end. The third element in the number of names that contain the substring. The function should return the 3 element list with the correct stats.
+
+Be sure the function is named `getStats`
 
 ### Main
 
-This function will be responsible for calling on each of the functions above so that the program produces the desired output. Note that this function will need to check if the file is loaded correctly. If the file does exist, then this function should produce the output that is shown in samples 1 and 2. If the file does not load properly, then it should produce the output shown in sample 3. Note that the red values in the outputs may be different depending on which values are chosen during testing. 
+This function will be responsible for calling on each of the functions above so that the program produces the desired output. It should first prompt the user for a file name, then read the file, and then produce the appropriate output as shown int he samples above.
 
-This function should be called `main`.
+This function should be called `main` and will have no parameters.
 
-It should have no parameters.
-
-It should not have any return values (it only outputs to the terminal using print).
 
 ## Helper Files
 

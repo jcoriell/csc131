@@ -116,9 +116,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">
-      CSC 131
-      </li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../programs/01/instructions.html">Programs</a></li><li class="breadcrumb-item"><a href="../../programs/01/instructions.html">Program 1</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -293,6 +291,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
       </ul>
   </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+ <span class="menu-text">Programs</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../programs/01/instructions.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Program 1</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
     </ul>
     </div>
 </nav>
@@ -304,18 +319,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a></li>
-  <li><a href="#sample-outputs" id="toc-sample-outputs" class="nav-link" data-scroll-target="#sample-outputs">Sample Outputs</a>
-  <ul class="collapse">
-  <li><a href="#sample-1" id="toc-sample-1" class="nav-link" data-scroll-target="#sample-1">Sample 1</a></li>
-  <li><a href="#sample-2" id="toc-sample-2" class="nav-link" data-scroll-target="#sample-2">Sample 2</a></li>
-  <li><a href="#sample-3" id="toc-sample-3" class="nav-link" data-scroll-target="#sample-3">Sample 3</a></li>
-  </ul></li>
   <li><a href="#expected-functions" id="toc-expected-functions" class="nav-link" data-scroll-target="#expected-functions">Expected Functions</a>
   <ul class="collapse">
-  <li><a href="#load-file" id="toc-load-file" class="nav-link" data-scroll-target="#load-file">Load File</a></li>
-  <li><a href="#starts-with" id="toc-starts-with" class="nav-link" data-scroll-target="#starts-with">Starts With</a></li>
+  <li><a href="#read-file" id="toc-read-file" class="nav-link" data-scroll-target="#read-file">Read File</a></li>
+  <li><a href="#begins-with" id="toc-begins-with" class="nav-link" data-scroll-target="#begins-with">Begins With</a></li>
   <li><a href="#ends-with" id="toc-ends-with" class="nav-link" data-scroll-target="#ends-with">Ends With</a></li>
   <li><a href="#contains" id="toc-contains" class="nav-link" data-scroll-target="#contains">Contains</a></li>
+  <li><a href="#get-stats" id="toc-get-stats" class="nav-link" data-scroll-target="#get-stats">Get Stats</a></li>
   <li><a href="#main" id="toc-main" class="nav-link" data-scroll-target="#main">Main</a></li>
   </ul></li>
   <li><a href="#helper-files" id="toc-helper-files" class="nav-link" data-scroll-target="#helper-files">Helper Files</a></li>
@@ -326,7 +336,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../programs/01/instructions.html">Programs</a></li><li class="breadcrumb-item"><a href="../../programs/01/instructions.html">Program 1</a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title">Program: Squad Names</h1>
 </div>
@@ -347,85 +357,66 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="overview" class="level2">
 <h2 class="anchored" data-anchor-id="overview">Overview</h2>
-<p>Your task in this assignment is to write a program that calculates the frequency of names (or substrings) in a provided squad list file. You are provided with a text file that contains the names of all the squad players in the 2022 Fifa World Cup tournament. Each name is on a different line in this file.</p>
-<p>Your code will load in a file and then print out some statistics that include how many names contain that substring.</p>
-<p>Note that the values highlighted in red may be different depending on which values are chosen for the tests. The values will be chosen somewhat randomly.</p>
-</section>
-<section id="sample-outputs" class="level2">
-<h2 class="anchored" data-anchor-id="sample-outputs">Sample Outputs</h2>
-<section id="sample-1" class="level3">
-<h3 class="anchored" data-anchor-id="sample-1">Sample 1</h3>
-<pre class="styled-pre">Loading the file named <span style="color: red;">input.txt</span>
-
-Searching for the substring <span style="color: red;">ad</span>.
-
+<p>Your task in this assignment is to write a program that calculates the frequency of names (or substrings) in a provided squad list file. You are provided with a text file that contains the names of all the squad players in the 2022 Fifa World Cup tournament for you to be able to test your code. Each name is on a different line in this file. Your code should prompt the user for a name (or substring), and then print out some statistics that include how many names contain that substring. Below is a sample run with user input in red.</p>
+<pre class="styled-pre">What file do you want to open? <span style="color: red;">input.txt</span>
+the file has 892 names in it
+What name (or substring) are you interested in searching for? <span style="color: red;">ad</span>.
 --------------------------------------------------
-<span style="color: red;">2</span> names start with this string
-<span style="color: red;">3</span> names end with this string
-<span style="color: red;">39</span> names contain this string
+2 names start with this string
+3 names end with this string
+39 names contain this string
 --------------------------------------------------
 </pre>
-</section>
-<section id="sample-2" class="level3">
-<h3 class="anchored" data-anchor-id="sample-2">Sample 2</h3>
-<pre style="background-color: #eeeeee; padding: 1em">
-Loading the file named <span style="color: red;">input.txt</span> 
-
-Searching for the substring <span style="color: red;">sh</span>.
-
+<p>It is worth mentioning that your code should recognize when the file name provided does not exist and provide the user with an opportunity to type in the correct file name. Below is a sample run with that functionality demonstrated.</p>
+<pre class="styled-pre">What file do you want to open? <span style="color: red;">intput.txt</span>
+The file name you specified does not exist.
+Enter file name again: <span style="color: red;">tinput.text</span>
+The file name you specified does not exist.
+Enter file name again: <span style="color: red;">someotherfile.text</span>
+The file name you specified does not exist.
+Enter file name again: <span style="color: red;">input.text</span>
+the file has 892 names in it
+What name (or substring) are you interested in searching for? <span style="color: red;">pulisic</span>.
 --------------------------------------------------
-<span style="color: red;">2</span> names start with this string
-<span style="color: red;">3</span> names end with this string
-<span style="color: red;">39</span> names contain this string
+0 names start with this string
+1 names end with this string
+1 names contain this string
 --------------------------------------------------
-
 </pre>
-</section>
-<section id="sample-3" class="level3">
-<h3 class="anchored" data-anchor-id="sample-3">Sample 3</h3>
-<pre style="background-color: #eeeeee; padding: 1em">Loading the file named <span style="color: red;">this_file_does_not_exist.txt</span> 
-
-Sorry, the file did not exist. No substring searches were performed.
-</pre>
-</section>
 </section>
 <section id="expected-functions" class="level2">
 <h2 class="anchored" data-anchor-id="expected-functions">Expected Functions</h2>
 <p>In order to accomplish this, you will write functions that will read the file and then search for that string. The functions you should write are as follows:</p>
-<section id="load-file" class="level3">
-<h3 class="anchored" data-anchor-id="load-file">Load File</h3>
+<section id="read-file" class="level3">
+<h3 class="anchored" data-anchor-id="read-file">Read File</h3>
 <p>The purpose of this function is to load a file and returning each line of that file as a separate value in a list.</p>
-<p>This function should be named <code>load_file</code>.</p>
+<p>This function should be named <code>readFile</code>.</p>
 <p>It should have 1 parameter that represents the name of the file as a string.</p>
 <p>It should return a list where each value in the list is a line from the file that was loaded.</p>
 </section>
-<section id="starts-with" class="level3">
-<h3 class="anchored" data-anchor-id="starts-with">Starts With</h3>
-<p>The purpose of this function is to determine how many of the names <strong>start</strong> with the provided substring.</p>
-<p>This function should be named <code>starts_with</code>.</p>
-<p>It should have 2 parameters: the first should represent the substring that will be searched for, the second should represent a list that it will search through.</p>
-<p>It should return an integer that represents the number of names that <strong>start</strong> with the provided substring.</p>
+<section id="begins-with" class="level3">
+<h3 class="anchored" data-anchor-id="begins-with">Begins With</h3>
+<p>This function receives two string arguments and returns a boolean that represents whether the first string begins with the second string. This function should be named <code>beginswith</code>.</p>
 </section>
 <section id="ends-with" class="level3">
 <h3 class="anchored" data-anchor-id="ends-with">Ends With</h3>
-<p>The purpose of this function is to determine how many of the names <strong>end</strong> with the provided substring.</p>
-<p>This function should be named <code>ends_with</code>.</p>
-<p>It should have 2 parameters: the first should represent the substring that will be searched for, the second should represent a list that it will search through.</p>
-<p>It should return an integer that represents the number of names that <strong>end</strong> with the provided substring.</p>
+<p>The <code>endswith</code> function receives two string arguments and returns a boolean that represents whether the first string ends with the second string.</p>
+<p>Be sure the function is named <code>endswith</code>.</p>
 </section>
 <section id="contains" class="level3">
 <h3 class="anchored" data-anchor-id="contains">Contains</h3>
-<p>The purpose of this function is to determine how many of the names <strong>contain</strong> the provided substring.</p>
-<p>This function should be named <code>contains</code>.</p>
-<p>It should have 2 parameters: the first should represent the substring that will be searched for, the second should represent a list that it will search through.</p>
-<p>It should return an integer that represents the number of names that <strong>contain</strong> the provided substring.</p>
+<p>The <code>contains</code> receives two string arguments and returns a boolean that represents whether the first string contains the second string.</p>
+<p>Be sure the function is named <code>contains</code>.</p>
+</section>
+<section id="get-stats" class="level3">
+<h3 class="anchored" data-anchor-id="get-stats">Get Stats</h3>
+<p>The <code>getStats</code> function receives two arguments: a list of names, and a substring (in that order). It then creates a short 3 element list that contains the number of times that the substring appears in the list. The first element is the number of names in which the substring appears at the beginning. The second element in the number of names in which the substring appears at the end. The third element in the number of names that contain the substring. The function should return the 3 element list with the correct stats.</p>
+<p>Be sure the function is named <code>getStats</code></p>
 </section>
 <section id="main" class="level3">
 <h3 class="anchored" data-anchor-id="main">Main</h3>
-<p>This function will be responsible for calling on each of the functions above so that the program produces the desired output. Note that this function will need to check if the file is loaded correctly. If the file does exist, then this function should produce the output that is shown in samples 1 and 2. If the file does not load properly, then it should produce the output shown in sample 3. Note that the red values in the outputs may be different depending on which values are chosen during testing.</p>
-<p>This function should be called <code>main</code>.</p>
-<p>It should have no parameters.</p>
-<p>It should not have any return values (it only outputs to the terminal using print).</p>
+<p>This function will be responsible for calling on each of the functions above so that the program produces the desired output. It should first prompt the user for a file name, then read the file, and then produce the appropriate output as shown int he samples above.</p>
+<p>This function should be called <code>main</code> and will have no parameters.</p>
 </section>
 </section>
 <section id="helper-files" class="level2">
