@@ -41,7 +41,7 @@ In order to accomplish this, you will write functions that will read the file an
 
 ### Read File
 
-The purpose of this function is to load a file and returning each line of that file as a separate value in a list. 
+The purpose of this function is to load a file and return each line of that file as a separate value in a list. Note that when reading lines, you might end up with newline characters or blank characters at the end of each line. You will need to remove those characters for the tests to run properly.
 
 This function should be named `readFile`.
 
