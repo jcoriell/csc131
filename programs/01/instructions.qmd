@@ -69,7 +69,7 @@ Be sure the function is named `contains`.
 
 ### Get Stats
 
-The `getStats` function receives two arguments: a list of names, and a substring (in that order). It then creates a short 3 element list that contains the number of times that the substring appears in the list. The first element is the number of names in which the substring appears at the beginning. The second element in the number of names in which the substring appears at the end. The third element in the number of names that contain the substring. The function should return the 3 element list with the correct stats.
+The `getStats` function receives two arguments: a list of names, and a substring (in that order). It then creates a short 3 element list that contains the number of times that the substring appears in the list. The first element is the number of names in which the substring appears at the beginning. The second element in the number of names in which the substring appears at the end. The third element in the number of names that contain the substring. The function should return the 3 element list with the correct stats. In all three cases, case should be ignored in order to calculate the stats.
 
 Be sure the function is named `getStats`
 
