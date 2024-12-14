@@ -11,53 +11,72 @@ Your task in this assignment is to write a program that calculates the frequency
 Below is a successful sample run where generated inputs when tested are highlighted in red
 
 <pre class="styled-pre">
-The file being searched is <span style="color: red;">popn.txt</span>.
-
+What is the name of the file with the population information? <span style="color: red;">popn.txt</span>.
 This file has 42175 cities in it.
-
-The minimum population chosen is <span style="color: red;">0</span>.
-
-The maximum population chosen is <span style="color: red;">1000000</span>.
-
-The interval is <span style="color: red;">100000</span>.
-
+What population do you want as the minimum? <span style="color: red;">0</span>
+What population do you want as the maximum? <span style="color: red;">100000</span>
+How many rows do you want in the table? <span style="color: red;">10000</span>
 ----------------------------------------
-Population          Frequency           
+Population              Frequencies
 ----------------------------------------
-0-100000            37230
-100000-200000       2195
-200000-300000       785
-300000-400000       415
-400000-500000       259
-500000-600000       203
-600000-700000       152
-700000-800000       94
-800000-900000       74
-900000-1000000      68
+0 - 9999                13905
+10000 - 19999           10348
+20000 - 29999           4780
+30000 - 39999           2698
+40000 - 49999           1715
+50000 - 59999           1213
+60000 - 69999           891
+70000 - 79999           734
+80000 - 89999           535
+90000 - 99999           411
 ----------------------------------------
+
 </pre>
 
 ### Sample 2
 
-Similar to a previous assignment, your code should recognize when the file name provided does not exist and output the message provided. Below is a sample run with that functionality demonstrated.
+Similar to a previous assignment, your code should recognize when the file name provided does not exist and reprompt the user until the an existing filename is given. Below is a sample run with that functionality demonstrated.
 
 <pre class="styled-pre">
-The file being searched is <span style="color: red;">this_one_does_not_exist.txt</span>.
-
-The file name specified does not exist.
+What is the name of the file with the population information? <span style="color: red;">input</span>
+The file name you specified does not exist.
+Enter file name again: <span style="color: red;">output</span>
+The file name you specified does not exist.
+Enter file name again: <span style="color: red;">Test</span>
+The file name you specified does not exist.
+Enter file name again: <span style="color: red;">popn.txt</span>
+This file has 42175 cities in it.
+What population do you want as the minimum? <span style="color: red;">0</span>
+What population do you want as the maximum? <span style="color: red;">100000</span>
+How many rows do you want in the table? <span style="color: red;">10000</span>
+----------------------------------------
+Population              Frequencies
+----------------------------------------
+0 - 9999                13905
+10000 - 19999           10348
+20000 - 29999           4780
+30000 - 39999           2698
+40000 - 49999           1715
+50000 - 59999           1213
+60000 - 69999           891
+70000 - 79999           734
+80000 - 89999           535
+90000 - 99999           411
+----------------------------------------
 </pre>
+
+It may be helpful to know that there are 40 dashes running across the table and the columns were separated by two tab characters.
 
 
 ## Required Functions
 
 ### Load File
 
-A function named `load_file` that reads the contents of a file. This function receives a single argument that
-represents a filename. It then returns a list containing all the numbers in the given filename. The returned list should contain only integers.
+A function named `load_file` that reads the contents of a file. The function takes a single argument, the filename, and returns a list of all the numbers found in the file. It ensures that the provided filename exists and, if not, prompts the user to enter the correct filename. This is an excellent opportunity to use a try-except construct, which you may have encountered in previous lessons or assignments.
 
 ### Population Ranges
 
-A function named `create_ranges` that is in charge of generating the strings found in the `Population` column. This function should take in three arguments: a minimum value, a maximum value, and interval value (in that order) and then create a list that contains the appropriate ranges of populations. 
+A function named `create_ranges` that is in charge of generating the strings found in the `Population` column. This function should take in three arguments: a minimum value, a maximum value, and the number of rows in the table (in that order) and then creates a list that contains the appropriate ranges of populations. 
 
 As an example, if this function receives `0, 100, 5` as arguments, then the list it generates would be:
 
@@ -65,10 +84,10 @@ As an example, if this function receives `0, 100, 5` as arguments, then the list
 ["0 - 19", "20 - 39", "40 - 59", "60 - 79", "80 - 99"]
 ```
 
-Notice that the first interval starts at 0, the last interval does not include the value 100, and there are 5 intervals.
+Notice how the arguments passed to the function affected the output. The first interval starts at 0, the last interval does not include the value 100, and there are 5 intervals generated (i.e. number of rows).
 
 ### Count Cities
-A function named `count_cities` that is in charge of counting the number of cities in each given population range, it receives the ranges and the list containing all population values generated from the `load_file` function.
+A function named `count_cities` that is in charge of counting the number of cities in each given population range, it receives the list containing the ranges produced from the previous function, and the list containing all population values generated from the `load_file` function.
 
 This function should return a list that contains the number of times a population appears for each corresponding range. 
 
@@ -91,9 +110,8 @@ It then returns this list to the calling statement.
 The `generate_table` function will generate the table and return it as a string to the calling statement. This function will take in two arguments, the first represents the population ranges and the second represents the frequencies. Note that this function is not responsible for printing anything, it simply returns a string to the calling statement that represents the entire table.
 
 ### Main
-This program will have a function called `main` that is in charge of calling on the functions mentioned above and creating the outputs as shown in the sample runs. Be sure to account for the possibility of the filename not actually existing when writing this function. If the file name does not exist, output the statement `The file name specified does not exist.` This is a perfect opportunity to use a try except construct which you might have seen in previous lessons and assignments. Note that if the file does not exist, the program should stop running.
+This program will have a function called `main` that is in charge of calling on the functions mentioned above and creating the outputs as shown in the sample runs.
 
-If the filename did exist, then the output should be similar to the first sample run example.
 
 
 ## Additional Files
@@ -109,9 +127,12 @@ To help clarify, here are some specifics and/or constraints:
 
 (1) You are provided with an input file called `popn.txt` that contains the populations of over
 42,000 cities that you will be parsing. Note that your code should be able to parse any filename
-that the user provides and not just files named `popn.txt`.
+that the user provides and not just files named `popn.txt`. Use this file to test your code locally.
 
-(3) You might consider including the following conditional in your code when running it locally so that when you upload it to the autograder the autograder ignores the main portion of your code (not the function called main).
+(2) Your code will require the functions listed above. Feel free to add any extra functions
+you think are necessary.
+
+(3) You might consider including the following conditional in your code when running it locally so that when you upload it to the autograder the autograder ignores the `main` portion of your code (note that the `main` portion of your code is not the function called main).
 
     ```Python
     if __name__ == "__main__":
@@ -132,17 +153,6 @@ structure your code); and
 (7) You must submit your source code as a single `.py` file. 
 
 
-## Table Formatting 
-
-Here is some additional information concerning the formatting of the table, since yours should match exactly.
-
-- The table is 40 characters in width.
-
-- There are 40 hyphens running across the table.
-
-- Each column uses 20 characters.
-
-- The contents within each column are left aligned.
 
 
 

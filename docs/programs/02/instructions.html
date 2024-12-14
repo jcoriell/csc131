@@ -336,7 +336,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </ul></li>
   <li><a href="#additional-files" id="toc-additional-files" class="nav-link" data-scroll-target="#additional-files">Additional Files</a></li>
   <li><a href="#additional-information" id="toc-additional-information" class="nav-link" data-scroll-target="#additional-information">Additional Information</a></li>
-  <li><a href="#table-formatting" id="toc-table-formatting" class="nav-link" data-scroll-target="#table-formatting">Table Formatting</a></li>
   </ul>
 </nav>
     </div>
@@ -371,57 +370,76 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="sample-1" class="level3">
 <h3 class="anchored" data-anchor-id="sample-1">Sample 1</h3>
 <p>Below is a successful sample run where generated inputs when tested are highlighted in red</p>
-<pre class="styled-pre">The file being searched is <span style="color: red;">popn.txt</span>.
-
+<pre class="styled-pre">What is the name of the file with the population information? <span style="color: red;">popn.txt</span>.
 This file has 42175 cities in it.
-
-The minimum population chosen is <span style="color: red;">0</span>.
-
-The maximum population chosen is <span style="color: red;">1000000</span>.
-
-The interval is <span style="color: red;">100000</span>.
-
+What population do you want as the minimum? <span style="color: red;">0</span>
+What population do you want as the maximum? <span style="color: red;">100000</span>
+How many rows do you want in the table? <span style="color: red;">10000</span>
 ----------------------------------------
-Population          Frequency           
+Population              Frequencies
 ----------------------------------------
-0-100000            37230
-100000-200000       2195
-200000-300000       785
-300000-400000       415
-400000-500000       259
-500000-600000       203
-600000-700000       152
-700000-800000       94
-800000-900000       74
-900000-1000000      68
+0 - 9999                13905
+10000 - 19999           10348
+20000 - 29999           4780
+30000 - 39999           2698
+40000 - 49999           1715
+50000 - 59999           1213
+60000 - 69999           891
+70000 - 79999           734
+80000 - 89999           535
+90000 - 99999           411
 ----------------------------------------
+
 </pre>
 </section>
 <section id="sample-2" class="level3">
 <h3 class="anchored" data-anchor-id="sample-2">Sample 2</h3>
-<p>Similar to a previous assignment, your code should recognize when the file name provided does not exist and output the message provided. Below is a sample run with that functionality demonstrated.</p>
-<pre class="styled-pre">The file being searched is <span style="color: red;">this_one_does_not_exist.txt</span>.
-
-The file name specified does not exist.
+<p>Similar to a previous assignment, your code should recognize when the file name provided does not exist and reprompt the user until the an existing filename is given. Below is a sample run with that functionality demonstrated.</p>
+<pre class="styled-pre">What is the name of the file with the population information? <span style="color: red;">input</span>
+The file name you specified does not exist.
+Enter file name again: <span style="color: red;">output</span>
+The file name you specified does not exist.
+Enter file name again: <span style="color: red;">Test</span>
+The file name you specified does not exist.
+Enter file name again: <span style="color: red;">popn.txt</span>
+This file has 42175 cities in it.
+What population do you want as the minimum? <span style="color: red;">0</span>
+What population do you want as the maximum? <span style="color: red;">100000</span>
+How many rows do you want in the table? <span style="color: red;">10000</span>
+----------------------------------------
+Population              Frequencies
+----------------------------------------
+0 - 9999                13905
+10000 - 19999           10348
+20000 - 29999           4780
+30000 - 39999           2698
+40000 - 49999           1715
+50000 - 59999           1213
+60000 - 69999           891
+70000 - 79999           734
+80000 - 89999           535
+90000 - 99999           411
+----------------------------------------
 </pre>
+<p>It may be helpful to know that there are 40 dashes running across the table and the columns were separated by two tab characters.</p>
 </section>
 </section>
 <section id="required-functions" class="level2">
 <h2 class="anchored" data-anchor-id="required-functions">Required Functions</h2>
 <section id="load-file" class="level3">
 <h3 class="anchored" data-anchor-id="load-file">Load File</h3>
-<p>A function named <code>load_file</code> that reads the contents of a file. This function receives a single argument that represents a filename. It then returns a list containing all the numbers in the given filename. The returned list should contain only integers.</p>
+<p>A function named <code>load_file</code> that reads the contents of a file. The function takes a single argument, the filename, and returns a list of all the numbers found in the file. It ensures that the provided filename exists and, if not, prompts the user to enter the correct filename. This is an excellent opportunity to use a try-except construct, which you may have encountered in previous lessons or assignments.</p>
 </section>
 <section id="population-ranges" class="level3">
 <h3 class="anchored" data-anchor-id="population-ranges">Population Ranges</h3>
-<p>A function named <code>create_ranges</code> that is in charge of generating the strings found in the <code>Population</code> column. This function should take in three arguments: a minimum value, a maximum value, and interval value (in that order) and then create a list that contains the appropriate ranges of populations.</p>
+<p>A function named <code>create_ranges</code> that is in charge of generating the strings found in the <code>Population</code> column. This function should take in three arguments: a minimum value, a maximum value, and the number of rows in the table (in that order) and then creates a list that contains the appropriate ranges of populations.</p>
 <p>As an example, if this function receives <code>0, 100, 5</code> as arguments, then the list it generates would be:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>[<span class="st">"0 - 19"</span>, <span class="st">"20 - 39"</span>, <span class="st">"40 - 59"</span>, <span class="st">"60 - 79"</span>, <span class="st">"80 - 99"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Notice that the first interval starts at 0, the last interval does not include the value 100, and there are 5 intervals.</p>
+<p>Notice how the arguments passed to the function affected the output. The first interval starts at 0, the last interval does not include the value 100, and there are 5 intervals generated (i.e.&nbsp;number of rows).</p>
 </section>
 <section id="count-cities" class="level3">
 <h3 class="anchored" data-anchor-id="count-cities">Count Cities</h3>
-<p>A function named <code>count_cities</code> that is in charge of counting the number of cities in each given population range, it receives the ranges and the list containing all population values generated from the <code>load_file</code> function.</p>
+<p>A function named <code>count_cities</code> that is in charge of counting the number of cities in each given population range, it receives the list containing the ranges produced from the previous function, and the list containing all population values generated from the <code>load_file</code> function.</p>
 <p>This function should return a list that contains the number of times a population appears for each corresponding range.</p>
 <p>For example, assume our population ranges are as follows:</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>population_ranges <span class="op">=</span> [<span class="st">"0 - 19"</span>, <span class="st">"20 - 39"</span>, <span class="st">"40 - 59"</span>, <span class="st">"60 - 79"</span>, <span class="st">"80 - 99"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -435,8 +453,7 @@ The file name specified does not exist.
 </section>
 <section id="main" class="level3">
 <h3 class="anchored" data-anchor-id="main">Main</h3>
-<p>This program will have a function called <code>main</code> that is in charge of calling on the functions mentioned above and creating the outputs as shown in the sample runs. Be sure to account for the possibility of the filename not actually existing when writing this function. If the file name does not exist, output the statement <code>The file name specified does not exist.</code> This is a perfect opportunity to use a try except construct which you might have seen in previous lessons and assignments. Note that if the file does not exist, the program should stop running.</p>
-<p>If the filename did exist, then the output should be similar to the first sample run example.</p>
+<p>This program will have a function called <code>main</code> that is in charge of calling on the functions mentioned above and creating the outputs as shown in the sample runs.</p>
 </section>
 </section>
 <section id="additional-files" class="level2">
@@ -448,8 +465,9 @@ The file name specified does not exist.
 <h2 class="anchored" data-anchor-id="additional-information">Additional Information</h2>
 <p>To help clarify, here are some specifics and/or constraints:</p>
 <ol type="1">
-<li><p>You are provided with an input file called <code>popn.txt</code> that contains the populations of over 42,000 cities that you will be parsing. Note that your code should be able to parse any filename that the user provides and not just files named <code>popn.txt</code>.</p></li>
-<li><p>You might consider including the following conditional in your code when running it locally so that when you upload it to the autograder the autograder ignores the main portion of your code (not the function called main).</p>
+<li><p>You are provided with an input file called <code>popn.txt</code> that contains the populations of over 42,000 cities that you will be parsing. Note that your code should be able to parse any filename that the user provides and not just files named <code>popn.txt</code>. Use this file to test your code locally.</p></li>
+<li><p>Your code will require the functions listed above. Feel free to add any extra functions you think are necessary.</p></li>
+<li><p>You might consider including the following conditional in your code when running it locally so that when you upload it to the autograder the autograder ignores the <code>main</code> portion of your code (note that the <code>main</code> portion of your code is not the function called main).</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Note that the autograder would ignore this since the autograder will import your code into another file. Any code inside of that conditional is ignored when a file is imported.</p></li>
 <li><p>Your output should be exactly like the sample runs shown above (of course, actual results will vary depending on the min, max, and interval values chosen by the autograder);</p></li>
@@ -457,16 +475,6 @@ The file name specified does not exist.
 <li><p>You must use the provided source code template (it contains helpful comments that can help you structure your code); and</p></li>
 <li><p>You must submit your source code as a single <code>.py</code> file.</p></li>
 </ol>
-</section>
-<section id="table-formatting" class="level2">
-<h2 class="anchored" data-anchor-id="table-formatting">Table Formatting</h2>
-<p>Here is some additional information concerning the formatting of the table, since yours should match exactly.</p>
-<ul>
-<li><p>The table is 40 characters in width.</p></li>
-<li><p>There are 40 hyphens running across the table.</p></li>
-<li><p>Each column uses 20 characters.</p></li>
-<li><p>The contents within each column are left aligned.</p></li>
-</ul>
 
 
 </section>
