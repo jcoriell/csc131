@@ -11,7 +11,7 @@ Your task in this assignment is to write a program that calculates the frequency
 Below is a successful sample run where generated inputs when tested are highlighted in red
 
 <pre class="styled-pre">
-The file being search is <span style="color: red;">popn.txt</span>.
+The file being searched is <span style="color: red;">popn.txt</span>.
 
 This file has 42175 cities in it.
 
@@ -52,12 +52,12 @@ The file name specified does not exist.
 
 ### Load File
 
-A function that reads the contents of the file. This function receives a single argument that
-represents the filename. It then returns a list containing all the numbers in the given filename.
+A function named `load_file` that reads the contents of a file. This function receives a single argument that
+represents a filename. It then returns a list containing all the numbers in the given filename. The returned list should contain only integers.
 
 ### Population Ranges
 
-A function that is in charge of generating the strings found in the `Population` column. This functions should take in a min, max, and interval value and then create a list that contains the appropriate ranges of populations. 
+A function named `create_ranges` that is in charge of generating the strings found in the `Population` column. This function should take in three arguments: a minimum value, a maximum value, and interval value (in that order) and then create a list that contains the appropriate ranges of populations. 
 
 As an example, if this function receives `0, 100, 5` as arguments, then the list it generates would be:
 
@@ -65,9 +65,10 @@ As an example, if this function receives `0, 100, 5` as arguments, then the list
 ["0 - 19", "20 - 39", "40 - 59", "60 - 79", "80 - 99"]
 ```
 
-### Count Cities
-A function that is in charge of counting the number of cities in the given population ranges. It receives four pieces of information: three populations (minimum, maximum, and interval values) and the list containing all population values from the input file (in that order).
+Notice that the first interval starts at 0, the last interval does not include the value 100, and there are 5 intervals.
 
+### Count Cities
+A function named `count_cities` that is in charge of counting the number of cities in each given population range, it receives the ranges and the list containing all population values generated from the `load_file` function.
 
 This function should return a list that contains the number of times a population appears for each corresponding range. 
 
@@ -77,7 +78,7 @@ For example, assume our population ranges are as follows:
 population_ranges = ["0 - 19", "20 - 39", "40 - 59", "60 - 79", "80 - 99"]
 ```
 
-Also assume there are 5 cities with a population of between 0 and 19, 12 cities with a population of between 40 and 59, and 3 cities with a population of between 60 and 79. Then this function would create the following list: 
+Also assume there are 5 cities with a population between 0 and 19, 12 cities with a population between 40 and 59, and 3 cities with a population of between 60 and 79. Then this function would create the following list: 
 
 ```Python
 frequencies = [5, 0, 12, 3, 0]
@@ -87,10 +88,10 @@ It then returns this list to the calling statement.
 
 ### Generate Table
 
-This function will generate the table and return it as a string to the calling statement. This function will take in two arguments, the first represents the population ranges and the second represents the frequencies. Note that this function is not responsible for printing anything, it simply returns a string to the calling statement.
+The `generate_table` function will generate the table and return it as a string to the calling statement. This function will take in two arguments, the first represents the population ranges and the second represents the frequencies. Note that this function is not responsible for printing anything, it simply returns a string to the calling statement that represents the entire table.
 
 ### Main
-This function is in charge of calling on the functions mentioned above and creating the outputs as shown in the sample runs. Be sure to account for the possibility of the filename not actually existing when writing this function. If the file name does not exist, output the statement `The file name specified does not exist.` This is a perfect opportunity to use a try except construct which you might have seen in previous lessons and assignments.
+This program will have a function called `main` that is in charge of calling on the functions mentioned above and creating the outputs as shown in the sample runs. Be sure to account for the possibility of the filename not actually existing when writing this function. If the file name does not exist, output the statement `The file name specified does not exist.` This is a perfect opportunity to use a try except construct which you might have seen in previous lessons and assignments. Note that if the file does not exist, the program should stop running.
 
 If the filename did exist, then the output should be similar to the first sample run example.
 

@@ -371,7 +371,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="sample-1" class="level3">
 <h3 class="anchored" data-anchor-id="sample-1">Sample 1</h3>
 <p>Below is a successful sample run where generated inputs when tested are highlighted in red</p>
-<pre class="styled-pre">The file being search is <span style="color: red;">popn.txt</span>.
+<pre class="styled-pre">The file being searched is <span style="color: red;">popn.txt</span>.
 
 This file has 42175 cities in it.
 
@@ -410,31 +410,32 @@ The file name specified does not exist.
 <h2 class="anchored" data-anchor-id="required-functions">Required Functions</h2>
 <section id="load-file" class="level3">
 <h3 class="anchored" data-anchor-id="load-file">Load File</h3>
-<p>A function that reads the contents of the file. This function receives a single argument that represents the filename. It then returns a list containing all the numbers in the given filename.</p>
+<p>A function named <code>load_file</code> that reads the contents of a file. This function receives a single argument that represents a filename. It then returns a list containing all the numbers in the given filename. The returned list should contain only integers.</p>
 </section>
 <section id="population-ranges" class="level3">
 <h3 class="anchored" data-anchor-id="population-ranges">Population Ranges</h3>
-<p>A function that is in charge of generating the strings found in the <code>Population</code> column. This functions should take in a min, max, and interval value and then create a list that contains the appropriate ranges of populations.</p>
+<p>A function named <code>create_ranges</code> that is in charge of generating the strings found in the <code>Population</code> column. This function should take in three arguments: a minimum value, a maximum value, and interval value (in that order) and then create a list that contains the appropriate ranges of populations.</p>
 <p>As an example, if this function receives <code>0, 100, 5</code> as arguments, then the list it generates would be:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>[<span class="st">"0 - 19"</span>, <span class="st">"20 - 39"</span>, <span class="st">"40 - 59"</span>, <span class="st">"60 - 79"</span>, <span class="st">"80 - 99"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Notice that the first interval starts at 0, the last interval does not include the value 100, and there are 5 intervals.</p>
 </section>
 <section id="count-cities" class="level3">
 <h3 class="anchored" data-anchor-id="count-cities">Count Cities</h3>
-<p>A function that is in charge of counting the number of cities in the given population ranges. It receives four pieces of information: three populations (minimum, maximum, and interval values) and the list containing all population values from the input file (in that order).</p>
+<p>A function named <code>count_cities</code> that is in charge of counting the number of cities in each given population range, it receives the ranges and the list containing all population values generated from the <code>load_file</code> function.</p>
 <p>This function should return a list that contains the number of times a population appears for each corresponding range.</p>
 <p>For example, assume our population ranges are as follows:</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>population_ranges <span class="op">=</span> [<span class="st">"0 - 19"</span>, <span class="st">"20 - 39"</span>, <span class="st">"40 - 59"</span>, <span class="st">"60 - 79"</span>, <span class="st">"80 - 99"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Also assume there are 5 cities with a population of between 0 and 19, 12 cities with a population of between 40 and 59, and 3 cities with a population of between 60 and 79. Then this function would create the following list:</p>
+<p>Also assume there are 5 cities with a population between 0 and 19, 12 cities with a population between 40 and 59, and 3 cities with a population of between 60 and 79. Then this function would create the following list:</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>frequencies <span class="op">=</span> [<span class="dv">5</span>, <span class="dv">0</span>, <span class="dv">12</span>, <span class="dv">3</span>, <span class="dv">0</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>It then returns this list to the calling statement.</p>
 </section>
 <section id="generate-table" class="level3">
 <h3 class="anchored" data-anchor-id="generate-table">Generate Table</h3>
-<p>This function will generate the table and return it as a string to the calling statement. This function will take in two arguments, the first represents the population ranges and the second represents the frequencies. Note that this function is not responsible for printing anything, it simply returns a string to the calling statement.</p>
+<p>The <code>generate_table</code> function will generate the table and return it as a string to the calling statement. This function will take in two arguments, the first represents the population ranges and the second represents the frequencies. Note that this function is not responsible for printing anything, it simply returns a string to the calling statement that represents the entire table.</p>
 </section>
 <section id="main" class="level3">
 <h3 class="anchored" data-anchor-id="main">Main</h3>
-<p>This function is in charge of calling on the functions mentioned above and creating the outputs as shown in the sample runs. Be sure to account for the possibility of the filename not actually existing when writing this function. If the file name does not exist, output the statement <code>The file name specified does not exist.</code> This is a perfect opportunity to use a try except construct which you might have seen in previous lessons and assignments.</p>
+<p>This program will have a function called <code>main</code> that is in charge of calling on the functions mentioned above and creating the outputs as shown in the sample runs. Be sure to account for the possibility of the filename not actually existing when writing this function. If the file name does not exist, output the statement <code>The file name specified does not exist.</code> This is a perfect opportunity to use a try except construct which you might have seen in previous lessons and assignments. Note that if the file does not exist, the program should stop running.</p>
 <p>If the filename did exist, then the output should be similar to the first sample run example.</p>
 </section>
 </section>
