@@ -15,7 +15,7 @@ What is the name of the file with the population information? <span style="color
 This file has 42175 cities in it.
 What population do you want as the minimum? <span style="color: red;">0</span>
 What population do you want as the maximum? <span style="color: red;">100000</span>
-How many rows do you want in the table? <span style="color: red;">10000</span>
+How many rows do you want in the table? <span style="color: red;">10</span>
 ----------------------------------------
 Population              Frequencies
 ----------------------------------------
@@ -48,7 +48,7 @@ Enter file name again: <span style="color: red;">popn.txt</span>
 This file has 42175 cities in it.
 What population do you want as the minimum? <span style="color: red;">0</span>
 What population do you want as the maximum? <span style="color: red;">100000</span>
-How many rows do you want in the table? <span style="color: red;">10000</span>
+How many rows do you want in the table? <span style="color: red;">10</span>
 ----------------------------------------
 Population              Frequencies
 ----------------------------------------
