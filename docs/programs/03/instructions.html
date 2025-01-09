@@ -363,109 +363,96 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="the-saleitem-class-specifications" class="level2">
 <h2 class="anchored" data-anchor-id="the-saleitem-class-specifications">The SaleItem Class Specifications</h2>
 <ol type="1">
-<li><p>The <code>SaleItem</code> class has a <code>name</code>, <code>cost</code> and <code>price</code> as instance variables.</p></li>
-<li><p>All three instance variables are provided as arguments to the constructor.</p></li>
+<li><p>The <code>SaleItem</code> class has a <code>name</code>, <code>cost</code> and <code>price</code> as instance variables. The <code>name</code> instance variable represents the name of the item, <code>cost</code> represents the cost for the store, and <code>price</code> is the price the customer pays.</p></li>
+<li><p>All three instance variables are also provided as arguments to the constructor in the order indicated (name, then cost, then price).</p></li>
 <li><p>The class should have accessors and mutators for all instance variables which use the decorator method discussed in class. Additionally, the <code>cost</code> and <code>price</code> mutators should not allow for those variables to be set to negative values. If that is attempted, they are set to <code>0</code> instead.</p></li>
-<li><p>The class should have a <code>profit</code> function that returns the amount of money (as a float) that selling the item would provide i.e.&nbsp;the difference between the <code>price</code> and the <code>cost</code>.</p></li>
+<li><p>The class should have a <code>profit</code> function that returns the amount of money (as a float) that selling the item would provide (i.e.&nbsp;the difference between the <code>price</code> and the <code>cost</code>).</p></li>
 <li><p>The class should have an <code>apply_sale</code> function that applies a percentage sale to the price of the item. It receives the percentage value as an argument and adjusts the price appropriately. Note that this function does not return anything.</p></li>
+<li><p>The class should have a <code>__str__</code> method that is responsible for return a string respresentation of a <code>SaleItem</code> object. The representation should contain the <code>name</code>, <code>cost</code>, and <code>price</code> in that order, <strong>each separated by 1 single tab character</strong>. Additionally, the cost and price should be represented with 2 digits after the decimal point.</p></li>
 </ol>
 </section>
 <section id="tests" class="level2">
 <h2 class="anchored" data-anchor-id="tests">Tests</h2>
 <p>The SaleItem class will be subject to the following tests. Some examples are provided for you to test your code locally.</p>
 <ol type="1">
-<li><p>The ability to instantiate an object. That is, your constructor accepts the appropriate arguments and runs without error.</p>
+<li><p>The ability to instantiate an instance of the SaleItem class. That is, your constructor accepts the appropriate arguments and runs without error and the appropriate instance variables exist and are valid.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># instantiating a banana would not result in any errors</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>banana <span class="op">=</span> SaleItem(<span class="st">"banana"</span>, <span class="dv">1</span>, <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
-<li><p>The <strong>existence</strong> of the <code>name</code> instance variable after instantiation.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># instantiation of the banana</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>banana <span class="op">=</span> SaleItem(<span class="st">"banana"</span>, <span class="dv">1</span>, <span class="dv">2</span>)</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(banana.name)      <span class="co"># no error is thrown</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
-<li><p>The <strong>existence</strong> of the <code>price</code> instance variable after instantiation.</p>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>banana <span class="op">=</span> SaleItem(<span class="st">"banana"</span>, <span class="dv">1</span>, <span class="dv">2</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># testing existence</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(banana.name)      <span class="co"># no error is thrown when trying to access banana.name</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(banana.price)     <span class="co"># no error is thrown when accessing banana.price</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(banana.cost)      <span class="co"># no error is thrown when accessing banana.cost</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co"># testing accuracy</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(banana.name <span class="op">==</span> <span class="st">"banana"</span>)  <span class="co"># this should print True</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(banana.price <span class="op">==</span> <span class="dv">1</span>)        <span class="co"># this should print True</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(banana.cost <span class="op">==</span> <span class="dv">2</span>)         <span class="co"># this should print True</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(banana.name <span class="op">==</span> <span class="st">"apple"</span>)   <span class="co"># this should print False</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(banana.price <span class="op">==</span> <span class="dv">20</span>)       <span class="co"># this should print False</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(banana.cost <span class="op">==</span> <span class="dv">40</span>)        <span class="co"># this should print False</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>Three tests for the <strong>existence</strong> of the accessors/getters and mutators/setters for each instance variable. You shouldn’t need to run any of the following as you should already know whether or not you’re implementing the decorators correctly for your getters and setters, however, if you’re curious, check out the following block.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Run the following lines in your __main__ portion of the code.</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># If any of them throw errors, then you don't have an accessor/getter for the corresponding instance variable</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>SaleItem.name.fget</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>SaleItem.cost.fget</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>SaleItem.price.fget</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co"># If any of these following lines throw errors, then you don't have a mutator/setter for the corresponding instance variable.</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>SaleItem.name.fset</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>SaleItem.cost.fset</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>SaleItem.price.fset</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>This test checks that your instance variables can be set to valid values outside of the class, checks the accuracy of those valid values, attempt to set invalid values to the price and cost variables outside of the class, checks that invalid values are handled properly (by being set to 0), then checks if the constructor is also preventing invalid values from being set (whether through a call to the setter or through logic within the constructor). Some example code to run to check if your code is functioning properly concerning a <a href="https://youtu.be/Nl_Qyk9DSUw?si=EueiJCv4nq0NZeI-" target="_blank">Bluth Banana</a> is included below.</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># instantiation of the banana</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>banana <span class="op">=</span> SaleItem(<span class="st">"banana"</span>, <span class="dv">1</span>, <span class="dv">2</span>)</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(banana.price)     <span class="co"># no error is thrown</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
-<li><p>The <strong>existence</strong> of the <code>cost</code> instance variable after instantiation.</p>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># can set name, price, and cost to valid values without error</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>banana.name <span class="op">=</span> <span class="st">"Bluth Banana"</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>banana.price <span class="op">=</span> <span class="fl">10.00</span>  <span class="co"># set price to 10.00</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>banana.cost <span class="op">=</span> <span class="fl">0.50</span>  <span class="co"># set cost to 0.5</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="co"># testing to see the values</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(banana.name <span class="op">==</span> <span class="st">"Bluth Banana"</span>)    <span class="co"># True</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(banana.price <span class="op">==</span> <span class="fl">10.00</span>)              <span class="co"># True</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(banana.cost <span class="op">==</span> <span class="fl">0.50</span>)              <span class="co"># True</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Try setting some invalid values for cost and price</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>banana.price <span class="op">=</span> <span class="op">-</span><span class="dv">10000</span>   <span class="co"># set price to a negative value</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>banana.cost <span class="op">=</span> <span class="op">-</span><span class="dv">20000</span>    <span class="co"># set cost to a negative value</span></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a><span class="co"># check the values</span></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(banana.price <span class="op">==</span> <span class="dv">0</span>) <span class="co"># True</span></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(banana.cost <span class="op">==</span> <span class="dv">0</span>)  <span class="co"># True</span></span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a><span class="co"># instantiation a sale item with invalid price and cost</span></span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>banana <span class="op">=</span> SaleItem(<span class="st">"banana"</span>, <span class="op">-</span><span class="dv">100</span>, <span class="op">-</span><span class="dv">200</span>)</span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a><span class="co"># check the values</span></span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(banana.price <span class="op">==</span> <span class="dv">0</span>) <span class="co"># True</span></span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(banana.cost <span class="op">==</span> <span class="dv">0</span>)  <span class="co"># True</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>The <code>profit</code> function does not throw any errors when run and returns the correct value. Note that the value will be checked to an accuracy of 2 decimal places, but you do not need to round.</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># instantiation of the banana</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>banana <span class="op">=</span> SaleItem(<span class="st">"banana"</span>, <span class="dv">1</span>, <span class="dv">2</span>)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>banana <span class="op">=</span> SaleItem(<span class="st">"banana"</span>, <span class="dv">1</span>, <span class="dv">100</span>)</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(banana.cost)      <span class="co"># no error is thrown</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
-<li><p>The <code>name</code> instance variable holds the correct value after instantiation.</p>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># applying the sale</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(banana.profit())  <span class="co"># outputs 99.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>The <code>apply_sale</code> function does not throw any errors when run and the consumer price is modified appropriately.</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># instantiation of the banana</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>banana <span class="op">=</span> SaleItem(<span class="st">"banana"</span>, <span class="dv">1</span>, <span class="dv">2</span>)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>banana <span class="op">=</span> SaleItem(<span class="st">"banana"</span>, <span class="dv">1</span>, <span class="dv">100</span>)</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(banana.name <span class="op">==</span> <span class="st">"banana"</span>)      <span class="co"># outputs true</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
-<li><p>The <code>price</code> instance variable holds the correct value after instantiation.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># instantiation of the banana</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>banana <span class="op">=</span> SaleItem(<span class="st">"banana"</span>, <span class="dv">1</span>, <span class="dv">2</span>)</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(banana.price <span class="op">==</span> <span class="dv">1</span>)            <span class="co"># outputs true</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
-<li><p>The <code>cost</code> instance variable holds the correct value after instantiation.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># instantiation of the banana</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>banana <span class="op">=</span> SaleItem(<span class="st">"banana"</span>, <span class="dv">1</span>, <span class="dv">2</span>)</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(banana.cost <span class="op">==</span> <span class="dv">2</span>)             <span class="co"># outputs true</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
-<li><p>Three tests for the <strong>existence</strong> of the accessors/getters and mutators/setters for each instance variable.</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Run the following lines in your __main__ portion of the code.</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co"># If any of them throw errors, then you don't have an accessor/getter for the corresponding instance variable</span></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>SaleItem.name.fget</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>SaleItem.cost.fget</span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>SaleItem.price.fget</span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="co"># If any of these following lines throw errors, then you don't have a mutator/setter for the corresponding instance variable.</span></span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>SaleItem.name.fset</span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>SaleItem.cost.fset</span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>SaleItem.price.fset</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
-<li><p>Three tests, one for each instance variable, to check if they can be set to valid values at some point after instantiation using the dot operator notation. As an example concerning a <a href="https://youtu.be/Nl_Qyk9DSUw?si=EueiJCv4nq0NZeI-" target="_blank">Bluth Banana</a>.</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># instantiation of the banana</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>banana <span class="op">=</span> SaleItem(<span class="st">"banana"</span>, <span class="dv">1</span>, <span class="dv">2</span>)</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co"># can set name, price, and cost to valid values without error</span></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>banana.name <span class="op">=</span> <span class="st">"Bluth Banana"</span></span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>banana.price <span class="op">=</span> <span class="fl">0.50</span>  <span class="co"># set price to 0.5</span></span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>banana.cost <span class="op">=</span> <span class="fl">10.00</span>  <span class="co"># set cost to 10.00</span></span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="co"># testing to see the values</span></span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(banana.name)      <span class="co"># outputs "Bluth Banana" instead of "banana"</span></span>
-<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(banana.price)     <span class="co"># outputs 0.5, not 1 or 0</span></span>
-<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(banana.cost)      <span class="co"># outputs 10, not 2 or 0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
-<li><p>The instance variables can NOT be set to invalid values at some point after instantiation using the dot operator notation.</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># instantiation of the banana</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>banana <span class="op">=</span> SaleItem(<span class="st">"banana"</span>, <span class="dv">10</span>, <span class="dv">20</span>)</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co"># attempting to set price and cost to invalid values</span></span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>banana.price <span class="op">=</span> <span class="op">-</span><span class="fl">50.00</span>   </span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>banana.cost <span class="op">=</span> <span class="op">-</span><span class="dv">40000</span>    </span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="co"># testing to see the values</span></span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(banana.price)     <span class="co"># outputs 0, not -50</span></span>
-<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(banana.cost)      <span class="co"># outputs 0, not -40000</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
-<li><p>The <code>profit</code> function does not throw any errors when run.</p></li>
-<li><p>The <code>profit</code> function returns the correct type of data.</p></li>
-<li><p>The <code>profit</code> function returns the correct value. An example of using the profit function follows:</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># instantiation of the banana</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>banana <span class="op">=</span> SaleItem(<span class="st">"banana"</span>, <span class="dv">1</span>, <span class="dv">100</span>)</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="co"># applying the sale</span></span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(banana.profit())  <span class="co"># outputs 99.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
-<li><p>The <code>apply_sale</code> function does not throw any errors when run.</p></li>
-<li><p>The <code>apply_sale</code> function returns nothing (you do not need to specify the return statement, it will return None by default).</p></li>
-<li><p>The <code>apply_sale</code> function had an effect on the price. An example of using the <code>apply_sale</code> function follows.</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># instantiation of the banana</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>banana <span class="op">=</span> SaleItem(<span class="st">"banana"</span>, <span class="dv">1</span>, <span class="dv">100</span>)</span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="co"># applying the sale</span></span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>banana.apply_sale(<span class="dv">10</span>)   <span class="co"># a 10 percent discount is applied to the price</span></span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="co"># checking the value of the price</span></span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(banana.price)     <span class="co"># outputs 90, not 100</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co"># applying the sale</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>banana.apply_sale(<span class="dv">10</span>)   <span class="co"># a 10 percent discount is applied to the price</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="co"># checking the value of the price</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(banana.price)     <span class="co"># outputs 90, not 100</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 </ol>
 </section>
 <section id="additional-files" class="level2">
 <h2 class="anchored" data-anchor-id="additional-files">Additional Files</h2>
-<p>You are provided with a template that you should use. Note that the template contains a main section with some code already inside of it. Use the main portion of the code and the examples above to test your solution before submitting to the auto-grader.</p>
+<p>You are provided with a template that you should use. Note that the template contains a <code>__main__</code> section with some code already inside of it. Use the main portion of the code and the examples above to test your solution before submitting to the auto-grader.</p>
 <p><a href="./files/template.py" download="">template.py</a></p>
 </section>
 <section id="submission" class="level2">

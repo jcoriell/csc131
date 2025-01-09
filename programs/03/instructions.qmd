@@ -11,87 +11,49 @@ systems, the specifications for the `SaleItem` class are defined below.
 
 ## The SaleItem Class Specifications
 
-1. The `SaleItem` class has a `name`, `cost` and `price` as instance variables. 
+1. The `SaleItem` class has a `name`, `cost` and `price` as instance variables. The `name` instance variable represents the name of the item, `cost` represents the cost for the store, and `price` is the price the customer pays.
 
-2. All three instance variables are provided as arguments to the constructor.
+2. All three instance variables are also provided as arguments to the constructor in the order indicated (name, then cost, then price).
 
 3. The class should have accessors and mutators for all instance variables which use the decorator
 method discussed in class. Additionally, the `cost` and `price` mutators should not allow for those variables to be set to negative values. If that is attempted, they are set to `0` instead.
 
 4. The class should have a `profit` function that returns the amount of money (as a float) that selling the item
-would provide i.e. the difference between the `price` and the `cost`.
+would provide (i.e. the difference between the `price` and the `cost`).
 
 5. The class should have an `apply_sale` function that applies a percentage sale to the price of
 the item. It receives the percentage value as an argument and adjusts the price appropriately. Note that this function does not return anything.
+
+6. The class should have a `__str__` method that is responsible for return a string respresentation of a `SaleItem` object. The representation should contain the `name`, `cost`, and `price` in that order, **each separated by 1 single tab character**. Additionally, the cost and price should be represented with 2 digits after the decimal point.
 
 
 ## Tests
 
 The SaleItem class will be subject to the following tests. Some examples are provided for you to test your code locally.
 
-1. The ability to instantiate an object. That is, your constructor accepts the appropriate arguments and runs without error. 
+1. The ability to instantiate an instance of the SaleItem class. That is, your constructor accepts the appropriate arguments and runs without error and the appropriate instance variables exist and are valid.
 
     ```Python
     # instantiating a banana would not result in any errors
     banana = SaleItem("banana", 1, 2)
-    ```
 
-2. The **existence** of the `name` instance variable after instantiation.
+    # testing existence
+    print(banana.name)      # no error is thrown when trying to access banana.name
+    print(banana.price)     # no error is thrown when accessing banana.price
+    print(banana.cost)      # no error is thrown when accessing banana.cost
 
-    ```Python
-    # instantiation of the banana
-    banana = SaleItem("banana", 1, 2)
+    # testing accuracy
+    print(banana.name == "banana")  # this should print True
+    print(banana.price == 1)        # this should print True
+    print(banana.cost == 2)         # this should print True
 
-    print(banana.name)      # no error is thrown
-    ```
-
-2. The **existence** of the `price` instance variable after instantiation.
-
-    ```Python
-    # instantiation of the banana
-    banana = SaleItem("banana", 1, 2)
-
-    print(banana.price)     # no error is thrown
-    ```
-
-2. The **existence** of the `cost` instance variable after instantiation.
-
-    ```Python
-    # instantiation of the banana
-    banana = SaleItem("banana", 1, 2)
-
-    print(banana.cost)      # no error is thrown
+    print(banana.name == "apple")   # this should print False
+    print(banana.price == 20)       # this should print False
+    print(banana.cost == 40)        # this should print False
     ```
 
 
-3. The `name` instance variable holds the correct value after instantiation.
-
-    ```Python
-    # instantiation of the banana
-    banana = SaleItem("banana", 1, 2)
-
-    print(banana.name == "banana")      # outputs true
-    ```
-
-3. The `price` instance variable holds the correct value after instantiation.
-
-    ```Python
-    # instantiation of the banana
-    banana = SaleItem("banana", 1, 2)
-
-    print(banana.price == 1)            # outputs true
-    ```
-
-3. The `cost` instance variable holds the correct value after instantiation.
-
-    ```Python
-    # instantiation of the banana
-    banana = SaleItem("banana", 1, 2)
-
-    print(banana.cost == 2)             # outputs true
-    ```
-
-3. Three tests for the **existence** of the accessors/getters and mutators/setters for each instance variable.
+3. Three tests for the **existence** of the accessors/getters and mutators/setters for each instance variable. You shouldn't need to run any of the following as you should already know whether or not you're implementing the decorators correctly for your getters and setters, however, if you're curious, check out the following block. 
 
     ```Python
     # Run the following lines in your __main__ portion of the code.
@@ -107,7 +69,7 @@ The SaleItem class will be subject to the following tests. Some examples are pro
     ```
 
 
-4. Three tests, one for each instance variable, to check if they can be set to valid values at some point after instantiation using the dot operator notation. As an example concerning a [Bluth Banana](https://youtu.be/Nl_Qyk9DSUw?si=EueiJCv4nq0NZeI-){target="_blank"}.
+4. This test checks that your instance variables can be set to valid values outside of the class, checks the accuracy of those valid values, attempt to set invalid values to the price and cost variables outside of the class, checks that invalid values are handled properly (by being set to 0), then checks if the constructor is also preventing invalid values from being set (whether through a call to the setter or through logic within the constructor). Some example code to run to check if your code is functioning properly concerning a [Bluth Banana](https://youtu.be/Nl_Qyk9DSUw?si=EueiJCv4nq0NZeI-){target="_blank"} is included below.
 
     ```Python
     # instantiation of the banana
@@ -115,35 +77,34 @@ The SaleItem class will be subject to the following tests. Some examples are pro
 
     # can set name, price, and cost to valid values without error
     banana.name = "Bluth Banana"
-    banana.price = 0.50  # set price to 0.5
-    banana.cost = 10.00  # set cost to 10.00
+    banana.price = 10.00  # set price to 10.00
+    banana.cost = 0.50  # set cost to 0.5
 
     # testing to see the values
-    print(banana.name)      # outputs "Bluth Banana" instead of "banana"
-    print(banana.price)     # outputs 0.5, not 1 or 0
-    print(banana.cost)      # outputs 10, not 2 or 0
+    print(banana.name == "Bluth Banana")    # True
+    print(banana.price == 10.00)              # True
+    print(banana.cost == 0.50)              # True
+
+
+    # Try setting some invalid values for cost and price
+    banana.price = -10000   # set price to a negative value
+    banana.cost = -20000    # set cost to a negative value
+
+    # check the values
+    print(banana.price == 0) # True
+    print(banana.cost == 0)  # True
+
+
+    # instantiation a sale item with invalid price and cost
+    banana = SaleItem("banana", -100, -200)
+
+    # check the values
+    print(banana.price == 0) # True
+    print(banana.cost == 0)  # True
     ```
 
-5. The instance variables can NOT be set to invalid values at some point after instantiation using the dot operator notation.
 
-    ```Python
-    # instantiation of the banana
-    banana = SaleItem("banana", 10, 20)
-
-    # attempting to set price and cost to invalid values
-    banana.price = -50.00   
-    banana.cost = -40000    
-
-    # testing to see the values
-    print(banana.price)     # outputs 0, not -50
-    print(banana.cost)      # outputs 0, not -40000
-    ```
-
-6. The `profit` function does not throw any errors when run.
-
-7. The `profit` function returns the correct type of data.
-
-8. The `profit` function returns the correct value. An example of using the profit function follows:
+6. The `profit` function does not throw any errors when run and returns the correct value. Note that the value will be checked to an accuracy of 2 decimal places, but you do not need to round.
 
     ```Python
     # instantiation of the banana
@@ -153,12 +114,9 @@ The SaleItem class will be subject to the following tests. Some examples are pro
     print(banana.profit())  # outputs 99.
     ```
 
-6. The `apply_sale` function does not throw any errors when run.
 
-7. The `apply_sale` function returns nothing (you do not need to specify the return statement, it will return None by default).
 
-8. The `apply_sale` function had an effect on the price. An example of using the `apply_sale` function follows.
-
+6. The `apply_sale` function does not throw any errors when run and the consumer price is modified appropriately.
 
     ```Python
     # instantiation of the banana
@@ -174,7 +132,7 @@ The SaleItem class will be subject to the following tests. Some examples are pro
 
 ## Additional Files
 
-You are provided with a template that you should use. Note that the template contains a main section with some code already inside of it. Use the main portion of the code and the examples above to test your solution before submitting to the auto-grader. 
+You are provided with a template that you should use. Note that the template contains a `__main__` section with some code already inside of it. Use the main portion of the code and the examples above to test your solution before submitting to the auto-grader. 
 
 <a href="./files/template.py" download>template.py</a>
 
