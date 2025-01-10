@@ -58,23 +58,23 @@ website:
               - text: Quick Reference
                 href: "lessons/02 Object Oriented Programming/10 Quick Reference.qmd"
 
-          # - section: "03 Number Systems and Binary Arithmetic"
-          #   href: "lessons/03 Number Systems and Binary Arithmetic/index.qmd"
-          #   contents: 
-          #     - text: Introduction
-          #       href: "lessons/03 Number Systems and Binary Arithmetic/01 Introduction.qmd"
-          #     - text: Binary
-          #       href: "lessons/03 Number Systems and Binary Arithmetic/02 Binary.qmd"
-          #     - text: Hexadecimal
-          #       href: "lessons/03 Number Systems and Binary Arithmetic/03 Hexadecimal.qmd"
-          #     - text: Conversions
-          #       href: "lessons/03 Number Systems and Binary Arithmetic/04 Conversions.qmd"
-          #     - text: Binary Arithmetic
-          #       href: "lessons/03 Number Systems and Binary Arithmetic/05 Binary Arithmetic.qmd"
-          #     - text: Binary Adder
-          #       href: "lessons/03 Number Systems and Binary Arithmetic/06 Binary Adder.qmd"
-          #     - text: Bitwise Operators
-          #       href: "lessons/03 Number Systems and Binary Arithmetic/07 Bitwise Operators.qmd"
+          - section: "03 Number Systems and Binary Arithmetic"
+            href: "lessons/03 Number Systems and Binary Arithmetic/index.qmd"
+            contents: 
+              - text: Introduction
+                href: "lessons/03 Number Systems and Binary Arithmetic/01 Introduction.qmd"
+              - text: Binary
+                href: "lessons/03 Number Systems and Binary Arithmetic/02 Binary.qmd"
+              - text: Hexadecimal
+                href: "lessons/03 Number Systems and Binary Arithmetic/03 Hexadecimal.qmd"
+              - text: Conversions
+                href: "lessons/03 Number Systems and Binary Arithmetic/04 Conversions.qmd"
+              - text: Binary Arithmetic
+                href: "lessons/03 Number Systems and Binary Arithmetic/05 Binary Arithmetic.qmd"
+              - text: Binary Adder
+                href: "lessons/03 Number Systems and Binary Arithmetic/06 Binary Adder.qmd"
+              - text: Bitwise Operators
+                href: "lessons/03 Number Systems and Binary Arithmetic/07 Bitwise Operators.qmd"
 
 
       - section: "Programs"
@@ -83,8 +83,8 @@ website:
             href: "programs/01/instructions.qmd"
           - text: Program 2
             href: "programs/02/instructions.qmd"
-      #     - text: Program 3
-      #       href: "programs/03/instructions.qmd"
+          - text: Program 3
+            href: "programs/03/instructions.qmd"
       #     - text: Program 4
       #       href: "programs/04/instructions.qmd"
       #     - text: Program 5

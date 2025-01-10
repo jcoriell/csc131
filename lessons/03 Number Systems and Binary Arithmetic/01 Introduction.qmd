@@ -4,14 +4,15 @@ title: "Number Systems and Binary Arithmetic"
 
 ## Introduction 
 
-The most basic unit of storage is the bit. At any point in time, a bit can be in only one of two states: `0`
-or `1`. Bits are generally implemented as two-state electronic devices (e.g., a current is flowing or not 
-flowing, a voltage is high or low, a magnetic field is polarized in one direction or the opposite direction, 
-etc). The symbol “0” is used to represent one of these states and the symbol “1” is used to represent the 
-other. It really doesn’t matter which symbol (the “0” or the “1”) represents which physical state (e.g., 
-“high” or “low”). All that is important is that the symbols be assigned consistently and that the two 
-states be clearly distinguishable from each other.
-Sequences (or “patterns”) of bit values can be used to represent numbers (both positive and negative, 
-integer and real), alphanumeric characters, images, sounds, and even program instructions. In fact, 
-anything that can be stored in a computer must ultimately be stored as a pattern of bit values.
+The most basic unit of storage is the bit. At any point in time, a bit can be in only one of two states: 
+
+<center>
+0 or 1
+</center>
+
+
+
+Bits are generally implemented as two-state electronic devices (e.g., a current is flowing or not flowing, a voltage is high or low, a magnetic field is polarized in one direction or the opposite direction, etc). The symbol “0” is used to represent one of these states and the symbol “1” is used to represent the other. It really doesn’t matter which symbol (the “0” or the “1”) represents which physical state (e.g., “high” or “low”). All that is important is that the symbols be assigned consistently and that the two states be clearly distinguishable from each other.
+
+Sequences (or “patterns”) of bit values can be used to represent numbers (both positive and negative, integer and real), alphanumeric characters, images, sounds, and even program instructions. In fact, anything that can be stored in a computer must ultimately be stored as a pattern of bit values.
 
