@@ -38,18 +38,18 @@ The SaleItem class will be subject to the following tests. Some examples are pro
     banana = SaleItem("banana", 1, 2)
 
     # testing existence
-    print(banana.name)      # no error is thrown when trying to access banana.name
-    print(banana.price)     # no error is thrown when accessing banana.price
-    print(banana.cost)      # no error is thrown when accessing banana.cost
+    print(banana.name)          # no error is thrown when trying to access banana.name
+    print(banana.cost)          # no error is thrown when accessing banana.price
+    print(banana.price)         # no error is thrown when accessing banana.cost
 
     # testing accuracy
     print(banana.name == "banana")  # this should print True
-    print(banana.price == 1)        # this should print True
-    print(banana.cost == 2)         # this should print True
+    print(banana.cost == 1)         # this should print True
+    print(banana.price == 2)        # this should print True
 
     print(banana.name == "apple")   # this should print False
-    print(banana.price == 20)       # this should print False
-    print(banana.cost == 40)        # this should print False
+    print(banana.cost == 20)        # this should print False
+    print(banana.price == 40)       # this should print False
     ```
 
 
