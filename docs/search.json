@@ -845,44 +845,46 @@
   {
     "objectID": "programs/04/instructions.html",
     "href": "programs/04/instructions.html",
-    "title": "Program: Height",
+    "title": "Program #4: Height",
     "section": "",
-    "text": "Your task in this assignment is to write python code that would implement a simple Height class that could potentially be used as a small part of a much larger application. To allow for its use with other systems, the specifications for the Height class are defined below."
+    "text": "Your task in this assignment is to write python code that would implement a simple Height class that could potentially be used as a small part of a much larger program. To allow for its use with other systems, the specifications for the Height class are defined below",
+    "crumbs": [
+      "Programs",
+      "Program 4"
+    ]
   },
   {
     "objectID": "programs/04/instructions.html#overview",
     "href": "programs/04/instructions.html#overview",
-    "title": "Program: Height",
+    "title": "Program #4: Height",
     "section": "",
-    "text": "Your task in this assignment is to write python code that would implement a simple Height class that could potentially be used as a small part of a much larger application. To allow for its use with other systems, the specifications for the Height class are defined below."
+    "text": "Your task in this assignment is to write python code that would implement a simple Height class that could potentially be used as a small part of a much larger program. To allow for its use with other systems, the specifications for the Height class are defined below",
+    "crumbs": [
+      "Programs",
+      "Program 4"
+    ]
   },
   {
-    "objectID": "programs/04/instructions.html#the-height-class-specifications",
-    "href": "programs/04/instructions.html#the-height-class-specifications",
-    "title": "Program: Height",
-    "section": "The Height Class Specifications",
-    "text": "The Height Class Specifications\n\nThe class should be called Height and should be implemented in a file called height.py\nThe constructor takes two arguments: the first for the feet element and the second for the inch element of any Height object. This constructor uses default values of 0 for both feet and inch elements if they are not provided. The constructor is responsible for setting an instance variable called inchs and an instance variable called feet.\nThe class should have accessors and mutators for all instance variables which use the decorator method discussed in class. Additionally:\n\nThe ft and inch mutators should not allow for those variables to be set to negative values. If that is attempted,the program should raise a ValueError.\nThe inch instance variable should never be allowed to be a value larger than or equal to 12. If that is attempted, the inch mutator should update the feet and inch value accordingly. For example, creating a Height object with 1ft and 26 inches should result in a height object with 3 ft and 2 inches. Modifying an object that is already 1 ft and 2 inches by setting the instance variable to 16, should result in the object being 2 ft and 4 inches.\n\nThe class should have a method called to_inches that returns the total number of inches that the height object is worth as an integer.\nThe class should have a method called to_feet that returns the total number of feet that the height object is worth as a float.\nThe class should have a method called to_centimeters that returns the total number of centimeters that the height object is worth as a float.\nThe class should also contain a __str__ method that determines how Height objects are represented when printed. Example: 3’2” for an object with 3 ft and 2 inch. Note there are no spaces in the string representation of a height object.\nThe class should also overload some mathematical and comparison operators i.e. defines what those operators mean in the context of Height objects. The operators in question to include are +, - , &gt;, &gt;=, &lt;=, &lt;, ==, and !=.\nFeel free to add any other functions that you feel will help to make your class more efficient and/ or cleaner, just be sure they do not conflict with the autograder or cause errors."
+    "objectID": "programs/04/instructions.html#class-details",
+    "href": "programs/04/instructions.html#class-details",
+    "title": "Program #4: Height",
+    "section": "Class details",
+    "text": "Class details\nThe class should be called Height.\n\nConstructor\nThe constructor takes two arguments for the ft and inch elements of any Height object. The constructor also uses default values of 0 for both ft and inch elements if they are not provided.\n\n\nAccessors and Mutators\nThe class should have accessors and mutators for all instance variables which use the decorator method discussed in class. Additionally\n\nthe ft and inch mutators should not allow for those variables to be set to negative values. If that is attempted, they are set to 0 instead.\nThe inch mutator should not allow for values larger than or equal to 12. If that is attempted, the ft value is updated accordingly. For example, creating a Height object with 1ft and 26 inches should result in a Height object with 3 ft and 2 inches.\n\n\n\nExtra functions\n\nThe class should have an inches function that returns the total number of inches that the Height object is worth.\nThe class should also contain a __str__ function that determines how Height objects are represented when printed i.e. 3’ 2” for an object with 3 ft and 2 inch.\nThe class should also overload some mathematical and comparison operators i.e. defines what those operators mean in the context of Height objects.\n\nThe operators in question include +, -, &gt;, &gt;=, &lt;=, &lt;, ==, and !=.\nNote that the mathematical operators above should return Height objects with the appropriate state.\n\nFeel free to add any other functions that you feel will help to make your class more efficient and/ or neater.\n\n\n\nmain function\nThe template provided contains an existing main function that will test the functionality defined above that your class should have. The tests include, but are not limited to, Object creation, mathematical and comparison operators, and the functionality of the other functions.\nYou should not change the main function in any way. Note that if you experience any errors during your class creation, those errors can be resolved by making adjustments to your Height class instead.\nSuccessful running of your code will produce the expected output shown below.\nh1 = 6' 5\"\nh2 = 2' 11\"\nh3 = 0' 0\"\nh4 = 4' 0\"\nh5 = 6' 5\"\nh6 = 0' 0\"\n========================================\n6' 5\" is in fact 77 inches\n0' 0\" is in fact 0 inches\n6' 5\" is in fact 77 inches\n========================================\n6' 5\" + 2' 11\" = 9' 4\"\n6' 5\" - 4' 10\" = 1' 7\"\n4' 0\" - 6' 5\" = 0' 0\"\n6' 5\" + 0' 1\" = 6' 6\"\n========================================\n6' 5\" &gt; 2' 11\": True\n6' 5\" &lt; 6' 5\": False\n6' 5\" &gt;= 6' 5\": True\n2' 11\" &lt;= 6' 5\": True\n9' 4\" == 9' 4\": True\n6' 5\" == 6' 6\": False\n6' 5\" &gt;= 6' 6\": False\n6' 5\" == 6' 5\": True\n2' 10\" != 2' 11\": True\n========================================\n\nNote that creating a program that produces the output shown above does not mean that your program has met all the requirements for the assignment.",
+    "crumbs": [
+      "Programs",
+      "Program 4"
+    ]
   },
   {
-    "objectID": "programs/04/instructions.html#tests",
-    "href": "programs/04/instructions.html#tests",
-    "title": "Program: Height",
-    "section": "Tests",
-    "text": "Tests\nThe Height class will be subject to the following tests. Some examples are provided for you to test your code locally.\n\nThe ability to instantiate a Height object. That is, your constructor accepts the appropriate arguments and runs without error.\n# instantiating a height of x feet and y inches would not result in any errors\nh1 = Height(1, 2)   # here we used 1ft and 2in\n\n# instantiating a height where no feet or inches are specified\nh2 = Height()       # by default, it should set feet and inches to 0\nThe existence of the feet instance variable after instantiation.\nh1 = Height(1, 2)\nprint(h1.feet)      # no errors thrown\n\nh2 = Height()\nprint(h2.feet)      # no errors thrown\nThe existence of the inches instance variable after instantiation.\nh1 = Height(1, 2)\nprint(h1.inches)      # no errors\n\nh2 = Height()\nprint(h2.inches)      # no errors\nThe feet instance variable is correct after instantiation.\nh1 = Height(1, 2)\nprint(h1.feet)      # outputs a value of 1\n\nh2 = Height()\nprint(h2.feet)      # outputs a value of 0\nThe inches instance variable is correct after instantiation.\nh1 = Height(1, 2)\nprint(h1.inches)      # outputs a value of 2\n\nh2 = Height()\nprint(h2.inches)      # outputs a value of 0\nThe feet instance variable cannot be set to a negative value.\nh1 = Height()\nh1.feet = -10       # this should raise a ValueError\nThe inches instance variable cannot be set to a negative value.\nh1 = Height()\nh1.inches = -1000   # this should raise a ValueError\nThe inches setter overflows into the feet instance variable appropriately.\nh1 = Height()\nh1.inches = 27\nprint(h1.feet)      # outputs 2\nprint(h1.inches)    # outputs 3\nThe to_inch function does not throw any errors when run.\nThe to_inch function returns the correct value. An example of using the profit function follows:\nh1 = Height(2, 3)\nprint(h1.to_inches())   # outputs 27\nThe to_feet function does not throw any errors when run.\nThe to_feet returns the correct value. Accuracy will be checked within 4 decimal places. Do not apply rounding.\nh1 = Height(2, 3)\nprint(h1.to_feet())   # outputs 2.25\nThe to_centimeters function does not throw any errors when run.\nThe to_centimeters returns the correct value. Accuracy will be checked within 4 decimal places. Do not apply rounding.\nh1 = Height(2, 3)\nprint(h1.to_centimeters())   # outputs 68.58\nThe __str__ method returns the appropriate string (must be an exact match).\nh1 = Height(2, 3)\nprint(h1)       # outputs 2'3\"  \nIndividual tests for each of the following operators: +, - , &gt;, &gt;=, &lt;=, &lt;, ==, and !=. In the case of subtraction, if the subtraction would result in a negative value, catch the ValueError that you programmed by using a try...except... and return a Height object with a height of 0 feet and 0 inches.\nh1 = Height(1, 10)\nh2 = Height(1, 3)\nh3 = Height(1, 10)\n\n# Addition\nh4 = h1 + h2\nprint(h3)       # outputs 3'1\"\n\n# Subtraction\nh4 = h1 - h2\nprint(h3)       # outputs 0'7\"\n\nh4 = h2 - h1    # catch the value error in the __sub__ function\nprint(h3)       # outputs 0'0\"\n\n# Equal To\nprint(h1 == h2) # outputs False\nprint(h1 == h3) # outputs True\n\n# Not Equal To\nprint(h1 != h2) # outputs True\nprint(h1 != h3) # outputs False\n\n# Greater Than\nprint(h1 &gt; h2)  # outputs True\nprint(h2 &gt; h1)  # outputs False\nprint(h1 &gt; h3)  # outputs False\n\n# Greater Than or Equal To\nprint(h1 &gt;= h2)  # outputs True\nprint(h2 &gt;= h1)  # outputs False\nprint(h1 &gt;= h3)  # outputs True\n\n# Less Than\nprint(h1 &lt; h2)  # outputs False\nprint(h2 &lt; h1)  # outputs True\nprint(h1 &lt; h3)  # outputs False\n\n# Less Than or Equal To\nprint(h1 &lt;= h2) # outputs False\nprint(h2 &lt;= h1) # outputs True\nprint(h1 &lt;= h3) # outputs True"
-  },
-  {
-    "objectID": "programs/04/instructions.html#additional-files",
-    "href": "programs/04/instructions.html#additional-files",
-    "title": "Program: Height",
-    "section": "Additional Files",
-    "text": "Additional Files\nYou are provided with a template that you should use. Note that the template contains a main section with some code already inside of it. Use the main portion of the code and the examples above to test your solution before submitting to the auto-grader.\ntemplate.py"
-  },
-  {
-    "objectID": "programs/04/instructions.html#submission",
-    "href": "programs/04/instructions.html#submission",
-    "title": "Program: Height",
-    "section": "Submission",
-    "text": "Submission\nYou must submit your code to the course website as a single .py file."
+    "objectID": "programs/04/instructions.html#helper-files",
+    "href": "programs/04/instructions.html#helper-files",
+    "title": "Program #4: Height",
+    "section": "Helper Files",
+    "text": "Helper Files\ntemplate.py",
+    "crumbs": [
+      "Programs",
+      "Program 4"
+    ]
   },
   {
     "objectID": "programs/02/instructions.html",

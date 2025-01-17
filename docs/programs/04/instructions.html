@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Program: Height – CSC 131</title>
+<title>Program #4: Height – CSC 131</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,40 +19,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -116,9 +82,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">
-      CSC 131
-      </li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../programs/01/instructions.html">Programs</a></li><li class="breadcrumb-item"><a href="../../programs/04/instructions.html">Program 4</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -373,6 +337,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">Program 3</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../programs/04/instructions.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Program 4</span></a>
+  </div>
+</li>
       </ul>
   </li>
     </ul>
@@ -386,19 +356,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a></li>
-  <li><a href="#the-height-class-specifications" id="toc-the-height-class-specifications" class="nav-link" data-scroll-target="#the-height-class-specifications">The Height Class Specifications</a></li>
-  <li><a href="#tests" id="toc-tests" class="nav-link" data-scroll-target="#tests">Tests</a></li>
-  <li><a href="#additional-files" id="toc-additional-files" class="nav-link" data-scroll-target="#additional-files">Additional Files</a></li>
-  <li><a href="#submission" id="toc-submission" class="nav-link" data-scroll-target="#submission">Submission</a></li>
+  <li><a href="#class-details" id="toc-class-details" class="nav-link" data-scroll-target="#class-details">Class details</a>
+  <ul class="collapse">
+  <li><a href="#constructor" id="toc-constructor" class="nav-link" data-scroll-target="#constructor">Constructor</a></li>
+  <li><a href="#accessors-and-mutators" id="toc-accessors-and-mutators" class="nav-link" data-scroll-target="#accessors-and-mutators">Accessors and Mutators</a></li>
+  <li><a href="#extra-functions" id="toc-extra-functions" class="nav-link" data-scroll-target="#extra-functions">Extra functions</a></li>
+  <li><a href="#main-function" id="toc-main-function" class="nav-link" data-scroll-target="#main-function"><code>main</code> function</a></li>
+  </ul></li>
+  <li><a href="#helper-files" id="toc-helper-files" class="nav-link" data-scroll-target="#helper-files">Helper Files</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../programs/01/instructions.html">Programs</a></li><li class="breadcrumb-item"><a href="../../programs/04/instructions.html">Program 4</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Program: Height</h1>
+<h1 class="title">Program #4: Height</h1>
 </div>
 
 
@@ -417,139 +391,74 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="overview" class="level2">
 <h2 class="anchored" data-anchor-id="overview">Overview</h2>
-<p>Your task in this assignment is to write python code that would implement a simple <code>Height</code> class that could potentially be used as a small part of a much larger application. To allow for its use with other systems, the specifications for the <code>Height</code> class are defined below.</p>
+<p>Your task in this assignment is to write python code that would implement a simple <strong>Height</strong> class that could potentially be used as a small part of a much larger program. To allow for its use with other systems, the specifications for the Height class are defined below</p>
 </section>
-<section id="the-height-class-specifications" class="level2">
-<h2 class="anchored" data-anchor-id="the-height-class-specifications">The Height Class Specifications</h2>
-<ol type="1">
-<li><p>The class should be called Height and should be implemented in a file called <code>height.py</code></p></li>
-<li><p>The constructor takes two arguments: the first for the feet element and the second for the inch element of any <code>Height</code> object. This constructor uses default values of 0 for both feet and inch elements if they are not provided. The constructor is responsible for setting an instance variable called inchs and an instance variable called feet.</p></li>
-<li><p>The class should have accessors and mutators for all instance variables which use the decorator method discussed in class. Additionally:</p>
+<section id="class-details" class="level2">
+<h2 class="anchored" data-anchor-id="class-details">Class details</h2>
+<p>The class should be called <code>Height</code>.</p>
+<section id="constructor" class="level3">
+<h3 class="anchored" data-anchor-id="constructor">Constructor</h3>
+<p>The constructor takes two arguments for the <code>ft</code> and <code>inch</code> elements of any <code>Height</code> object. The constructor also uses default values of <code>0</code> for both <code>ft</code> and <code>inch</code> elements if they are not provided.</p>
+</section>
+<section id="accessors-and-mutators" class="level3">
+<h3 class="anchored" data-anchor-id="accessors-and-mutators">Accessors and Mutators</h3>
+<p>The class should have accessors and mutators for <strong>all</strong> instance variables which use the decorator method discussed in class. Additionally</p>
 <ul>
-<li><p>The ft and inch mutators should not allow for those variables to be set to negative values. If that is attempted,the program should raise a <code>ValueError</code>.</p></li>
-<li><p>The inch instance variable should never be allowed to be a value larger than or equal to 12. If that is attempted, the inch mutator should update the feet and inch value accordingly. For example, creating a Height object with 1ft and 26 inches should result in a height object with 3 ft and 2 inches. Modifying an object that is already 1 ft and 2 inches by setting the instance variable to 16, should result in the object being 2 ft and 4 inches.</p></li>
+<li><p>the <code>ft</code> and <code>inch</code> mutators should not allow for those variables to be set to negative values. If that is attempted, they are set to <code>0</code> instead.</p></li>
+<li><p>The <code>inch</code> mutator should not allow for values larger than or equal to <code>12</code>. If that is attempted, the <code>ft</code> value is updated accordingly. For example, creating a <code>Height</code> object with <code>1ft</code> and <code>26 inches</code> should result in a <code>Height</code> object with <code>3 ft</code> and <code>2 inches</code>.</p></li>
+</ul>
+</section>
+<section id="extra-functions" class="level3">
+<h3 class="anchored" data-anchor-id="extra-functions">Extra functions</h3>
+<ul>
+<li><p>The class should have an <code>inches</code> function that returns the total number of inches that the <code>Height</code> object is worth.</p></li>
+<li><p>The class should also contain a <code>__str__</code> function that determines how Height objects are represented when printed i.e.&nbsp;<code>3’ 2”</code> for an object with <code>3 ft</code> and <code>2 inch</code>.</p></li>
+<li><p>The class should also overload some mathematical and comparison operators i.e.&nbsp;defines what those operators mean in the context of <code>Height</code> objects.</p>
+<ul>
+<li>The operators in question include <code>+</code>, <code>-</code>, <code>&gt;</code>, <code>&gt;=</code>, <code>&lt;=</code>, <code>&lt;</code>, <code>==</code>, and <code>!=</code>.</li>
+<li>Note that the mathematical operators above should return <code>Height</code> objects with the appropriate state.</li>
 </ul></li>
-<li><p>The class should have a method called <code>to_inches</code> that returns the total number of inches that the height object is worth as an integer.</p></li>
-<li><p>The class should have a method called <code>to_feet</code> that returns the total number of feet that the height object is worth as a float.</p></li>
-<li><p>The class should have a method called <code>to_centimeters</code> that returns the total number of centimeters that the height object is worth as a float.</p></li>
-<li><p>The class should also contain a <code>__str__</code> method that determines how <code>Height</code> objects are represented when printed. Example: 3’2” for an object with 3 ft and 2 inch. Note there are no spaces in the string representation of a height object.</p></li>
-<li><p>The class should also overload some mathematical and comparison operators i.e.&nbsp;defines what those operators mean in the context of Height objects. The operators in question to include are <code>+</code>, <code>-</code> , <code>&gt;</code>, <code>&gt;=</code>, <code>&lt;=</code>, <code>&lt;</code>, <code>==</code>, and <code>!=</code>.</p></li>
-<li><p>Feel free to add any other functions that you feel will help to make your class more efficient and/ or cleaner, just be sure they do not conflict with the autograder or cause errors.</p></li>
-</ol>
+<li><p>Feel free to add any other functions that you feel will help to make your class more efficient and/ or neater.</p></li>
+</ul>
 </section>
-<section id="tests" class="level2">
-<h2 class="anchored" data-anchor-id="tests">Tests</h2>
-<p>The Height class will be subject to the following tests. Some examples are provided for you to test your code locally.</p>
-<ol type="1">
-<li><p>The ability to instantiate a Height object. That is, your constructor accepts the appropriate arguments and runs without error.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># instantiating a height of x feet and y inches would not result in any errors</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>h1 <span class="op">=</span> Height(<span class="dv">1</span>, <span class="dv">2</span>)   <span class="co"># here we used 1ft and 2in</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># instantiating a height where no feet or inches are specified</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>h2 <span class="op">=</span> Height()       <span class="co"># by default, it should set feet and inches to 0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
-<li><p>The <strong>existence</strong> of the <code>feet</code> instance variable after instantiation.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>h1 <span class="op">=</span> Height(<span class="dv">1</span>, <span class="dv">2</span>)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(h1.feet)      <span class="co"># no errors thrown</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>h2 <span class="op">=</span> Height()</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(h2.feet)      <span class="co"># no errors thrown</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
-<li><p>The <strong>existence</strong> of the <code>inches</code> instance variable after instantiation.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>h1 <span class="op">=</span> Height(<span class="dv">1</span>, <span class="dv">2</span>)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(h1.inches)      <span class="co"># no errors</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>h2 <span class="op">=</span> Height()</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(h2.inches)      <span class="co"># no errors</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
-<li><p>The <code>feet</code> instance variable is <strong>correct</strong> after instantiation.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>h1 <span class="op">=</span> Height(<span class="dv">1</span>, <span class="dv">2</span>)</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(h1.feet)      <span class="co"># outputs a value of 1</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>h2 <span class="op">=</span> Height()</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(h2.feet)      <span class="co"># outputs a value of 0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
-<li><p>The <code>inches</code> instance variable is <strong>correct</strong> after instantiation.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>h1 <span class="op">=</span> Height(<span class="dv">1</span>, <span class="dv">2</span>)</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(h1.inches)      <span class="co"># outputs a value of 2</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>h2 <span class="op">=</span> Height()</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(h2.inches)      <span class="co"># outputs a value of 0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
-<li><p>The <code>feet</code> instance variable cannot be set to a negative value.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>h1 <span class="op">=</span> Height()</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>h1.feet <span class="op">=</span> <span class="op">-</span><span class="dv">10</span>       <span class="co"># this should raise a ValueError</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
-<li><p>The <code>inches</code> instance variable cannot be set to a negative value.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>h1 <span class="op">=</span> Height()</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>h1.inches <span class="op">=</span> <span class="op">-</span><span class="dv">1000</span>   <span class="co"># this should raise a ValueError</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
-<li><p>The <code>inches</code> setter overflows into the feet instance variable appropriately.</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>h1 <span class="op">=</span> Height()</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>h1.inches <span class="op">=</span> <span class="dv">27</span></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(h1.feet)      <span class="co"># outputs 2</span></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(h1.inches)    <span class="co"># outputs 3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
-<li><p>The <code>to_inch</code> function does not throw any errors when run.</p></li>
-<li><p>The <code>to_inch</code> function returns the correct value. An example of using the profit function follows:</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>h1 <span class="op">=</span> Height(<span class="dv">2</span>, <span class="dv">3</span>)</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(h1.to_inches())   <span class="co"># outputs 27</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
-<li><p>The <code>to_feet</code> function does not throw any errors when run.</p></li>
-<li><p>The <code>to_feet</code> returns the correct value. Accuracy will be checked within 4 decimal places. Do not apply rounding.</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>h1 <span class="op">=</span> Height(<span class="dv">2</span>, <span class="dv">3</span>)</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(h1.to_feet())   <span class="co"># outputs 2.25</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
-<li><p>The <code>to_centimeters</code> function does not throw any errors when run.</p></li>
-<li><p>The <code>to_centimeters</code> returns the correct value. Accuracy will be checked within 4 decimal places. Do not apply rounding.</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>h1 <span class="op">=</span> Height(<span class="dv">2</span>, <span class="dv">3</span>)</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(h1.to_centimeters())   <span class="co"># outputs 68.58</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
-<li><p>The <code>__str__</code> method returns the appropriate string (must be an exact match).</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>h1 <span class="op">=</span> Height(<span class="dv">2</span>, <span class="dv">3</span>)</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(h1)       <span class="co"># outputs 2'3"  </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
-<li><p>Individual tests for each of the following operators: <code>+</code>, <code>-</code> , <code>&gt;</code>, <code>&gt;=</code>, <code>&lt;=</code>, <code>&lt;</code>, <code>==</code>, and <code>!=</code>. In the case of subtraction, if the subtraction would result in a negative value, catch the <code>ValueError</code> that you programmed by using a <code>try...except...</code> and return a <code>Height</code> object with a height of 0 feet and 0 inches.</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>h1 <span class="op">=</span> Height(<span class="dv">1</span>, <span class="dv">10</span>)</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>h2 <span class="op">=</span> Height(<span class="dv">1</span>, <span class="dv">3</span>)</span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>h3 <span class="op">=</span> Height(<span class="dv">1</span>, <span class="dv">10</span>)</span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Addition</span></span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>h4 <span class="op">=</span> h1 <span class="op">+</span> h2</span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(h3)       <span class="co"># outputs 3'1"</span></span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Subtraction</span></span>
-<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>h4 <span class="op">=</span> h1 <span class="op">-</span> h2</span>
-<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(h3)       <span class="co"># outputs 0'7"</span></span>
-<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>h4 <span class="op">=</span> h2 <span class="op">-</span> h1    <span class="co"># catch the value error in the __sub__ function</span></span>
-<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(h3)       <span class="co"># outputs 0'0"</span></span>
-<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Equal To</span></span>
-<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(h1 <span class="op">==</span> h2) <span class="co"># outputs False</span></span>
-<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(h1 <span class="op">==</span> h3) <span class="co"># outputs True</span></span>
-<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Not Equal To</span></span>
-<span id="cb13-21"><a href="#cb13-21" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(h1 <span class="op">!=</span> h2) <span class="co"># outputs True</span></span>
-<span id="cb13-22"><a href="#cb13-22" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(h1 <span class="op">!=</span> h3) <span class="co"># outputs False</span></span>
-<span id="cb13-23"><a href="#cb13-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-24"><a href="#cb13-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Greater Than</span></span>
-<span id="cb13-25"><a href="#cb13-25" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(h1 <span class="op">&gt;</span> h2)  <span class="co"># outputs True</span></span>
-<span id="cb13-26"><a href="#cb13-26" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(h2 <span class="op">&gt;</span> h1)  <span class="co"># outputs False</span></span>
-<span id="cb13-27"><a href="#cb13-27" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(h1 <span class="op">&gt;</span> h3)  <span class="co"># outputs False</span></span>
-<span id="cb13-28"><a href="#cb13-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-29"><a href="#cb13-29" aria-hidden="true" tabindex="-1"></a><span class="co"># Greater Than or Equal To</span></span>
-<span id="cb13-30"><a href="#cb13-30" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(h1 <span class="op">&gt;=</span> h2)  <span class="co"># outputs True</span></span>
-<span id="cb13-31"><a href="#cb13-31" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(h2 <span class="op">&gt;=</span> h1)  <span class="co"># outputs False</span></span>
-<span id="cb13-32"><a href="#cb13-32" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(h1 <span class="op">&gt;=</span> h3)  <span class="co"># outputs True</span></span>
-<span id="cb13-33"><a href="#cb13-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-34"><a href="#cb13-34" aria-hidden="true" tabindex="-1"></a><span class="co"># Less Than</span></span>
-<span id="cb13-35"><a href="#cb13-35" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(h1 <span class="op">&lt;</span> h2)  <span class="co"># outputs False</span></span>
-<span id="cb13-36"><a href="#cb13-36" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(h2 <span class="op">&lt;</span> h1)  <span class="co"># outputs True</span></span>
-<span id="cb13-37"><a href="#cb13-37" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(h1 <span class="op">&lt;</span> h3)  <span class="co"># outputs False</span></span>
-<span id="cb13-38"><a href="#cb13-38" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-39"><a href="#cb13-39" aria-hidden="true" tabindex="-1"></a><span class="co"># Less Than or Equal To</span></span>
-<span id="cb13-40"><a href="#cb13-40" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(h1 <span class="op">&lt;=</span> h2) <span class="co"># outputs False</span></span>
-<span id="cb13-41"><a href="#cb13-41" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(h2 <span class="op">&lt;=</span> h1) <span class="co"># outputs True</span></span>
-<span id="cb13-42"><a href="#cb13-42" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(h1 <span class="op">&lt;=</span> h3) <span class="co"># outputs True</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
-</ol>
+<section id="main-function" class="level3">
+<h3 class="anchored" data-anchor-id="main-function"><code>main</code> function</h3>
+<p>The template provided contains an existing <code>main</code> function that will test the functionality defined above that your class should have. The tests include, but are not limited to, Object creation, mathematical and comparison operators, and the functionality of the other functions.</p>
+<p>You should not change the <code>main</code> function in any way. Note that if you experience any errors during your class creation, those errors can be resolved by making adjustments to your <code>Height</code> class instead.</p>
+<p>Successful running of your code will produce the expected output shown below.</p>
+<pre class="styled-pre">h1 = 6' 5"
+h2 = 2' 11"
+h3 = 0' 0"
+h4 = 4' 0"
+h5 = 6' 5"
+h6 = 0' 0"
+========================================
+6' 5" is in fact 77 inches
+0' 0" is in fact 0 inches
+6' 5" is in fact 77 inches
+========================================
+6' 5" + 2' 11" = 9' 4"
+6' 5" - 4' 10" = 1' 7"
+4' 0" - 6' 5" = 0' 0"
+6' 5" + 0' 1" = 6' 6"
+========================================
+6' 5" &gt; 2' 11": True
+6' 5" &lt; 6' 5": False
+6' 5" &gt;= 6' 5": True
+2' 11" &lt;= 6' 5": True
+9' 4" == 9' 4": True
+6' 5" == 6' 6": False
+6' 5" &gt;= 6' 6": False
+6' 5" == 6' 5": True
+2' 10" != 2' 11": True
+========================================
+</pre>
+<p>Note that creating a program that produces the output shown above does <strong>not</strong> mean that your program has met all the requirements for the assignment.</p>
 </section>
-<section id="additional-files" class="level2">
-<h2 class="anchored" data-anchor-id="additional-files">Additional Files</h2>
-<p>You are provided with a template that you should use. Note that the template contains a main section with some code already inside of it. Use the main portion of the code and the examples above to test your solution before submitting to the auto-grader.</p>
+</section>
+<section id="helper-files" class="level2">
+<h2 class="anchored" data-anchor-id="helper-files">Helper Files</h2>
 <p><a href="./files/template.py" download="">template.py</a></p>
-</section>
-<section id="submission" class="level2">
-<h2 class="anchored" data-anchor-id="submission">Submission</h2>
-<p>You must submit your code to the course website as a single .py file.</p>
 
 
 </section>
