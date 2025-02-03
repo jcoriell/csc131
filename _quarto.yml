@@ -87,8 +87,8 @@ website:
             href: "programs/03/instructions.qmd"
           - text: Program 4
             href: "programs/04/instructions.qmd"
-      #     - text: Program 5
-      #       href: "programs/05/instructions.qmd"
+          - text: Program 5
+            href: "programs/05/instructions.qmd"
       #     - text: Program 6
       #       href: "programs/06/instructions.qmd"
       #     - text: Program 7
