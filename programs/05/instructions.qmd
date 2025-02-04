@@ -383,7 +383,7 @@ The SaleItem class will be subject to the following tests. Some examples are pro
 1. The `Chip` class is a subclass of the `Food` class.
 
     ```Python    
-    print(issubclass(Shoe, Food))  # outputs True
+    print(issubclass(Chip, Food))  # outputs True
     ```
 
 2. The constructor runs and does not cause any errors. Additionally, the values of the instance variables should be correct after running the constructor.
