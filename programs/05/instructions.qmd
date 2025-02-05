@@ -122,7 +122,7 @@ A description of each class follows.
 
 1. The `Chip` class inherits from the `Food` class. This class refers to the potato chips that the store sells.
 
-2. It has a constructor that does not receive any arguments. The constructor sets the `name` of all `Chip` instances to `"Original"`, the brand to `"Lays"`, the `cost` to `2`, the `price` to `3.50`, and the `shelf_life` to `21`.
+2. It has a constructor that does not receive any arguments. The constructor sets the `name` of all `Chip` instances to `"Original"`, the `cost` to `2`, the `price` to `3.50`, and the `shelf_life` to `21`.
 
 
 ## Tests
@@ -305,8 +305,8 @@ The SaleItem class will be subject to the following tests. Some examples are pro
 
     # none of the following should cause errors.
     print(soup.name)            # outputs "Soup"
-    print(soup.cost)            # outputs 29.99
-    print(soup.price)           # outputs 49.99
+    print(soup.cost)            # outputs 0.5
+    print(soup.price)           # outputs 1.5
     print(soup.shelf_life)      # outputs 7
 
     print(soup.shelf_life == 7) # outputs True
