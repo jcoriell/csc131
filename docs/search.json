@@ -646,44 +646,57 @@
   {
     "objectID": "programs/06/instructions.html",
     "href": "programs/06/instructions.html",
-    "title": "Program: Sale Item",
+    "title": "Program 6: Card Game",
     "section": "",
-    "text": "Your task in this assignment is to write python code that would implement a simple Height class that could potentially be used as a small part of a much larger application. To allow for its use with other systems, the specifications for the Height class are defined below."
+    "text": "Your task in this programming assignment is to design three different classes that will allow us to play a very basic card game. In the game, the player and computer take turns picking out playing cards from a card deck. The winner of any round is whoever out of the two has the higher value playing card. Below is a class diagram showing the class dependencies.\n\n\n\nCard Game Class Diagram",
+    "crumbs": [
+      "Programs",
+      "Program 6"
+    ]
   },
   {
     "objectID": "programs/06/instructions.html#overview",
     "href": "programs/06/instructions.html#overview",
-    "title": "Program: Sale Item",
+    "title": "Program 6: Card Game",
     "section": "",
-    "text": "Your task in this assignment is to write python code that would implement a simple Height class that could potentially be used as a small part of a much larger application. To allow for its use with other systems, the specifications for the Height class are defined below."
+    "text": "Your task in this programming assignment is to design three different classes that will allow us to play a very basic card game. In the game, the player and computer take turns picking out playing cards from a card deck. The winner of any round is whoever out of the two has the higher value playing card. Below is a class diagram showing the class dependencies.\n\n\n\nCard Game Class Diagram",
+    "crumbs": [
+      "Programs",
+      "Program 6"
+    ]
   },
   {
-    "objectID": "programs/06/instructions.html#the-height-class-specifications",
-    "href": "programs/06/instructions.html#the-height-class-specifications",
-    "title": "Program: Sale Item",
-    "section": "The Height Class Specifications",
-    "text": "The Height Class Specifications\n\nThe class should be called Height and should be implemented in a file called height.py\nThe constructor takes two arguments: the first for the feet element and the second for the inch element of any Height object. This constructor uses default values of 0 for both feet and inch elements if they are not provided. The constructor is responsible for setting an instance variable called inchs and an instance variable called feet.\nThe class should have accessors and mutators for all instance variables which use the decorator method discussed in class. Additionally:\n\nThe ft and inch mutators should not allow for those variables to be set to negative values. If that is attempted,the program should raise a ValueError.\nThe inch instance variable should never be allowed to be a value larger than or equal to 12. If that is attempted, the inch mutator should update the feet and inch value accordingly. For example, creating a Height object with 1ft and 26 inches should result in a height object with 3 ft and 2 inches. Modifying an object that is already 1 ft and 2 inches by setting the instance variable to 16, should result in the object being 2 ft and 4 inches.\n\nThe class should have a method called to_inches that returns the total number of inches that the height object is worth as an integer.\nThe class should have a method called to_feet that returns the total number of feet that the height object is worth as a float.\nThe class should have a method called to_centimeters that returns the total number of centimeters that the height object is worth as a float.\nThe class should also contain a __str__ method that determines how Height objects are represented when printed. Example: 3’2” for an object with 3 ft and 2 inch. Note there are no spaces in the string representation of a height object.\nThe class should also overload some mathematical and comparison operators i.e. defines what those operators mean in the context of Height objects. The operators in question to include are +, - , &gt;, &gt;=, &lt;=, &lt;, ==, and !=.\nFeel free to add any other functions that you feel will help to make your class more efficient and/ or cleaner, just be sure they do not conflict with the autograder or cause errors."
+    "objectID": "programs/06/instructions.html#class-details.",
+    "href": "programs/06/instructions.html#class-details.",
+    "title": "Program 6: Card Game",
+    "section": "Class Details.",
+    "text": "Class Details.\n\nCard Class\nBelow are some conditions for the Card Class.\n\nThe Card class has a number and a suit\nBoth instance variables are provided as arguments to the constructor\nThe class should have accessors and mutators for all instance variables which use the decorator method. Additionally:\n\nthe number mutator should only allow integer values between 2 and 10 inclusive i.e. [2, 10]. If any other value is attempted, the number should be set to 2.\nthe suit mutator should only allow arguments that match with one of the four possibilities in the POSSIBLESUITS constant defined at the top of the template file. If any other options are attempted, the suit should be set to “clubs”.\n\n\n\n\n\n\n\n\nTip\n\n\n\n\n\nisinstance is a command that can be used to check and see whether an argument is of a specific type e.g. an integer.\n\n\n\n\nThe class should overload the &gt;, &lt;, and == operators. To compare cards, only the number of the card is considered e.g. “4 of clubs” and “4 of diamonds” are equivalent in value but larger than “3 of spades” and less than “5 of hearts”.\nThe class should have a __str__ function that returns a string in the form “number of suit” e.g. “4 of clubs” or “10 of diamonds”.\nThe class should have a __hash__ function which will allow for Card objects to be used easily in datastructures that require hashing e.g. sets and dictionaries. All that function needs to have is\ndef __hash__(self):\n    return hash((self.number, self.suit))\n\n\n\nDeck Class\nBelow are the conditions for the Deck class.\n\nA Deck class has a cards instance variable. This variable contains a list of 36 Card objects i.e. the numbers from 2 to 10 in all 4 possible suits.\nThe Deck class does not take any arguments to its constructor.\nThe class should have an accessor and mutator for its instance variable.\nThe class should have a shuffle function. As the name suggests, this function shuffles the cards contained in the cards instance variable.\nThe class should also have a size function that returns the number of cards contained in the deck.\nThe class should also contain a draw function that returns the card contained in the first position of the cards list. It also ensures that this card is removed from the deck. However, if there aren’t any cards in the deck, the draw function returns None.\ncontains a __str__ function that returns the string representation of the deck. If the deck is empty, it will return “[--empty--]”. Otherwise, it will return a comma seperated list of the cards in the deck e.g. “[5 of hearts, 6 of diamonds, 3 of diamonds, ]”\n\n\n\nGame Class\nBelow are the conditions for the Game class.\n\nA Game class has a deck instance variable. This variable contains an object of type Deck.\nThe Game class does not take any arguments to its constructor. It initializes the deck, and then shuffles it twice.\nThe class should have an accessor and mutator for its instance variables\nThe class should have a start function that prints out the starting message of the game, and then calls the play or end functions based on user input.\nThe class should have an end function that prints out the ending message of the game as well as the state of the deck after the game.\nThe class should have a play function that drives the logic of the game. If there are cards in the deck, it will:\n\ndraw two cards from the deck (one for the player and one for the computer),\nshuffle the deck again, and\nthen compare the two cards. Based on this comparison, it will print out the winner of that round and then ask the user whether they want to proceed with another round. If so, it will keep on going but otherwise, it will call the end function. Also if the deck runs out of cards, it will call the end function.",
+    "crumbs": [
+      "Programs",
+      "Program 6"
+    ]
   },
   {
-    "objectID": "programs/06/instructions.html#tests",
-    "href": "programs/06/instructions.html#tests",
-    "title": "Program: Sale Item",
-    "section": "Tests",
-    "text": "Tests\nThe Height class will be subject to the following tests. Some examples are provided for you to test your code locally.\n\nThe ability to instantiate a Height object. That is, your constructor accepts the appropriate arguments and runs without error.\n# instantiating a height of x feet and y inches would not result in any errors\nh1 = Height(1, 2)   # here we used 1ft and 2in\n\n# instantiating a height where no feet or inches are specified\nh2 = Height()       # by default, it should set feet and inches to 0\nThe existance of the feet instance variable after instantiation.\nh1 = Height(1, 2)\nprint(h1.feet)      # no errors thrown\n\nh2 = Height()\nprint(h2.feet)      # no errors thrown\nThe existance of the inches instance variable after instantiation.\nh1 = Height(1, 2)\nprint(h1.inches)      # no errors\n\nh2 = Height()\nprint(h2.inches)      # no errors\nThe feet instance variable is correct after instantiation.\nh1 = Height(1, 2)\nprint(h1.feet)      # outputs a value of 1\n\nh2 = Height()\nprint(h2.feet)      # outputs a value of 0\nThe inches instance variable is correct after instantiation.\nh1 = Height(1, 2)\nprint(h1.inches)      # outputs a value of 2\n\nh2 = Height()\nprint(h2.inches)      # outputs a value of 0\nThe feet instance variable cannot be set to a negative value.\nh1 = Height()\nh1.feet = -10       # this should raise a ValueError\nThe inches instance variable cannot be set to a negative value.\nh1 = Height()\nh1.inches = -1000   # this should raise a ValueError\nThe inches setter overflows into the feet instance variable appropriately.\nh1 = Height()\nh1.inches = 27\nprint(h1.feet)      # outputs 2\nprint(h1.inches)    # outputs 3\nThe to_inch function does not throw any errors when run.\nThe to_inch function returns the correct value. An example of using the profit function follows:\nh1 = Height(2, 3)\nprint(h1.to_inches())   # outputs 27\nThe to_feet function does not throw any errors when run.\nThe to_feet returns the correct value. Accuracy will be checked within 4 decimal places. Do not apply rounding.\nh1 = Height(2, 3)\nprint(h1.to_feet())   # outputs 2.25\nThe to_centimeters function does not throw any errors when run.\nThe to_centimeters returns the correct value. Accuracy will be checked within 4 decimal places. Do not apply rounding.\nh1 = Height(2, 3)\nprint(h1.to_centimeters())   # outputs 68.58\nThe __str__ method returns the appropriate string (must be an exact match).\nh1 = Height(2, 3)\nprint(h1)       # outputs 2'3\"  \nIndividual tests for each of the following operators: +, - , &gt;, &gt;=, &lt;=, &lt;, ==, and !=. In the case of subtraction, if the subtraction would result in a negative value, catch the ValueError that you programmed by using a try...except... and return a Height object with a height of 0 feet and 0 inches.\nh1 = Height(1, 10)\nh2 = Height(1, 3)\nh3 = Height(1, 10)\n\n# Addition\nh4 = h1 + h2\nprint(h3)       # outputs 3'1\"\n\n# Subtraction\nh4 = h1 - h2\nprint(h3)       # outputs 0'7\"\n\nh4 = h2 - h1    # catch the value error in the __sub__ function\nprint(h3)       # outputs 0'0\"\n\n# Equal To\nprint(h1 == h2) # outputs False\nprint(h1 == h3) # outputs True\n\n# Not Equal To\nprint(h1 != h2) # outputs True\nprint(h1 != h3) # outputs False\n\n# Greater Than\nprint(h1 &gt; h2)  # outputs True\nprint(h2 &gt; h1)  # outputs False\nprint(h1 &gt; h3)  # outputs False\n\n# Greater Than or Equal To\nprint(h1 &gt;= h2)  # outputs True\nprint(h2 &gt;= h1)  # outputs False\nprint(h1 &gt;= h3)  # outputs True\n\n# Less Than\nprint(h1 &lt; h2)  # outputs False\nprint(h2 &lt; h1)  # outputs True\nprint(h1 &lt; h3)  # outputs False\n\n# Less Than or Equal To\nprint(h1 &lt;= h2) # outputs False\nprint(h2 &lt;= h1) # outputs True\nprint(h1 &lt;= h3) # outputs True"
+    "objectID": "programs/06/instructions.html#extra-information",
+    "href": "programs/06/instructions.html#extra-information",
+    "title": "Program 6: Card Game",
+    "section": "Extra Information",
+    "text": "Extra Information\nEven though this might seem like a lot, it is actually built on concepts you should be familiar with. You are also provided with a test file (CardGameTest.py) that when executed in the same folder as a CardGame.py file (that contains your class definitions) will test the functionality defined above that your classes should have. The test file checks Object creation, printing, and the manipulation of instance variables.\nNote that there is a boolean variable at the top of the CardGameTest.py file that will allow you to switch between testing the Classes (i.e. Card and Deck) and playing the game. Feel free to change that variable depending on which part of the code you are testing/trying out.\nTo execute the entire program, simply run the CardGameTest.py file. If your classes are properly defined in a CardGame.py file that is in the same folder, then it should automatically use them to produce the expected output shown below if the TESTING boolean is set to True.\n\n\n\nExpected Output when TESTING is True\n\n\nAlternatively, below are a couple of pictures showing parts of the game that one could see if TESTING boolean is set to False.\n\n\nA few extra constraints\n\nYou must include a meaningful header, use good coding style, use meaningful variable names, and comment your source code where appropriate;\nYour output should be as close to the sample run shown above as you can get yours;\nYou must submit just your class file (CardGame.py) as a single .py file.\nYou are provided with a template that provides a good starting point for your class designs. It contains helpful libraries and constants that you can use in your design.",
+    "crumbs": [
+      "Programs",
+      "Program 6"
+    ]
   },
   {
-    "objectID": "programs/06/instructions.html#additional-files",
-    "href": "programs/06/instructions.html#additional-files",
-    "title": "Program: Sale Item",
-    "section": "Additional Files",
-    "text": "Additional Files\nYou are provided with a template that you should use. Note that the template contains a main section with some code already inside of it. Use the main portion of the code and the examples above to test your solution before submitting to the auto-grader.\ntemplate.py"
-  },
-  {
-    "objectID": "programs/06/instructions.html#submission",
-    "href": "programs/06/instructions.html#submission",
-    "title": "Program: Sale Item",
-    "section": "Submission",
-    "text": "Submission\nYou must submit your code to the course website as a single .py file."
+    "objectID": "programs/06/instructions.html#helper-files",
+    "href": "programs/06/instructions.html#helper-files",
+    "title": "Program 6: Card Game",
+    "section": "Helper Files",
+    "text": "Helper Files\ntemplate.py\nCardGameTest.py",
+    "crumbs": [
+      "Programs",
+      "Program 6"
+    ]
   },
   {
     "objectID": "programs/07/instructions.html",

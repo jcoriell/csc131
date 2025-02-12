@@ -1,14 +1,23 @@
-# Name:
-# Date:
-# Description:
+#####################################################################
+# author:      
+# date:       
+# description:
+#####################################################################
 
+# import the shuffle and seed functions from the random library.
+import random
 
-# Your code goes here
+# set the seed
+random.seed(9876543210)
 
+# define the possible suits that the cards can have using a list.
+POSSIBLESUITS = ["clubs", "diamonds", "hearts", "spades"]
 
+class Card:
+    pass
 
+class Deck:
+    pass
 
-# main
-if __name__ == "__main__":
-    # your testing code goes here
-    pass    # remove this line
+class Game:
+    pass

@@ -1,224 +1,136 @@
 ---
-title: "Program: Sale Item"
+title: "Program 6: Card Game"
 ---
 
-## Overview
+## Overview 
 
-Your task in this assignment is to write python code that would implement a simple `Height` class that
-could potentially be used as a small part of a much larger application. To allow for its use with other
-systems, the specifications for the `Height` class are defined below.
+Your task in this programming assignment is to design three different
+classes that will allow us to play a very basic card game. In the game,
+the player and computer take turns picking out playing cards from a card
+deck. The winner of any round is whoever out of the two has the higher
+value playing card. Below is a class diagram showing the class
+dependencies.
 
+![Card Game Class Diagram](images/CardGameClassDiagram.png)
 
-## The Height Class Specifications
+## Class Details.
 
-1. The class should be called Height and should be implemented in a file called `height.py`
+### `Card` Class 
 
-2. The constructor takes two arguments: the first for the feet element and the second for the inch element of any `Height` object. This constructor uses default values of 0 for both feet and inch elements if they are not provided. The constructor is responsible for setting an instance variable called inchs and an instance variable called feet.
+Below are some conditions for the `Card` Class.
 
-3. The class should have accessors and mutators for all instance variables which use the decorator
-method discussed in class. Additionally:
-
-    - The ft and inch mutators should not allow for those variables to be set to negative values. If that is attempted,the program should raise a `ValueError`.
-
-    - The inch instance variable should never be allowed to be a value larger than or equal to 12. If that is attempted, the inch mutator should update the feet and inch value accordingly. For example, creating a Height object with 1ft and 26 inches should result in a height object with 3 ft and 2 inches. Modifying an object that is already 1 ft and 2 inches by setting the instance variable to 16, should result in the object being 2 ft and 4 inches.
-
-4. The class should have a method called `to_inches` that returns the total number of inches that the height
-object is worth as an integer.
-
-5. The class should have a method called `to_feet` that returns the total number of feet that the height object is worth as a float.
-
-6. The class should have a method called `to_centimeters` that returns the total number of centimeters that the height object is worth as a float.
-
-5. The class should also contain a `__str__` method that determines how `Height` objects are
-represented when printed. Example: 3’2” for an object with 3 ft and 2 inch. Note there are no spaces in the string representation of a height object.
+1. The `Card` class has a `number` and a `suit`
+2. Both instance variables are provided as arguments to the constructor
+3. The class should have accessors and mutators for **all** instance variables which use the decorator
+method. Additionally:
+    1. the `number` mutator should only allow integer values between 2 and 10 inclusive i.e. [2,
+	10]. If any other value is attempted, the number should be set to 2.
 
 
-6. The class should also overload some mathematical and comparison operators i.e. defines what
-those operators mean in the context of Height objects. The operators in question to include are `+`, `-` , `>`, `>=`, `<=`, `<`, `==`, and `!=`.
+    2. the suit mutator should only allow arguments that match with one of the four possibilities
+	in the `POSSIBLESUITS` constant defined at the top of the template file. If any other options
+	are attempted, the suit should be set to “clubs”.
 
-7. Feel free to add any other functions that you feel will help to make your class more efficient and/
-or cleaner, just be sure they do not conflict with the autograder or cause errors.
+::: {.callout-tip collapse="true"}
+`isinstance` is a command that can be used to check and see whether an
+argument is of a specific type e.g. an integer.
+:::
 
+4. The class should overload the `>`, `<`, and `==` operators. To compare cards, only the number of
+the card is considered e.g. “4 of clubs” and “4 of diamonds” are equivalent in value but larger
+than “3 of spades” and less than “5 of hearts”.
 
-## Tests
+5. The class should have a `__str__` function that returns a string in the form “number of
+suit” e.g. “4 of clubs” or “10 of diamonds”.
 
-The Height class will be subject to the following tests. Some examples are provided for you to test your code locally.
+6. The class should have a `__hash__` function which will allow for
+   `Card` objects to be used easily in datastructures that require
+   hashing e.g. sets and dictionaries. All that function needs to have
+   is
 
-1. The ability to instantiate a Height object. That is, your constructor accepts the appropriate arguments and runs without error. 
-
-    ```Python
-    # instantiating a height of x feet and y inches would not result in any errors
-    h1 = Height(1, 2)   # here we used 1ft and 2in
-
-    # instantiating a height where no feet or inches are specified
-    h2 = Height()       # by default, it should set feet and inches to 0
+   ```python
+   def __hash__(self):
+       return hash((self.number, self.suit))
     ```
 
-2. The **existance** of the `feet` instance variable after instantiation.
+### `Deck` Class
 
-    ```Python
-    h1 = Height(1, 2)
-    print(h1.feet)      # no errors thrown
+Below are the conditions for the Deck class.
 
-    h2 = Height()
-    print(h2.feet)      # no errors thrown
-    ```
-
-3. The **existance** of the `inches` instance variable after instantiation.
-
-    ```Python
-    h1 = Height(1, 2)
-    print(h1.inches)      # no errors
-
-    h2 = Height()
-    print(h2.inches)      # no errors
-    ```
-
-4. The `feet` instance variable is **correct** after instantiation.
-
-    ```Python
-    h1 = Height(1, 2)
-    print(h1.feet)      # outputs a value of 1
-
-    h2 = Height()
-    print(h2.feet)      # outputs a value of 0
-    ```
-
-5. The `inches` instance variable is **correct** after instantiation.
-
-    ```Python
-    h1 = Height(1, 2)
-    print(h1.inches)      # outputs a value of 2
-
-    h2 = Height()
-    print(h2.inches)      # outputs a value of 0
-    ```
+1. A `Deck` class has a `cards` instance variable. This variable contains a list of 36 `Card` objects
+i.e. the numbers from 2 to 10 in all 4 possible suits.
+2. The `Deck` class does **not** take any arguments to its constructor.
+3. The class should have an accessor and mutator for its instance variable.
+4. The class should have a `shuffle` function. As the name suggests, this function shuffles the
+cards contained in the `cards` instance variable.
+5. The class should also have a `size` function that returns the number of cards contained in the
+`deck`.
+6. The class should also contain a `draw` function that returns the `card` contained in the first
+position of the `cards` list. It also ensures that this card is removed from the `deck`. However, if
+there aren’t any cards in the deck, the `draw` function returns `None`.
+7. contains a `__str__` function that returns the string representation of the `deck`. If the `deck` is
+empty, it will return “`[--empty--]`”. Otherwise, it will return a comma seperated list of the
+`cards` in the deck e.g. “`[5 of hearts, 6 of diamonds, 3 of diamonds, ]`”
 
 
-6. The `feet` instance variable cannot be set to a negative value.
+### `Game` Class 
 
-    ```Python
-    h1 = Height()
-    h1.feet = -10       # this should raise a ValueError
-    ```
+Below are the conditions for the Game class.
 
+1. A `Game` class has a `deck` instance variable. This variable contains an object of type `Deck`.
+2. The `Game` class does **not** take any arguments to its constructor. It initializes the `deck`, and then
+shuffles it twice.
+3. The class should have an accessor and mutator for its instance variables
+4. The class should have a `start` function that prints out the starting message of the game, and
+then calls the `play` or `end` functions based on user input.
+5. The class should have an `end` function that prints out the ending message of the game as well as
+the state of the `deck` after the game.
+6. The class should have a `play` function that drives the logic of the game. If there are cards in the
+`deck`, it will:
+    1. draw two cards from the `deck` (one for the player and one for the computer),
+    2. `shuffle` the deck again, and 
+    3. then compare the two cards. 
+    Based on this comparison, it will print out the winner of that round and then ask the user whether they want to proceed with
+another round. If so, it will keep on going but otherwise, it will call the `end` function. Also if the
+deck runs out of cards, it will call the `end` function.
 
-7. The `inches` instance variable cannot be set to a negative value.
+## Extra Information
 
-    ```Python
-    h1 = Height()
-    h1.inches = -1000   # this should raise a ValueError
-    ```
+Even though this might seem like a lot, it is actually built on concepts you should be familiar with. You
+are also provided with a test file (*CardGameTest.py*) that when executed in the same folder as a
+*CardGame.py* file (that contains your class definitions) will test the functionality defined above that
+your classes should have. The test file checks Object creation, printing, and the manipulation of instance
+variables. 
 
-8. The `inches` setter overflows into the feet instance variable appropriately.
+Note that there is a boolean variable at the top of the *CardGameTest.py* file that will
+allow you to switch between testing the Classes (i.e. `Card` and `Deck`) and playing the game. Feel free
+to change that variable depending on which part of the code you are testing/trying out.
 
-    ```Python
-    h1 = Height()
-    h1.inches = 27
-    print(h1.feet)      # outputs 2
-    print(h1.inches)    # outputs 3
-    ```
-
-
-
-
-9. The `to_inch` function does not throw any errors when run.
-
-10. The `to_inch` function returns the correct value. An example of using the profit function follows:
-
-    ```Python
-    h1 = Height(2, 3)
-    print(h1.to_inches())   # outputs 27
-    ```
-
-
-11. The `to_feet` function does not throw any errors when run.
+To execute the entire program, simply run the *CardGameTest.py* file. If your classes are properly
+defined in a *CardGame.py* file that is in the same folder, then it should automatically use them to
+produce the expected output shown below if the `TESTING` boolean is set to `True`.
 
 
-12. The `to_feet` returns the correct value. Accuracy will be checked within 4 decimal places. Do not apply rounding.
+![Expected Output when `TESTING` is `True`](images/CardGame01.png)
 
-    ```Python
-    h1 = Height(2, 3)
-    print(h1.to_feet())   # outputs 2.25
-    ```
+Alternatively, below are a couple of pictures showing parts of the game that one could see if `TESTING`
+boolean is set to `False`.
 
+![](images/CardGame02.png)
 
-13. The `to_centimeters` function does not throw any errors when run.
+![](images/CardGame03.png)
 
+A few extra constraints
 
-14. The `to_centimeters` returns the correct value. Accuracy will be checked within 4 decimal places. Do not apply rounding.
+1. You must include a meaningful header, use good coding style, use meaningful variable names,
+and comment your source code where appropriate;
+2. Your output should be as close to the sample run shown above as you can get yours;
+3. You must submit just your class file (*CardGame.py*) as a single .py file.
+4. You are provided with a template that provides a good starting point for your class designs. It
+contains helpful libraries and constants that you can use in your design.
 
-    ```Python
-    h1 = Height(2, 3)
-    print(h1.to_centimeters())   # outputs 68.58
-    ```
-
-15. The `__str__` method returns the appropriate string (must be an exact match).
-
-    ```Python
-    h1 = Height(2, 3)
-    print(h1)       # outputs 2'3"  
-    ```
-
-16. Individual tests for each of the following operators:  `+`, `-` , `>`, `>=`, `<=`, `<`, `==`, and `!=`.
-    In the case of subtraction, if the subtraction would result in a negative value, catch the `ValueError` that you programmed by using a `try...except...` and return a `Height` object with a height of 0 feet and 0 inches.
-
-    ```Python
-    h1 = Height(1, 10)
-    h2 = Height(1, 3)
-    h3 = Height(1, 10)
-
-    # Addition
-    h4 = h1 + h2
-    print(h3)       # outputs 3'1"
-
-    # Subtraction
-    h4 = h1 - h2
-    print(h3)       # outputs 0'7"
-
-    h4 = h2 - h1    # catch the value error in the __sub__ function
-    print(h3)       # outputs 0'0"
-
-    # Equal To
-    print(h1 == h2) # outputs False
-    print(h1 == h3) # outputs True
-
-    # Not Equal To
-    print(h1 != h2) # outputs True
-    print(h1 != h3) # outputs False
-
-    # Greater Than
-    print(h1 > h2)  # outputs True
-    print(h2 > h1)  # outputs False
-    print(h1 > h3)  # outputs False
-
-    # Greater Than or Equal To
-    print(h1 >= h2)  # outputs True
-    print(h2 >= h1)  # outputs False
-    print(h1 >= h3)  # outputs True
-
-    # Less Than
-    print(h1 < h2)  # outputs False
-    print(h2 < h1)  # outputs True
-    print(h1 < h3)  # outputs False
-
-    # Less Than or Equal To
-    print(h1 <= h2) # outputs False
-    print(h2 <= h1) # outputs True
-    print(h1 <= h3) # outputs True
-    ```
-
-
-
-
-## Additional Files
-
-You are provided with a template that you should use. Note that the template contains a main section with some code already inside of it. Use the main portion of the code and the examples above to test your solution before submitting to the auto-grader. 
+## Helper Files
 
 <a href="./files/template.py" download>template.py</a>
 
-## Submission
-
-You must submit your code to the course website as a single .py file.
-
-
+<a href="./files/CardGameTest.py" download>CardGameTest.py</a>
