@@ -23,13 +23,10 @@ Below are some conditions for the `Card` Class.
 2. Both instance variables are provided as arguments to the constructor
 3. The class should have accessors and mutators for **all** instance variables which use the decorator
 method. Additionally:
-    1. the `number` mutator should only allow integer values between 2 and 10 inclusive i.e. [2,
-	10]. If any other value is attempted, the number should be set to 2.
+    a. the `number` mutator should only allow integer values between 2 and 10 inclusive i.e. [2,10]. If any other value is attempted, the number should be set to 2.
 
 
-    2. the suit mutator should only allow arguments that match with one of the four possibilities
-	in the `POSSIBLESUITS` constant defined at the top of the template file. If any other options
-	are attempted, the suit should be set to “clubs”.
+    b. the suit mutator should only allow arguments that match with one of the four possibilities in the `POSSIBLESUITS` constant defined at the top of the template file. If any other options are attempted, the suit should be set to “clubs”. Note that the suit is always lowercase. The suit mutator should handle the lowercasing of the suit should it be provided in a mixed case or all caps form.
 
 ::: {.callout-tip collapse="true"}
 `isinstance` is a command that can be used to check and see whether an
@@ -87,9 +84,9 @@ then calls the `play` or `end` functions based on user input.
 the state of the `deck` after the game.
 6. The class should have a `play` function that drives the logic of the game. If there are cards in the
 `deck`, it will:
-    1. draw two cards from the `deck` (one for the player and one for the computer),
-    2. `shuffle` the deck again, and 
-    3. then compare the two cards. 
+    a. draw two cards from the `deck` (one for the player and one for the computer),
+    b. `shuffle` the deck again, and 
+    c. then compare the two cards. 
     Based on this comparison, it will print out the winner of that round and then ask the user whether they want to proceed with
 another round. If so, it will keep on going but otherwise, it will call the `end` function. Also if the
 deck runs out of cards, it will call the `end` function.

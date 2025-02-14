@@ -454,9 +454,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>The <code>Card</code> class has a <code>number</code> and a <code>suit</code></li>
 <li>Both instance variables are provided as arguments to the constructor</li>
 <li>The class should have accessors and mutators for <strong>all</strong> instance variables which use the decorator method. Additionally:
-<ol type="1">
-<li><p>the <code>number</code> mutator should only allow integer values between 2 and 10 inclusive i.e.&nbsp;[2, 10]. If any other value is attempted, the number should be set to 2.</p></li>
-<li><p>the suit mutator should only allow arguments that match with one of the four possibilities in the <code>POSSIBLESUITS</code> constant defined at the top of the template file. If any other options are attempted, the suit should be set to “clubs”.</p></li>
+<ol type="a">
+<li><p>the <code>number</code> mutator should only allow integer values between 2 and 10 inclusive i.e.&nbsp;[2,10]. If any other value is attempted, the number should be set to 2.</p></li>
+<li><p>the suit mutator should only allow arguments that match with one of the four possibilities in the <code>POSSIBLESUITS</code> constant defined at the top of the template file. If any other options are attempted, the suit should be set to “clubs”. Note that the suit is always lowercase. The suit mutator should handle the lowercasing of the suit should it be provided in a mixed case or all caps form.</p></li>
 </ol></li>
 </ol>
 <div class="callout callout-style-default callout-tip callout-titled">
@@ -506,7 +506,7 @@ Tip
 <li>The class should have a <code>start</code> function that prints out the starting message of the game, and then calls the <code>play</code> or <code>end</code> functions based on user input.</li>
 <li>The class should have an <code>end</code> function that prints out the ending message of the game as well as the state of the <code>deck</code> after the game.</li>
 <li>The class should have a <code>play</code> function that drives the logic of the game. If there are cards in the <code>deck</code>, it will:
-<ol type="1">
+<ol type="a">
 <li>draw two cards from the <code>deck</code> (one for the player and one for the computer),</li>
 <li><code>shuffle</code> the deck again, and</li>
 <li>then compare the two cards. Based on this comparison, it will print out the winner of that round and then ask the user whether they want to proceed with another round. If so, it will keep on going but otherwise, it will call the <code>end</code> function. Also if the deck runs out of cards, it will call the <code>end</code> function.</li>
