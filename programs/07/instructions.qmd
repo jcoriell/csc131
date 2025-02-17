@@ -1,224 +1,162 @@
 ---
-title: "Program: Sale Item"
+title: "Program #7: Card Game...Reloaded"
 ---
 
-## Overview
+## Overview 
 
-Your task in this assignment is to write python code that would implement a simple `Height` class that
-could potentially be used as a small part of a much larger application. To allow for its use with other
-systems, the specifications for the `Height` class are defined below.
+Your task in this programming assignment is to build a GUI on top of the `CardGame` classes that you
+designed in the last assignment – more specifically, the `Card`, and `Deck` classes. An updated class
+diagram is shown below. Note that there is a new `PictureCard` class that is a subclass of the original
+`Card` class.
 
 
-## The Height Class Specifications
+```{mermaid}
+classDiagram
+    direction LR
 
-1. The class should be called Height and should be implemented in a file called `height.py`
 
-2. The constructor takes two arguments: the first for the feet element and the second for the inch element of any `Height` object. This constructor uses default values of 0 for both feet and inch elements if they are not provided. The constructor is responsible for setting an instance variable called inchs and an instance variable called feet.
 
-3. The class should have accessors and mutators for all instance variables which use the decorator
-method discussed in class. Additionally:
+    class PictureCard {
+        imagefile: string
+    }
 
-    - The ft and inch mutators should not allow for those variables to be set to negative values. If that is attempted,the program should raise a `ValueError`.
+    class Deck {
+        cards: list of PictureCard objects
+        __str__(): string
+        shuffle()
+        size(): int
+        draw(): Card
+    }
 
-    - The inch instance variable should never be allowed to be a value larger than or equal to 12. If that is attempted, the inch mutator should update the feet and inch value accordingly. For example, creating a Height object with 1ft and 26 inches should result in a height object with 3 ft and 2 inches. Modifying an object that is already 1 ft and 2 inches by setting the instance variable to 16, should result in the object being 2 ft and 4 inches.
+    class Card {
+        number: int
+        suit: string
+        __str__(): string
+        __gt__(other: Card)
+        __lt__(other: Card)
+        __eq__(other: Card)
+    }
 
-4. The class should have a method called `to_inches` that returns the total number of inches that the height
-object is worth as an integer.
+    PictureCard --|> Card 
+    Deck ..|> PictureCard
+```
 
-5. The class should have a method called `to_feet` that returns the total number of feet that the height object is worth as a float.
+## Class Details
 
-6. The class should have a method called `to_centimeters` that returns the total number of centimeters that the height object is worth as a float.
+### `PictureCard` Class
 
-5. The class should also contain a `__str__` method that determines how `Height` objects are
-represented when printed. Example: 3’2” for an object with 3 ft and 2 inch. Note there are no spaces in the string representation of a height object.
+Below are some conditions for the `PictureCard` class.
 
+1. `PictureCard` is a subclass of the `Card` class.
 
-6. The class should also overload some mathematical and comparison operators i.e. defines what
-those operators mean in the context of Height objects. The operators in question to include are `+`, `-` , `>`, `>=`, `<=`, `<`, `==`, and `!=`.
+2. The `PictureCard` class has an `imagefile`
 
-7. Feel free to add any other functions that you feel will help to make your class more efficient and/
-or cleaner, just be sure they do not conflict with the autograder or cause errors.
+3. The constructor receives the `number` and `suit` which are use to instantiate the `Card` class.
 
+4. The constructor also uses the `number` and `suit` to make an appropriate image file name that is
+stored in the `imagefile` variable. Note that the provided images have names that contain both
+the `number` and `suit` in a predictable and uniform pattern. Once you have identified the
+pattern, use both the `number` and `suit` to create the appropriate file name as a string that is
+stored in the `imagefile` variable.
 
-## Tests
+5. The class should have an accessor and mutator for the `imagefile` variable that uses the
+decorator method. Additionally:
+    * The `imagefile` mutator should only allow valid file names. If an invalid file name is
+    attempted (i.e. the image doesn’t exist), then the imagefile is set to the *default.png*
+    image.
 
-The Height class will be subject to the following tests. Some examples are provided for you to test your code locally.
+::: {.callout-tip collapse="true"}
+One options of commands to use for the existence of an appropriate file
+is `isfile()`.
+:::
 
-1. The ability to instantiate a Height object. That is, your constructor accepts the appropriate arguments and runs without error. 
+### `Deck` Class
 
-    ```Python
-    # instantiating a height of x feet and y inches would not result in any errors
-    h1 = Height(1, 2)   # here we used 1ft and 2in
+Below are **extra** conditions for the Deck class.
 
-    # instantiating a height where no feet or inches are specified
-    h2 = Height()       # by default, it should set feet and inches to 0
-    ```
+1. A `Deck` class has a `cards` instance variable. This variable contains a list of 36 PictureCard
+objects i.e. the numbers from 2 to 10 in all 4 possible suits.
+2. The rest of the class is identical to the version in the previous assignment.
 
-2. The **existance** of the `feet` instance variable after instantiation.
 
-    ```Python
-    h1 = Height(1, 2)
-    print(h1.feet)      # no errors thrown
+## Extra Information
 
-    h2 = Height()
-    print(h2.feet)      # no errors thrown
-    ```
+The final part of your program would require creating a separate **Game.py** file that uses your classes to create a
+GUI front end for the game. The rules of the game were described in the last assignment. Feel free to use
+whatever library you are comfortable using for the GUIs in this assignment. Suggestions include
+PySimpleGUI and Tkinter. Below are a few screenshots showing what the GUI could look like.
 
-3. The **existance** of the `inches` instance variable after instantiation.
+![Opening Screen of the game](images/CardGame_reloaded01.png)
 
-    ```Python
-    h1 = Height(1, 2)
-    print(h1.inches)      # no errors
+The image above shows a sample opening screen of the game i.e. what the
+player sees when the game starts. The player will also see this screen
+if they click *restart*.  The GUI allows the user to “play”, “restart” or
+“quit”.  Selecting *Play* will draw two cards (one for the computer and
+one for the player), and display those cards in the appropriate side of
+the window. It will also show the result of the game at the bottom of
+the screen.
 
-    h2 = Height()
-    print(h2.inches)      # no errors
-    ```
+A user can repeatedly select play and it will update the screen accordingly. However, when the deck has
+run out of cards, selecting play will simply close the window.
 
-4. The `feet` instance variable is **correct** after instantiation.
+Selecting *Restart* will fill the deck of cards with new cards and bring
+you back to the screen above. This will allow the player to keep on
+playing without fear of running out of cards.  
 
-    ```Python
-    h1 = Height(1, 2)
-    print(h1.feet)      # outputs a value of 1
+Selecting *Quit* will close the window and game.
 
-    h2 = Height()
-    print(h2.feet)      # outputs a value of 0
-    ```
+![A round of the game -- Computer Wins](images/CardGame_reloaded02.png)
 
-5. The `inches` instance variable is **correct** after instantiation.
+![A round of the game -- Player Wins](images/CardGame_reloaded03.png)
 
-    ```Python
-    h1 = Height(1, 2)
-    print(h1.inches)      # outputs a value of 2
+![A round of the game -- A Draw](images/CardGame_reloaded04.png)
 
-    h2 = Height()
-    print(h2.inches)      # outputs a value of 0
-    ```
+The images above shows an example of what the player might see during
+any given round. Note that one side of the screen shows the card
+that the computer picked, and the other side shows the card that the
+user picked.  The result of the round of the game is shown as a string
+below the cards.
 
+## Final Thoughts
 
-6. The `feet` instance variable cannot be set to a negative value.
+Even though this might seem like a lot, it is actually built on concepts you should be familiar with.
+Similar to your last assignment, all your code should be in the same directory so that the **Game.py** file
+you create can find and use the **Cards.py** file that contains your classes. You should also place the
+card images provided in a subfolder so that they can easily be accessed by your code.
 
-    ```Python
-    h1 = Height()
-    h1.feet = -10       # this should raise a ValueError
-    ```
+One thing worth noting is that your **Game.py** file should make use of the classes in the **Cards.py**.
+This means using objects, and instance variables as frequently as possible in your **Game.py** file. As an
+example, when displaying a card in your GUI, instead of hard-coding the name of the image file, make
+use of the `imagefile` variable that is one of the elements of the `PictureCard` class.
 
+Another thing worth noting is that this assignment affords you a lot of freedom in how you want to
+tackle it. To this end, you will **not** be provided with a template file. It will be up to you to create the
+entire **Game.py** file in whatever manner you so decide. If your code requires special installations, make
+sure to mention them in the comments section at the top of your file.
 
-7. The `inches` instance variable cannot be set to a negative value.
+Should you feel so inspired, feel free to adjust the GUI and make it more aesthetically pleasing.
+Potential improvements include but are not limited to:
 
-    ```Python
-    h1 = Height()
-    h1.inches = -1000   # this should raise a ValueError
-    ```
+* having an introduction window that explains the game and allows you to click and proceed to the
+windows shown above.
+* having a counter of the number of cards left in the deck shown on the window.
+* having a different window that is displayed when the game ends
 
-8. The `inches` setter overflows into the feet instance variable appropriately.
+Having any improvements on the game could earn you up to 5 bonus points on this assignment. Those
+points will be assigned based on the scope and/or complexity of the improvments to the GUI and/or
+game play.
 
-    ```Python
-    h1 = Height()
-    h1.inches = 27
-    print(h1.feet)      # outputs 2
-    print(h1.inches)    # outputs 3
-    ```
+When you submit your code, make sure to zip up all the files (Game.py, Cards.py, and any images
+you might have used) and upload the entire zip file to Canvas.
 
+Your code will not be evaluated using any autograders. You will have to
+manually make sure that your code meets all the above mentioned
+requirements and then submit it for manual evaluation on Canvas.
 
+Good luck.
 
 
-9. The `to_inch` function does not throw any errors when run.
 
-10. The `to_inch` function returns the correct value. An example of using the profit function follows:
+## Helper Files
 
-    ```Python
-    h1 = Height(2, 3)
-    print(h1.to_inches())   # outputs 27
-    ```
-
-
-11. The `to_feet` function does not throw any errors when run.
-
-
-12. The `to_feet` returns the correct value. Accuracy will be checked within 4 decimal places. Do not apply rounding.
-
-    ```Python
-    h1 = Height(2, 3)
-    print(h1.to_feet())   # outputs 2.25
-    ```
-
-
-13. The `to_centimeters` function does not throw any errors when run.
-
-
-14. The `to_centimeters` returns the correct value. Accuracy will be checked within 4 decimal places. Do not apply rounding.
-
-    ```Python
-    h1 = Height(2, 3)
-    print(h1.to_centimeters())   # outputs 68.58
-    ```
-
-15. The `__str__` method returns the appropriate string (must be an exact match).
-
-    ```Python
-    h1 = Height(2, 3)
-    print(h1)       # outputs 2'3"  
-    ```
-
-16. Individual tests for each of the following operators:  `+`, `-` , `>`, `>=`, `<=`, `<`, `==`, and `!=`.
-    In the case of subtraction, if the subtraction would result in a negative value, catch the `ValueError` that you programmed by using a `try...except...` and return a `Height` object with a height of 0 feet and 0 inches.
-
-    ```Python
-    h1 = Height(1, 10)
-    h2 = Height(1, 3)
-    h3 = Height(1, 10)
-
-    # Addition
-    h4 = h1 + h2
-    print(h3)       # outputs 3'1"
-
-    # Subtraction
-    h4 = h1 - h2
-    print(h3)       # outputs 0'7"
-
-    h4 = h2 - h1    # catch the value error in the __sub__ function
-    print(h3)       # outputs 0'0"
-
-    # Equal To
-    print(h1 == h2) # outputs False
-    print(h1 == h3) # outputs True
-
-    # Not Equal To
-    print(h1 != h2) # outputs True
-    print(h1 != h3) # outputs False
-
-    # Greater Than
-    print(h1 > h2)  # outputs True
-    print(h2 > h1)  # outputs False
-    print(h1 > h3)  # outputs False
-
-    # Greater Than or Equal To
-    print(h1 >= h2)  # outputs True
-    print(h2 >= h1)  # outputs False
-    print(h1 >= h3)  # outputs True
-
-    # Less Than
-    print(h1 < h2)  # outputs False
-    print(h2 < h1)  # outputs True
-    print(h1 < h3)  # outputs False
-
-    # Less Than or Equal To
-    print(h1 <= h2) # outputs False
-    print(h2 <= h1) # outputs True
-    print(h1 <= h3) # outputs True
-    ```
-
-
-
-
-## Additional Files
-
-You are provided with a template that you should use. Note that the template contains a main section with some code already inside of it. Use the main portion of the code and the examples above to test your solution before submitting to the auto-grader. 
-
-<a href="./files/template.py" download>template.py</a>
-
-## Submission
-
-You must submit your code to the course website as a single .py file.
-
-
+<a href="./files/images.zip" download>images.zip</a>

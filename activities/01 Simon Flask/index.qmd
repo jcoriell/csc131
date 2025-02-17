@@ -1,0 +1,566 @@
+---
+title: "Simon Flask"
+---
+
+## Introduction
+
+In this programming activity, you're going to create a Flask app that allows you to play the classic game of Simon where a sequence of colors is given to you, and then you have to repeat that sequence of colors.
+
+It is recommended that you partner up with someone else and have one person create the backend of the application and have another person create the frontend.
+
+Once each person has created their respective parts, you can share the code with each other for record keeping purposes.
+
+
+## The Backend
+
+The Flask app will serve as the backend for this program. This means we will send data from another application to the Flask app in the form of a *request*, and the Flask app will process that *request* and return some sort of *response* to the application that made the request.
+
+For the purposes of keeping this as simple as possible, our Flask app will only serve as an API for transmitting JSON formatted data. *JSON* stands for *JavaScript Object Notation* and the JSON format is considered a standard for data interchange. To read more about it, read [ECMA 404: The JSON Data Interchange Syntax](https://ecma-international.org/wp-content/uploads/ECMA-404_2nd_edition_december_2017.pdf). 
+
+Since we are working in Python, its typically convenient to work with **dictionaries** when you need to **jsonify** data as the Python dictionary is fairly close in appearance to JSON formatted data. Conveniently, Flask has a function to take in a dictionary, jsonify it, and then create a formal response for us that we can then return to the application that made a request.
+
+
+### Create and Activate a Virtual Environment
+
+When developing a flask app, it is considered best practice to first setup a virtual environment.
+
+To setup a virtual environment with python, open your terminal in your workspace and run the following command based on your system:
+
+```sh
+# on windows,you might use the `python` command
+python -m venv .venv
+```
+
+```sh
+# on windows,you might use the `py` command
+python -m venv .venv
+```
+
+```sh
+# on mac and linux based machines, you typically use `python3` instead of `python` or `py`
+python3 -m venv .venv
+```
+
+To activate the virtual environment in the terminal, run the following:
+
+```sh
+# for windows, if you're using Powershell...
+.venv\Scripts\activate.ps1
+```
+
+```sh 
+# for windows, if you're using Command Prompt...
+.venv\Scripts\activate.bat
+```
+
+
+```sh 
+# for mac and linux
+source .venv/bin/activate
+``` 
+
+There should be some sort of indication in you terminal that the virtual environment is active such as `(.venv)` on the left hand side of the prompt.
+
+
+### Install Packages
+
+Now that the virtual environment is activated, let's install some python packages we will need.
+
+```
+pip install flask
+```
+
+The flask library includes most tools we will need for a Flask app. There are additional extensions you can install depending on additional use cases.
+
+
+
+
+### Game State - gamestate.py
+
+First, let's create a file called `gamestate.py`. This file will contain a single class that will represent the state of the game at any given moment. Since we are not using a database in this lesson, the state of the game will be passed back and forth to/from the frontend.
+
+In `gamestate.py`, create the a class called GameState and the constructor.
+
+The constructor won't take in any arguments, but it will be used to initialize 4 instance variables:
+
+    1. `sequence` - a representation of the correct sequence of colors. `sequence` should be initialized as an empty list.
+
+    2. `user_input` - a representation of the input provided by a user (from the frontend). `user_input` should be initialized as an empty list.
+
+    3. `message` - a message that can accompany the responses to the requests from the frontend. `message` should be initilized as an empty string.
+
+    4. `correct` - a boolean that will indicate if the user was correct or not when they request that their input is checked. This should be initialized to false.
+
+After creating the constructor, add a class variable as a list that holds the 4 possible colors in the game: red, blue, green and yellow.
+
+Once complete, it may look something like this.
+
+```python
+class GameState:
+    """A class to represent the current state of the game"""
+    
+    COLORS = ["red", "blue", "green", "yellow"]
+    
+    def __init__(self):
+        self.sequence = []      # the sequence the user needs to imitate
+        self.user_input = []    # the sequence provided by the user
+        self.message = ""       # a message for the frontend
+        self.correct = False    # an indicator for if the user_input matched the sequence
+```
+
+Now, let's create a function that can be used to turn the game state into something that can more easily be used when handling the transmission of the data to the front end. That is, we want to convert the game state into a dictionary that we can later plug into the Flask `jsonify` function.
+
+Let's name the function `to_dictionary` to be clear about what it does. Additionally, this function should simply take each instance variable, place it in a dictionary where the key matches the name of the variable, and then return the dictionary.
+
+Once complete, your `to_dictionary` function may look like the following:
+
+```python
+    # other portions of the GameState class not shown
+
+    def to_dictionary(self):
+        """A function that turns the game state 
+        into a dictionary
+        """
+        # The game state as a dictionary
+        data = {
+            "message": self.message,     
+            "sequence": self.sequence, 
+            "user_input": self.user_input,
+            "correct": self.correct,
+        }
+    
+        return data
+
+```
+
+It would also be convenient to have a function that takes in a dictionary and converts it into a GameState object for use to use in our code. Let's create a function called `from_dictionary` that will do just that. Since this function isn't going to be operating on an instance of GameState being passed into it, but instead create an instance and return it, we will make it a *static method*. In python, a **static method** is a method that belongs to a class that doesn't implicitly take in a reference to the object it is called on, that is we don't use `self` as an argument. We can use the `@staticmethod` decorator to make a method a staticmethod.
+
+A completed version of the `from_dictionary` method may be as follows:
+
+
+```python
+    # other portions of the GameState class not shown
+
+    @staticmethod 
+    def from_dictionary(dict_) -> 'GameState':
+        """A function that takes a dictionary representation of the Game
+        and creates a GameState object"""
+        
+        # create a GameState object
+        game_state = GameState()
+        
+        # set the appropriate values, or set them to the defined preset
+        game_state.sequence = dict_.get("sequence", [])
+        game_state.user_input = dict_.get("user_input", [])
+        
+        # return the newly created object
+        return game_state
+
+
+```
+
+One final function for our GameState class is a function that appends a new color to the `sequence` instance variable. It should choose a color randomly from the list of colors provided as a class variable.
+
+```python
+    # other portions of the GameState class not shown
+
+    def add_color(self):
+        self.sequence.append(choice(GameState.COLORS))  # don't forget to import choice from the random library
+
+```
+
+Note that the above function as written will require that you add the `from random import choice` import to the top of the `gamestate.py` file.
+
+
+
+### The Flask App - backend.py
+
+Now let's create a file called `backend.py` that will contain the code for our Flask application. This file will simply be a collection of functions that are defined in such a way to handle requests from some frontend application. 
+
+The first thing we need to do in this file is import the various bits of the Flask package that we will use.
+
+Specifically, we will use the following:
+
+1. Flask - the class named Flask that is used to create an instance of a Flask application.
+
+2. jsonify - a function that can take in a dictionary, turn it into the proper JSON format, and then return a flask Response object. The Response object can be returned to the frontend.
+
+3. request - a variable that represents the request from the frontend.
+
+
+```python
+from flask import Flask, jsonify, request
+```
+
+Additionally we will need to import our GameState class.
+
+```python
+# other imports not shown
+from gamestate import GameState
+```
+
+Now that everything is imported, let's look at the structure of the Flask server. We will need the following components:
+
+1. The app itself
+
+2. An endpoint that handles the starting of a game.
+
+3. An endpoint that handles adding another item to the sequence.
+
+4. An endpoint that handles checking whether or not the user provided sequence is correct.
+
+5. A main portion of the file that runs the app.
+
+
+We have outlined this below with some comments that describe each portion. We have also included an additional `test` function so that will let you test if the app is running.
+
+```Python
+
+# create the app
+app = Flask(__name__)
+
+# The app.route decorator allows us to define a url path that will cause a function to execute
+# so, in this case, if we visit domainname/start, or ipaddress/start, then the start function will trigger
+# We also are only going to allow POST requests at this endpoint
+@app.route("/start", methods=["POST"])
+def start():
+    pass 
+
+@app.route("/next", methods=["POST"])
+def next():
+    pass 
+    
+@app.route("/check", methods=["POST"])
+def check():
+    pass
+
+# A test function just to see if hosting is working for us.
+@app.route("/test", methods=["GET"])
+def test():
+    return jsonify({"success": True, "message": "Test works."})
+
+# If we run this file directly, then we want to launch the app.
+if __name__ == "__main__":
+    # configuration for running the app
+    # 0.0.0.0 exposes the app to our local network (campus if you're on campus)
+    # and 8000 is the port
+    # visiting youripaddress:8000/test will trigger the test() function
+    app.run(debug=True, host="0.0.0.0", port="8000")
+```
+
+Let's go over the `app.run()` function. The `host` option let's us specify where we want to host the application. By default, this option is set to 127.0.0.1. This address, 127.0.0.1, represents the machine you're working on and can only be accessed from your machine. That is to say, if someone else visits 127.0.0.1 from their machine, it accesses their machine, not your machine.
+
+Setting the host to 0.0.0.0 will expose the application to our local network. Thus, if you give someone your ip address, they get access to the app. When we run the backend.py file, Flask will display your ip address in the terminal for you to share it with a classmate, or someone else on your machine.
+
+The port will come after the ip address. By default, flask sets this value to 5000, but we have found that some machines already use 5000 for other services, thus we have changed it to 8000.
+
+Ultimately, if your ip on your network is 192.168.68.64, then you will visit 192.168.68.64:8000/test to test if the app is working.
+
+Once you have the code above in the backend.py file, run `python backend.py`. It should give you the ipaddress of where it is hosted. 
+
+```sh
+# Example output after running python backend.py
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8000
+ * Running on http://192.168.68.64:8000
+```
+
+Let's fill in each function. We begin with the `start` function. For the start function, we want it to create a GameState object and add a welcome message to it. Next, have it add two colors to the sequence to begin with, and then create a response from the gamestate object that we can then return to the client that requested the data. Note that the `jsonify()` function provided by flask, can take in a dictionary and turn it into a flask Response object.
+
+<details>
+<summary>Click to reveal a solution to the start function</summary>
+
+```python
+@app.route("/start", methods=["POST"])
+def start():
+    """Start a new game."""
+    new_game = GameState()
+    
+    # give it a message
+    new_game.message = "Welcome to Simon"
+    
+    # add two colors to begin with
+    new_game.add_color()
+    new_game.add_color()
+    
+    # return the response
+    response = jsonify(new_game.to_dict())
+    
+    return response
+```
+
+</details>
+
+Now we look at the function `next()`. This function expects that the body of the request contains a sequence in it already. It will create a gamestate object from the body (represented as request.json), add a color to the sequence, set a message stating it added the color, create a response using `jsonify()` and then return the response.
+
+
+Upon completion, this function might look as follows:
+
+<details>
+<summary>Click to reveal a solution to the next function</summary>
+
+```python
+@app.route("/next", methods=["POST"])
+def next():
+    """Add a value to the sequence
+    
+    Expected Request:
+    {
+        "sequence": list[str]
+    }
+    """
+
+    # create a GameState object from the request data
+    game_state = GameState.from_dict(request.json) # request.json represents the body of the POST request
+    game_state.add_color() 
+    game_state.message = "Added a color."
+    
+    # create the response 
+    response = jsonify(game_state.to_dict())
+    
+    return response
+```
+
+</details>
+
+The last function we need to fill out is the `check()` function. This function will expect that the body in the request contains both the correct `sequence` and the `user_input`. It will first create a gamestate object, then check if the user input sequence matches the correct sequence. If it does match, set the state's `correct` flag to True and provide a congratulatory message. If not then set the `correct` flag to false and let the user know they were wrong by setting an appropriate message. In either situation, be sure to `jsonify()` the game state before returning it.
+
+Once completed, it may look like the following function:
+
+<details>
+<summary>Click to reveal a solution to the check function</summary>
+
+```python
+@app.route("/check", methods=["POST"])
+def check():
+    """Check if the user's sequence is valid
+    
+    Expected Request Body:
+    {
+        "sequence": list[str]
+        "user_input": list[str]
+    }
+    """
+    game_state = GameState.from_dict(request.json)
+    if game_state.user_input == game_state.sequence:
+        game_state.message = "Congrats! The sequence matches"
+        game_state.correct = True
+        return jsonify(game_state.to_dict())
+    else:
+        game_state.message = "The sequence did not match."
+        game_state.correct = False
+        return jsonify(game_state.to_dict())
+
+```
+
+</details>
+
+
+
+## The Frontend
+
+The frontend is a simple python script that is meant to access the backend. Create a file called frontend.py to hold the frontend. Inside this file, we will create a class called `Simon`, add a function for each portion of the game and then run the game at the end of the file. An outline is provided below.
+
+
+```python
+import requests # pip install requests
+import time
+
+class Simon():
+    
+    IP_ADDR = "127.0.0.1"    # Replace with the ip address of the machine running the backend
+    API_URL = "http://{IP_ADDR}:8000" 
+
+    def __init__(self):
+        self.message = ""
+        self.sequence = []
+        self.user_input = []
+        
+    def start_game(self):
+        """Start a new game."""
+
+    def get_next_sequence(self):
+        """Fetches the next sequence from the API."""
+
+    def check_user_input(self):
+        """Sends user input to the API for validation."""
+    
+
+    def get_user_input(self):
+        """Prompts the user for input to construct a sequence."""
+       
+    def play(self):
+        """Main game loop."""
+
+if __name__ == "__main__":
+    s = Simon()
+    s.play()
+```
+
+Let's break down the different portions of this template.
+
+You'll notice we have imported the `requests` library. This will be used to make http requests to our backend server. We have also imported the `time` library. This is to provide small pauses in the program execution to make it slightly more user friendly.
+
+From there, we have created a class called Simon to represent the game. Within the Simon class, there is a method corresponding to each endpoint on the backend (that is, start, next, and check). There are two additional functions called `get_user_input()` and `play()`. Get user input will be used to prompt the user for the sequence, and play will be used as the main loop of the game.
+
+Let's first put together the main loop of the game so we can get an idea of how the game will run. 
+
+First, we will ask the backend to start the game. Then, we will repeat the following process until we lose:
+
+1. get the next item from the backend
+
+2. Ask the user to repeat it back
+
+3. Ask the backend to check if it is correct
+
+4. If it is correct, keep going
+
+5. If it is not correct stop.
+
+Within all of that, we should also be printing any messages that the backend may be passing to us.
+
+The main loop may look similar to the following once it has been implemented.
+
+```python
+
+    def play(self):
+        """Main game loop."""
+        self.start_game()
+         
+        while True:
+            self.get_next_sequence()
+            self.get_user_input()
+            response_data = self.check_user_input()
+
+            is_correct = response_data.get("correct")
+            message = response_data.get("message")
+            print(message)
+            if is_correct:
+                time.sleep(0.5)
+            else:
+                break
+```
+
+Now let's implement the `start_game` function. The `start_game` function should make a post request to the backend. Recall that the `start` endpoint for the backend doesn't expect a body or any data to come with it. It will return some data with a message and sequence for us to store and output. After we make the request, we will want to store the sequence in our instance variable and print the message.
+
+
+```python
+    def start_game(self):
+        """Starts a new game."""
+
+        # make the post request, get a response
+        response = requests.post(f"{Simon.API_URL}/start") 
+
+        # extract the data as a dictionary (response_data is a dictionary)
+        response_data = response.json()        
+
+        # get the value attached to the "message" key, or use an empty string as backup if "message" doesn't exist.            
+        message = response_data.get("message", "")     
+
+        # get the value attached to the "sequence" key, or use an empty list as backup if "sequence" doesn't exist
+        self.sequence = response_data.get("sequence", [])   
+
+        # print the message
+        print(message)
+```
+
+We continue by looking at the `get_next_sequence()` function. This function will do the following:
+
+1. construct the body expected by the backend endpoint for /next
+2. make a post request with the appropriate body
+3. store the returned sequence and print out each value in the sequence
+
+Once completed it may appear as follows:
+
+```python
+
+    def get_next_sequence(self):
+        """Fetch the next sequence from the API."""
+        # construct the body
+        body = {
+            "sequence": self.sequence
+        }
+
+        # attach the body to the request using the json parameter
+        response = requests.post(f"{Simon.API_URL}/next", json=body)
+
+        # get the response from the backend as a dictionary
+        response_data = response.json()
+
+        # store it 
+        self.sequence = response_data.get("sequence")
+
+        # output the sequence
+        print("The sequence is: ")
+        for color in self.sequence:
+            print(color)
+            time.sleep(1)  # delay for effect
+        print("\nYour turn!")
+    
+```
+
+The next function we should build out is the `get_user_input()` function. This function will do the following:
+
+1. Ensure the user_input instance variable is an empty list.
+2. Prompt the user for a color the appropriate number of times (i.e the length of the correct sequence)
+
+When prompting, be sure to remove any excessive whitespace before and after their input along with lowercasing their input since these will be compared against lowercased words on the backend.
+
+An implementation of such a function may look as follows. 
+
+```python
+    def get_user_input(self):
+        """Gets user input for the sequence."""
+        self.user_input = []
+        for i in range(len(self.sequence)):
+            color = input(f"Enter color {i+1}: ").strip().lower()
+            self.user_input.append(color)
+```
+
+The last function we need to build out is the `check_user_input()` function. This function will be responsible for building the appropriate body to send with the request to the backend, then making the request, and then returning the response data (as a dictionary) to the calling statement.
+
+Implementation may look as follows:
+
+```python
+
+    def check_user_input(self):
+        """Send user input to the API for validation."""
+        # create the body
+        body = {
+            "sequence": self.sequence,
+            "user_input": self.user_input
+        }
+
+        # make the request with the body
+        response = requests.post(f"{Simon.API_URL}/check", json=body)
+
+        # convert the response data to a python dictionary
+        response_data = response.json()
+
+        # return to the calling statement
+        return response_data
+
+```
+
+
+At this point your frontend and backend files should be tested.
+
+## Assignment
+
+The assignment corresponding to this activity is to create your own Flask based API with at least 5 endpoints. 
+Provided a cohesive theme surrounding your API. You are open to choose the theme of the data. 
+
+For example, if you wanted to do it themed after Harry Potter, you might have an endpoints that returns information about the characters in Harry Potter, or an endpoint that return information about the different books.
+
+There should be at least 5 endpoints that return json formatted data that support GET requests.
+
+You are welcome to include additional endpoints.
+
+Your submission should contain at least 1 file, the window into the application (for the example above, it was the backend.py file).
+
+
+
+
+
+
+

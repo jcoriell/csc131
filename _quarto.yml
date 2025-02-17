@@ -76,6 +76,17 @@ website:
               - text: Bitwise Operators
                 href: "lessons/03 Number Systems and Binary Arithmetic/07 Bitwise Operators.qmd"
 
+          - section: "04 Graphical User Interfaces"
+            href: "lessons/04 Graphical User Interfaces/index.qmd"
+            contents: 
+              - text: Introduction
+                href: "lessons/04 Graphical User Interfaces/01 Introduction.qmd"
+              - text: Tkinter
+                href: "lessons/04 Graphical User Interfaces/02 Tkinter.qmd"
+              - text: Tkinter Widgets
+                href: "lessons/04 Graphical User Interfaces/03 Tkinter Widgets.qmd"
+
+
 
       - section: "Programs"
         contents:
@@ -91,8 +102,14 @@ website:
             href: "programs/05/instructions.qmd"
           - text: Program 6
             href: "programs/06/instructions.qmd"
-      #     - text: Program 7
-      #       href: "programs/07/instructions.qmd"
+          - text: Program 7
+            href: "programs/07/instructions.qmd"
+
+
+      - section: "Activities"
+        contents:
+          - text: Simon with Flask
+            href: "activities/01 Simon Flask/index.qmd"
 
 
 
