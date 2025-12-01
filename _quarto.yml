@@ -88,28 +88,28 @@ website:
 
 
 
-      - section: "Programs"
-        contents:
-          - text: Program 1
-            href: "programs/01/instructions.qmd"
-          - text: Program 2
-            href: "programs/02/instructions.qmd"
-          - text: Program 3
-            href: "programs/03/instructions.qmd"
-          - text: Program 4
-            href: "programs/04/instructions.qmd"
-          - text: Program 5
-            href: "programs/05/instructions.qmd"
-          - text: Program 6
-            href: "programs/06/instructions.qmd"
-          - text: Program 7
-            href: "programs/07/instructions.qmd"
+      # - section: "Programs"
+      #   contents:
+      #     - text: Program 1
+      #       href: "programs/01/instructions.qmd"
+      #     - text: Program 2
+      #       href: "programs/02/instructions.qmd"
+      #     - text: Program 3
+      #       href: "programs/03/instructions.qmd"
+      #     - text: Program 4
+      #       href: "programs/04/instructions.qmd"
+      #     - text: Program 5
+      #       href: "programs/05/instructions.qmd"
+      #     - text: Program 6
+      #       href: "programs/06/instructions.qmd"
+      #     - text: Program 7
+      #       href: "programs/07/instructions.qmd"
 
 
-      - section: "Activities"
-        contents:
-          - text: Simon with Flask
-            href: "activities/01 Simon Flask/index.qmd"
+      # - section: "Activities"
+      #   contents:
+      #     - text: Simon with Flask
+      #       href: "activities/01 Simon Flask/index.qmd"
 
 
 
