@@ -319,7 +319,7 @@ def setupGUI(self):
 
 Running the modified program should display a window with the calculator's display at the top and two buttons (in the order `(`, `)`)
 
-![](images/gui-two-buttons.png.png){fig-align="center"}
+![](images/gui-two-buttons.png){fig-align="center"}
 
 ### A Dictionary for Button Data
 

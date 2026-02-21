@@ -5,6 +5,7 @@ project:
 
 website:
   page-navigation: true
+  site-url: https://csc131.jcor.dev
   title: "CSC 131"
   sidebar:
     collapsible: true
