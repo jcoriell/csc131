@@ -1,0 +1,15 @@
+---
+title: The Reckoner
+---
+
+[01 Introduction](01 Introduction.qmd)
+
+[02 The GUI](02 The GUI.qmd)
+
+[03 Button Functionality](03 Button Functionality.qmd)
+
+[04 Expression Evaluation](04 Expression Evaluation.qmd)
+
+[05 Homework](05 Homework.qmd)
+
+

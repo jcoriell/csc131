@@ -4,6 +4,7 @@ project:
 
 
 website:
+  page-navigation: true
   title: "CSC 131"
   sidebar:
     collapsible: true
@@ -106,8 +107,19 @@ website:
       #       href: "programs/07/instructions.qmd"
 
 
-      # - section: "Activities"
-      #   contents:
+      - section: "Activities"
+        contents:
+          - text: The Reckoner
+            href: "activities/03 The Reckoner/index.qmd"
+            contents:
+              - text: Introduction
+                href: "activities/03 The Reckoner/01 Introduction.qmd" 
+              - text: The GUI
+                href: "activities/03 The Reckoner/02 The GUI.qmd" 
+              - text: Button Functionality
+                href: "activities/03 The Reckoner/03 Button Functionality.qmd" 
+              - text: Expression Evalutation
+                href: "activities/03 The Reckoner/04 Expression Evaluation.qmd" 
       #     - text: Simon with Flask
       #       href: "activities/01 Simon Flask/index.qmd"
 

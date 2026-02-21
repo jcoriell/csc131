@@ -1,0 +1,182 @@
+---
+title: Button Functionality
+---
+
+## Attaching a Function
+
+Of course, the buttons currently do nothing. In this section, we work on that. 
+
+Inside the `MainGUI` class, try to do the following:
+
+- Create a method named `process` and have it print a message. This message is simply for testing purposes. 
+
+- Go to the `Button()` instantiation line and add a keyword argument named command that is attached to this new `process` function.
+
+<details>
+
+<summary>Show Solution</summary>
+
+
+```python
+class MainGUI(Frame):
+
+    # other methods excluded here
+
+    def make_button(self, button_data):
+        """Create the button for the provided `button_data`"""
+
+        # Make the button
+        button = Button(
+            self,                         
+            text=button_data["text"],      
+            command=self.process,        # NEW 
+
+            # Some additional options
+            font=("TexGyreAdventor", 50), 
+            bg=button_data["bg_color"],    
+            borderwidth=0,                
+            highlightthickness=0,         
+            activebackground="white",     
+            highlightbackground=button_data["bg_color"],  
+            highlightcolor="white",      
+        )
+
+        # Manage the geometry for the button
+        button.grid(
+            row=button_data["row"],         
+            column=button_data["column"],   
+            sticky=N+S+E+W  
+        )
+
+    def process(self):                   # NEW
+        """Process a button being pressed"""
+        print("BUTTON PRESSED!")
+
+```
+
+Notice how when we attach self.process, we do not include the `()` at the end. The difference between `self.process()` and `self.process` is that the first will cause execution of the function. Without the `()`, we simply reference the function and do not execute it.
+
+</details>
+
+At this point you should test the calculator to see that the `process` function runs when a button is pressed.
+
+
+## Passing Args to `process()`
+
+We will need to pass the label for the button (the text attribute) to each button. First, we should modify the `process` function so that it can take in an argument. For example, a reasonable modification would be as follows:
+
+```python
+def process(self, button_text):      # NEW
+    """Process a button being pressed"""
+    print(f"{button_text} PRESSED!") # NEW
+```
+
+Now, when we call on the function when each `Button()` is instantiated, one might think the correct modification would be to pass in `button_data["text"]`. Try it out as follows and run the program. Keep an eye on the terminal when you run the program.
+
+```python
+button = Button(
+    self,                         
+    text=button_data["text"],      
+    command=self.process(button_data["text"]), # NEW
+
+    # Additional options excluded
+)
+```
+
+You may have noticed that every button was immediately printed to the terminal. This problem stems from the fact that, as the buttons are instantiated, the `process` method is immediately invoked since it is written with `()` attached. 
+
+To delay invocation of the `process` method we need to create a different function for every single button and tie each of those functions to each individual button. This can be done multiple ways. Two of those ways follow:
+
+1. We can create a function that is local to our `make_button()` function for the current button. Since it is local, it will be a different function every time `make_button` is called. This can be done as follows:
+
+```python
+  def make_button(self, button_data):
+        """Create the button for the provided `button_data`"""
+        
+        def process_this():     # NEW
+            self.process(button_data["text"])
+
+        # Make the button
+        button = Button(
+            self,                         
+            text=button_data["text"],      
+            command=process_this,
+
+            # Additional options excluded for brevity
+        )
+
+        # button.grid() excluded for brevity
+```
+
+2. We can create an anonymous function using the `lambda` keyword in Python on the same line as the `command` keyword argument. This is a very elegant way of doing it. The `lambda` keyword in python allows us to create functions that have no identifier connected to them. 
+
+
+```python
+  def make_button(self, button_data):
+        """Create the button for the provided `button_data`"""
+
+        # Make the button
+        button = Button(
+            self,                         
+            text=button_data["text"],      
+            command=lambda: self.process(button_data["text"]), # NEW
+
+            # Additional options excluded for brevity
+        )
+
+        # button.grid() excluded for brevity
+```
+
+Modify your program to include one of thw two previous methods of handling the `process` function. Running the modified program should display text appropriate to a clicked/tapped button (as it is clicked/tapped).
+
+## Building the Process Method
+
+The next step is to update the `process` method so that it actually behaves properly depending on the button that is clicked/tapped. We can implement simple logic to accomplish this. Almost all of the buttons, when clicked/tapped, should just be added to the display. 
+
+The two exceptions include the `AC` and equals `=` buttons. `AC` should clear the display, and `=` should evaluate the expression and update the display with the result. On this page, we cover the `AC` button and all cases that are not `=`. The next page covers the `=` case.
+
+
+### The `AC` Button
+
+Try changing the `process` method so that the display text is cleared when `AC` is pressed. 
+
+<details>
+
+<summary>Show Solution</summary>
+
+```python
+# processes button presses
+def process(self, button_text):
+    # AC clears the display
+    if (button_text == "AC"):
+        # clear the display
+        self.display["text"] = "" # notice the display behaves as a dictionary
+```
+</details>
+
+Be sure to test your code before moving on. The word `TEST` should be cleared when clicking `AC` button.
+
+### Other Cases
+
+The next case is to handle the various buttons that should just be appended to the display. Modify the process method so that the `button_text` is concatenated to the current display text.
+
+<details>
+
+<summary>Show Solution</summary>
+
+```python
+# processes button presses
+def process(self, button_text):
+    # AC clears the display
+    if (button == "AC"):
+        # clear the display
+        self.display["text"] = ""
+    # otherwise, just tack on the appropriate operand/operator
+    else:
+        self.display["text"] += button_text
+```
+</details>
+
+Be sure to test your code before moving on.
+
+Notice how the last line appends the button parameter to the text already on the display. Running the modified program now allows the calculator to behave as expected. The AC button clears the display, while the other buttons (including, for now, the equals button) are appended to the display in the order that they are clicked/tapped. Of course, this is not the intended behavior of the equals button!
