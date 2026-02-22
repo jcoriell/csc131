@@ -2,50 +2,49 @@
 title: Expression Evaluation
 ---
 
-Finally, we must discuss the equals (=) button. How, exactly, should this work? Admittedly, we could manually calculate the expression and return a result. However, Python provides the eval function that takes a string, evaluates it as an arithmetic expression, and returns a numeric result. Here are several examples:
+
+## The `eval` Function
+
+Finally, we must discuss the equals `=` button. How, exactly, should this work? Admittedly, we could manually calculate the expression and return a result. However, Python provides the eval function that takes a string, evaluates it as an arithmetic expression, and returns a numeric result. Here are several examples:
 
 ``` python
 eval("1+1")              # the returned result is 2
 eval("5+(4-2)**5+6*2")   # the returned result is 49
 ```
 
-Evaluating the expression on the display is now pretty simple! We just need to send the expression to Python's *eval* function to get a numeric result. Then, we can change the display, replacing it with a string version of the returned result. It looks something like this:
+Evaluating the expression on the display is now pretty simple! We just need to send the expression to Python's `eval` function to get a numeric result. Then, we can change the display, replacing it with a string version of the returned result. It looks something like this:
 
 ```python
-expr = self.display["text"]
-result = eval(expr)
-self.display["text"] = str(result)
+expr = self.display["text"]     # get text from display
+result = eval(expr)             # evaluate the expression
+self.display["text"] = str(result)  # put result on display
 ```
 
-The first line stores the expression from the display to the variable expr, the second line evaluates the expression with Python's eval function, and the third line stores the result (as a string) back to the display. Of course, the three lines could be combined into a single statement; however, it is probably slightly less readable:
-
-```python
-self.display["text"] = str(eval(self.display["text"]))
-```
+The first line stores the expression from the display to the variable `expr`, the second line evaluates the expression with Python's eval function, and the third line stores the result (as a string) back to the display. Of course, the three lines could be combined into a single statement; however, it would be slightly less readable.
 
 Let's implement the evaluation portion by modifying the process method as follows:
 
+
+
 ``` python
-# processes button presses
 def process(self, button):
-    # AC clears the display
     if (button == "AC"):
-        # clear the display
-        self.display["text"] = ""
-    # = starts an evaluation of whatever is on the display
+        # contents excluded from example
     elif (button == "="):
-        # get the expression in the display
-        expr = self.display["text"]
-        # evaluate the expression
-        result = eval(expr)
-        # store the result to the display
-        self.display["text"] = str(result)
-    # otherwise, just tack on the appropriate operand/operator
+        expr = self.display["text"]         # get text from display
+        result = eval(expr)                 # evaluate the expression
+        self.display["text"] = str(result)  # store the result to the display
     else:
-    self.display["text"] += button
+        # contents excluded from sample
 ```
 
-At this point, a valid arithmetic expression in the display will be properly evaluated and updated with the result. But what if the expression in the display is not valid? For example, what is the result of the expression <span style="color:red">4 + 5 *</span> (note the missing operand after the multiplication operator)? In fact, an error is outputted to the console (note that errors on different systems may differ slightly):
+
+
+## Handling Errors
+
+At this point, a valid arithmetic expression in the display will be properly evaluated and updated with the result. But what if the expression in the display is not valid? For example, what is the result of the expression `4 + 5 *`? 
+
+This would cause the Python program to end execution because of an error when running `eval`. The error may appear as follows:
 
 ```
 Exception in Tkinter callback
@@ -66,272 +65,268 @@ Traceback (most recent call last):
 SyntaxError: unexpected EOF while parsing
 ```
 
-Evidently, there was an unexpected EOF (end of file) while parsing the expression. Of course, this makes sense: the end of the expression was reached before a valid expression was provided. That is, the *eval* function expected more to the expression. To make the calculator more robust, we can detect such errors and provide an appropriate response to the user. This can be accomplished by using a **try-except** block (you should have seen this before!). The purpose of a **try-except** block is to encapsulate instructions that could cause an exception (something that alters the normal flow of a program) in a try block. If an exception occurs, it can be handled in the **except** block. More details about **try-except** will be covered later in the curriculum.
+Evidently, there was an **unexpected EOF** (end of file) while parsing the expression. Of course, this makes sense: the end of the expression was reached before a valid expression was provided. That is, the `eval` function expected more to the expression. 
 
-Let's handle any invalid expression evaluation by setting the calculator's display to the string ERROR so that the user is aware that an error occurred. This can be accomplished by modifying the process method as follows:
+To make the calculator more robust, we can detect such errors and provide an appropriate response to the user. This can be accomplished by using a `try-except` block (you should have seen this before!). The purpose of a `try-except` block is to encapsulate instructions that could cause an exception (something that alters the normal flow of a program) in a try block. If an exception occurs, it can be handled in the `except` block. 
+
+Try inserting a `try except` to handle any invalid expression evaluation by setting the calculator's display to the string ERROR so that the user is aware that an error occurred.
+
+<details>
+
+<summary>Show Solution</summary>
 
 ```python
-# get the expression in the display
-expr = self.display["text"]
-# the evaluation may return an error!
-try:
-    # evaluate the expression
-    result = eval(expr)
-    # store the result to the display
-    self.display["text"] = str(result)
-# handle if an error occurs during evaluation
-except:
-    # note the error in the display
-    self.display["text"] = "ERROR"
+
+def process(self, button_text):
+
+    # portions of function excluded
+
+    elif button_text == "=":
+        expr = self.display["text"]
+            
+        try:                    # try running these things
+            result = eval(expr)
+            self.display["text"] = str(result)
+        except:                 # if we encounter an error in the try block, jump here
+            self.display["text"] = "ERROR"
+    
+    # portions of function excluded
+        
 ```
 
-Note that the evaluation of the expression (into the variable result) and the subsequent modification of the display with the result is done in the **try** block. If this results in an error, the **except** block is executed, setting the contents of the display to the string ERROR.
+Note that the evaluation of the expression (into the variable result) and the subsequent modification of the display with the result is done in the `try` block. If this results in an error, the `except` block is executed, setting the contents of the display to the string ERROR.
 
-Congratulations, you've made a simple calculator! Indeed, it's basic; however, there are many improvements that could be made:
+</details>
 
-• The length of the display supports approximately 12 characters; however, more characters could
+A generic `execept` block will catch ANY error that occurred in the `try` block, like we did above. In general, it is bad practice to throw in a generic `except` statement without specifying the type of exception you are trying to handle. For example, if you want to specifically catch an EOF Error, you can do the following:
+
+
+```python
+try:
+    # try this
+except EOFError:
+    # only execute if EOFError occurred in try
+except: 
+    # handle any other error
+```
+
+It is suggested that you experiement with different types of errors a user of your calculator may cause and catch them appropriately to inform the user why they are receiving an error.
+
+
+## Wrapping it Up
+
+Congratulations, you've made a simple calculator! Indeed, it's basic; however, there are many improvements that could be made. Some include:
+
+- The length of the display supports approximately 12 characters; however, more characters could
 be added to the display by the user. Doing so results in a cropped expression, which is probably
 not desired. The display could be limited to 12 characters, ignoring any further input. Moreover,
 the result of an expression could be larger than 12 characters. Perhaps such results could be
 truncated.
 
-• There is no easy way to erase the last character entered of an expression in the display. Adding a
+- There is no easy way to erase the last character entered of an expression in the display. Adding a
 back button to the calculator could allow this in case the user makes an error.
 
-• Other useful operators could be added. For example: modulus (%), square root, logarithm (log),
-natural logarithm (ln), factorial (!), sine, cosine, tangent, and constants such as pi and e. Take
-look at the Google calculator (search for “calculator” on Google). Of course, Python's eval
-function must support these (you'll have to try them out!).
+- Other useful operators could be added. Some examples include: 
+    
+    * modulus (%) 
 
-• Most calculators clear any previous expression result if the user enters a new expression. For
-example, suppose that the display has the result of an expression. If the user decides to enter a
-different expression, the display must first be cleared. Currently, the user must do this manually
-(by pressing the AC button). Perhaps the display could be automatically cleared of an expression
-result if the user begins to enter a new expression.
+    * square root
+    
+    * logarithm (log)
 
-• Similarly, perhaps the display could be cleared of an error if the user begins to enter a new
+    * natural logarithm (ln)
+    
+    * factorial (!), 
+    
+    * sine
+    
+    * cosine
+    
+    * tangent
+    
+    * constants such as $\pi$ and $e$ 
+    
+    Take a look at the Google calculator (search for “calculator” on Google). Of course, Python's `eval` function must support these (you'll have to try them out!).
+
+- Most calculators clear any previous expression result if the user enters a new expression. For example, suppose the display has the result of an expression. If the user decides to enter a different expression, the display must first be cleared. Currently, the user must do this manually (by pressing the AC button). Perhaps the display could be automatically cleared of an expression result if the user begins to enter a new expression.
+
+- Similarly, perhaps the display could be cleared of an error if the user begins to enter a new
 expression.
 
-For completeness, here's the entire code (reduced in font size for readability):
+
+## Full Code
+
+For completeness, here's the entire code
 
 ```python
+#################################################################
+# Name:
+# Date:
+# Description
+#################################################################
 from tkinter import *
 
 # the main GUI
 class MainGUI(Frame):
-    # the constructor
+    
     def __init__(self, parent):
+        """Constructor for MainGUI"""
         Frame.__init__(self, parent, bg="white")
-        parent.attributes("-fullscreen", True)
         self.setupGUI()
-    # sets up the GUI
+        
+        # Geometry Management for the Frame
+        self.pack(fill=BOTH, expand=1)
+
+
     def setupGUI(self):
-        # https://www.fontsquirrel.com/fonts/tex-gyre-adventor)
-        # on most Linux system, simply double-click the font files and install them
-        # on the RPi, copy them to /usr/local/share/fonts (with
-        # sudo): sudo cp tex*.otf /usr/local/share/fonts
-        # then reboot
+        """Sets up the Graphical User Interface"""
+         # The Display
+        self.display = Label(
+            self, 
+            text="TEST", 
+            anchor=E,   # Right-align text in the display;
+            bg="white", # White Background
+            fg="black", # Black Text
+            height=2,   # Set the height to 2 characters
+            width=15,
+            font=("TexGyreAdventor", 50) # Font is TexGyreAdventor at 50 point size
+        )
 
-        # the display
-        # right-align text in the display; and set its
-        #  background to white, its height to 2 characters, and its font to 50 point TexGyreAdventor
-        self.display = Label(self, text="", anchor=E,\
-        bg="white", height=2, font=("TexGyreAdventor", 50))
-        # put it in the top row, spanning across all four columns; and expand it on all four sides
-        self.display.grid(row=0, column=0, columnspan=4,\
-        sticky=E+W+N+S)
-
-        # the button layout
+        # Geometry Management for the Display    
+        self.display.grid(
+            row=0,          # Place it in the top row
+            column=0,       
+            columnspan=4,   # Spanning across all four columns
+            sticky=E+W+N+S  # Expand it on all four sides
+        )
+        
+        # Allow each row and column to dynamically adjust to the width/height of the window.
+        for row in range(7):
+            Grid.rowconfigure(self, row, weight=1)
+        for col in range(4):
+            Grid.columnconfigure(self, col, weight=1)
+        
+         # the button layout
         # ( ) AC **
         # 7 8 9 /
         # 4 5 6 *
         # 1 2 3 -
         # 0 . = +
 
-        # configure the rows and columns of the Frame to adjust to the window
-        # there are 6 rows (0 through 5)
-        for row in range(6):
-            Grid.rowconfigure(self, row, weight=1)
-        # there are 4 columns (0 through 3)
-        for col in range(4):
-            Grid.columnconfigure(self, col, weight=1)
+        buttons = [
+            # Left Paren
+            {"text":"(",   "bg_color": "gray",  "row": 1,  "column": 0},
+            # Right Paren
+            {"text":")",   "bg_color": "gray",  "row": 1,  "column": 1},
+            # AC
+            {"text":"AC",  "bg_color": "gray",  "row": 1,  "column": 2},
+            # Power
+            {"text":"**",  "bg_color": "gray",  "row": 1,  "column": 3},
 
-        # the first row
-        # (
-        # first, fetch and store the image
-        # to work best on the RPi, images should be 115x115 pixels
-        # otherwise, may need to add .subsample(n)
-        img = PhotoImage(file="images/lpr.gif")
-        # next, create the button (white background, no border,
-        # no highlighting, no color when clicked)
-        button = Button(self, bg="white", image=img, borderwidth=0, highlightthickness=0,\
-        activebackground="white", command=lambda: self.process("("))
-        # set the button's image
-        button.image = img
-        # put the button in its proper row and column
-        button.grid(row=1, column=0, sticky=N+S+E+W)
-        # the same is done for the rest of the buttons
-        # )
-        img = PhotoImage(file="images/rpr.gif")
-        button = Button(self, bg="white", image=img, borderwidth=0, highlightthickness=0,\
-        activebackground="white", command=lambda: self.process(")"))
-        button.image = img
-        button.grid(row=1, column=1, sticky=N+S+E+W)
-        # AC
-        img = PhotoImage(file="images/clr.gif")
-        button = Button(self, bg="white", image=img, borderwidth=0, highlightthickness=0,\
-        activebackground="white", command=lambda: self.process("AC"))
-        button.image = img
-        button.grid(row=1, column=2, sticky=N+S+E+W)
-        # **
-        img = PhotoImage(file="images/pow.gif")
-        button = Button(self, bg="white", image=img, borderwidth=0, highlightthickness=0,\
-        activebackground="white", command=lambda: self.process("**"))
-        button.image = img
-        button.grid(row=1, column=3, sticky=N+S+E+W)
+            # 7
+            {"text":"7",  "bg_color": "lightgray",  "row": 2,  "column": 0},
+            # 8
+            {"text":"8",  "bg_color": "lightgray",  "row": 2,  "column": 1},
+            # 9
+            {"text":"9",  "bg_color": "lightgray",  "row": 2,  "column": 2},
+            # Divide
+            {"text":"/",  "bg_color": "gray",       "row": 2,  "column": 3},
 
-        # the second row
-        # 7
-        img = PhotoImage(file="images/7.gif")
-        button = Button(self, bg="white", image=img, borderwidth=0, highlightthickness=0,\
-        activebackground="white", command=lambda: self.process("7"))
-        button.image = img
-        button.grid(row=2, column=0, sticky=N+S+E+W)
-        # 8
-        img = PhotoImage(file="images/8.gif")
-        button = Button(self, bg="white", image=img, borderwidth=0, highlightthickness=0,\
-        activebackground="white", command=lambda: self.process("8"))
-        button.image = img
-        button.grid(row=2, column=1, sticky=N+S+E+W)
-        # 9
-        img = PhotoImage(file="images/9.gif")
-        button = Button(self, bg="white", image=img, borderwidth=0, highlightthickness=0,\
-        activebackground="white", command=lambda: self.process("9"))
-        button.image = img
-        button.grid(row=2, column=2, sticky=N+S+E+W)
-        # /
-        img = PhotoImage(file="images/div.gif")
-        button = Button(self, bg="white", image=img, borderwidth=0, highlightthickness=0,\
-        activebackground="white", command=lambda: self.process("/"))
-        button.image = img
-        button.grid(row=2, column=3, sticky=N+S+E+W)
+            # 4
+            {"text":"4",  "bg_color": "lightgray",  "row": 3,  "column": 0},
+            # 5
+            {"text":"5",  "bg_color": "lightgray",  "row": 3,  "column": 1},
+            # 6
+            {"text":"6",  "bg_color": "lightgray",  "row": 3,  "column": 2},
+            # Times
+            {"text":"*",  "bg_color": "gray",       "row": 3,  "column": 3},
 
-        # the third row
-        # 4
-        img = PhotoImage(file="images/4.gif")
-        button = Button(self, bg="white", image=img, borderwidth=0, highlightthickness=0,\
-        activebackground="white", command=lambda: self.process("4"))
-        button.image = img
-        button.grid(row=3, column=0, sticky=N+S+E+W)
-        # 5
-        img = PhotoImage(file="images/5.gif")
-        button = Button(self, bg="white", image=img, borderwidth=0, highlightthickness=0,\
-        activebackground="white", command=lambda: self.process("5"))
-        button.image = img
-        button.grid(row=3, column=1, sticky=N+S+E+W)
-        # 6
-        img = PhotoImage(file="images/6.gif")
-        button = Button(self, bg="white", image=img, borderwidth=0, highlightthickness=0,\
-        activebackground="white", command=lambda: self.process("6"))
-        button.image = img
-        button.grid(row=3, column=2, sticky=N+S+E+W)
-        # *
-        img = PhotoImage(file="images/mul.gif")
-        button = Button(self, bg="white", image=img, borderwidth=0, highlightthickness=0,\
-        activebackground="white", command=lambda: self.process("*"))
-        button.image = img
+            # 1
+            {"text":"1",  "bg_color": "lightgray",  "row": 4,  "column": 0},
+            # 2
+            {"text":"2",  "bg_color": "lightgray",  "row": 4,  "column": 1},
+            # 3
+            {"text":"3",  "bg_color": "lightgray",  "row": 4,  "column": 2},
+            # Subtract
+            {"text":"-",  "bg_color": "gray",       "row": 4,  "column": 3},
 
-        button.grid(row=3, column=3, sticky=N+S+E+W)
+            # 0
+            {"text":"0",  "bg_color": "gray",  "row": 5,  "column": 0},
+            # .
+            {"text":".",  "bg_color": "gray",  "row": 5,  "column": 1},
+            # =
+            {"text":"=",  "bg_color": "blue",  "row": 5,  "column": 2},
+            # Add
+            {"text":"+",  "bg_color": "gray",  "row": 5,  "column": 3},
 
-        # the fourth row
-        # 1
-        img = PhotoImage(file="images/1.gif")
-        button = Button(self, bg="white", image=img, borderwidth=0, highlightthickness=0,\
-        activebackground="white", command=lambda: self.process("1"))
-        button.image = img
-        button.grid(row=4, column=0, sticky=N+S+E+W)
-        # 2
-        img = PhotoImage(file="images/2.gif")
-        button = Button(self, bg="white", image=img, borderwidth=0, highlightthickness=0,\
-        activebackground="white", command=lambda: self.process("2"))
-        button.image = img
-        button.grid(row=4, column=1, sticky=N+S+E+W)
-        # 3
-        img = PhotoImage(file="images/3.gif")
-        button = Button(self, bg="white", image=img, borderwidth=0, highlightthickness=0,\
-        activebackground="white", command=lambda: self.process("3"))
-        button.image = img
-        button.grid(row=4, column=2, sticky=N+S+E+W)
-        # -
-        img = PhotoImage(file="images/sub.gif")
-        button = Button(self, bg="white", image=img, borderwidth=0, highlightthickness=0,\
-        activebackground="white", command=lambda: self.process("-"))
-        button.image = img
-        button.grid(row=4, column=3, sticky=N+S+E+W)
+        ]
 
-        # the fifth row
-        # 0
-        img = PhotoImage(file="images/0.gif")
-        button = Button(self, bg="white", image=img, borderwidth=0, highlightthickness=0,\
-        activebackground="white", command=lambda: self.process("0"))
-        button.image = img
-        button.grid(row=5, column=0, sticky=N+S+E+W)
-        # .
-        img = PhotoImage(file="images/dot.gif")
-        button = Button(self, bg="white", image=img, borderwidth=0, highlightthickness=0,\
-        activebackground="white", command=lambda: self.process("."))
-        button.image = img
-        button.grid(row=5, column=1, sticky=N+S+E+W)
-        # =
-        img = PhotoImage(file="images/eql.gif")
-        button = Button(self, bg="white", image=img, borderwidth=0, highlightthickness=0,\
-        activebackground="white", command=lambda: self.process("="))
-        button.image = img
-        button.grid(row=5, column=2, sticky=N+S+E+W)
-        # +
-        img = PhotoImage(file="images/add.gif")
-        button = Button(self, bg="white", image=img, borderwidth=0, highlightthickness=0,\
-        activebackground="white", command=lambda: self.process("+"))
-        button.image = img
-        button.grid(row=5, column=3, sticky=N+S+E+W)
+        # Create the buttons
+        for button in buttons:
+            self.make_button(button)
+        
+        
+    def make_button(self, button_data):
+        """Create the button for the provided `button_data`"""
+        
+        def process_this():
+            self.process(button_data["text"])
 
-        # pack the GUI
-        self.pack(fill=BOTH, expand=1)
+        # Make the button
+        button = Button(
+            self,                         
+            text=button_data["text"],      
+            command=process_this,
 
-    # processes button presses
-    def process(self, button):
-    # AC clears the display
-        if (button == "AC"):
+            # Some additional options
+            font=("TexGyreAdventor", 50), 
+            bg=button_data["bg_color"],    
+            borderwidth=0,                
+            highlightthickness=0,         
+            activebackground="white",     
+            highlightbackground=button_data["bg_color"],  
+            highlightcolor="white",       
+        )
+
+        # Manage the geometry for the button
+        button.grid(
+            row=button_data["row"],         
+            column=button_data["column"],   
+            sticky=N+S+E+W  
+        )
+        
+        
+    def process(self, button_text):           
+        """Process a button being pressed"""
+        # AC clears the display
+        if (button_text == "AC"):
             # clear the display
             self.display["text"] = ""
-        # = starts an evaluation of whatever is on the display
-        elif (button == "="):
-            # get the expression in the display
+        elif button_text == "=":
             expr = self.display["text"]
-            # the evaluation may return an error!
+            
             try:
-                # evaluate the expression
                 result = eval(expr)
-                # store the result to the display
                 self.display["text"] = str(result)
-            # handle if an error occurs during evaluation
-            except:
-                # note the error in the display
+            except: 
                 self.display["text"] = "ERROR"
-        # otherwise, just tack on the appropriate
-        # operand/operator
         else:
-            self.display["text"] += button
-
+            self.display["text"] += button_text
+            
+            
 ##############################
 # the main part of the program
 ##############################
 # create the window
 window = Tk()
+
 # set the window title
 window.title("The Reckoner")
+
 # generate the GUI
 p = MainGUI(window)
+
 # display the GUI and wait for user interaction
 window.mainloop()
+
 ```

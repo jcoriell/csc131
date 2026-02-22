@@ -113,6 +113,8 @@ We continue by specifying the constructor of the `MainGUI` class. For now we sim
 
 - Call on the `setupGUI()` method.
 
+- Manage the geometry for this class using `self.pack()`
+
 <details>
 
 <summary>Show Solution</summary>

@@ -121,6 +121,8 @@ website:
                 href: "activities/03 The Reckoner/03 Button Functionality.qmd" 
               - text: Expression Evalutation
                 href: "activities/03 The Reckoner/04 Expression Evaluation.qmd" 
+              - text: Homework
+                href: "activities/03 The Reckoner/05 Homework.qmd" 
       #     - text: Simon with Flask
       #       href: "activities/01 Simon Flask/index.qmd"
 

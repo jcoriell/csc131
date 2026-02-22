@@ -4,32 +4,71 @@ title: Homework
 
 
 For the homework portion of this activity, you may have the option to work in groups (pending prof
-approval). It is suggested that groups contain at least one confident Python coder.
-Your task is to implement the following improvements to the calculator:
+approval). Your task is to implement, at a minimum, the following improvements to the calculator:
 
-(1) Add a modulus (%) button that calculates the remainder returned by a division. For example: 23 % 13 = 10.
-(2) Add a back button that removes the last (i.e., right-most) character in the display.
-(3) Modify the layout as follows to accommodate the new buttons:
+1. Add a modulus `%` button that calculates the remainder returned by a division. For example `23 % 13 = 10`.
 
-![](images/piactivity13-09.png){fig-align="center"}
+2. Add a back button that removes the last (i.e., right-most) character in the display.
 
-See below for what that should look like on the RPi.
+3. Modify the layout as follows to accommodate the new buttons:
 
-(4) Limit the display to 14 characters. Do not allow the user to enter more than 14 characters.
-(5) Any result that is greater than 14 characters should be truncated to the first 11 characters followed by three successive dots. For example: 2 ** 47 = 14073748835...
-(6) If an expression result (or an error) has just been put on the display, clear the screen before displaying the next character inputted by the user.
+![The new button layout with the rightmost column containing a backspace button at the top, the division, multiplication, subtraction, and addition opations below, and the newly added mod operator at the bottom. These changes also result in a new row being added at the bottom where the equals symbol occupies two columns followed by the exponentiation operator, and the mod operated at the end of the new row.](images/piactivity13-09.png){fig-align="center"}
+
+
+4. Limit the display to 14 characters, that is, do not allow the user to enter more than 14 characters.
+
+5. Any result that is greater than 14 characters should be truncated to the first 11 characters followed by three successive dots. For example: `2 ** 47 = 14073748835...`. 
+
+   Optionally, you may try to display a long result as many calculators would with the `e+` notation. For example: `1.4073749e+14`
+
+
+6. If an expression result (or an error) has just been put on the display, clear the screen before displaying the next character that is input by the user.
+
+7. Handle multiple types of errors in different ways. At a minimum it should handle the following errors:
+
+    - If it is an `EOFError` or `SyntaxError`, inform the user what they did wrong using the display of the calculator. 
+
+    - If there is a `ZeroDivisionError`, inform the user appropriately on the display. 
+    
+    - For any other error, just display `ERROR`
 
 A few notes:
 
-• The calculator has now increased by one row. This has the unfortunate effect of no longer
+- There are new buttons and the locations of some buttons are changing, consider what modifications need to be made to your list containing button data.
 
-![](images/piactivity13-10.png){fig-align="center"}
+- The calculator has now increased by one row. **Think about how various values through out your codebase might need to change.** A recommendation would be to create constants as class variables that belong to the MainGUI class that indicate the number of rows and columns so that you do not have unlabeled values floating throughout your code. For example:
 
-properly rendering the calculator on the LCD touchscreen. To fix this, we can reduce the font size of text in the display from 50 point to 45 point. Furthermore, we can reduce the height of the display from two characters to one character.
+```python
+class MainGUI:
 
-• The equals (=) button now spans two columns. You will have to download the new image for this button.
-• There is now a blank “button” on the calculator. Feel free to just leave this “button” blank.
+    NUM_ROWS = 7
+    NUM_COLS = 4
 
-**Do not make any additional improvements to your submission for this assignment.** However, feel free to do so on your own if you wish (although you may need to recreate the buttons if you choose to add more rows or columns to the calculator).
+    # most code excluded
+```
 
-**You are to submit your Python source code only (as a .py file) through the upload facility on the web site.**
+- The equals `=` button now spans two columns. Consider what modifications might need to be made to either your list containing button data and/or the `make_button` function.
+
+- There is now a "blank space" on the calculator. Add new functionality to this location such as `sin`, `log`, a toggle for light/dark mode, or some other functionality of your choosing.
+
+- Do confirm any major variations/additional modifications you are considering making with your professor.
+
+**You are to submit your Python source code as your professor desires.**
+
+
+## Rubric
+
+| Item                                                                 | Max Points |
+|----------------------------------------------------------------------|--------|
+| Source code is appropriately commented throughout                    | 3      |
+| Coding style is good                                                 | 3      |
+| The layout is correct (including the equal button)                   | 4      |
+| The modulus button works correctly                                   | 4      |
+| The back button works correctly                                      | 5      |
+| The display is limited to 14 characters on user input                | 5      |
+| The display is truncated to 14 characters max for results            | 5      |
+| The display is cleared on input after a result or error              | 3      |
+| Added support for handling different types of errors in different ways. | 4   |
+| Made use of the "blank space" appropriately                          | 4      |
+| **Total**                                                            | **40** |
+
