@@ -296,7 +296,7 @@ def setupGUI(self):
     # Create the button for Right Parenthesis
     button = Button(
         self,                         # The MainGUI object is passed in as the parent
-        text="(",                     # Set the text in the button
+        text=")",                     # Set the text in the button
 
         # Some additional options
         font=("TexGyreAdventor", 50), # Set the font and size 
