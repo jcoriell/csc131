@@ -5,7 +5,6 @@ project:
 
 website:
   page-navigation: true
-  site-url: https://csc131.jcor.dev
   title: "CSC 131"
   sidebar:
     collapsible: true
@@ -59,6 +58,8 @@ website:
                 href: "lessons/02 Object Oriented Programming/09 The Object Class.qmd"
               - text: Quick Reference
                 href: "lessons/02 Object Oriented Programming/10 Quick Reference.qmd"
+              - text: Practice Problems
+                href: "lessons/02 Object Oriented Programming/11 Practice Problems.qmd"
 
           - section: "03 Number Systems and Binary Arithmetic"
             href: "lessons/03 Number Systems and Binary Arithmetic/index.qmd"
@@ -80,13 +81,27 @@ website:
 
           - section: "04 Graphical User Interfaces"
             href: "lessons/04 Graphical User Interfaces/index.qmd"
-            contents: 
+            contents:
               - text: Introduction
                 href: "lessons/04 Graphical User Interfaces/01 Introduction.qmd"
               - text: Tkinter
                 href: "lessons/04 Graphical User Interfaces/02 Tkinter.qmd"
               - text: Tkinter Widgets
                 href: "lessons/04 Graphical User Interfaces/03 Tkinter Widgets.qmd"
+
+          - section: "05 Chaos"
+            href: "lessons/05 Chaos/index.qmd"
+            contents:
+              - text: Introduction
+                href: "lessons/05 Chaos/01 Introduction.qmd"
+              - text: The Chaos Game
+                href: "lessons/05 Chaos/02 The Chaos Game.qmd"
+              - text: Fractals
+                href: "lessons/05 Chaos/03 Fractals.qmd"
+              - text: Randomness and Probability
+                href: "lessons/05 Chaos/04 Randomness and Probability.qmd"
+              - text: Random Number Generators
+                href: "lessons/05 Chaos/05 Random Number Generators.qmd"
 
 
 

@@ -1,0 +1,95 @@
+## Randomness and probability
+
+In the chaos game, random vertices of an equilateral were repeatedly selected. What does *random* mean
+exactly? We have seen that there is sometimes order in chaos if you look long and close enough. That
+being said, there are things that seemingly happen in a haphazard manner, have no predictable pattern,
+and are not predetermined. Such things are called random. Think of selecting one of the three vertices.
+We have no way of predicting which vertex will be selected. Any one could be selected at each
+iteration. Think of rolling a die. There is no way to predict which number will be rolled next (other than
+to say that it will be between 1 and 6 inclusive).
+
+Even with random things, human beings have come up with a way of measuring the randomness, and
+that way is called probability. Probability is a way of expressing the knowledge that something will
+happen. If something is definitely going to happen (i.e., it's absolute certainty), it is said to have a
+probability of 1. If something is definitely **not** going to happen (i.e., it's an impossibility), it has a
+probability of 0. Of course, there are an infinite amount of values in between 0 and 1. That is, the
+probability that something could happen can be stated as a value between 0 and 1.
+
+Formally, probability is defined as the ratio of the number of ways of achieving success to the total
+number of possible outcomes. For example, consider the flipping of a coin. There are two possibilities
+when flipping a coin: either heads or tails. So there are two possible outcomes. The probability of
+landing on heads when flipping a coin is then 1/2. Why? The only way to land on heads is, well, to flip
+heads. That is, there is only one way to achieving success. Since there are two possible outcomes when
+flipping a coin, the probability of landing on heads is therefore 1/2 (one way of achieving success out of
+two possible outcomes). Similarly, the probability of landing on tails when flipping a coin is also 1/2.
+
+What is the probability of picking the top vertex in the chaos game? There's only one way to do so out
+of three possible vertices. Therefore, the probability is 1/3.
+
+Let's go back to rolling a typical (six-sided) die. What is the probability that a three is rolled? Rolling a
+three represents the only way to achieve success. There are six possible rolls of the die. Therefore, the
+probability of rolling a three is 1/6.
+
+What is the probability that an even number is rolled? Well, how many ways are there of achieving
+success? That is, how many ways can an even number be rolled? Three (rolling a two, four, or six).
+The possible outcomes are, of course, rolling a one through six. So the probability of rolling an even
+number is 3/6 = 1/2.
+
+What is the probability that a number less than six is rolled? There are five ways to roll a number less
+than six. There are six possible rolls of a die. The probability is therefore 5/6.
+
+What is the probability of rolling two die and getting a total of 7? This one is a bit tricky! We'll discuss
+this later (but if you want to know, it's 1/6).
+
+::: {.callout-important title="Activity" collapse=false}
+For this activity, we will repeatedly flip two coins simultaneously and record the results. The two coins
+can either both be heads, both be tails, or they can be different (i.e., one is heads and one is tails). So
+there are three possible outcomes to this game. The probability of both coins landing on heads is
+therefore 1/3, both landing on tails is also 1/3, and one landing on heads and the other on tails is also
+1/3.
+
+To make this interesting, let's make it a game. If both coins land on heads, all of the students seated in
+the left half of the class (on the left side from the prof's perspective) get a point. If both coins land on
+tails, all of the students seated in the right side of the class get a point. If one coin lands on heads and
+the other lands on tails, the prof gets a point. The group (or individual) with the most points at the end
+of some number of flips (say, 15) wins.
+
+Over time, you will find that the students lose more often. It appears that the heads and tails
+combination happens significantly more often than initially thought. In fact, the previously calculated
+probabilities (each 1/3) seem incorrect.
+
+The purpose of this activity is to show that perceived probabilities are often different from actual
+probabilities (i.e., humans are not always so good at estimating probabilities). Think of it like this:
+there is only one way of both coins landing on heads. There is only one way of both coins landing on
+tails. Contrary to what was previously assumed, there are two ways of ending up with one coin landing
+on heads and the other landing on tails: the first coin can be heads and the second coin can be tails, or
+the first coin can be tails and the second coin can be heads! In fact, there are a total of four possible
+outcomes. The flipping of two coins can then be shown in the following table:
+
+| Coin 1 | Coin 2 |
+|--|:--------|
+| heads | heads |
+| heads | tails |
+| tails | heads |
+| tails | tails |
+
+The probability of both coins landing on heads is 1/4 (one possible way of achieving success out of four
+possible outcomes as show above). The probability of both coins landing on tails is also 1/4. But the
+probability of one coin landing on heads and the other landing on tails is actually 2/4 = 1/2! The prof
+wins 50% of the time! Another way of saying this is that the prof wins twice as much as either group of
+students! Ka-ching!
+
+When you realize how rigged this simple game is, you can begin to think about how even more rigged
+other games (such as slot machines, the lottery, etc) are...
+
+Try to calculate the probability of flipping three coins and getting three heads. Or three tails. Or one
+heads and two tails.
+
+Probability of ending up with three heads:
+
+Probability of ending up with three tails:
+
+Probability of ending up with one heads and two tails:
+
+Probability of ending up with one tails and two heads:
+:::

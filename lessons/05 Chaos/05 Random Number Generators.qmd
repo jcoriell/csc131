@@ -1,0 +1,202 @@
+## Random number generators
+
+In the last RPi activity (titled *My Binary Addiction...Reloaded*), you may have noticed the use of a
+library that allowed the generation of random numbers. In the activity, it was used to generate random
+bits (0 or 1) for each of the two 8-bit numbers (in order to generate two random 8-bit numbers). The
+library was called random and was imported as follows:
+
+```python
+from random import randint
+```
+
+The function `randint` was then used to generate the random numbers. As mentioned earlier in this
+lesson, a truly random event has no predictable pattern. Unfortunately, there is no easy way for that to
+happen using a computer, even for a task as simple as selecting random numbers within a specific range.
+As a solution, computers typically use a pseudo-random process to create random numbers in a range.
+
+::: {.callout-tip title="Definition"}
+A **pseudo-random process** is one that appears to be random but is technically deterministic
+in nature. This means that the process looks completely random, and yet its pattern is predictable and
+can be reproduced exactly.
+:::
+
+::: {.callout-note title="Did you know" .column-margin}
+The most common algorithm for random number generation is called Mersenne Twister and is the one Python uses. Google it to find out more.
+:::
+
+When tasked with creating a random number (or group of numbers), computers typically use a pseudo-
+random process to produce that number. This means that, given enough generated numbers, one can
+observe that the created numbers follow a certain sequence. For most purposes, however, the amount of
+numbers one would require to observe that the pattern is predictable is too large (so the numbers seem
+random).
+
+For most cases, pseudo-random numbers are adequate and even beneficial. How? For instance, often
+researchers replicate experiments in order to confirm (or refute) experiments performed by peers. For a
+scientist to make any claim about any experiments carried out, enough information for someone else to
+reproduce those same results with an experiment of their own must be provided. When a random
+number (or list of random numbers) is used in an experiment, there would be no way of replicating those
+exact numbers (and therefore obtaining the same results as in the original experiment). However, since
+computers produce pseudo-random numbers (which can be replicated exactly), it allows other
+researchers to carry out their own versions of the original experiment and crosscheck to see if the results
+are identical.
+
+In order to actually generate repeatable (even predictable) patterns of *random* numbers, most pseudo-
+random number generators can be configured or initialized with a seed.
+
+::: {.callout-tip title="Definition"}
+A **seed** is just a number that is used to initialize a pseudo-random number generator.
+:::
+
+Most generators use the current time (to the second) as the seed. Clearly, this means that generating a
+sequence of random numbers will be different each time (since time moves forward continuously). We
+can, however, specify a seed of our own so that the pseudo-random number generator will always
+provide the same sequence of numbers!
+
+::: {.callout-important title="Activity" collapse=false}
+Let's create a simple program generates 100 pseudo-random numbers (in the range 0-99) twice:
+
+```python
+from random import randint
+
+for i in range(1, 101):
+  print("{}\t".format(randint(0, 99))),
+  if (i % 10 == 0):
+    print()
+print()
+for i in range(1, 101):
+  print("{}\t".format(randint(0, 99))),
+  if (i % 10 == 0):
+    print()
+```
+
+Note the use of "`\t`" (which prints a *tab* and is typically eight spaces in width). Characters that begin
+with a backslash (`\`) are known as **escape characters**. Escape characters typically allow the
+representation of unprintable characters (such as a tab, newline, carriage return, etc). Most general
+purpose programming languages (including Python) support these unprintable characters. Here are
+some common ones:
+
+`\n` Linefeed (like pressing Enter)
+`\t` Horizontal tab
+
+Note that there are many others, some of which are even programming language specific.
+
+The program above first displays 100 random integers in the range 0-99, and formats them such that ten
+integers are displayed on each line (i.e., ten rows of ten columns). They are aligned at the columns via a
+horizontal tab that follows each integer. Note the comma at the end of the print statement. This
+instructs Python to omit a typically default linefeed at the end of the print statement. Once ten integers
+have been displayed on a single line (i.e., i % 10 == 0), a blank line is added (via the solitary print
+statement). The program then displays another 100 random integers in the same manner. Note the
+variety (and randomness) of the generated integers, although generating 200 integers in the range 0-99
+will undoubtedly produce duplicates.
+
+In the above example, the pseudo-random number generator was seeded with the current time (by
+default since no numeric seed was provided). Let's modify the algorithm and use an identical (but
+specified) seed value for each 100 random integers:
+
+```python
+from random import randint, seed
+
+seed(123456)
+for i in range(1, 101):
+  print("{}\t".format(randint(0, 99))),
+  if (i % 10 == 0):
+    print()
+print()
+seed(123456)
+for i in range(1, 101):
+  print("{}\t".format(randint(0, 99))),
+  if (i % 10 == 0):
+    print()
+```
+
+In this case, the numeric value 123456 is used as the seed to generate both groups of 100 integers.
+Technically, the seed could be any value (e.g., 0, some variable containing a value, even the
+mathematical constant pi). In fact, we could have randomly generated a seed!
+
+```python
+seed(randint(0,65535))
+```
+:::
+
+Now that you have seen how to use Python to generate pseudo-random integers, let's try to write
+programs that implement some of the activities shown earlier in this lesson.
+
+::: {.callout-important title="Activity" collapse=false}
+Earlier we discussed rolling a single die and the associated probabilities of each possible roll. Then, we
+asked what the probability of rolling two dice and getting a total of 7. Let's try to write a Python
+program that iterates through all of the possibilities when rolling two dice. Here is the code and output:
+
+```python
+# a list containing the frequencies of the 11 possible sums (2
+# through 12). this initializes a list of 11 elements, all with the
+# value 0
+dice_sums = [0] * 11
+
+# display the possible rolls of two dice
+print("Die1\tDie2\tSum")
+
+# iterate through the values of die 1
+for die1 in range(1, 7):
+  # for each value of die 1, iterate through the values of die 2
+  for die2 in range(1, 7):
+    # calculate the sum of both dice
+    dice_sum = die1 + die2
+
+    # increment the frequency of each sum
+    # the smallest possible sum, 2, is at index 0 of the list
+    # so subtract 2 from the index
+    # the frequency of rolling a 2 is at index 0 of the list
+    dice_sums[dice_sum - 2] += 1
+
+    # display the values for this roll
+    print("{}\t{}\t{}".format(die1, die2, dice_sum))
+
+# display the sum frequencies
+print("\nSum\tFreq\tProb")
+for i in range(len(dice_sums)):
+  # i starts at 0, but we want to begin the sums at 2
+  print("{}\t{}\t{}".format(i + 2, dice_sums[i], dice_sums[i] / sum(dice_sums)))
+```
+
+The number of total sums possible is 36. We can calculate this by taking the sum of the frequencies (1
++ 2 + 3 + 4 + 5 + 6 + 5 + 4 + 3 + 2 + 1 = 36). Since there are six rolls that sum to 7, then the probability
+of rolling two dice and getting a 7 is 6/36 = 1/6. In fact, the probability of rolling two dice and getting a
+7 is higher than anything else!
+
+Now let's try to roll two dice many times and see what results we end up with. Perhaps the frequencies
+of the sums will match the frequencies shown above! Here's the code and output:
+
+```python
+from random import randint, seed
+
+# simulates the roll of a die
+def roll():
+  return randint(1, 6)
+
+# get the number of rolls and seed desired
+num_rolls = 5000
+rand_seed = randint(0, 65535)
+dice_sums = [0] * 11
+
+print("Rolling two dice {} times with a seed of {}.".format(num_rolls, rand_seed))
+
+# seed the number generator
+seed(rand_seed)
+# roll the dice
+for i in range(0, num_rolls):
+  die1 = roll()
+  die2 = roll()
+  # calculate the sum
+  dice_sum = die1 + die2
+  # update the sum frequencies
+  dice_sums[dice_sum - 2] += 1
+
+# display a summary
+print("\nSum\tFreq\tProb")
+for i in range(len(dice_sums)):
+  print("{}\t{}\t{}".format(i + 2, dice_sums[i], dice_sums[i] / sum(dice_sums)))
+```
+
+Note the probabilities. Although they are not exactly the same as calculated before, they are very
+similar! More accurate results would be possible with a much higher number of rolls (try one million!).
+:::

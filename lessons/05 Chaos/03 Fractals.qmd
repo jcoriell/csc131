@@ -1,0 +1,15 @@
+## Fractals
+
+By now, you should have noticed that the result of the original chaos game (i.e., three vertices of an
+equilateral and repeatedly plotting midpoints) results in a beautiful triangular shape. In fact, this shape
+has an interesting property: it has its pattern repeated over and over. It's as if we could zoom in forever
+and obtain the same pattern! This property is found in fractals. This particular fractal has a name: the
+Sierpinski Triangle.
+
+::: {.callout-tip title="Definition"}
+A **fractal** is a geometric shape that can be (infinitely) broken down into similar parts.
+:::
+
+This means that it is made up of many parts that are just smaller versions of the whole thing. And these
+smaller parts are then made up of even smaller versions of the whole thing. And this goes on infinitely
+(well, basically). Of course, our eyes can't see this going on infinitely because things get too small.

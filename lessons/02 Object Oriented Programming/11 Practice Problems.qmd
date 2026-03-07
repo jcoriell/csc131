@@ -1,0 +1,235 @@
+## Practice Problems
+
+The following practice problems cover the topics introduced in this lesson. For each problem, try to
+design and implement the solution on your own before checking any provided hints or solutions.
+
+---
+
+**Problem 1**
+
+Design and implement a `Rectangle` class in Python. The class should have instance variables for
+`width` and `height`. 
+
+Be sure to include the following: 
+
+- A constructor
+
+- Accessors and mutators for each instance variable. The mutator should have 
+input validation to ensure only positive numbers are accepted. 
+
+- A methods to compute the area of a `rectangle`. 
+
+- A method to compute the perimeter of a `rectangle`.
+
+- An `__str__` method to return a meaningful string representation of the object (such as the dimensions and area).
+
+::: {.callout-tip title="Show Solution" collapse=true}
+```python
+class Rectangle:
+
+    def __init__(self, width, height):
+        self.width = width
+        self.height = height
+
+    # Accessors
+    @property
+    def width(self):
+        return self._width
+
+    @property
+    def height(self):
+        return self._height
+
+    # Mutators
+    @width.setter
+    def width(self, value):
+        if value > 0:
+            self._width = value
+        else:
+            # This solution uses raise to throw an error.
+            # Sometimes you may just want to set a default value instead.
+            raise ValueError("Width must be a positive number.")
+
+    @height.setter
+    def height(self, value):
+        if value > 0:
+            self._height = value
+        else:
+            raise ValueError("Width must be a positive number.")
+
+    # Other Methods
+    def area(self):
+        return self._width * self._height
+
+    def perimeter(self):
+        return 2 * (self._width + self._height)
+
+    def __str__(self):
+        return (f"Rectangle(width={self._width}, height={self._height}, "
+                f"area={self.area()}, perimeter={self.perimeter()})")
+
+
+# Example usage
+r = Rectangle(4, 7)
+print(r)            # Rectangle(width=4, height=7, area=28, perimeter=22)
+print(r.area())     # 28
+print(r.perimeter()) # 22
+```
+:::
+
+---
+
+## Vocabulary Questions
+
+The following multiple choice questions test your understanding of key Object Oriented Programming
+terms. Select the best answer for each question, then reveal the answer to check your work.
+
+---
+
+**Question 1**
+
+What is a **constructor**?
+
+a) A method that provides read-only access to an instance variable
+
+b) A special method that is automatically invoked when a new instance of a class is created
+
+c) A variable whose value is shared among all instances of a class
+
+d) A method that redefines how a built-in operator works on a user-defined object
+
+::: {.callout-tip title="Show Answer" collapse=true}
+**b) A special method that is automatically invoked when a new instance of a class is created**
+
+The constructor (named `__init__` in Python) runs automatically at instantiation and is typically
+used to assign initial values to instance variables.
+:::
+
+---
+
+**Question 2**
+
+What is the difference between an **instance variable** and a **class variable**?
+
+a) Instance variables are defined outside the class; class variables are defined inside methods
+
+b) Instance variables hold functions; class variables hold data
+
+c) Instance variables allow each object to store its own unique values; class variables are defined
+at the class level and shared among all instances
+
+d) There is no difference — the terms are interchangeable
+
+::: {.callout-tip title="Show Answer" collapse=true}
+**c) Instance variables allow each object to store its own unique values; class variables are defined at the class level and shared among all instances**
+
+For example, a `Dog` class might have a class variable `species = "Canis lupus familiaris"` (the
+same for every dog) alongside instance variables like `name` and `age` (unique per dog).
+:::
+
+---
+
+**Question 3**
+
+Which of the following best describes a **mutator**?
+
+a) A method that reads and returns the value of an instance variable
+
+b) A special method in Python whose name begins and ends with two underscores
+
+c) A method that provides write access to an instance variable, often with input validation
+
+d) A method inherited from the object class that converts an object to a string
+
+::: {.callout-tip title="Show Answer" collapse=true}
+**c) A method that provides write access to an instance variable, often with input validation**
+
+A mutator (also called a setter) is paired with an accessor (getter). Because it controls how a
+value is written, it is the right place to put input validation logic.
+:::
+
+---
+
+**Question 4**
+
+In an inheritance relationship, what is a **superclass**?
+
+a) A class that inherits state and behavior from another class
+
+b) A class that has no instance variables
+
+c) The built-in base class that every Python class implicitly inherits from
+
+d) A class whose state and behavior are inherited by another class
+
+::: {.callout-tip title="Show Answer" collapse=true}
+**d) A class whose state and behavior are inherited by another class**
+
+The superclass sits *above* the subclass in the hierarchy. The subclass inherits from the
+superclass — not the other way around. Note that while the object class (choice c) is technically
+a superclass of every user-defined class, choice d is the more precise general definition.
+:::
+
+---
+
+**Question 5**
+
+What does the **dot operator** do when used on an object reference?
+
+a) Creates a new instance of the object's class
+
+b) Accesses a specified member (state or behavior) of the object
+
+c) Converts the object to a different type
+
+d) Calls the constructor of the object's superclass
+
+::: {.callout-tip title="Show Answer" collapse=true}
+**b) Accesses a specified member (state or behavior) of the object**
+
+For example, `my_dog.bark()` uses the dot operator to call the `bark` method on the `my_dog`
+object, and `my_dog.name` uses it to access the `name` attribute.
+:::
+
+---
+
+**Question 6**
+
+What is **operator overloading**?
+
+a) Using multiple operators together in a single expression
+
+b) Inheriting operator behavior from a superclass
+
+c) Redefining how an operator (such as `+`) works on a user-defined object
+
+d) Validating that operands are of the correct type before applying an operator
+
+::: {.callout-tip title="Show Answer" collapse=true}
+**c) Redefining how an operator (such as `+`) works on a user-defined object**
+
+Operator overloading is implemented in Python using magic functions. For example, defining
+`__add__` on a class lets you use the `+` operator between two instances of that class.
+:::
+
+---
+
+**Question 7**
+
+Which term describes the relationship implied by the phrase *"a Car **is a** Vehicle"*?
+
+a) composition
+
+b) instantiation
+
+c) operator overloading
+
+d) inheritance
+
+::: {.callout-tip title="Show Answer" collapse=true}
+**d) inheritance**
+
+The **is-a** relationship signals inheritance: `Car` inherits state and behavior from `Vehicle`.
+This is distinct from the **has-a** relationship (e.g., "a Car *has a* Engine"), which indicates
+that one class makes use of another through composition.
+:::

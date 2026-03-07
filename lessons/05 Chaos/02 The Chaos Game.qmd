@@ -1,0 +1,102 @@
+## The chaos game
+
+The chaos game is an interesting (and, hopefully, fun) game that illustrates how seemingly random and chaotic things can produce something orderly (and beautiful) over time. It works in a simple manner.
+First, plot the three vertices of an equilateral triangle. An equilateral triangle is unique in that each of its
+three sides are the same length, and each of its three vertices are equidistant to each other. Since the
+internal angles of a triangle always sum to 180 degrees, each angle of an equilateral triangle is the same
+(i.e., each angle is 60 degrees).
+
+Here is an example of the vertices of an (almost) equilateral triangle:
+
+![](images/lesson15-04.png){fig-align="center"}
+
+Notice that the three vertices of the equilateral triangle are drawn on a coordinate system at the points
+(0,0), (15,0) and (7.5,13). Although these points are not "perfectly" equidistant, they are nearly so (and
+good enough for this example).
+
+Second, randomly select two of the three vertices. Suppose that the top and bottom-right vertices are
+randomly selected. Calculate the midpoint between these two vertices using the midpoint formula as
+illustrated above. In general, given two points (*x~1~*, *y~1~*) and (*x~2~*, *y~2~*), the midpoint can be calculated as
+follows:
+
+$$(\frac{x_1+x_2}{2}, \frac{y_1,y_2}{2})$$
+
+The midpoint of the top and bottom-right vertices at points (7.5, 13) and (15, 0) is calculated as follows:
+
+$$(\frac{7.5+15}{2}, \frac{13,0}{2}) = (11.25,6.5)$$
+
+The midpoint, (11.25, 6.5), is then plotted on the coordinate system.
+
+The game now follows a repeatable pattern. The calculated midpoint at point (11.25, 6.5) is selected,
+along with one randomly selected vertex of the equilateral triangle. Suppose that the top vertex at point
+(7.5, 13) is randomly selected. A new midpoint is now calculated:
+
+$$(\frac{11.25+7.5}{2}, \frac{6.5,13}{2}) = (9.375,9.75)$$
+
+this new midpoint is then plotted on the coordinate system, and the process continues (i.e., the latest
+midpoint is selected, along with a randomly selected vertex of the equilateral triangle). Here is the
+algorithm in pseudocode:
+
+```
+v1, v2, v3 ← three vertices of an equilateral triangle
+plot v1, v2, and v3
+p1, p2 ← two randomly selected vertices from v1, v2, and v3
+m ← the midpoint of p1 and p2
+plot m
+repeat
+  v ← a randomly selected vertex from v1, v2, and v3
+  m' ← the midpoint of m and v
+  plot m'
+  m ← m'
+until midpoints plotted >= 1500 or tired
+```
+
+By playing the chaos game for some time, what do you think will happen? Where do you think the
+points will focus on the coordinate system? Will they collect in any one place at all?
+
+::: {.callout-important title="Activity" collapse=false}
+Let's play this game a little bit to see if anything can be gleaned (i.e., if anything *reveals* itself). Mainly,
+we want to see if the points just randomly fill the coordinate system, or if they somehow produce
+something *orderly*.
+
+To obtain results quickly, use blank sheets of paper (or even better, transparencies). You
+should plot the exact same vertices of an equilateral triangle. From there, play the chaos game and plot
+approximate midpoints. That is, estimate as best as possible (by looking) where the midpoint should be
+plotted. Remember that, to plot the first midpoint, two random vertices are selected. From that point
+on, the last plotted midpoint and one randomly selected vertex is used to compute the next midpoint.
+
+So what is the result?
+:::
+
+::: {.callout-note title="Did you know" .column-margin}
+For any pattern to be revealed, a single person would have to plot thousands of points (which would
+take a really long time). There is a whole branch of computer science that deals with making computers
+faster, particularly for large tasks. One of the techniques that addresses this involves dividing tasks so
+that small sub-tasks are done concurrently (i.e., at the same time). This field is called **high performance computing**,
+and the technique employed is called **parallelism**.
+:::
+
+::: {.callout-important title="Activity" collapse=false}
+As you can see, it takes a lot of points to plot anything reasonable. That is, in order to actually see if
+anything orderly is produced when playing the chaos game, a lot of midpoints must be calculated and
+plotted.
+
+There are also a lot of other interesting things that can be tried. For example, what would happen if the
+three vertices were not equidistant; that is, what if the triangle was different? What if we plotted a
+square instead (i.e., four vertices instead of three)? What about a pentagon? What would happen if,
+instead of plotting midpoints, points at varying distances were plotted instead. For example, would the
+result be different if a three-fourths point was plotted instead each time (i.e., instead of 50% of the
+distance to the randomly selected vertex, 75% of the distance). What about 10% of the distance? What
+would happen if there was an additional rotation about the randomly selected vertex? That is, what
+would be the result if some midpoint (or other distance) were calculated and then rotated about the
+vertex some number of degrees (some angle)?
+
+These are all interesting questions that may result in absolute randomness (or perhaps not!). It would be
+quite difficult to try these manually. Why not automate this process? A frequent task of computing
+professionals is to automate things that tend to be repeated. To illustrate a number of changes to the
+chaos game in a configurable manner, a simple application has been created to test out all of the
+options.
+
+The goal of this activity is to play around with this application to see how changes to the chaos game
+affect the outcome. Try your hand at it!
+:::

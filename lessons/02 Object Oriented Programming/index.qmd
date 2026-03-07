@@ -29,3 +29,5 @@ In this lesson, we will cover a variety of topics concerning Object Oriented Pro
 
 - [Quick Reference](./10 Quick Reference.qmd)
 
+- [Practice Problems](./11 Practice Problems.qmd)
+

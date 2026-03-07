@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Variable Scope – CSC 131</title>
+<title>random-number-generators – CSC 131</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -65,8 +65,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
-<link href="../../lessons/01 More Python/04 Python Lists.html" rel="next">
-<link href="../../lessons/01 More Python/02 Formal vs Actual Parameters.html" rel="prev">
+<link href="../../activities/03 The Reckoner/index.html" rel="next">
+<link href="../../lessons/05 Chaos/04 Randomness and Probability.html" rel="prev">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -112,7 +112,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link rel="stylesheet" href="../../styles.css">
 </head>
 
-<body class="nav-sidebar floating quarto-dark"><script id="quarto-html-before-body" type="application/javascript">
+<body class="nav-sidebar floating slimcontent quarto-dark"><script id="quarto-html-before-body" type="application/javascript">
     const toggleBodyColorMode = (bsSheetEl) => {
       const mode = bsSheetEl.getAttribute("data-mode");
       const bodyEl = window.document.querySelector("body");
@@ -281,7 +281,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../lessons/01 More Python/index.html">Lessons</a></li><li class="breadcrumb-item"><a href="../../lessons/01 More Python/index.html">01 More Python</a></li><li class="breadcrumb-item"><a href="../../lessons/01 More Python/03 Variable Scope.html">Variable Scope</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../lessons/01 More Python/index.html">Lessons</a></li><li class="breadcrumb-item"><a href="../../lessons/05 Chaos/index.html">05 Chaos</a></li><li class="breadcrumb-item"><a href="../../lessons/05 Chaos/05 Random Number Generators.html">Random Number Generators</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -328,11 +328,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div class="sidebar-item-container"> 
             <a href="../../lessons/01 More Python/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">01 More Python</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 show">  
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../lessons/01 More Python/01 Review.html" class="sidebar-item-text sidebar-link">
@@ -347,7 +347,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../lessons/01 More Python/03 Variable Scope.html" class="sidebar-item-text sidebar-link active">
+  <a href="../../lessons/01 More Python/03 Variable Scope.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Variable Scope</span></a>
   </div>
 </li>
@@ -546,11 +546,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div class="sidebar-item-container"> 
             <a href="../../lessons/05 Chaos/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">05 Chaos</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth2 ">  
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../lessons/05 Chaos/01 Introduction.html" class="sidebar-item-text sidebar-link">
@@ -577,7 +577,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../lessons/05 Chaos/05 Random Number Generators.html" class="sidebar-item-text sidebar-link">
+  <a href="../../lessons/05 Chaos/05 Random Number Generators.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Random Number Generators</span></a>
   </div>
 </li>
@@ -647,156 +647,189 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#global-vs-local-variables" id="toc-global-vs-local-variables" class="nav-link active" data-scroll-target="#global-vs-local-variables">Global vs Local Variables</a></li>
+  <li><a href="#random-number-generators" id="toc-random-number-generators" class="nav-link active" data-scroll-target="#random-number-generators">Random number generators</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../lessons/01 More Python/index.html">Lessons</a></li><li class="breadcrumb-item"><a href="../../lessons/01 More Python/index.html">01 More Python</a></li><li class="breadcrumb-item"><a href="../../lessons/01 More Python/03 Variable Scope.html">Variable Scope</a></li></ol></nav>
-<div class="quarto-title">
-<h1 class="title">Variable Scope</h1>
-</div>
+<main class="content page-columns page-full" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../lessons/01 More Python/index.html">Lessons</a></li><li class="breadcrumb-item"><a href="../../lessons/05 Chaos/index.html">05 Chaos</a></li><li class="breadcrumb-item"><a href="../../lessons/05 Chaos/05 Random Number Generators.html">Random Number Generators</a></li></ol></nav></header>
 
 
 
-<div class="quarto-title-meta">
-
-    
-  
-    
-  </div>
-  
 
 
-</header>
-
-
-<section id="global-vs-local-variables" class="level2">
-<h2 class="anchored" data-anchor-id="global-vs-local-variables">Global vs Local Variables</h2>
-<p>Consider the following Python program snippet:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># global variables</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="dv">10</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> <span class="dv">20</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># functions</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> f(x):   </span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    a <span class="op">=</span> <span class="dv">11</span>   </span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    b <span class="op">=</span> <span class="dv">21</span>   </span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    x <span class="op">*=</span> <span class="dv">2</span>   </span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"in f(): a=</span><span class="sc">{</span>a<span class="sc">}</span><span class="ss">, b=</span><span class="sc">{</span>b<span class="sc">}</span><span class="ss">, x=</span><span class="sc">{</span>x<span class="sc">}</span><span class="ss">"</span>)  </span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> g():   </span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    <span class="kw">global</span> a </span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    a <span class="op">*=</span> <span class="fl">1.5</span> </span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"in g(): a=</span><span class="sc">{</span>a<span class="sc">}</span><span class="ss">, b=</span><span class="sc">{</span>b<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="co"># main</span></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>f(b)   </span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"in main: a=</span><span class="sc">{</span>a<span class="sc">}</span><span class="ss">, b=</span><span class="sc">{</span>b<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>g() </span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"in main: a=</span><span class="sc">{</span>a<span class="sc">}</span><span class="ss">, b=</span><span class="sc">{</span>b<span class="sc">}</span><span class="ss">"</span>) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>The variables <code>a</code> and <code>b</code> in the code above are considered <strong>global variables</strong>.</p>
-<div class="callout callout-style-default callout-note callout-titled">
+<section id="random-number-generators" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="random-number-generators">Random number generators</h2>
+<p>In the last RPi activity (titled <em>My Binary Addiction…Reloaded</em>), you may have noticed the use of a library that allowed the generation of random numbers. In the activity, it was used to generate random bits (0 or 1) for each of the two 8-bit numbers (in order to generate two random 8-bit numbers). The library was called random and was imported as follows:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> random <span class="im">import</span> randint</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The function <code>randint</code> was then used to generate the random numbers. As mentioned earlier in this lesson, a truly random event has no predictable pattern. Unfortunately, there is no easy way for that to happen using a computer, even for a task as simple as selecting random numbers within a specific range. As a solution, computers typically use a pseudo-random process to create random numbers in a range.</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Definition">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Definition
+<span class="screen-reader-only">Tip</span>Definition
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><strong>Global variables</strong> are accessible throughout the entire program because they are defined<br>
-outside of any block context (e.g., a loop construct, a function, etc).</p>
+<p>A <strong>pseudo-random process</strong> is one that appears to be random but is technically deterministic in nature. This means that the process looks completely random, and yet its pattern is predictable and can be reproduced exactly.</p>
 </div>
 </div>
-<p>Global variables can be accessed anywhere. Their <strong>scope</strong> is global (i.e., throughout the entire program).</p>
-<div class="callout callout-style-default callout-note callout-titled">
+
+<div class="no-row-height column-margin column-container"><div class="callout callout-style-default callout-note callout-titled" title="Did you know">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Definition
+<span class="screen-reader-only">Note</span>Did you know
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>A variable’s <strong>scope</strong> is the region of code that variable is accessible in.</p>
+<p>The most common algorithm for random number generation is called Mersenne Twister and is the one Python uses. Google it to find out more.</p>
 </div>
-</div>
-<p>Take a look at the output of the program above:</p>
-<pre><code>in f(): a=11, b=21, x=40   
-in main: a=10, b=20   
-in g(): a=15.0, b=20   
-in main: a=15.0, b=20   </code></pre>
-<p>Let’s explain the output. Initially, the variable <code>a</code> is assigned the value 10 and the variable <code>b</code> is assigned the value 20. The next segment of code defines the functions <code>f</code> and <code>g</code>. These are only definitions (i.e., the statements are not actually interpreted or executed at this point).</p>
-<p>What follows is a call to the function <code>f</code>, passing the variable <code>b</code> as an actual parameter. Control is then transferred to the function <code>f</code>, whose statements are now executed. Note that, to the function f , the variable <code>x</code> is the formal parameter that takes on the value passed in (from the variable <code>b</code> ). So the variable <code>x</code> is now equal to the value of the variable <code>b</code> (i.e., 20) that was passed in at the point of the call to <code>f</code>. Note that the variable <code>x</code> is local to the function f; therefore, it is considered a <strong>local variable</strong> . That is, it is defined in <code>f</code> and only accessible in <code>f</code> – its scope is valid only in the function <code>f</code>.</p>
-<div class="callout callout-style-default callout-note callout-titled">
+</div></div><p>When tasked with creating a random number (or group of numbers), computers typically use a pseudo- random process to produce that number. This means that, given enough generated numbers, one can observe that the created numbers follow a certain sequence. For most purposes, however, the amount of numbers one would require to observe that the pattern is predictable is too large (so the numbers seem random).</p>
+<p>For most cases, pseudo-random numbers are adequate and even beneficial. How? For instance, often researchers replicate experiments in order to confirm (or refute) experiments performed by peers. For a scientist to make any claim about any experiments carried out, enough information for someone else to reproduce those same results with an experiment of their own must be provided. When a random number (or list of random numbers) is used in an experiment, there would be no way of replicating those exact numbers (and therefore obtaining the same results as in the original experiment). However, since computers produce pseudo-random numbers (which can be replicated exactly), it allows other researchers to carry out their own versions of the original experiment and crosscheck to see if the results are identical.</p>
+<p>In order to actually generate repeatable (even predictable) patterns of <em>random</em> numbers, most pseudo- random number generators can be configured or initialized with a seed.</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Definition">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Definition
+<span class="screen-reader-only">Tip</span>Definition
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>A <strong>local variable</strong> is a variable defined in (and therefore only accessible in) a local region/context. For example, a variable defined inside a function is <strong>local</strong> to that function and therefore <strong>only accessible within that function.</strong></p>
+<p>A <strong>seed</strong> is just a number that is used to initialize a pseudo-random number generator.</p>
 </div>
 </div>
-<p>Also note that, although <code>a</code> and <code>b</code> are global, there are local versions declared in <code>f</code>. It is important to note<br>
-that these are different variables than the global versions – even if they have the same name!</p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
+<p>Most generators use the current time (to the second) as the seed. Clearly, this means that generating a sequence of random numbers will be different each time (since time moves forward continuously). We can, however, specify a seed of our own so that the pseudo-random number generator will always provide the same sequence of numbers!</p>
+<div class="callout callout-style-default callout-important callout-titled" title="Activity">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="true" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Definition
+<span class="screen-reader-only">Important</span>Activity
 </div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse show">
 <div class="callout-body-container callout-body">
-<p><strong>Shadowing</strong> is the process of introducing a local variable that shares the same name as a global variable. This local variable “shadows” (or hides) access to the global variable of the same name. We will see this concept appear again later in the course, but with a different context.</p>
+<p>Let’s create a simple program generates 100 pseudo-random numbers (in the range 0-99) twice:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> random <span class="im">import</span> randint</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">101</span>):</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(<span class="st">"</span><span class="sc">{}</span><span class="ch">\t</span><span class="st">"</span>.<span class="bu">format</span>(randint(<span class="dv">0</span>, <span class="dv">99</span>))),</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (i <span class="op">%</span> <span class="dv">10</span> <span class="op">==</span> <span class="dv">0</span>):</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>()</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>()</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">101</span>):</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(<span class="st">"</span><span class="sc">{}</span><span class="ch">\t</span><span class="st">"</span>.<span class="bu">format</span>(randint(<span class="dv">0</span>, <span class="dv">99</span>))),</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (i <span class="op">%</span> <span class="dv">10</span> <span class="op">==</span> <span class="dv">0</span>):</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Note the use of “<code>\t</code>” (which prints a <em>tab</em> and is typically eight spaces in width). Characters that begin with a backslash (<code>\</code>) are known as <strong>escape characters</strong>. Escape characters typically allow the representation of unprintable characters (such as a tab, newline, carriage return, etc). Most general purpose programming languages (including Python) support these unprintable characters. Here are some common ones:</p>
+<p><code>\n</code> Linefeed (like pressing Enter) <code>\t</code> Horizontal tab</p>
+<p>Note that there are many others, some of which are even programming language specific.</p>
+<p>The program above first displays 100 random integers in the range 0-99, and formats them such that ten integers are displayed on each line (i.e., ten rows of ten columns). They are aligned at the columns via a horizontal tab that follows each integer. Note the comma at the end of the print statement. This instructs Python to omit a typically default linefeed at the end of the print statement. Once ten integers have been displayed on a single line (i.e., i % 10 == 0), a blank line is added (via the solitary print statement). The program then displays another 100 random integers in the same manner. Note the variety (and randomness) of the generated integers, although generating 200 integers in the range 0-99 will undoubtedly produce duplicates.</p>
+<p>In the above example, the pseudo-random number generator was seeded with the current time (by default since no numeric seed was provided). Let’s modify the algorithm and use an identical (but specified) seed value for each 100 random integers:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> random <span class="im">import</span> randint, seed</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>seed(<span class="dv">123456</span>)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">101</span>):</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(<span class="st">"</span><span class="sc">{}</span><span class="ch">\t</span><span class="st">"</span>.<span class="bu">format</span>(randint(<span class="dv">0</span>, <span class="dv">99</span>))),</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (i <span class="op">%</span> <span class="dv">10</span> <span class="op">==</span> <span class="dv">0</span>):</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>()</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>()</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>seed(<span class="dv">123456</span>)</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">101</span>):</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(<span class="st">"</span><span class="sc">{}</span><span class="ch">\t</span><span class="st">"</span>.<span class="bu">format</span>(randint(<span class="dv">0</span>, <span class="dv">99</span>))),</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (i <span class="op">%</span> <span class="dv">10</span> <span class="op">==</span> <span class="dv">0</span>):</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>In this case, the numeric value 123456 is used as the seed to generate both groups of 100 integers. Technically, the seed could be any value (e.g., 0, some variable containing a value, even the mathematical constant pi). In fact, we could have randomly generated a seed!</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>seed(randint(<span class="dv">0</span>,<span class="dv">65535</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
-<p>So what happens in <code>f</code>? The local variable <code>a</code> is initialized with the value 11, the local variable <code>b</code> is initialized with the value 21, and the local variable <code>x</code> (which is passed in as an argument with the value 20) is doubled to 40. The output of the function <code>f</code> is then clear:</p>
-<p><code>in f(): a=11, b=21, x=40</code></p>
-<p>Once <code>f</code> completes and control is transferred back to the point at which function <code>f</code> was called, the variable <code>x</code> is no longer accessible! In fact, let’s alter the print statement immediately after the call to <code>f</code> from:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"in main: a=</span><span class="sc">{</span>a<span class="sc">}</span><span class="ss">, b=</span><span class="sc">{</span>b<span class="sc">}</span><span class="ss">"</span>)   </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>And change it to:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"in main: a=</span><span class="sc">{</span>a<span class="sc">}</span><span class="ss">, b=</span><span class="sc">{</span>b<span class="sc">}</span><span class="ss">, x=</span><span class="sc">{</span>x<span class="sc">}</span><span class="ss">"</span>)   </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Here’s the output of the program now:</p>
-<pre><code>in f(): a=11, b=21, x=40   
-Traceback (most recent call last):   
-  File "scope.py", line 11, in &lt;module&gt;   
-    print("in main: a={}, b={}, x={}".format(a, b, x))   
-NameError: name 'x' is not defined   </code></pre>
-<p>Notice the error indicating that the variable <code>x</code> is not defined. That’s because it was defined in <code>f</code>; however, the current context is outside of <code>f</code>. The variable <code>x</code> is no longer available once <code>f</code> finishes and control is transferred back to the main part of the program. Let’s replace the print statement to remove the error and explain the rest of the output from the original execution of the program:</p>
-<pre><code>in main: a=10, b=20   
-in g(): a=15.0, b=20   
-in main: a=15.0, b=20  </code></pre>
-<p>Once control is transferred back to the main part of the program, the local variables <code>a</code> and <code>b</code> (in <code>f</code>) no longer exist. However, the global variables <code>a</code> and <code>b</code> do! They were initialized to 10 and 20 respectively. Therefore, the next line of output makes sense:</p>
-<pre><code>in main: a=10, b=20   </code></pre>
-<p>The next part of the program calls <code>g</code>. Note the <code>global</code> keyword in the function <code>g</code>. This instructs Python to reference a globally defined version of the variable that follows the global keyword. That is, a local version is not defined and/or initialized. Instead, the global version is directly referenced. Moreover (and quite importantly), <em>it permits the global version to be changed</em>. Although there are no arguments to the function <code>g</code> , the global variable <code>a</code> is directly modifiable through the <code>global</code> keyword. When the statement <code>a *= 1.5</code> is executed, the value of the global variable <code>a</code> is 10. This statement changes its value to 15.0, directly updating the variable’s value – globally!</p>
-<p>Note the print statement in <code>g</code>. It refers both to the variables <code>a</code> and <code>b</code> . A reference to the variable <code>a</code> makes sense; however, the variable <code>b</code> is also accessible. In fact, the variable <code>b</code> is referencing the global version of <code>b</code>, similar to the variable <code>a</code> (i.e., it is directly readable). The difference in using the <code>global</code> keyword is that it permits a change to the variable; without it, it can only be utilized in a read-only manner. Since the global variable <code>b</code> is initialized with the value 20, the output in <code>g</code> is clear:</p>
-<pre><code>in g(): a=15.0, b=20   </code></pre>
-<p>When control is transferred back to the main part of the program, changes to global variable <code>a</code> persist<br>
-(even if they were changed in a function!):</p>
-<pre><code>in main: a=15.0, b=20 </code></pre>
-<p>To illustrate this even more, let’s slightly change the function <code>g</code> as follows:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> g():   </span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">global</span> a   </span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    a <span class="op">*=</span> <span class="fl">1.5</span>   </span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    b <span class="op">=</span> <span class="dv">40</span>   </span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"in g(): a=</span><span class="sc">{</span>a<span class="sc">}</span><span class="ss">, b=</span><span class="sc">{</span>b<span class="sc">}</span><span class="ss">"</span>)   </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Note the slight difference: <code>b</code> is declared and initialized with the value 40. Which <code>b</code> is this? Is it a local version (i.e., local to <code>g</code>)? Or is it referring to the global version declared in the main part of the program? Recall that, without the global keyword, a global variable can not be modified. Therefore, an assignment statement in a function to a variable that has the same name as a global variable indicates that the variable is a new instance, defined locally in the function. This is a different variable <code>b</code>! The output in <code>g</code> is clear:</p>
-<pre><code>in g(): a=15.0, b=40   </code></pre>
-<p>When control is transferred back to the main part of the program, the local version of <code>b</code> disappears. Allthat’s left is the global version (that remains unchanged at 20). Therefore, the output in the main part of the program is also clear:</p>
-<pre><code>in main: a=15.0, b=20   </code></pre>
+</div>
+<p>Now that you have seen how to use Python to generate pseudo-random integers, let’s try to write programs that implement some of the activities shown earlier in this lesson.</p>
+<div class="callout callout-style-default callout-important callout-titled" title="Activity">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Activity
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<p>Earlier we discussed rolling a single die and the associated probabilities of each possible roll. Then, we asked what the probability of rolling two dice and getting a total of 7. Let’s try to write a Python program that iterates through all of the possibilities when rolling two dice. Here is the code and output:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># a list containing the frequencies of the 11 possible sums (2</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co"># through 12). this initializes a list of 11 elements, all with the</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co"># value 0</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>dice_sums <span class="op">=</span> [<span class="dv">0</span>] <span class="op">*</span> <span class="dv">11</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="co"># display the possible rolls of two dice</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Die1</span><span class="ch">\t</span><span class="st">Die2</span><span class="ch">\t</span><span class="st">Sum"</span>)</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="co"># iterate through the values of die 1</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> die1 <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">7</span>):</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>  <span class="co"># for each value of die 1, iterate through the values of die 2</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> die2 <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">7</span>):</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>    <span class="co"># calculate the sum of both dice</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>    dice_sum <span class="op">=</span> die1 <span class="op">+</span> die2</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>    <span class="co"># increment the frequency of each sum</span></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>    <span class="co"># the smallest possible sum, 2, is at index 0 of the list</span></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>    <span class="co"># so subtract 2 from the index</span></span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>    <span class="co"># the frequency of rolling a 2 is at index 0 of the list</span></span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>    dice_sums[dice_sum <span class="op">-</span> <span class="dv">2</span>] <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>    <span class="co"># display the values for this roll</span></span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"</span><span class="sc">{}</span><span class="ch">\t</span><span class="sc">{}</span><span class="ch">\t</span><span class="sc">{}</span><span class="st">"</span>.<span class="bu">format</span>(die1, die2, dice_sum))</span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a><span class="co"># display the sum frequencies</span></span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Sum</span><span class="ch">\t</span><span class="st">Freq</span><span class="ch">\t</span><span class="st">Prob"</span>)</span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(dice_sums)):</span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a>  <span class="co"># i starts at 0, but we want to begin the sums at 2</span></span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(<span class="st">"</span><span class="sc">{}</span><span class="ch">\t</span><span class="sc">{}</span><span class="ch">\t</span><span class="sc">{}</span><span class="st">"</span>.<span class="bu">format</span>(i <span class="op">+</span> <span class="dv">2</span>, dice_sums[i], dice_sums[i] <span class="op">/</span> <span class="bu">sum</span>(dice_sums)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The number of total sums possible is 36. We can calculate this by taking the sum of the frequencies (1 + 2 + 3 + 4 + 5 + 6 + 5 + 4 + 3 + 2 + 1 = 36). Since there are six rolls that sum to 7, then the probability of rolling two dice and getting a 7 is 6/36 = 1/6. In fact, the probability of rolling two dice and getting a 7 is higher than anything else!</p>
+<p>Now let’s try to roll two dice many times and see what results we end up with. Perhaps the frequencies of the sums will match the frequencies shown above! Here’s the code and output:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> random <span class="im">import</span> randint, seed</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co"># simulates the roll of a die</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> roll():</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> randint(<span class="dv">1</span>, <span class="dv">6</span>)</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="co"># get the number of rolls and seed desired</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>num_rolls <span class="op">=</span> <span class="dv">5000</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>rand_seed <span class="op">=</span> randint(<span class="dv">0</span>, <span class="dv">65535</span>)</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>dice_sums <span class="op">=</span> [<span class="dv">0</span>] <span class="op">*</span> <span class="dv">11</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Rolling two dice </span><span class="sc">{}</span><span class="st"> times with a seed of </span><span class="sc">{}</span><span class="st">."</span>.<span class="bu">format</span>(num_rolls, rand_seed))</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="co"># seed the number generator</span></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>seed(rand_seed)</span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a><span class="co"># roll the dice</span></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">0</span>, num_rolls):</span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>  die1 <span class="op">=</span> roll()</span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>  die2 <span class="op">=</span> roll()</span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>  <span class="co"># calculate the sum</span></span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>  dice_sum <span class="op">=</span> die1 <span class="op">+</span> die2</span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>  <span class="co"># update the sum frequencies</span></span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>  dice_sums[dice_sum <span class="op">-</span> <span class="dv">2</span>] <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a><span class="co"># display a summary</span></span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Sum</span><span class="ch">\t</span><span class="st">Freq</span><span class="ch">\t</span><span class="st">Prob"</span>)</span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(dice_sums)):</span>
+<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(<span class="st">"</span><span class="sc">{}</span><span class="ch">\t</span><span class="sc">{}</span><span class="ch">\t</span><span class="sc">{}</span><span class="st">"</span>.<span class="bu">format</span>(i <span class="op">+</span> <span class="dv">2</span>, dice_sums[i], dice_sums[i] <span class="op">/</span> <span class="bu">sum</span>(dice_sums)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Note the probabilities. Although they are not exactly the same as calculated before, they are very similar! More accurate results would be possible with a much higher number of rolls (try one million!).</p>
+</div>
+</div>
+</div>
 
 
 </section>
@@ -1217,13 +1250,13 @@ in main: a=15.0, b=20  </code></pre>
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../lessons/01 More Python/02 Formal vs Actual Parameters.html" class="pagination-link" aria-label="Formal vs Actual Parameters">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Formal vs Actual Parameters</span>
+      <a href="../../lessons/05 Chaos/04 Randomness and Probability.html" class="pagination-link" aria-label="Randomness and Probability">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Randomness and Probability</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../lessons/01 More Python/04 Python Lists.html" class="pagination-link" aria-label="Python Lists">
-        <span class="nav-page-text">Python Lists</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../../activities/03 The Reckoner/index.html" class="pagination-link" aria-label="The Reckoner">
+        <span class="nav-page-text">The Reckoner</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

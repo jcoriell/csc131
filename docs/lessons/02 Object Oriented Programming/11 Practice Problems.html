@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Variable Scope – CSC 131</title>
+<title>practice-problems – CSC 131</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -65,8 +65,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
-<link href="../../lessons/01 More Python/04 Python Lists.html" rel="next">
-<link href="../../lessons/01 More Python/02 Formal vs Actual Parameters.html" rel="prev">
+<link href="../../lessons/03 Number Systems and Binary Arithmetic/index.html" rel="next">
+<link href="../../lessons/02 Object Oriented Programming/10 Quick Reference.html" rel="prev">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -281,7 +281,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../lessons/01 More Python/index.html">Lessons</a></li><li class="breadcrumb-item"><a href="../../lessons/01 More Python/index.html">01 More Python</a></li><li class="breadcrumb-item"><a href="../../lessons/01 More Python/03 Variable Scope.html">Variable Scope</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../lessons/01 More Python/index.html">Lessons</a></li><li class="breadcrumb-item"><a href="../../lessons/02 Object Oriented Programming/index.html">02 Object Oriented Programming</a></li><li class="breadcrumb-item"><a href="../../lessons/02 Object Oriented Programming/11 Practice Problems.html">Practice Problems</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -328,11 +328,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div class="sidebar-item-container"> 
             <a href="../../lessons/01 More Python/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">01 More Python</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 show">  
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../lessons/01 More Python/01 Review.html" class="sidebar-item-text sidebar-link">
@@ -347,7 +347,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../lessons/01 More Python/03 Variable Scope.html" class="sidebar-item-text sidebar-link active">
+  <a href="../../lessons/01 More Python/03 Variable Scope.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Variable Scope</span></a>
   </div>
 </li>
@@ -387,11 +387,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div class="sidebar-item-container"> 
             <a href="../../lessons/02 Object Oriented Programming/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">02 Object Oriented Programming</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 ">  
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../lessons/02 Object Oriented Programming/01 Introduction.html" class="sidebar-item-text sidebar-link">
@@ -454,7 +454,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../lessons/02 Object Oriented Programming/11 Practice Problems.html" class="sidebar-item-text sidebar-link">
+  <a href="../../lessons/02 Object Oriented Programming/11 Practice Problems.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Practice Problems</span></a>
   </div>
 </li>
@@ -647,156 +647,283 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#global-vs-local-variables" id="toc-global-vs-local-variables" class="nav-link active" data-scroll-target="#global-vs-local-variables">Global vs Local Variables</a></li>
+  <li><a href="#practice-problems" id="toc-practice-problems" class="nav-link active" data-scroll-target="#practice-problems">Practice Problems</a></li>
+  <li><a href="#vocabulary-questions" id="toc-vocabulary-questions" class="nav-link" data-scroll-target="#vocabulary-questions">Vocabulary Questions</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../lessons/01 More Python/index.html">Lessons</a></li><li class="breadcrumb-item"><a href="../../lessons/02 Object Oriented Programming/index.html">02 Object Oriented Programming</a></li><li class="breadcrumb-item"><a href="../../lessons/02 Object Oriented Programming/11 Practice Problems.html">Practice Problems</a></li></ol></nav></header>
 
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../lessons/01 More Python/index.html">Lessons</a></li><li class="breadcrumb-item"><a href="../../lessons/01 More Python/index.html">01 More Python</a></li><li class="breadcrumb-item"><a href="../../lessons/01 More Python/03 Variable Scope.html">Variable Scope</a></li></ol></nav>
-<div class="quarto-title">
-<h1 class="title">Variable Scope</h1>
+
+
+
+<section id="practice-problems" class="level2">
+<h2 class="anchored" data-anchor-id="practice-problems">Practice Problems</h2>
+<p>The following practice problems cover the topics introduced in this lesson. For each problem, try to design and implement the solution on your own before checking any provided hints or solutions.</p>
+<hr>
+<p><strong>Problem 1</strong></p>
+<p>Design and implement a <code>Rectangle</code> class in Python. The class should have instance variables for <code>width</code> and <code>height</code>.</p>
+<p>Be sure to include the following:</p>
+<ul>
+<li><p>A constructor</p></li>
+<li><p>Accessors and mutators for each instance variable. The mutator should have input validation to ensure only positive numbers are accepted.</p></li>
+<li><p>A methods to compute the area of a <code>rectangle</code>.</p></li>
+<li><p>A method to compute the perimeter of a <code>rectangle</code>.</p></li>
+<li><p>An <code>__str__</code> method to return a meaningful string representation of the object (such as the dimensions and area).</p></li>
+</ul>
+<div class="callout callout-style-default callout-tip callout-titled" title="Show Solution">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
 </div>
-
-
-
-<div class="quarto-title-meta">
-
-    
-  
-    
-  </div>
-  
-
-
-</header>
-
-
-<section id="global-vs-local-variables" class="level2">
-<h2 class="anchored" data-anchor-id="global-vs-local-variables">Global vs Local Variables</h2>
-<p>Consider the following Python program snippet:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># global variables</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="dv">10</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> <span class="dv">20</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># functions</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> f(x):   </span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    a <span class="op">=</span> <span class="dv">11</span>   </span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    b <span class="op">=</span> <span class="dv">21</span>   </span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    x <span class="op">*=</span> <span class="dv">2</span>   </span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"in f(): a=</span><span class="sc">{</span>a<span class="sc">}</span><span class="ss">, b=</span><span class="sc">{</span>b<span class="sc">}</span><span class="ss">, x=</span><span class="sc">{</span>x<span class="sc">}</span><span class="ss">"</span>)  </span>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Show Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Rectangle:</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, width, height):</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.width <span class="op">=</span> width</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.height <span class="op">=</span> height</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Accessors</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">@property</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> width(<span class="va">self</span>):</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">self</span>._width</span>
 <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> g():   </span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    <span class="kw">global</span> a </span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    a <span class="op">*=</span> <span class="fl">1.5</span> </span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"in g(): a=</span><span class="sc">{</span>a<span class="sc">}</span><span class="ss">, b=</span><span class="sc">{</span>b<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="co"># main</span></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>f(b)   </span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"in main: a=</span><span class="sc">{</span>a<span class="sc">}</span><span class="ss">, b=</span><span class="sc">{</span>b<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>g() </span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"in main: a=</span><span class="sc">{</span>a<span class="sc">}</span><span class="ss">, b=</span><span class="sc">{</span>b<span class="sc">}</span><span class="ss">"</span>) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>The variables <code>a</code> and <code>b</code> in the code above are considered <strong>global variables</strong>.</p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">@property</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> height(<span class="va">self</span>):</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">self</span>._height</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Mutators</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">@width.setter</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> width(<span class="va">self</span>, value):</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> value <span class="op">&gt;</span> <span class="dv">0</span>:</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>            <span class="va">self</span>._width <span class="op">=</span> value</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>            <span class="co"># This solution uses raise to throw an error.</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>            <span class="co"># Sometimes you may just want to set a default value instead.</span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>            <span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="st">"Width must be a positive number."</span>)</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>    <span class="at">@height.setter</span></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> height(<span class="va">self</span>, value):</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> value <span class="op">&gt;</span> <span class="dv">0</span>:</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>            <span class="va">self</span>._height <span class="op">=</span> value</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>            <span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="st">"Width must be a positive number."</span>)</span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Other Methods</span></span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> area(<span class="va">self</span>):</span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">self</span>._width <span class="op">*</span> <span class="va">self</span>._height</span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> perimeter(<span class="va">self</span>):</span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="dv">2</span> <span class="op">*</span> (<span class="va">self</span>._width <span class="op">+</span> <span class="va">self</span>._height)</span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__str__</span>(<span class="va">self</span>):</span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> (<span class="ss">f"Rectangle(width=</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>_width<span class="sc">}</span><span class="ss">, height=</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>_height<span class="sc">}</span><span class="ss">, "</span></span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>                <span class="ss">f"area=</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>area()<span class="sc">}</span><span class="ss">, perimeter=</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>perimeter()<span class="sc">}</span><span class="ss">)"</span>)</span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a><span class="co"># Example usage</span></span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>r <span class="op">=</span> Rectangle(<span class="dv">4</span>, <span class="dv">7</span>)</span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(r)            <span class="co"># Rectangle(width=4, height=7, area=28, perimeter=22)</span></span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(r.area())     <span class="co"># 28</span></span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(r.perimeter()) <span class="co"># 22</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</div>
+<hr>
+</section>
+<section id="vocabulary-questions" class="level2">
+<h2 class="anchored" data-anchor-id="vocabulary-questions">Vocabulary Questions</h2>
+<p>The following multiple choice questions test your understanding of key Object Oriented Programming terms. Select the best answer for each question, then reveal the answer to check your work.</p>
+<hr>
+<p><strong>Question 1</strong></p>
+<p>What is a <strong>constructor</strong>?</p>
+<ol type="a">
+<li><p>A method that provides read-only access to an instance variable</p></li>
+<li><p>A special method that is automatically invoked when a new instance of a class is created</p></li>
+<li><p>A variable whose value is shared among all instances of a class</p></li>
+<li><p>A method that redefines how a built-in operator works on a user-defined object</p></li>
+</ol>
+<div class="callout callout-style-default callout-tip callout-titled" title="Show Answer">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Definition
+<span class="screen-reader-only">Tip</span>Show Answer
 </div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p><strong>Global variables</strong> are accessible throughout the entire program because they are defined<br>
-outside of any block context (e.g., a loop construct, a function, etc).</p>
+<p><strong>b) A special method that is automatically invoked when a new instance of a class is created</strong></p>
+<p>The constructor (named <code>__init__</code> in Python) runs automatically at instantiation and is typically used to assign initial values to instance variables.</p>
 </div>
 </div>
-<p>Global variables can be accessed anywhere. Their <strong>scope</strong> is global (i.e., throughout the entire program).</p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
+</div>
+<hr>
+<p><strong>Question 2</strong></p>
+<p>What is the difference between an <strong>instance variable</strong> and a <strong>class variable</strong>?</p>
+<ol type="a">
+<li><p>Instance variables are defined outside the class; class variables are defined inside methods</p></li>
+<li><p>Instance variables hold functions; class variables hold data</p></li>
+<li><p>Instance variables allow each object to store its own unique values; class variables are defined at the class level and shared among all instances</p></li>
+<li><p>There is no difference — the terms are interchangeable</p></li>
+</ol>
+<div class="callout callout-style-default callout-tip callout-titled" title="Show Answer">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Definition
+<span class="screen-reader-only">Tip</span>Show Answer
 </div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>A variable’s <strong>scope</strong> is the region of code that variable is accessible in.</p>
+<p><strong>c) Instance variables allow each object to store its own unique values; class variables are defined at the class level and shared among all instances</strong></p>
+<p>For example, a <code>Dog</code> class might have a class variable <code>species = "Canis lupus familiaris"</code> (the same for every dog) alongside instance variables like <code>name</code> and <code>age</code> (unique per dog).</p>
 </div>
 </div>
-<p>Take a look at the output of the program above:</p>
-<pre><code>in f(): a=11, b=21, x=40   
-in main: a=10, b=20   
-in g(): a=15.0, b=20   
-in main: a=15.0, b=20   </code></pre>
-<p>Let’s explain the output. Initially, the variable <code>a</code> is assigned the value 10 and the variable <code>b</code> is assigned the value 20. The next segment of code defines the functions <code>f</code> and <code>g</code>. These are only definitions (i.e., the statements are not actually interpreted or executed at this point).</p>
-<p>What follows is a call to the function <code>f</code>, passing the variable <code>b</code> as an actual parameter. Control is then transferred to the function <code>f</code>, whose statements are now executed. Note that, to the function f , the variable <code>x</code> is the formal parameter that takes on the value passed in (from the variable <code>b</code> ). So the variable <code>x</code> is now equal to the value of the variable <code>b</code> (i.e., 20) that was passed in at the point of the call to <code>f</code>. Note that the variable <code>x</code> is local to the function f; therefore, it is considered a <strong>local variable</strong> . That is, it is defined in <code>f</code> and only accessible in <code>f</code> – its scope is valid only in the function <code>f</code>.</p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
+</div>
+<hr>
+<p><strong>Question 3</strong></p>
+<p>Which of the following best describes a <strong>mutator</strong>?</p>
+<ol type="a">
+<li><p>A method that reads and returns the value of an instance variable</p></li>
+<li><p>A special method in Python whose name begins and ends with two underscores</p></li>
+<li><p>A method that provides write access to an instance variable, often with input validation</p></li>
+<li><p>A method inherited from the object class that converts an object to a string</p></li>
+</ol>
+<div class="callout callout-style-default callout-tip callout-titled" title="Show Answer">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Definition
+<span class="screen-reader-only">Tip</span>Show Answer
 </div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>A <strong>local variable</strong> is a variable defined in (and therefore only accessible in) a local region/context. For example, a variable defined inside a function is <strong>local</strong> to that function and therefore <strong>only accessible within that function.</strong></p>
+<p><strong>c) A method that provides write access to an instance variable, often with input validation</strong></p>
+<p>A mutator (also called a setter) is paired with an accessor (getter). Because it controls how a value is written, it is the right place to put input validation logic.</p>
 </div>
 </div>
-<p>Also note that, although <code>a</code> and <code>b</code> are global, there are local versions declared in <code>f</code>. It is important to note<br>
-that these are different variables than the global versions – even if they have the same name!</p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
+</div>
+<hr>
+<p><strong>Question 4</strong></p>
+<p>In an inheritance relationship, what is a <strong>superclass</strong>?</p>
+<ol type="a">
+<li><p>A class that inherits state and behavior from another class</p></li>
+<li><p>A class that has no instance variables</p></li>
+<li><p>The built-in base class that every Python class implicitly inherits from</p></li>
+<li><p>A class whose state and behavior are inherited by another class</p></li>
+</ol>
+<div class="callout callout-style-default callout-tip callout-titled" title="Show Answer">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Definition
+<span class="screen-reader-only">Tip</span>Show Answer
 </div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p><strong>Shadowing</strong> is the process of introducing a local variable that shares the same name as a global variable. This local variable “shadows” (or hides) access to the global variable of the same name. We will see this concept appear again later in the course, but with a different context.</p>
+<p><strong>d) A class whose state and behavior are inherited by another class</strong></p>
+<p>The superclass sits <em>above</em> the subclass in the hierarchy. The subclass inherits from the superclass — not the other way around. Note that while the object class (choice c) is technically a superclass of every user-defined class, choice d is the more precise general definition.</p>
 </div>
 </div>
-<p>So what happens in <code>f</code>? The local variable <code>a</code> is initialized with the value 11, the local variable <code>b</code> is initialized with the value 21, and the local variable <code>x</code> (which is passed in as an argument with the value 20) is doubled to 40. The output of the function <code>f</code> is then clear:</p>
-<p><code>in f(): a=11, b=21, x=40</code></p>
-<p>Once <code>f</code> completes and control is transferred back to the point at which function <code>f</code> was called, the variable <code>x</code> is no longer accessible! In fact, let’s alter the print statement immediately after the call to <code>f</code> from:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"in main: a=</span><span class="sc">{</span>a<span class="sc">}</span><span class="ss">, b=</span><span class="sc">{</span>b<span class="sc">}</span><span class="ss">"</span>)   </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>And change it to:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"in main: a=</span><span class="sc">{</span>a<span class="sc">}</span><span class="ss">, b=</span><span class="sc">{</span>b<span class="sc">}</span><span class="ss">, x=</span><span class="sc">{</span>x<span class="sc">}</span><span class="ss">"</span>)   </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Here’s the output of the program now:</p>
-<pre><code>in f(): a=11, b=21, x=40   
-Traceback (most recent call last):   
-  File "scope.py", line 11, in &lt;module&gt;   
-    print("in main: a={}, b={}, x={}".format(a, b, x))   
-NameError: name 'x' is not defined   </code></pre>
-<p>Notice the error indicating that the variable <code>x</code> is not defined. That’s because it was defined in <code>f</code>; however, the current context is outside of <code>f</code>. The variable <code>x</code> is no longer available once <code>f</code> finishes and control is transferred back to the main part of the program. Let’s replace the print statement to remove the error and explain the rest of the output from the original execution of the program:</p>
-<pre><code>in main: a=10, b=20   
-in g(): a=15.0, b=20   
-in main: a=15.0, b=20  </code></pre>
-<p>Once control is transferred back to the main part of the program, the local variables <code>a</code> and <code>b</code> (in <code>f</code>) no longer exist. However, the global variables <code>a</code> and <code>b</code> do! They were initialized to 10 and 20 respectively. Therefore, the next line of output makes sense:</p>
-<pre><code>in main: a=10, b=20   </code></pre>
-<p>The next part of the program calls <code>g</code>. Note the <code>global</code> keyword in the function <code>g</code>. This instructs Python to reference a globally defined version of the variable that follows the global keyword. That is, a local version is not defined and/or initialized. Instead, the global version is directly referenced. Moreover (and quite importantly), <em>it permits the global version to be changed</em>. Although there are no arguments to the function <code>g</code> , the global variable <code>a</code> is directly modifiable through the <code>global</code> keyword. When the statement <code>a *= 1.5</code> is executed, the value of the global variable <code>a</code> is 10. This statement changes its value to 15.0, directly updating the variable’s value – globally!</p>
-<p>Note the print statement in <code>g</code>. It refers both to the variables <code>a</code> and <code>b</code> . A reference to the variable <code>a</code> makes sense; however, the variable <code>b</code> is also accessible. In fact, the variable <code>b</code> is referencing the global version of <code>b</code>, similar to the variable <code>a</code> (i.e., it is directly readable). The difference in using the <code>global</code> keyword is that it permits a change to the variable; without it, it can only be utilized in a read-only manner. Since the global variable <code>b</code> is initialized with the value 20, the output in <code>g</code> is clear:</p>
-<pre><code>in g(): a=15.0, b=20   </code></pre>
-<p>When control is transferred back to the main part of the program, changes to global variable <code>a</code> persist<br>
-(even if they were changed in a function!):</p>
-<pre><code>in main: a=15.0, b=20 </code></pre>
-<p>To illustrate this even more, let’s slightly change the function <code>g</code> as follows:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> g():   </span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">global</span> a   </span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    a <span class="op">*=</span> <span class="fl">1.5</span>   </span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    b <span class="op">=</span> <span class="dv">40</span>   </span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"in g(): a=</span><span class="sc">{</span>a<span class="sc">}</span><span class="ss">, b=</span><span class="sc">{</span>b<span class="sc">}</span><span class="ss">"</span>)   </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Note the slight difference: <code>b</code> is declared and initialized with the value 40. Which <code>b</code> is this? Is it a local version (i.e., local to <code>g</code>)? Or is it referring to the global version declared in the main part of the program? Recall that, without the global keyword, a global variable can not be modified. Therefore, an assignment statement in a function to a variable that has the same name as a global variable indicates that the variable is a new instance, defined locally in the function. This is a different variable <code>b</code>! The output in <code>g</code> is clear:</p>
-<pre><code>in g(): a=15.0, b=40   </code></pre>
-<p>When control is transferred back to the main part of the program, the local version of <code>b</code> disappears. Allthat’s left is the global version (that remains unchanged at 20). Therefore, the output in the main part of the program is also clear:</p>
-<pre><code>in main: a=15.0, b=20   </code></pre>
+</div>
+<hr>
+<p><strong>Question 5</strong></p>
+<p>What does the <strong>dot operator</strong> do when used on an object reference?</p>
+<ol type="a">
+<li><p>Creates a new instance of the object’s class</p></li>
+<li><p>Accesses a specified member (state or behavior) of the object</p></li>
+<li><p>Converts the object to a different type</p></li>
+<li><p>Calls the constructor of the object’s superclass</p></li>
+</ol>
+<div class="callout callout-style-default callout-tip callout-titled" title="Show Answer">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Show Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>b) Accesses a specified member (state or behavior) of the object</strong></p>
+<p>For example, <code>my_dog.bark()</code> uses the dot operator to call the <code>bark</code> method on the <code>my_dog</code> object, and <code>my_dog.name</code> uses it to access the <code>name</code> attribute.</p>
+</div>
+</div>
+</div>
+<hr>
+<p><strong>Question 6</strong></p>
+<p>What is <strong>operator overloading</strong>?</p>
+<ol type="a">
+<li><p>Using multiple operators together in a single expression</p></li>
+<li><p>Inheriting operator behavior from a superclass</p></li>
+<li><p>Redefining how an operator (such as <code>+</code>) works on a user-defined object</p></li>
+<li><p>Validating that operands are of the correct type before applying an operator</p></li>
+</ol>
+<div class="callout callout-style-default callout-tip callout-titled" title="Show Answer">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Show Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>c) Redefining how an operator (such as <code>+</code>) works on a user-defined object</strong></p>
+<p>Operator overloading is implemented in Python using magic functions. For example, defining <code>__add__</code> on a class lets you use the <code>+</code> operator between two instances of that class.</p>
+</div>
+</div>
+</div>
+<hr>
+<p><strong>Question 7</strong></p>
+<p>Which term describes the relationship implied by the phrase <em>“a Car <strong>is a</strong> Vehicle”</em>?</p>
+<ol type="a">
+<li><p>composition</p></li>
+<li><p>instantiation</p></li>
+<li><p>operator overloading</p></li>
+<li><p>inheritance</p></li>
+</ol>
+<div class="callout callout-style-default callout-tip callout-titled" title="Show Answer">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Show Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>d) inheritance</strong></p>
+<p>The <strong>is-a</strong> relationship signals inheritance: <code>Car</code> inherits state and behavior from <code>Vehicle</code>. This is distinct from the <strong>has-a</strong> relationship (e.g., “a Car <em>has a</em> Engine”), which indicates that one class makes use of another through composition.</p>
+</div>
+</div>
+</div>
 
 
 </section>
@@ -1217,13 +1344,13 @@ in main: a=15.0, b=20  </code></pre>
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../lessons/01 More Python/02 Formal vs Actual Parameters.html" class="pagination-link" aria-label="Formal vs Actual Parameters">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Formal vs Actual Parameters</span>
+      <a href="../../lessons/02 Object Oriented Programming/10 Quick Reference.html" class="pagination-link" aria-label="Quick Reference">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Quick Reference</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../lessons/01 More Python/04 Python Lists.html" class="pagination-link" aria-label="Python Lists">
-        <span class="nav-page-text">Python Lists</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../../lessons/03 Number Systems and Binary Arithmetic/index.html" class="pagination-link" aria-label="03 Number Systems and Binary Arithmetic">
+        <span class="nav-page-text">03 Number Systems and Binary Arithmetic</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

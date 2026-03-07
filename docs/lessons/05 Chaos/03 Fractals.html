@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Variable Scope – CSC 131</title>
+<title>fractals – CSC 131</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,41 +20,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -65,8 +30,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
-<link href="../../lessons/01 More Python/04 Python Lists.html" rel="next">
-<link href="../../lessons/01 More Python/02 Formal vs Actual Parameters.html" rel="prev">
+<link href="../../lessons/05 Chaos/04 Randomness and Probability.html" rel="next">
+<link href="../../lessons/05 Chaos/02 The Chaos Game.html" rel="prev">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -281,7 +246,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../lessons/01 More Python/index.html">Lessons</a></li><li class="breadcrumb-item"><a href="../../lessons/01 More Python/index.html">01 More Python</a></li><li class="breadcrumb-item"><a href="../../lessons/01 More Python/03 Variable Scope.html">Variable Scope</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../lessons/01 More Python/index.html">Lessons</a></li><li class="breadcrumb-item"><a href="../../lessons/05 Chaos/index.html">05 Chaos</a></li><li class="breadcrumb-item"><a href="../../lessons/05 Chaos/03 Fractals.html">Fractals</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -328,11 +293,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div class="sidebar-item-container"> 
             <a href="../../lessons/01 More Python/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">01 More Python</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 show">  
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../lessons/01 More Python/01 Review.html" class="sidebar-item-text sidebar-link">
@@ -347,7 +312,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../lessons/01 More Python/03 Variable Scope.html" class="sidebar-item-text sidebar-link active">
+  <a href="../../lessons/01 More Python/03 Variable Scope.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Variable Scope</span></a>
   </div>
 </li>
@@ -546,11 +511,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div class="sidebar-item-container"> 
             <a href="../../lessons/05 Chaos/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">05 Chaos</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth2 ">  
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../lessons/05 Chaos/01 Introduction.html" class="sidebar-item-text sidebar-link">
@@ -565,7 +530,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../lessons/05 Chaos/03 Fractals.html" class="sidebar-item-text sidebar-link">
+  <a href="../../lessons/05 Chaos/03 Fractals.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Fractals</span></a>
   </div>
 </li>
@@ -647,156 +612,34 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#global-vs-local-variables" id="toc-global-vs-local-variables" class="nav-link active" data-scroll-target="#global-vs-local-variables">Global vs Local Variables</a></li>
+  <li><a href="#fractals" id="toc-fractals" class="nav-link active" data-scroll-target="#fractals">Fractals</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../lessons/01 More Python/index.html">Lessons</a></li><li class="breadcrumb-item"><a href="../../lessons/01 More Python/index.html">01 More Python</a></li><li class="breadcrumb-item"><a href="../../lessons/01 More Python/03 Variable Scope.html">Variable Scope</a></li></ol></nav>
-<div class="quarto-title">
-<h1 class="title">Variable Scope</h1>
-</div>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../lessons/01 More Python/index.html">Lessons</a></li><li class="breadcrumb-item"><a href="../../lessons/05 Chaos/index.html">05 Chaos</a></li><li class="breadcrumb-item"><a href="../../lessons/05 Chaos/03 Fractals.html">Fractals</a></li></ol></nav></header>
 
 
 
-<div class="quarto-title-meta">
-
-    
-  
-    
-  </div>
-  
 
 
-</header>
-
-
-<section id="global-vs-local-variables" class="level2">
-<h2 class="anchored" data-anchor-id="global-vs-local-variables">Global vs Local Variables</h2>
-<p>Consider the following Python program snippet:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># global variables</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="dv">10</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> <span class="dv">20</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># functions</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> f(x):   </span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    a <span class="op">=</span> <span class="dv">11</span>   </span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    b <span class="op">=</span> <span class="dv">21</span>   </span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    x <span class="op">*=</span> <span class="dv">2</span>   </span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"in f(): a=</span><span class="sc">{</span>a<span class="sc">}</span><span class="ss">, b=</span><span class="sc">{</span>b<span class="sc">}</span><span class="ss">, x=</span><span class="sc">{</span>x<span class="sc">}</span><span class="ss">"</span>)  </span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> g():   </span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    <span class="kw">global</span> a </span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    a <span class="op">*=</span> <span class="fl">1.5</span> </span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"in g(): a=</span><span class="sc">{</span>a<span class="sc">}</span><span class="ss">, b=</span><span class="sc">{</span>b<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="co"># main</span></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>f(b)   </span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"in main: a=</span><span class="sc">{</span>a<span class="sc">}</span><span class="ss">, b=</span><span class="sc">{</span>b<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>g() </span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"in main: a=</span><span class="sc">{</span>a<span class="sc">}</span><span class="ss">, b=</span><span class="sc">{</span>b<span class="sc">}</span><span class="ss">"</span>) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>The variables <code>a</code> and <code>b</code> in the code above are considered <strong>global variables</strong>.</p>
-<div class="callout callout-style-default callout-note callout-titled">
+<section id="fractals" class="level2">
+<h2 class="anchored" data-anchor-id="fractals">Fractals</h2>
+<p>By now, you should have noticed that the result of the original chaos game (i.e., three vertices of an equilateral and repeatedly plotting midpoints) results in a beautiful triangular shape. In fact, this shape has an interesting property: it has its pattern repeated over and over. It’s as if we could zoom in forever and obtain the same pattern! This property is found in fractals. This particular fractal has a name: the Sierpinski Triangle.</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Definition">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Definition
+<span class="screen-reader-only">Tip</span>Definition
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><strong>Global variables</strong> are accessible throughout the entire program because they are defined<br>
-outside of any block context (e.g., a loop construct, a function, etc).</p>
+<p>A <strong>fractal</strong> is a geometric shape that can be (infinitely) broken down into similar parts.</p>
 </div>
 </div>
-<p>Global variables can be accessed anywhere. Their <strong>scope</strong> is global (i.e., throughout the entire program).</p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Definition
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>A variable’s <strong>scope</strong> is the region of code that variable is accessible in.</p>
-</div>
-</div>
-<p>Take a look at the output of the program above:</p>
-<pre><code>in f(): a=11, b=21, x=40   
-in main: a=10, b=20   
-in g(): a=15.0, b=20   
-in main: a=15.0, b=20   </code></pre>
-<p>Let’s explain the output. Initially, the variable <code>a</code> is assigned the value 10 and the variable <code>b</code> is assigned the value 20. The next segment of code defines the functions <code>f</code> and <code>g</code>. These are only definitions (i.e., the statements are not actually interpreted or executed at this point).</p>
-<p>What follows is a call to the function <code>f</code>, passing the variable <code>b</code> as an actual parameter. Control is then transferred to the function <code>f</code>, whose statements are now executed. Note that, to the function f , the variable <code>x</code> is the formal parameter that takes on the value passed in (from the variable <code>b</code> ). So the variable <code>x</code> is now equal to the value of the variable <code>b</code> (i.e., 20) that was passed in at the point of the call to <code>f</code>. Note that the variable <code>x</code> is local to the function f; therefore, it is considered a <strong>local variable</strong> . That is, it is defined in <code>f</code> and only accessible in <code>f</code> – its scope is valid only in the function <code>f</code>.</p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Definition
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>A <strong>local variable</strong> is a variable defined in (and therefore only accessible in) a local region/context. For example, a variable defined inside a function is <strong>local</strong> to that function and therefore <strong>only accessible within that function.</strong></p>
-</div>
-</div>
-<p>Also note that, although <code>a</code> and <code>b</code> are global, there are local versions declared in <code>f</code>. It is important to note<br>
-that these are different variables than the global versions – even if they have the same name!</p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Definition
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p><strong>Shadowing</strong> is the process of introducing a local variable that shares the same name as a global variable. This local variable “shadows” (or hides) access to the global variable of the same name. We will see this concept appear again later in the course, but with a different context.</p>
-</div>
-</div>
-<p>So what happens in <code>f</code>? The local variable <code>a</code> is initialized with the value 11, the local variable <code>b</code> is initialized with the value 21, and the local variable <code>x</code> (which is passed in as an argument with the value 20) is doubled to 40. The output of the function <code>f</code> is then clear:</p>
-<p><code>in f(): a=11, b=21, x=40</code></p>
-<p>Once <code>f</code> completes and control is transferred back to the point at which function <code>f</code> was called, the variable <code>x</code> is no longer accessible! In fact, let’s alter the print statement immediately after the call to <code>f</code> from:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"in main: a=</span><span class="sc">{</span>a<span class="sc">}</span><span class="ss">, b=</span><span class="sc">{</span>b<span class="sc">}</span><span class="ss">"</span>)   </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>And change it to:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"in main: a=</span><span class="sc">{</span>a<span class="sc">}</span><span class="ss">, b=</span><span class="sc">{</span>b<span class="sc">}</span><span class="ss">, x=</span><span class="sc">{</span>x<span class="sc">}</span><span class="ss">"</span>)   </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Here’s the output of the program now:</p>
-<pre><code>in f(): a=11, b=21, x=40   
-Traceback (most recent call last):   
-  File "scope.py", line 11, in &lt;module&gt;   
-    print("in main: a={}, b={}, x={}".format(a, b, x))   
-NameError: name 'x' is not defined   </code></pre>
-<p>Notice the error indicating that the variable <code>x</code> is not defined. That’s because it was defined in <code>f</code>; however, the current context is outside of <code>f</code>. The variable <code>x</code> is no longer available once <code>f</code> finishes and control is transferred back to the main part of the program. Let’s replace the print statement to remove the error and explain the rest of the output from the original execution of the program:</p>
-<pre><code>in main: a=10, b=20   
-in g(): a=15.0, b=20   
-in main: a=15.0, b=20  </code></pre>
-<p>Once control is transferred back to the main part of the program, the local variables <code>a</code> and <code>b</code> (in <code>f</code>) no longer exist. However, the global variables <code>a</code> and <code>b</code> do! They were initialized to 10 and 20 respectively. Therefore, the next line of output makes sense:</p>
-<pre><code>in main: a=10, b=20   </code></pre>
-<p>The next part of the program calls <code>g</code>. Note the <code>global</code> keyword in the function <code>g</code>. This instructs Python to reference a globally defined version of the variable that follows the global keyword. That is, a local version is not defined and/or initialized. Instead, the global version is directly referenced. Moreover (and quite importantly), <em>it permits the global version to be changed</em>. Although there are no arguments to the function <code>g</code> , the global variable <code>a</code> is directly modifiable through the <code>global</code> keyword. When the statement <code>a *= 1.5</code> is executed, the value of the global variable <code>a</code> is 10. This statement changes its value to 15.0, directly updating the variable’s value – globally!</p>
-<p>Note the print statement in <code>g</code>. It refers both to the variables <code>a</code> and <code>b</code> . A reference to the variable <code>a</code> makes sense; however, the variable <code>b</code> is also accessible. In fact, the variable <code>b</code> is referencing the global version of <code>b</code>, similar to the variable <code>a</code> (i.e., it is directly readable). The difference in using the <code>global</code> keyword is that it permits a change to the variable; without it, it can only be utilized in a read-only manner. Since the global variable <code>b</code> is initialized with the value 20, the output in <code>g</code> is clear:</p>
-<pre><code>in g(): a=15.0, b=20   </code></pre>
-<p>When control is transferred back to the main part of the program, changes to global variable <code>a</code> persist<br>
-(even if they were changed in a function!):</p>
-<pre><code>in main: a=15.0, b=20 </code></pre>
-<p>To illustrate this even more, let’s slightly change the function <code>g</code> as follows:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> g():   </span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">global</span> a   </span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    a <span class="op">*=</span> <span class="fl">1.5</span>   </span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    b <span class="op">=</span> <span class="dv">40</span>   </span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"in g(): a=</span><span class="sc">{</span>a<span class="sc">}</span><span class="ss">, b=</span><span class="sc">{</span>b<span class="sc">}</span><span class="ss">"</span>)   </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Note the slight difference: <code>b</code> is declared and initialized with the value 40. Which <code>b</code> is this? Is it a local version (i.e., local to <code>g</code>)? Or is it referring to the global version declared in the main part of the program? Recall that, without the global keyword, a global variable can not be modified. Therefore, an assignment statement in a function to a variable that has the same name as a global variable indicates that the variable is a new instance, defined locally in the function. This is a different variable <code>b</code>! The output in <code>g</code> is clear:</p>
-<pre><code>in g(): a=15.0, b=40   </code></pre>
-<p>When control is transferred back to the main part of the program, the local version of <code>b</code> disappears. Allthat’s left is the global version (that remains unchanged at 20). Therefore, the output in the main part of the program is also clear:</p>
-<pre><code>in main: a=15.0, b=20   </code></pre>
+<p>This means that it is made up of many parts that are just smaller versions of the whole thing. And these smaller parts are then made up of even smaller versions of the whole thing. And this goes on infinitely (well, basically). Of course, our eyes can’t see this going on infinitely because things get too small.</p>
 
 
 </section>
@@ -1217,13 +1060,13 @@ in main: a=15.0, b=20  </code></pre>
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../lessons/01 More Python/02 Formal vs Actual Parameters.html" class="pagination-link" aria-label="Formal vs Actual Parameters">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Formal vs Actual Parameters</span>
+      <a href="../../lessons/05 Chaos/02 The Chaos Game.html" class="pagination-link" aria-label="The Chaos Game">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">The Chaos Game</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../lessons/01 More Python/04 Python Lists.html" class="pagination-link" aria-label="Python Lists">
-        <span class="nav-page-text">Python Lists</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../../lessons/05 Chaos/04 Randomness and Probability.html" class="pagination-link" aria-label="Randomness and Probability">
+        <span class="nav-page-text">Randomness and Probability</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

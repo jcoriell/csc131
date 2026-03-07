@@ -1,0 +1,108 @@
+```{ojs}
+//| echo: false
+makePlotGrid = function(targets) {
+  const W = 400, H = 400, PAD = 40;
+  const GMIN = -6, GMAX = 6, RANGE = GMAX - GMIN;
+  const GRID = W - 2 * PAD;
+
+  const px = x => PAD + (x - GMIN) / RANGE * GRID;
+  const py = y => PAD + (GMAX - y) / RANGE * GRID;
+  const toGrid = (mx, my) => [
+    Math.round((mx - PAD) / GRID * RANGE + GMIN),
+    Math.round(GMAX - (my - PAD) / GRID * RANGE)
+  ];
+
+  let placed = new Map();
+  let checked = false;
+
+  const svg = d3.create("svg")
+    .attr("width", W).attr("height", H)
+    .style("cursor", "crosshair")
+    .style("display", "block");
+
+  svg.append("rect").attr("width", W).attr("height", H).attr("fill", "white");
+  const g = svg.append("g");
+
+  function draw() {
+    g.selectAll("*").remove();
+
+    for (let i = GMIN; i <= GMAX; i++) {
+      const isAxis = i === 0;
+      g.append("line")
+        .attr("x1", px(i)).attr("y1", PAD).attr("x2", px(i)).attr("y2", H - PAD)
+        .attr("stroke", isAxis ? "#555" : "#ddd").attr("stroke-width", isAxis ? 1.5 : 0.5);
+      g.append("line")
+        .attr("x1", PAD).attr("y1", py(i)).attr("x2", W - PAD).attr("y2", py(i))
+        .attr("stroke", isAxis ? "#555" : "#ddd").attr("stroke-width", isAxis ? 1.5 : 0.5);
+      if (i !== 0) {
+        g.append("text")
+          .attr("x", px(i)).attr("y", py(0) + 14)
+          .attr("text-anchor", "middle").attr("font-size", 10).attr("fill", "#888")
+          .text(i);
+        g.append("text")
+          .attr("x", px(0) - 6).attr("y", py(i) + 4)
+          .attr("text-anchor", "end").attr("font-size", 10).attr("fill", "#888")
+          .text(i);
+      }
+    }
+
+    g.append("text").attr("x", W - PAD + 4).attr("y", py(0) + 4)
+      .attr("font-size", 13).attr("fill", "#555").text("x");
+    g.append("text").attr("x", px(0) + 4).attr("y", PAD - 6)
+      .attr("font-size", 13).attr("fill", "#555").text("y");
+
+    for (const [key, {x, y}] of placed) {
+      const color = !checked ? "#2563eb" : targets.has(key) ? "#16a34a" : "#dc2626";
+      g.append("circle")
+        .attr("cx", px(x)).attr("cy", py(y)).attr("r", 6)
+        .attr("fill", color).attr("stroke", "white").attr("stroke-width", 1.5);
+      g.append("text")
+        .attr("x", px(x) + 9).attr("y", py(y) - 5)
+        .attr("font-size", 11).attr("fill", color)
+        .text(`(${x}, ${y})`);
+    }
+  }
+
+  draw();
+
+  svg.on("click", function(event) {
+    const [mx, my] = d3.pointer(event);
+    if (mx < PAD || mx > W - PAD || my < PAD || my > H - PAD) return;
+    const [gx, gy] = toGrid(mx, my);
+    if (gx < GMIN || gx > GMAX || gy < GMIN || gy > GMAX) return;
+    const key = `${gx},${gy}`;
+    placed.has(key) ? placed.delete(key) : placed.set(key, {x: gx, y: gy});
+    draw();
+  });
+
+  const checkBtn = html`<button style="padding:5px 14px;margin:8px 6px 0 0;cursor:pointer">Check</button>`;
+  const resetBtn = html`<button style="padding:5px 14px;margin:8px 0 0 0;cursor:pointer">Reset</button>`;
+  const msg = html`<span style="margin-left:10px;font-size:13px"></span>`;
+
+  checkBtn.onclick = () => {
+    checked = true;
+    const correct = [...placed.keys()].filter(k => targets.has(k)).length;
+    const wrong = placed.size - correct;
+    const missed = targets.size - correct;
+    const allRight = correct === targets.size && wrong === 0;
+    msg.style.color = allRight ? "#16a34a" : "#dc2626";
+    msg.textContent = allRight
+      ? `All ${targets.size} points correct!`
+      : `${correct}/${targets.size} correct — ${wrong} incorrect, ${missed} missed.`;
+    draw();
+  };
+
+  resetBtn.onclick = () => {
+    placed.clear();
+    checked = false;
+    msg.textContent = "";
+    draw();
+  };
+
+  const controls = html`<div></div>`;
+  controls.append(checkBtn, resetBtn, msg);
+  const container = html`<div style="font-family:sans-serif"></div>`;
+  container.append(svg.node(), controls);
+  return container;
+}
+```
